@@ -9,7 +9,7 @@ Class Controller_Base extends Controller_Template{
     {
         parent::before();
 
-        $this->template->title = 'Sampler';
+        $this->template->title = 'DEV-practice';
 
         $this->template->glob_styles = ['/media/css/bootstrap/bootstrap.css'=>'screen'];
 
