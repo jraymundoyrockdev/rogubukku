@@ -11,11 +11,14 @@ Class Controller_Base extends Controller_Template{
 
         $this->template->title = 'DEV-practice';
 
-        $this->template->glob_styles = ['/media/css/bootstrap/bootstrap.css'=>'screen'];
+        $this->template->glob_styles = ['/media/css/bootstrap/bootstrap.css'=>'screen',
+                                        '/media/css/fonts/css/font-awesome.min.css'=>'screen',
+                                        '/media/css/main/main_style.css'=>'screen'];
 
-        $this->template->glob_scripts = ['/media/js/jquery/jquery.js', '/media/js/bootstrap/bootstrap.js'];
+        $this->template->glob_scripts = ['/media/js/jquery/jquery-1.10.2.min.js',
+                                         '/media/js/bootstrap/bootstrap.js'];
 
-        $this->template->loc_styles = [];
+        $this->template->loc_styles = ['/media/css/login/login.css'=>'screen'];
 
         $this->template->loc_scripts = [];
 

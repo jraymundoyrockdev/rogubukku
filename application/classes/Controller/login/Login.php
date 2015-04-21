@@ -5,8 +5,10 @@ class Controller_Login_Login extends Controller_Base {
     public function before()
     {
         parent::before();
-    }
 
+       
+    }
+    
     public function action_index()
     {
         $this->template->layout = View::factory('login/login');
