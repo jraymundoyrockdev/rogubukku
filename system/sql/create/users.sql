@@ -24,11 +24,11 @@ DROP TABLE IF EXISTS `users`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `users` (
   `user_id` tinyint(3) NOT NULL AUTO_INCREMENT,
+  `user_type_id` tinyint(2) DEFAULT NULL,
+  `ministry_id` tinyint(3) DEFAULT NULL,
+  `full_name` varchar(100) NOT NULL,
   `user_name` varchar(45) NOT NULL,
   `password` varchar(100) NOT NULL,
-  `user_type_id` tinyint(2) DEFAULT NULL,
-  `full_name` varchar(100) NOT NULL,
-  `ministry_id` tinyint(3) DEFAULT NULL,
   `profile_pic` varchar(100) DEFAULT NULL,
   `created_date` datetime NOT NULL,
   `active_flag` enum('Y','N') DEFAULT 'N',
