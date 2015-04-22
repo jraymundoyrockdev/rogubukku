@@ -5,21 +5,22 @@ class Controller_Login_Login extends Controller_Base {
     public function before()
     {
         parent::before();
-    }
 
+        $this->template->loc_styles = ['/media/css/login/login.css'=>'screen'];
+    }
+    
     public function action_index()
     {
         $this->template->layout = View::factory('login/login');
     }
 
-    public function action_create()
-    {
-        echo "this is create";
-    }
+    public function action_signin()
+    {   
+        echo "signin";
 
-    public function action_login()
-    {
-        $this->template->layout = View::factory('login/another_login');
+        //@todo validation starts here
+        //return to index with errors for errors
+        //redirect to clinet/admin dashboard if success
     }
     
-} // End Welcome
+} // End of class

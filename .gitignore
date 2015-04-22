@@ -2,3 +2,4 @@ build.xml
 CONTRIBUTING.md
 LICENSE.m
 .htaccess
+application/logs/*
