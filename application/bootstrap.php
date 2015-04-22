@@ -103,7 +103,7 @@ if (isset($_SERVER['KOHANA_ENV']))
  * - boolean  expose      set the X-Powered-By header                        FALSE
  */
 Kohana::init(array(
-	'base_url'   => '/rogubukku/',
+	'base_url'   => '/',
     'index_file' => FALSE,
 ));
 
@@ -155,17 +155,16 @@ Cookie::$salt = 'jempogi123';
         'action'     => 'index',
     ));*/
 
-Route::set('login','login((/<action>(/<id>)))',array('action'=>'index|create|login'))
+Route::set('login','login((/<action>(/<id>)))',array('action'=>'index|create|login|signin'))
     ->defaults(array(
         'directory' => 'login',
         'controller' => 'login',
         'action'     => 'index',
     ));
 
-Route::set('defaults', '(<controller>(/<action>(/<id>)))')
+Route::set('defaults','((/<action>(/<id>)))',array('action'=>'index|create|login|signin'))
     ->defaults(array(
-        'controller' => 'welcome',
+    	'directory' => 'login',
+        'controller' => 'login',
         'action'     => 'index',
     ));
-
-

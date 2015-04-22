@@ -11,6 +11,8 @@ Class Controller_Base extends Controller_Template{
 
         $this->template->title = 'DEV-practice';
 
+        $this->template->footer = View::factory('templates/footer')->set('message','If he goes tot he left we will go to the left if He go to the right then lets go tot he right');
+
         $this->template->glob_styles = ['/media/css/bootstrap/bootstrap.css'=>'screen',
                                         '/media/css/fonts/css/font-awesome.min.css'=>'screen',
                                         '/media/css/main/main_style.css'=>'screen'];
@@ -18,11 +20,8 @@ Class Controller_Base extends Controller_Template{
         $this->template->glob_scripts = ['/media/js/jquery/jquery-1.10.2.min.js',
                                          '/media/js/bootstrap/bootstrap.js'];
 
-        $this->template->loc_styles = ['/media/css/login/login.css'=>'screen'];
+        $this->template->loc_styles = [];
 
         $this->template->loc_scripts = [];
-
-
-
     }
-}
+}//end of class
