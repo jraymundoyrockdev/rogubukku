@@ -10,9 +10,9 @@
         	<?=Form::open('login/signin', array('class'=>'search_form'));?>
 
         	<div class="inputs">      
-            	<?=Form::input('username', '', ['placeholder'=>'Username']);?>
-            	<?=Form::password('password', '', ['placeholder'=>'Password']);?>
-				<?=Form::button('sign_in', 'Sign In', array('type' => 'submit','class'=>'btn btn-default wide fa medhidden redborder'));?>
+            	<?=Form::input('username', '', ['placeholder'=>'Username', 'required']);?>
+            	<?=Form::password('password', '', ['placeholder'=>'Password', 'required']);?>
+				<?=Form::button('sign_in', 'Sign In', array('type' => 'submit', 'class'=>'btn btn-default wide fa medhidden redborder'));?>
             </div>
 
             <?=Form::close();?>
@@ -22,8 +22,8 @@
 	            	<div class="blur"></div>
 		            <div class="header-text">
 		                <div class="panel">
-                            <h3 style="background-color:#428BCA; color:white; padding:10px;">
-                                <i class="fa fa-arrows-v"></i>Signup Form<i class="fa fa-arrows-v"></i>
+                            <h3>
+                                <i class="fa fa-arrows-v"></i> Signup Form <i class="fa fa-arrows-v"></i>
                             </h3>
 		                    <div class="panel-body">
 		                        <input id="full_name" type="text" placeholder="Full Name" onkeypress="check_values();">

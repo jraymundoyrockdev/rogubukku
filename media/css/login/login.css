@@ -216,3 +216,10 @@ body > .container {
   padding-right: 15px;
   padding-left: 15px;
 }
+
+/* added up from the inline */
+ h3{
+    background-color: #044c92;
+    color: white;
+    padding: 10px;
+ }
