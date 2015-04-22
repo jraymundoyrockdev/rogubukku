@@ -38,13 +38,14 @@ body{
     right: 0;
     margin: 10px auto;
     background-color: white;
+    
 }
 
 input {
     width: 100%;
     margin-bottom: 17px;
     padding: 15px;
-    background-color: #ECF4F4;
+    background-color: #e2efff;
     border-radius: 2px;
     border: none;
 }
@@ -215,3 +216,10 @@ body > .container {
   padding-right: 15px;
   padding-left: 15px;
 }
+
+/* added up from the inline */
+ h3{
+    background-color: #044c92;
+    color: white;
+    padding: 10px;
+ }
