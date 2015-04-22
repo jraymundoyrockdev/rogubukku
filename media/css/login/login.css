@@ -38,13 +38,14 @@ body{
     right: 0;
     margin: 10px auto;
     background-color: white;
+    
 }
 
 input {
     width: 100%;
     margin-bottom: 17px;
     padding: 15px;
-    background-color: #ECF4F4;
+    background-color: #e2efff;
     border-radius: 2px;
     border: none;
 }
