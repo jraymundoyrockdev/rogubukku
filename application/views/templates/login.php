@@ -14,11 +14,9 @@
 
     <body>
 
-        <?php echo $header; ?>
-
         <?php echo $body; ?>
 
-        <?php //echo $footer; ?>
+        <?php echo $footer; ?>
 
         <!--Global Scripts-->
         <?php foreach ($glob_scripts as $globjs): echo HTML::script($globjs, NULL, 'RMV/')."\n"; endforeach; ?>

@@ -4,6 +4,8 @@ class Controller_Login_Login extends Controller_Base {
 
     public function before()
     {
+        $this->template = 'templates/login';
+
         parent::before();
 
         $this->template->loc_styles = ['/media/css/login/login.css'=>'screen'];
@@ -11,7 +13,7 @@ class Controller_Login_Login extends Controller_Base {
     
     public function action_index()
     {
-        $this->template->layout = View::factory('login/login');
+        $this->template->body = View::factory('login/login');
     }
 
     public function action_signin()
