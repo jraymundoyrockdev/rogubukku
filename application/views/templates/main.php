@@ -14,18 +14,22 @@
 
     <body>
 
-        <?php echo $nav; ?>
+        <div id="wrapper">
 
-        <?php echo $header; ?>
+            <?php echo $nav; ?>
 
-        <?php echo $body; ?>
-
-        <?php echo $footer; ?>
+            <div id="page-wrapper">
+                <?php echo $body; ?>
+            </div>
+            
+        </div>
 
         <!--Global Scripts-->
         <?php foreach ($glob_scripts as $globjs): echo HTML::script($globjs, NULL, 'RMV/')."\n"; endforeach; ?>
 
         <!--Local Scripts-->
         <?php foreach ($loc_scripts as $locjs): echo HTML::script($locjs, NULL, 'RMV/')."\n"; endforeach; ?>
+
     </body>    
+    
 </html>

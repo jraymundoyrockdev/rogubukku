@@ -168,3 +168,10 @@ Route::set('defaults','((/<action>(/<id>)))',array('action'=>'index|create|login
         'controller' => 'login',
         'action'     => 'index',
     ));
+
+Route::set('dashboard','dashboard((/<action>(/<id>)))',array('action'=>'index'))
+    ->defaults(array(
+    	'directory' => 'dashboard',
+        'controller' => 'dashboard',
+        'action'     => 'index',
+    ));
