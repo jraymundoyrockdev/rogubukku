@@ -13,7 +13,10 @@
             <li class="active"><a href="index.html"><i class="fa fa-bullseye"></i> Dashboard</a></li>
             <li><a href="#"><i class="fa fa-tasks"></i> Transcation</a></li>
             <li><a href="#"><i class="fa fa-globe"></i> Reports</a></li>
-            <li><a href="#"><i class="fa fa-font"></i> Timeline</a></li>
+
+            <?php if (Auth::instance()->logged_in("admin")): ?>
+                <li><a href="#"><i class="fa fa-font"></i> Timeline</a></li>
+            <?php endif;?>
         </ul>
 
         <?php echo View::factory('templates/header')->bind('user', $user) ?>

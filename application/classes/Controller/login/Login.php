@@ -3,7 +3,7 @@
 class Controller_Login_Login extends Controller_Base {
 
     public function before()
-    {
+    {   
         $this->template = 'templates/login';
 
         parent::before();
@@ -15,24 +15,66 @@ class Controller_Login_Login extends Controller_Base {
     
     public function action_index()
     {
-        
+        if (HTTP_Request::POST == $this->request->method()) 
+        {
+            $post = $this->request->post();
+            $user = Auth::instance()->login($post['username'], $post['password']);
+
+            if ($user)
+            {
+                $this->request->redirect('dashboard');
+            }
+
+            $message = 'Login failed';
+        }
     }
 
-    public function action_signin()
-    {   
+    public function action_signup()
+    {
 
-        //@todo validation starts here
-        //@todo we should hash the password
-        
-        if($this->request->post('username')=='a' && $this->request->post('password')=='a')
+        $username = $message = $errors = $email = NULL;
+
+        if (HTTP_Request::POST == $this->request->method()) 
         {
-            //redirect to clinet/admin dashboard if success
-            $this->request->redirect('dashboard');
+            $username = $this->request->post('username');
+
+            try
+            {
+                $user = new Model_User;
+
+                $user->create_user($this->request->post(), array( 'username', 'password', 'full_name'));
+
+                $user->add('roles', ORM::factory('Role', array('name' => 'login')));
+
+                $message = $user->full_name.' has been successfully created. Please contact your administrator to activate your account.';
+                $this->template->body->set('message', $message);
+
+            }
+            catch (ORM_Validation_Exception $e) 
+            { 
+                $message = 'There were errors.';
+                $errors = $e->errors('models');
+                echo json_encode($errors);
+            }
+            catch (Exception $error)
+            {
+                $message = 'The following errors occured';
+                $errors = $error->getMessage();
+                echo json_encode($errors);
+            }
         }
 
-        //@todo should return as error in the orm
-        $this->response->body($this->template->body);
+        $this->template->body
+               ->bind('message', $message)
+               ->bind('errors', $errors)
+               ->bind('username', $username);
 
+    }
+
+    public function action_logout()
+    {
+        Auth::instance()->logout();
+        $this->request->redirect('login');
     }
     
 } // End of class

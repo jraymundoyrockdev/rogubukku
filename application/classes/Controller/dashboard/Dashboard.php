@@ -4,7 +4,10 @@ class Controller_Dashboard_Dashboard extends Controller_Base {
 
     public function before()
     {
+    	$this->is_logged_in();
+        
         parent::before();
+
     }
     
     public function action_index()

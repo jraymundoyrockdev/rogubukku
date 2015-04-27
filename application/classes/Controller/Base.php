@@ -6,7 +6,8 @@ Class Controller_Base extends Controller_Template{
     public $template = 'templates/main';
 
     public function before()
-    {
+    {   
+
         parent::before();
 
         //TEMLATE CONTENTS
@@ -28,5 +29,15 @@ Class Controller_Base extends Controller_Template{
         $this->template->loc_styles = [];
 
         $this->template->loc_scripts = [];
+    }
+
+    protected function is_logged_in()
+    {
+        if (! Auth::instance()->logged_in())
+        {
+            $this->request->redirect('login');
+        }
+
+        return true;
     }
 }//end of class
