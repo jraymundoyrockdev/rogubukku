@@ -122,14 +122,14 @@ Kohana::$config->attach(new Config_File);
  */
 Kohana::modules(array(
 	 'auth'       => MODPATH.'auth',       // Basic authentication
-	// 'cache'      => MODPATH.'cache',      // Caching with multiple backends
-	// 'codebench'  => MODPATH.'codebench',  // Benchmarking tool
+	 'cache'      => MODPATH.'cache',      // Caching with multiple backends
+	 'codebench'  => MODPATH.'codebench',  // Benchmarking tool
 	 'database'   => MODPATH.'database',   // Database access
 	// 'image'      => MODPATH.'image',      // Image manipulation
-	// 'minion'     => MODPATH.'minion',     // CLI Tasks
+	 'minion'     => MODPATH.'minion',     // CLI Tasks
 	 'orm'        => MODPATH.'orm',        // Object Relationship Mapping
 	// 'unittest'   => MODPATH.'unittest',   // Unit testing
-	// 'userguide'  => MODPATH.'userguide',  // User guide and API documentation
+	 'userguide'  => MODPATH.'userguide',  // User guide and API documentation
 	));
 
 /**
@@ -155,7 +155,7 @@ Cookie::$salt = 'jempogi123';
         'action'     => 'index',
     ));*/
 
-Route::set('login','login((/<action>(/<id>)))',array('action'=>'index|create|login|signin'))
+Route::set('login','login((/<action>(/<id>)))',array('action'=>'index|create|login|logout|signup'))
     ->defaults(array(
         'directory' => 'login',
         'controller' => 'login',
@@ -166,5 +166,12 @@ Route::set('defaults','((/<action>(/<id>)))',array('action'=>'index|create|login
     ->defaults(array(
     	'directory' => 'login',
         'controller' => 'login',
+        'action'     => 'index',
+    ));
+
+Route::set('dashboard','dashboard((/<action>(/<id>)))',array('action'=>'index'))
+    ->defaults(array(
+    	'directory' => 'dashboard',
+        'controller' => 'dashboard',
         'action'     => 'index',
     ));

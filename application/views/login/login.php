@@ -7,7 +7,7 @@
 
         <div id="contentdiv" class="contcustom">
 
-        	<?=Form::open('login/signin', array('class'=>'search_form'));?>
+        	<?=Form::open('login', array('class'=>'search_form'));?>
 
         	<div class="inputs">      
             	<?=Form::input('username', '', ['placeholder'=>'Username', 'required']);?>
@@ -26,11 +26,14 @@
                                 <i class="fa fa-arrows-v"></i> Signup Form <i class="fa fa-arrows-v"></i>
                             </h3>
 		                    <div class="panel-body">
-		                        <input id="full_name" type="text" placeholder="Full Name" onkeypress="check_values();">
-					            <input id="username" type="text" placeholder="Username" onkeypress="check_values();">
-					          	<input id="password" type="password" placeholder="Password" onkeypress="check_values();">
-					            <input id="confirm_password" type="password" placeholder="Confirm Password" onkeypress="check_values();">
-					            <button id="button1" class="btn btn-default wide fa medhidden redborder">Sign Up</button>
+		                    <?=Form::open('login/signup', array('class'=>'search_form'));?>
+		                    	<?=Form::input('full_name', '', ['placeholder'=>'Full Name', 'name'=>'username']);?>
+				            	<?=Form::input('username', '', ['placeholder'=>'Username', 'name'=>'username']);?>
+					          	<?=Form::password('password', '', ['placeholder'=>'Password', 'name'=>'password']);?>
+					            <?=Form::password('password_confirm', '', ['placeholder'=>'Password', 'name'=>'password_confirm']);?>
+					            <?=Form::button('sign_u[', 'Sign Up', array('type' => 'submit', 'class'=>'btn btn-default wide fa medhidden redborder'));?>
+
+					        <?=Form::close();?>
 		                    </div>
 		                </div>
 		            </div>
