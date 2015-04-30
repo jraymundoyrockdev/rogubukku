@@ -13,7 +13,8 @@ class Controller_Login_Login extends Controller_Base {
 
         $this->template->loc_scripts = ['/media/js/bootstrap_validator/dist/formValidation.js',
                                         '/media/js/bootstrap_validator/dist/bootstrap.js',
-                                        '/media/js/login/login.js'];
+                                        '/media/js/login/login.js',
+                                        '/media/js/validation/login/login.js'];
 
         $this->template->body = View::factory('login/login');
     }
