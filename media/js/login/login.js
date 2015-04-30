@@ -94,7 +94,7 @@ $(document).ready(function() {
 
 	$('#signup_form').formValidation({
 		message: 'This value is not valid',
-        
+
 		icon: {
             valid: 'glyphicon glyphicon-ok',
             invalid: 'glyphicon glyphicon-remove',
@@ -111,7 +111,7 @@ $(document).ready(function() {
                     stringLength: {
                         min: 5,
                         max: 40,
-                        message: 'The username must be more than 5 and less than 40 characters long'
+                        message: 'The full name must be more than 5 and less than 40 characters long'
                     },
                 }
         	},
