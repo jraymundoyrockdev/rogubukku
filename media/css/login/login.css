@@ -51,7 +51,6 @@ body{
 
 input {
     width: 100%;
-    margin-bottom: 10px;
     padding: 15px;
     background-color: #e2efff;
     border-radius: 2px;
@@ -136,10 +135,10 @@ h2 {
 .form_hover:hover .header {
     opacity: 1;
     transform: translateY(-220px);
-    -webkit-transform: translateY(-280px);
-    -moz-transform: translateY(-280px);
-    -ms-transform: translateY(-280px);
-    -o-transform: translateY(-280px);
+    -webkit-transform: translateY(-260px);
+    -moz-transform: translateY(-260px);
+    -ms-transform: translateY(-260px);
+    -o-transform: translateY(-260px);
      
      transition: all 0.3s ease;
 
