@@ -3,11 +3,19 @@ body{
 	overflow-y:hidden;
 	margin-top: 10px;
 }
+.page-header {
+  padding-bottom: 49px;
+  margin: 40px 0 20px;
+  border-bottom: 1px solid #eee;
+}
 .redborder {
     border: 2px solid #f96145;
     border-radius: 2px;
 }
-
+.has-error .login-input {
+    border: 2px solid #f96145;
+    border-radius: 2px;
+}
 .hidden {
     display: none;
 }
@@ -43,7 +51,7 @@ body{
 
 input {
     width: 100%;
-    margin-bottom: 17px;
+    margin-bottom: 10px;
     padding: 15px;
     background-color: #e2efff;
     border-radius: 2px;
@@ -56,6 +64,12 @@ h2 {
     color: #ABABAB;
 }
 
+.form-control-feedback{
+    margin-top: 10px;
+}
+.form-group {
+  margin-bottom: 10px;
+}
 .btn {
     border-radius: 2px;
     padding: 10px;
@@ -122,10 +136,10 @@ h2 {
 .form_hover:hover .header {
     opacity: 1;
     transform: translateY(-220px);
-    -webkit-transform: translateY(-220px);
-    -moz-transform: translateY(-220px);
-    -ms-transform: translateY(-220px);
-    -o-transform: translateY(-220px);
+    -webkit-transform: translateY(-280px);
+    -moz-transform: translateY(-280px);
+    -ms-transform: translateY(-280px);
+    -o-transform: translateY(-280px);
      
      transition: all 0.3s ease;
 
