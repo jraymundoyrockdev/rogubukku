@@ -30,9 +30,7 @@ class Model_Auth_User extends ORM {
 	public function rules()
 	{
 		return array(
-            'full_name' => array(
-                array('not_empty'),
-            ),
+            
 			'username' => array(
 				array('not_empty'),
 				array('max_length', array(':value', 32)),

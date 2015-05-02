@@ -69,7 +69,7 @@ $(document).ready(function() {
                     },
                 }   
             },
-            sign_password: {
+            signin_password: {
                 row: '.signin-password-error',
                 validators: {
                     notEmpty: {
@@ -94,11 +94,11 @@ $(document).ready(function() {
         },
        
         fields: {
-	        sign_up_full_name: {
+	        full_name: {
                 row: '.signup-full-name-error',
                 validators: {
                     notEmpty: {
-                        message: 'The full name is required'
+                        message: 'Fullame is required.'
                     },
                     stringLength: {
                         min: 5,
@@ -107,11 +107,11 @@ $(document).ready(function() {
                     },
                 }
         	},
-        	sign_up_user_name: {
+        	username: {
                 row: '.signup-user-name-error',
                 validators: {
                     notEmpty: {
-                        message: 'The user name is required'
+                        message: 'Userame is required.'
                     },
                     stringLength: {
                         min: 5,
@@ -120,27 +120,27 @@ $(document).ready(function() {
                     },
                 }
         	},
-            sign_up_password: {
+            password: {
                 row: '.signup-password-error',
                 validators: {
                     notEmpty: {
-                        message: 'The password is required'
+                        message: 'Password is required.'
                     },
                     securePassword: {
-                        message: 'The password is not valid'
+                        message: 'Password is not valid.'
                     }
 
                 }
             },
-            sign_up_password_confirm: {
+            password_confirm: {
                 row: '.signup-password-confirm-error',
                 validators: {
                     notEmpty: {
-                        message: 'The password confirm is required'
+                        message: 'Password confirm is required.'
                     },
                     identical: {
-                        field: 'sign_up_password',
-                        message: 'The password and its confirm are not the same'
+                        field: 'password',
+                        message: 'Password fields did not match.'
                     }
                 }
             }
