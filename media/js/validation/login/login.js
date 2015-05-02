@@ -1,9 +1,5 @@
 $(document).ready(function() {
     
-    /*
-     *Set-up of password validation
-     */
-
     FormValidation.Validator.securePassword = {
         validate: function(validator, $field, options) {
             var value = $field.val();
@@ -11,7 +7,6 @@ $(document).ready(function() {
                 return true;
             }
 
-            // Check the password strength
             if (value.length < 8) {
                 return {
                     valid: false,
@@ -19,7 +14,6 @@ $(document).ready(function() {
                 };
             }
 
-            // The password doesn't contain any uppercase character
             if (value === value.toLowerCase()) {
                 return {
                     valid: false,
@@ -27,7 +21,6 @@ $(document).ready(function() {
                 }
             }
 
-            // The password doesn't contain any uppercase character
             if (value === value.toUpperCase()) {
                 return {
                     valid: false,
@@ -35,7 +28,6 @@ $(document).ready(function() {
                 }
             }
 
-            // The password doesn't contain any digit
             if (value.search(/[0-9]/) < 0) {
                 return {
                     valid: false,
@@ -46,6 +38,7 @@ $(document).ready(function() {
             return true;
         }
     };
+
 
     /*
      * Validate signin form
@@ -65,7 +58,7 @@ $(document).ready(function() {
                 row: '.signin-user-name-error',
                 validators: {
                     notEmpty: {
-                        message: 'The user name is required'
+                        message: 'Userame is required.'
                     },
                 }   
             },
@@ -73,7 +66,7 @@ $(document).ready(function() {
                 row: '.signin-password-error',
                 validators: {
                     notEmpty: {
-                        message: 'The password is required'
+                        message: 'Password is required.'
                     }
                 }
             }
@@ -118,6 +111,10 @@ $(document).ready(function() {
                         max: 30,
                         message: 'The username must be more than 5 and less than 30 characters long'
                     },
+                    unique: {
+                        enabled: false,
+                        message: 'Username is not available'
+                    }
                 }
         	},
             password: {
@@ -145,5 +142,20 @@ $(document).ready(function() {
                 }
             }
         }
-	});
+	})
+    .on('success.form.fv', function(e) {
+
+        e.preventDefault();
+
+        var $form = $(e.target);
+        var $that = $(this);
+
+        $.post($form.attr('action'), $form.serialize(), function(result) {
+            $.each(result, function(fieldName, fieldMessage) {
+                $that.formValidation('updateStatus', fieldName, 'INVALID', 'notEmpty');
+                $('small[data-fv-for=' + fieldName + ']').text(fieldMessage);
+            });
+        }, 'json');
+    });
+
 });

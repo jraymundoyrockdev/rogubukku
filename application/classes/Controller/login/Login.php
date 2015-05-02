@@ -66,13 +66,13 @@ class Controller_Login_Login extends Controller_Base {
             { 
                 $message = 'There were errors.';
                 $errors = $e->errors('models');
-                echo json_encode($errors);
+                echo json_encode($errors); die;
             }
             catch (Exception $error)
             {
                 $message = 'The following errors occured';
                 $errors = $error->getMessage();
-                echo json_encode($errors);
+                echo json_encode($errors); die;
             }
         }
 
