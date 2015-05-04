@@ -236,3 +236,6 @@ body > .container {
     color: white;
     padding: 10px;
  }
+.page-header {
+    padding-bottom: 0px !important;
+}

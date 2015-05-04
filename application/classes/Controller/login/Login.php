@@ -24,20 +24,25 @@ class Controller_Login_Login extends Controller_Base {
         if (HTTP_Request::POST == $this->request->method()) 
         {
             $post = $this->request->post();
-            $user = Auth::instance()->login($post['username'], $post['password']);
+            $user = Auth::instance()->login($post['signin_username'], $post['signin_password']);
 
             if ($user)
             {
                 $this->request->redirect('dashboard');
             }
 
-            $message = 'Login failed';
+            $message = 'Incorrect Username Password';
         }
+
+        $this->template->body
+                ->bind('message',$message)
+                ->bind('signin_username',$post['signin_username']);
+
     }
 
     public function action_signup()
     {
-        die;
+
         $username = $message = $errors = $email = NULL;
 
         if (HTTP_Request::POST == $this->request->method()) 
@@ -46,12 +51,13 @@ class Controller_Login_Login extends Controller_Base {
 
             try
             {
-                $user = new Model_User;
+                $user = new Model_Users;
 
                 $user->create_user($this->request->post(), array( 'username', 'password', 'full_name'));
 
-                $user->add('roles', ORM::factory('Role', array('name' => 'login')));
-
+                $roles = new Model_Roles_Users;
+                $roles->create_user_roles($user->id);
+      
                 $message = $user->full_name.' has been successfully created. Please contact your administrator to activate your account.';
                 $this->template->body->set('message', $message);
 
@@ -60,20 +66,21 @@ class Controller_Login_Login extends Controller_Base {
             { 
                 $message = 'There were errors.';
                 $errors = $e->errors('models');
-                echo json_encode($errors);
+                echo json_encode($errors); die;
             }
             catch (Exception $error)
             {
                 $message = 'The following errors occured';
                 $errors = $error->getMessage();
-                echo json_encode($errors);
+                echo json_encode($errors); die;
             }
         }
 
         $this->template->body
-               ->bind('message', $message)
-               ->bind('errors', $errors)
-               ->bind('username', $username);
+                ->bind('message', $message)
+                ->bind('errors', $errors)
+                ->bind('username', $username)
+                ->bind('signin_username',$post['signin_username']);
 
     }
 
