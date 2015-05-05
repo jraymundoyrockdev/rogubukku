@@ -192,10 +192,3 @@ Route::set('user/change_password','user/change_password((/<action>(/<id>)))',arr
         'controller' => 'changepassword',
         'action'     => 'index',
     ));
-
-Route::set('user/profile_photo','user/profile_photo((/<action>(/<id>)))',array('action'=>'index'))
-    ->defaults(array(
-        'directory' => 'user',
-        'controller' => 'profilephoto',
-        'action'     => 'index',
-    ));

@@ -39,7 +39,6 @@
         <ul class="dropdown-menu">
             <li><a href="<?=URL::site('user/profile');?>"><i class="fa fa-user"></i> Profile</a></li>
             <li><a href="<?=URL::site('user/change_password');?>"><i class="fa fa-user"></i> Change Password</a></li>
-            <li><a href="<?=URL::site('user/profile_photo');?>"><i class="fa fa-user"></i> Profile Photo</a></li>
             <li><a href="<?=URL::site('login/logout');?>"><i class="fa fa-power-off"></i> Log Out</a></li>
         </ul>
     </li>
