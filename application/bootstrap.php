@@ -155,7 +155,7 @@ Cookie::$salt = 'jempogi123';
         'action'     => 'index',
     ));*/
 
-Route::set('login','login((/<action>(/<id>)))',array('action'=>'index|create|login|logout|signup'))
+Route::set('login','login((/<action>(/<id>)))',array('action'=>'index|create|login|logout|signup|registered'))
     ->defaults(array(
         'directory' => 'login',
         'controller' => 'login',

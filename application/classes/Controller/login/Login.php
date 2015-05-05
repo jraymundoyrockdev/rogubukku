@@ -31,12 +31,16 @@ class Controller_Login_Login extends Controller_Base {
                 $this->request->redirect('dashboard');
             }
 
-            $message = 'Incorrect Username Password';
+            $message = 'Invalid Login Credentials';
+            $has_error = 'has-error';
+            $disable_button = 'disabled="disabled"';
         }
 
         $this->template->body
                 ->bind('message',$message)
-                ->bind('signin_username',$post['signin_username']);
+                ->bind('signin_username',$post['signin_username'])
+                ->bind('has_error',$has_error)
+                ->bind('disable_button',$disable_button);
 
     }
 
@@ -48,31 +52,31 @@ class Controller_Login_Login extends Controller_Base {
         if (HTTP_Request::POST == $this->request->method()) 
         {
             $username = $this->request->post('username');
+            $result = ['isSuccess'=>false,'signupUser'=>null,'errorFields'=>[]];
 
             try
             {
                 $user = new Model_Users;
-
-                $user->create_user($this->request->post(), array( 'username', 'password', 'full_name'));
+                $user->create_user($this->request->post(), ['username', 'password', 'full_name']);
 
                 $roles = new Model_Roles_Users;
                 $roles->create_user_roles($user->id);
-      
-                $message = $user->full_name.' has been successfully created. Please contact your administrator to activate your account.';
-                $this->template->body->set('message', $message);
+
+                $result['isSuccess'] = true;
+                $result['signupUser'] = $user->full_name;
+
+                echo json_encode($result); die; //@TODO CREATE A HELPER CLASS TO OUTPUT JSON DATA
 
             }
             catch (ORM_Validation_Exception $e) 
             { 
-                $message = 'There were errors.';
-                $errors = $e->errors('models');
-                echo json_encode($errors); die;
+                $result['errorFields'] = $e->errors('models');
+                echo json_encode($result); die; //@TODO CREATE A HELPER CLASS TO OUTPUT JSON DATA
             }
             catch (Exception $error)
             {
-                $message = 'The following errors occured';
-                $errors = $error->getMessage();
-                echo json_encode($errors); die;
+                $result['errorFields'] = $error->getMessage();
+                echo json_encode($result); die; //@TODO CREATE A HELPER CLASS TO OUTPUT JSON DATA
             }
         }
 
