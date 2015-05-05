@@ -76,13 +76,19 @@ CREATE TABLE `roles_users` (
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `ministry_id` tinyint(3) DEFAULT NULL,
   `full_name` varchar(255) DEFAULT NULL,
   `username` varchar(32) NOT NULL DEFAULT '',
   `password` varchar(64) NOT NULL,
+  `profile_pic` varchar(100) DEFAULT NULL,
+  `created_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `active_flag` enum('Y','N') DEFAULT 'N',
   `logins` int(10) unsigned NOT NULL DEFAULT '0',
   `last_login` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `uniq_username` (`username`)
+  UNIQUE KEY `uniq_username` (`username`),
+  KEY `fk_users_2_idx` (`ministry_id`),
+  CONSTRAINT `fk_users_2` FOREIGN KEY (`ministry_id`) REFERENCES `ministry` (`ministry_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -110,19 +116,3 @@ CREATE TABLE `user_tokens` (
 -- ----------------------------
 -- Records of user_tokens
 -- ----------------------------
-
--- ----------------------------
--- Table structure for user_type
--- ----------------------------
-DROP TABLE IF EXISTS `user_type`;
-CREATE TABLE `user_type` (
-  `user_type_id` tinyint(2) NOT NULL AUTO_INCREMENT,
-  `user_type` varchar(45) NOT NULL,
-  PRIMARY KEY (`user_type_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
-
--- ----------------------------
--- Records of user_type
--- ----------------------------
-INSERT INTO `user_type` VALUES ('1', 'client');
-INSERT INTO `user_type` VALUES ('2', 'admin');
