@@ -31,7 +31,7 @@ Class Controller_Base extends Controller_Template{
         $this->template->loc_scripts = [];
     }
 
-    protected function is_logged_in()
+    protected function _is_logged_in()
     {
         if (! Auth::instance()->logged_in())
         {

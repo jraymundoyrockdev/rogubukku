@@ -1,6 +1,6 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
-class Controller_Dashboard_Dashboard extends Controller_Base {
+class Controller_User_ProfilePhoto extends Controller_Base {
 
     public function before()
     {
@@ -12,7 +12,7 @@ class Controller_Dashboard_Dashboard extends Controller_Base {
     
     public function action_index()
     {
-        $this->template->body = View::factory('dashboard/dashboard');
+        $this->template->body = View::factory('user/profile_photo');
     }
         
 } // End of class

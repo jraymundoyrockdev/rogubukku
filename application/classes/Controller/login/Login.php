@@ -4,6 +4,7 @@ class Controller_Login_Login extends Controller_Base {
 
     public function before()
     {   
+
         $this->template = 'templates/login';
 
         parent::before();
@@ -21,6 +22,8 @@ class Controller_Login_Login extends Controller_Base {
     
     public function action_index()
     {
+        $this->_redirect_if_logged_in();
+
         if (HTTP_Request::POST == $this->request->method()) 
         {
             $post = $this->request->post();
@@ -94,4 +97,12 @@ class Controller_Login_Login extends Controller_Base {
         $this->request->redirect('login');
     }
     
+    private function _redirect_if_logged_in()
+    {
+        if (Auth::instance()->logged_in()){
+            $this->request->redirect('dashboard');
+        }
+
+        return true;
+    }
 } // End of class

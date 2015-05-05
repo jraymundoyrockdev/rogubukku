@@ -155,23 +155,47 @@ Cookie::$salt = 'jempogi123';
         'action'     => 'index',
     ));*/
 
-Route::set('login','login((/<action>(/<id>)))',array('action'=>'index|create|login|logout|signup|registered'))
+Route::set('defaults','((/<action>(/<id>)))',array('action'=>'index|create|login|signin'))
     ->defaults(array(
         'directory' => 'login',
         'controller' => 'login',
         'action'     => 'index',
     ));
 
-Route::set('defaults','((/<action>(/<id>)))',array('action'=>'index|create|login|signin'))
+Route::set('login','login((/<action>(/<id>)))',array('action'=>'index|create|login|logout|signup'))
     ->defaults(array(
-    	'directory' => 'login',
+        'directory' => 'login',
         'controller' => 'login',
         'action'     => 'index',
     ));
+
+
 
 Route::set('dashboard','dashboard((/<action>(/<id>)))',array('action'=>'index'))
     ->defaults(array(
     	'directory' => 'dashboard',
         'controller' => 'dashboard',
+        'action'     => 'index',
+    ));
+
+//USER PROFILES
+Route::set('user/profile','user/profile((/<action>(/<id>)))',array('action'=>'index'))
+    ->defaults(array(
+        'directory' => 'user',
+        'controller' => 'profile',
+        'action'     => 'index',
+    ));
+
+Route::set('user/change_password','user/change_password((/<action>(/<id>)))',array('action'=>'index'))
+    ->defaults(array(
+        'directory' => 'user',
+        'controller' => 'changepassword',
+        'action'     => 'index',
+    ));
+
+Route::set('user/profile_photo','user/profile_photo((/<action>(/<id>)))',array('action'=>'index'))
+    ->defaults(array(
+        'directory' => 'user',
+        'controller' => 'profilephoto',
         'action'     => 'index',
     ));
