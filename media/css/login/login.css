@@ -1,3 +1,4 @@
+
 body{
 	background-color: #F0EEEE;
 	overflow-y:hidden;
@@ -238,4 +239,8 @@ body > .container {
  }
 .page-header {
     padding-bottom: 0px !important;
+}
+
+.alert-info {
+    text-align: center !important;
 }

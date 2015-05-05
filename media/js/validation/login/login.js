@@ -147,14 +147,31 @@ $(document).ready(function() {
 
         e.preventDefault();
 
-        var $form = $(e.target);
+        var $form = $(e.target);    
         var $that = $(this);
+        var $thatSignin = $('#signin_form');
 
         $.post($form.attr('action'), $form.serialize(), function(result) {
-            $.each(result, function(fieldName, fieldMessage) {
-                $that.formValidation('updateStatus', fieldName, 'INVALID', 'notEmpty');
-                $('small[data-fv-for=' + fieldName + ']').text(fieldMessage);
-            });
+            if(result.isSuccess){
+
+                $('b.newlySignedUpUser').text(result.signupUser);
+                $('.the_login_page').hide();
+                $('#signUpSuccessfullModal').modal('show');
+
+                //ifModalClose
+                $('.signUpSuccessfullModalClose').click(function() {
+                    $('.the_login_page').show();
+                    $that.formValidation('resetForm', true);
+                    $thatSignin.formValidation('resetForm',true);
+                });
+            }
+            else{
+                $.each(result.errorFields, function(fieldName, fieldMessage) {
+                    $that.formValidation('updateStatus', fieldName, 'INVALID', 'notEmpty');
+                    $('small[data-fv-for=' + fieldName + ']').text(fieldMessage).addClass('removableFromAjax');
+                });
+            }
+            
         }, 'json');
     });
 
