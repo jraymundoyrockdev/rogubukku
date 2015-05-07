@@ -21,7 +21,8 @@ Class Controller_Base extends Controller_Template{
         //SCRIPTS AND STYLES
         $this->template->glob_styles = ['/media/css/bootstrap/bootstrap.css'=>'screen',
                                         '/media/css/fonts/css/font-awesome.min.css'=>'screen',
-                                        '/media/css/main/main_style.css'=>'screen'];
+                                        '/media/css/main/main_style.css'=>'screen',
+                                        '/media/css/hackmain.css'=>'screen'];
 
         $this->template->glob_scripts = ['/media/js/jquery/jquery-1.10.2.min.js',
                                          '/media/js/bootstrap/bootstrap.js'];

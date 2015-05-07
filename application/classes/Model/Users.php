@@ -3,17 +3,25 @@
 # application/Model/User.php
 class Model_Users extends Model_User {
 
-     // This class can be replaced or extended
-     protected $_table_columns = array(
-        'id' => NULL,
-        'full_name' => NULL,
-		'username' => NULL,
-		'password' => NULL,
-		'logins' => NULL,
-		'last_login' => NULL,
-     );
+    protected $_primary_key = 'id';
 
-	protected $_table_name = 'users';
+    protected $_table_name = 'users';
+
+    protected $_table_columns = array(
+        'id' => NULL,
+        'ministry_id' => NULL,
+        'full_name' => NULL,
+        'username' => NULL,
+        'password' => NULL,
+        'logins' => NULL,
+        'last_login' => NULL,
+    );
+
+
+    protected $_belongs_to = array(
+      'ministry' => array ('model' => 'Ministry',
+                            'foreign_key' => 'ministry_id' )
+     );
 
     public function rules()
     {
