@@ -2,4 +2,5 @@ build.xml
 CONTRIBUTING.md
 LICENSE.m
 .htaccess
+application/config/database.php
 application/logs/*
