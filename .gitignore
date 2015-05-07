@@ -3,3 +3,4 @@ CONTRIBUTING.md
 LICENSE.m
 .htaccess
 application/logs/*
+application/config/database.php
