@@ -12,18 +12,16 @@ class Controller_User_Profile extends Controller_Base {
     
     public function action_index()
     {
-
-    	$auth_ins = Auth::instance()->get_user();
+        $auth_ins = Auth::instance()->get_user();
     	$username = Auth::instance()->get_user()->username;
     	$current_ministry =Auth::instance()->get_user()->ministry_id;
-
 		$ministries = ORM::factory('Ministry')->find_all();
 
     	if (HTTP_Request::POST == $this->request->method()) 
         {
             $post = $this->request->post();
         }
-
+        
         $this->template->body = View::factory('user/profile')
         									->bind('username', $username)
         									->bind('auth_ins', $auth_ins)

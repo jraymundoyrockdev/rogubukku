@@ -22,7 +22,7 @@ class Controller_Login_Login extends Controller_Base {
     
     public function action_index()
     {
-        $this->_redirect_dashboard_if_logged_in();
+        $this->_redirect_if_logged_in();
 
         if (HTTP_Request::POST == $this->request->method()) 
         {
@@ -97,7 +97,7 @@ class Controller_Login_Login extends Controller_Base {
         $this->request->redirect('login');
     }
     
-    private function _redirect_dashboard_if_logged_in()
+    private function _redirect_if_logged_in()
     {
         if (Auth::instance()->logged_in()){
             $this->request->redirect('dashboard');
