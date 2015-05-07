@@ -14,7 +14,7 @@
             </a>
 
             <div class="caption" style="text-align:center;">
-                <h3><?=Auth::instance()->get_user()->full_name?></h3>
+                <h3><?=$auth_ins->full_name?></h3>
                 <p>Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula. Cras justo odio, dapibus ac facilisis in quam.</p>
                 <p><a href="#" class="btn btn-primary">Change</a></p>
             </div>
@@ -34,23 +34,27 @@
 
                 <form>
                     <div class="form-group">
-                        <label class="control-label" for="inputSuccess1">Full Name</label>
-                        <input type="text" class="form-control " id="inputSuccess1">
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label" for="inputSuccess1">Username</label>
-                        <input type="text" class="form-control" id="inputSuccess1">
+                        <label class="control-label" for="username">Username</label>
+                         <?=Form::input('username', $username, ['placeholder'=>'Username', 'class'=>'form-control', 'disabled'=>'disabled']);?>
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label" for="inputSuccess1">Ministry</label>
-                        <select class="form-control">
-                      <option selected>Non</option>
-                      <option>2</option>
-                      <option>3</option>
-                      <option>4</option>
-                      <option>5</option>
-                    </select>
+                        <label class="control-label" for="full_name">Full Name</label>
+                        <?=Form::input('full_name', $auth_ins->full_name, ['placeholder'=>'Full Name', 'class'=>'form-control']);?>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="control-label force_display-block" for="full_name">Ministry</label>
+                        <div class="btn-group" data-toggle="buttons">
+
+                            <?php foreach($ministries as $m):?>
+
+                            <label class="btn btn-primary <?=($current_ministry==$m->ministry_id) ? 'active':''?>">
+                                <?=Form::radio('options', $m->ministry, ['autocomplete'=>'off']);?> <?=$m->ministry?>
+                            </label>
+
+                            <?php endforeach;?>
+                        </div>
                     </div>
 
                     <div class="form-group">
