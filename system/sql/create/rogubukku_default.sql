@@ -28,12 +28,13 @@ CREATE TABLE `ministry` (
 -- ----------------------------
 -- Records of ministry
 -- ----------------------------
-INSERT INTO `ministry` VALUES ('1', 'Music');
-INSERT INTO `ministry` VALUES ('2', 'Dance');
-INSERT INTO `ministry` VALUES ('3', 'GTTAM');
-INSERT INTO `ministry` VALUES ('4', 'Usher');
-INSERT INTO `ministry` VALUES ('5', 'YROCK');
-INSERT INTO `ministry` VALUES ('6', 'Sunday School');
+INSERT INTO `ministry` VALUES ('1', 'None');
+INSERT INTO `ministry` VALUES ('2', 'Music');
+INSERT INTO `ministry` VALUES ('3', 'Dance');
+INSERT INTO `ministry` VALUES ('4', 'GTTAM');
+INSERT INTO `ministry` VALUES ('5', 'Usher');
+INSERT INTO `ministry` VALUES ('6', 'YROCK');
+INSERT INTO `ministry` VALUES ('7', 'Sunday School');
 
 -- ----------------------------
 -- Table structure for roles
@@ -76,7 +77,7 @@ CREATE TABLE `roles_users` (
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `ministry_id` tinyint(3) DEFAULT NULL,
+  `ministry_id` tinyint(3) DEFAULT 1,
   `full_name` varchar(255) DEFAULT NULL,
   `username` varchar(32) NOT NULL DEFAULT '',
   `password` varchar(64) NOT NULL,
