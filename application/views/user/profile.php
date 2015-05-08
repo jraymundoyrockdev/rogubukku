@@ -1,6 +1,6 @@
 <div class="row">
 
-    <div class="col-lg-2">
+    <div class="col-lg-3">
         <div class="panel panel-primary">
             <div class="panel-heading">
                 <h3 class="panel-title">
@@ -14,7 +14,7 @@
             </a>
 
             <div class="caption" style="text-align:center;">
-                <h3><?=$auth_ins->full_name?></h3>
+                <h3 class="full_avatar_name"><?=$user->full_name?></h3>
                 <p>Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula. Cras justo odio, dapibus ac facilisis in quam.</p>
                 <p><a href="#" class="btn btn-primary">Change</a></p>
             </div>
@@ -32,35 +32,38 @@
             </div>
             <div class="panel-body">
 
-                <form>
+                <div id="profile_updated_status" class="alert alert-success alert-dismissible fade in" role="alert" style="display:none;">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    <i class="fa fa-user"></i> Profile Updated!<a class="anchorjs-link" href="#oh-snap!-you-got-an-error!"><span class="anchorjs-icon"></span></a>
+                </div>
+
+                <?=Form::open('user/profile/save', array('class'=>'search_form','id'=>'user_profile_form'));?>
+
                     <div class="form-group">
                         <label class="control-label" for="username">Username</label>
-                         <?=Form::input('username', $username, ['placeholder'=>'Username', 'class'=>'form-control', 'disabled'=>'disabled']);?>
+                         <?=Form::input('username', $user->username, ['placeholder'=>'Username', 'class'=>'form-control', 'disabled'=>'disabled']);?>
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label" for="full_name">Full Name</label>
-                        <?=Form::input('full_name', $auth_ins->full_name, ['placeholder'=>'Full Name', 'class'=>'form-control']);?>
+                        <div class="full-name-error">
+                            <label class="control-label" for="full_name">Full Name</label>
+                            <?=Form::input('full_name', $user->full_name, ['placeholder'=>'Full Name', 'class'=>'form-control']);?>
+                        </div>
                     </div>
                     
                     <div class="form-group">
-                        <label class="control-label force_display-block" for="full_name">Ministry</label>
-                        <div class="btn-group" data-toggle="buttons">
-
-                            <?php foreach($ministries as $m):?>
-
-                            <label class="btn btn-primary <?=($current_ministry==$m->ministry_id) ? 'active':''?>">
-                                <?=Form::radio('options', $m->ministry, ['autocomplete'=>'off']);?> <?=$m->ministry?>
-                            </label>
-
-                            <?php endforeach;?>
-                        </div>
+                        <div class="ministry-error">
+                        <label class="control-label force_display-block" for="ministry">Ministry</label>
+                            <?php echo Form::select('ministry', $ministries, $user->ministry_id, array('class'=> 'form-control') );?>
+                        </div>                      
                     </div>
 
                     <div class="form-group">
-                       <button type="button" class="btn btn-primary btn-lg btn-block">Update Profile</button>
+                        <?=Form::button('update_profile', 'Update Profile', array('type' => 'submit', 'class'=>'btn btn-primary btn-block'));?>
                     </div>
-                </form>
+
+                <?=Form::close();?>
+
             </div>
         </div>
     </div>

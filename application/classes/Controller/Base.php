@@ -25,7 +25,9 @@ Class Controller_Base extends Controller_Template{
                                         '/media/css/hackmain.css'=>'screen'];
 
         $this->template->glob_scripts = ['/media/js/jquery/jquery-1.10.2.min.js',
-                                         '/media/js/bootstrap/bootstrap.js'];
+                                        '/media/js/bootstrap/bootstrap.js',
+                                        '/media/js/bootstrap_validator/dist/formValidation.js',
+                                        '/media/js/bootstrap_validator/dist/bootstrap.js'];
 
         $this->template->loc_styles = [];
 
