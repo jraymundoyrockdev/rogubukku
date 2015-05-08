@@ -9,6 +9,16 @@
  */
 class Model_Auth_User extends ORM {
 
+	 protected $_table_columns = array(
+        'id' => NULL,
+        'ministry_id' => NULL,
+        'full_name' => NULL,
+		'username' => NULL,
+		'password' => NULL,
+		'logins' => NULL,
+		'last_login' => NULL,
+     );
+     
 	/**
 	 * A user has many tokens and roles
 	 *
@@ -30,6 +40,7 @@ class Model_Auth_User extends ORM {
 	public function rules()
 	{
 		return array(
+            
 			'username' => array(
 				array('not_empty'),
 				array('max_length', array(':value', 32)),
@@ -38,11 +49,10 @@ class Model_Auth_User extends ORM {
 			'password' => array(
 				array('not_empty'),
 			),
-			'email' => array(
-				array('not_empty'),
-				array('email'),
-				array(array($this, 'unique'), array('email', ':value')),
-			),
+            'password_confirm' => array(
+                array('matches',array(':validation', 'password', 'password')),
+            ),
+
 		);
 	}
 

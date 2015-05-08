@@ -6,20 +6,39 @@ Class Controller_Base extends Controller_Template{
     public $template = 'templates/main';
 
     public function before()
-    {
+    {   
+
         parent::before();
 
-        $this->template->title = 'Sampler';
+        //TEMLATE CONTENTS
+        $this->template->title = 'DEV-practice';
 
-        $this->template->glob_styles = ['/media/css/bootstrap/bootstrap.css'=>'screen'];
+        $this->template->nav = View::factory('templates/nav');
 
-        $this->template->glob_scripts = ['/media/js/jquery/jquery.js', '/media/js/bootstrap/bootstrap.js'];
+        $this->template->footer = View::factory('templates/footer')->set('message','If he goes tot he left we will go to the left if He go to the right then lets go tot he right');
+
+
+        //SCRIPTS AND STYLES
+        $this->template->glob_styles = ['/media/css/bootstrap/bootstrap.css'=>'screen',
+                                        '/media/css/fonts/css/font-awesome.min.css'=>'screen',
+                                        '/media/css/main/main_style.css'=>'screen',
+                                        '/media/css/hackmain.css'=>'screen'];
+
+        $this->template->glob_scripts = ['/media/js/jquery/jquery-1.10.2.min.js',
+                                         '/media/js/bootstrap/bootstrap.js'];
 
         $this->template->loc_styles = [];
 
         $this->template->loc_scripts = [];
-
-
-
     }
-}
+
+    protected function _is_logged_in()
+    {
+        if (! Auth::instance()->logged_in())
+        {
+            $this->request->redirect('login');
+        }
+
+        return true;
+    }
+}//end of class
