@@ -172,7 +172,7 @@ Route::set('dashboard','dashboard((/<action>(/<id>)))',array('action'=>'index'))
     ));
 
 //USER PROFILES
-Route::set('user/profile','user/profile((/<action>(/<id>)))',array('action'=>'index'))
+Route::set('user/profile','user/profile((/<action>(/<id>)))',array('action'=>'index|save'))
     ->defaults(array(
         'directory' => 'user',
         'controller' => 'profile',
