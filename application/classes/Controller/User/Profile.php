@@ -15,6 +15,10 @@ class Controller_User_Profile extends Controller_Base {
     public function action_index()
     {   
         
+
+        $ministries = ORM::factory('Ministry');
+
+        
         $user = ORM::factory('Users', Auth::instance()->get_user()->id);
 		$ministries = ORM::factory('Ministry')->find_all()->as_array('ministry_id','ministry');
 
