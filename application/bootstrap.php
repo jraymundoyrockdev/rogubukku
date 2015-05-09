@@ -185,3 +185,10 @@ Route::set('user/change_password','user/change_password((/<action>(/<id>)))',arr
         'controller' => 'changepassword',
         'action'     => 'index',
     ));
+
+Route::set('admin/ministry','admin/ministry((/<action>(/<id>)))',array('action'=>'index|save'))
+    ->defaults(array(
+        'directory' => 'admin',
+        'controller' => 'ministry',
+        'action'     => 'index',
+    ));

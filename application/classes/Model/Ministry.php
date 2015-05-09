@@ -22,6 +22,11 @@ class Model_Ministry extends Model_BaseModel {
     {
         return array();
     }
-
+    
+    public function create_ministry($ministry)
+    {
+        $this->ministry = $ministry;
+        return $this->save();   
+    }
 
 } // End User Model
