@@ -12,7 +12,7 @@ $('#admin_ministry_form').formValidation({
             row: '.ministry-error',
             validators: {
                 notEmpty: {
-                    message: 'ministry is required.'
+                    message: 'Ministry is required.'
                 },
             }   
         },

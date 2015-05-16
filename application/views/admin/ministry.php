@@ -42,7 +42,6 @@
                 <div class="modal-body">
                     <div class="form-group">
                          <div class="ministry-error">
-                            <label class="control-label" for="ministry">Ministry</label>
                         <label for="recipient-name" class="control-label">Ministry:</label>
                         <?=Form::input('ministry', '', ['placeholder'=>'Ministry', 'class'=>'form-control']);?>
                         </div>
