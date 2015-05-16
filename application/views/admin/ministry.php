@@ -21,20 +21,31 @@
         </tbody>
     </table>
 </div>
-
+       
 
 <div class="modal fade" id="ministryModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
+   
         <div class="modal-content">
-             <?=Form::open('admin/ministry/save', array('class'=>'search_form','id'=>'user_profile_form'));?>
+         <div class="panel-body">
+                <div id="ministry_updated" class="alert alert-success alert-dismissible fade in" role="alert" style="display:none;">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    <i class="fa fa-user"></i> ministry Updated!<a class="anchorjs-link" href="#oh-snap!-you-got-an-error!"><span class="anchorjs-icon"></span></a>
+                </div>
+
+             <?=Form::open('admin/ministry/save', array('class'=>'search_form','id'=>'admin_ministry_form'));?>
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title" id="ministryModalLabel">Add New Ministry</h4>
                 </div>
+
                 <div class="modal-body">
                     <div class="form-group">
+                         <div class="ministry-error">
+                            <label class="control-label" for="ministry">Ministry</label>
                         <label for="recipient-name" class="control-label">Ministry:</label>
                         <?=Form::input('ministry', '', ['placeholder'=>'Ministry', 'class'=>'form-control']);?>
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -42,6 +53,8 @@
                     <?=Form::button('save_ministry', '<i class="fa fa-floppy-o"></i> Save', array('type' => 'submit', 'class'=>'btn btn-primary'));?>  
                 </div>
             <?=Form::close();?>
+            </div>
+
         </div>
     </div>
 </div>
