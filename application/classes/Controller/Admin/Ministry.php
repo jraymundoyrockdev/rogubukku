@@ -17,22 +17,17 @@ class Controller_Admin_Ministry extends Controller_Base {
 	}
     public function action_save()
     {
+
         if (HTTP_Request::POST == $this->request->method()) 
         {   
-            
-             $ministry_id = Auth::instance()->get_ministry()->id;
-$ministry->create_ministry($this->request->post('ministry'));
-
             $post = $this->request->post();
             $result = ['isSuccess'=>false, 'updatedMinistry'=>'','errorFields'=>[]];
-            $ministry_result = $ministry->create_ministry($ministry_id, $post);
-
+          
            try
             {
+                 $ministry->create_ministry($this->request->post('ministry'));
+                $ministry_result = $ministry->create_ministry($post['ministry']);
                 $ministry = new Model_Ministry;   
-
-             
-
                 $result['isSuccess'] = true;
                 $result['updatedMinistry'] = $post['ministry'];
                 echo json_encode($result); die; //@TODO CREATE A HELPER CLASS TO OUTPUT JSON DATA
