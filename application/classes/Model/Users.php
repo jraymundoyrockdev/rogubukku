@@ -15,6 +15,8 @@ class Model_Users extends Model_User {
         'password' => NULL,
         'logins' => NULL,
         'last_login' => NULL,
+        'created_date' => NULL,
+        'active_flag' => NULL
     );
 
 

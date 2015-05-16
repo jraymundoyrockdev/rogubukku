@@ -30,6 +30,7 @@
         <ul class="dropdown-menu">
             <li><a href="<?=URL::site('admin/ministry');?>"><i class="fa fa-user"></i> Ministries</a></li>
             <li><a href="#"><i class="fa fa-gear"></i> User Roles</a></li>
+             <li><a href="<?=URL::site('admin/users');?>"><i class="fa fa-gear"></i> User Management</a></li>
         </ul>
     </li>
     <?php //endif;?>
