@@ -30,7 +30,7 @@
          <div class="panel-body">
                 <div id="ministry_updated" class="alert alert-success alert-dismissible fade in" role="alert" style="display:none;">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
-                    <i class="fa fa-user"></i> ministry Updated!<a class="anchorjs-link" href="#oh-snap!-you-got-an-error!"><span class="anchorjs-icon"></span></a>
+                    <i class="fa fa-user"></i> ministry Save!<a class="anchorjs-link" href="#oh-snap!-you-got-an-error!"><span class="anchorjs-icon"></span></a>
                 </div>
 
              <?=Form::open('admin/ministry/save', array('class'=>'search_form','id'=>'admin_ministry_form'));?>

@@ -26,6 +26,7 @@ $('#admin_ministry_form').formValidation({
         var $that = $(this);
 
         $.post($form.attr('action'), $form.serialize(), function(result) {
+            
             if(result.isSuccess){
                 console.log(result);
                 $that.formValidation('resetForm', true);

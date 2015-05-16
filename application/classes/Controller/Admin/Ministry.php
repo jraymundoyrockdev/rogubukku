@@ -24,20 +24,22 @@ class Controller_Admin_Ministry extends Controller_Base {
             $result = ['isSuccess'=>false, 'updatedMinistry'=>'','errorFields'=>[]];
           
            try
-            {
-                 $ministry->create_ministry($this->request->post('ministry'));
+            {       
+                $ministry = new Model_Ministry;     
+                $ministry->create_ministry($this->request->post('ministry'));
                 $ministry_result = $ministry->create_ministry($post['ministry']);
-                $ministry = new Model_Ministry;   
                 $result['isSuccess'] = true;
                 $result['updatedMinistry'] = $post['ministry'];
-                echo json_encode($result); die; //@TODO CREATE A HELPER CLASS TO OUTPUT JSON DATA
+                echo json_encode($result); die; //@TODO CREATE A HELPER CLASS TO OUTPUT JSON DATAx`x`   
 
             }
+
             catch (ORM_Validation_Exception $e) 
             { 
                 $result['errorFields'] = $e->errors('models');
                 echo json_encode($result); die; //@TODO CREATE A HELPER CLASS TO OUTPUT JSON DATA
             }
+            
             catch (Exception $error)
             {
                 $result['errorFields'] = $error->getMessage();
