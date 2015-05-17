@@ -9,7 +9,9 @@ class Controller_Admin_Userroles extends Controller_Base {
     
     public function action_index()
     {
-        echo "thisis user roles"; die;
+    	$userroles = ORM::factory('Role')->find_all();
+    	$this->template->body = View::factory('admin/userroles')->bind('userroles', $userroles);
+
     }
         
 } // End of class

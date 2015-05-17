@@ -192,3 +192,10 @@ Route::set('admin/ministry','admin/ministry((/<action>(/<id>)))',array('action'=
         'controller' => 'ministry',
         'action'     => 'index',
     ));
+
+Route::set('admin/userroles','admin/userroles((/<action>(/<id>)))',array('action'=>'index'))
+    ->defaults(array(
+        'directory' => 'admin',
+        'controller' => 'userroles',
+        'action'     => 'index',
+    ));

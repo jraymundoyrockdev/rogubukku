@@ -29,7 +29,7 @@
         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-cogs"></i> System <b class="caret"></b></a>
         <ul class="dropdown-menu">
             <li><a href="<?=URL::site('admin/ministry');?>"><i class="fa fa-user"></i> Ministries</a></li>
-            <li><a href="#"><i class="fa fa-gear"></i> User Roles</a></li>
+            <li><a href="<?=URL::site('admin/userroles');?>"><i class="fa fa-gear"></i> User Roles</a></li>
         </ul>
     </li>
     <?php //endif;?>
