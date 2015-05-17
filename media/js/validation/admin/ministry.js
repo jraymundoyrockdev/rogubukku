@@ -28,10 +28,11 @@ $('#admin_ministry_form').formValidation({
         $.post($form.attr('action'), $form.serialize(), function(result) {
             
             if(result.isSuccess){
-                console.log(result);
                 $that.formValidation('resetForm', true);
-                $('.ministry_name').text(result.updatedMinistry);
                 $("#ministry_updated").show().delay(1000).fadeOut(2000);
+                $('#ministryModal').modal('hide');
+                
+                $('#ministryList tr:last').after('<tr><th>'+$('#ministryList tr').length+'</th><td>'+result.updatedMinistry+'</td></tr>');
             }
             else{
                 $.each(result.errorFields, function(fieldName, fieldMessage) {
