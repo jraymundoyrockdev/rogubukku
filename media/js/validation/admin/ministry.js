@@ -31,8 +31,12 @@ $('#admin_ministry_form').formValidation({
                 $that.formValidation('resetForm', true);
                 $("#ministry_updated").show().delay(1000).fadeOut(2000);
                 $('#ministryModal').modal('hide');
-                
-                $('#ministryList tr:last').after('<tr><th>'+$('#ministryList tr').length+'</th><td>'+result.updatedMinistry+'</td></tr>');
+
+                var lastTrClass = $('#ministryList tr:last').attr("class");
+                var newTrClass = (lastTrClass=='sui-alt-row') ? 'sui-alt' : 'sui-alt-row';
+                var rowcount = $('#ministryList tr').length +1;
+                $('#ministryList tr:last').after('<tr class="'+newTrClass+'"><td class="sui-cell">'+rowcount+'</td><td class="sui-cell">'+result.updatedMinistry+'</td></tr>');
+            
             }
             else{
                 $.each(result.errorFields, function(fieldName, fieldMessage) {
