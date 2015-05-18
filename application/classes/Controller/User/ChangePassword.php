@@ -39,7 +39,7 @@ class Controller_User_ChangePassword extends Controller_Base {
                 $result['updatedPasswordUser'] = $post['new_password'];
                 
                 if(! $user_result){
-                    $result['errorFields'] = 'old password mismatch';
+                    $result['isSuccess'] = false;
                 }
                 
                 echo json_encode($result); die; //@TODO CREATE A HELPER CLASS TO OUTPUT JSON DATA

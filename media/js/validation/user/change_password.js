@@ -94,13 +94,15 @@ $('#change_password_form').formValidation({
 })
 .on('success.form.fv', function(e) {
 
+    e.preventDefault();
+
     var $form = $(e.target);    
     var $that = $(this);
 
     $.post($form.attr('action'), $form.serialize(), function(result) {
         if(result.isSuccess){
             console.log(result);
-            $that.formValidation('resetForm', false);
+            $that.formValidation('resetForm', true);
             $("#password_updated_status").show().delay(1000).fadeOut(2000);
         }
         else{
@@ -108,6 +110,9 @@ $('#change_password_form').formValidation({
                 $that.formValidation('updateStatus', fieldName, 'INVALID', 'notEmpty');
                 $('small[data-fv-for=' + fieldName + ']').text(fieldMessage).addClass('removableFromAjax');
             });
+
+            $that.formValidation('resetForm', true);
+            $("#password_not_updated_status").show().delay(1000).fadeOut(2000);
         }
         
     }, 'json');

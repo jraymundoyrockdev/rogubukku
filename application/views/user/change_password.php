@@ -13,6 +13,10 @@
                     <i class="fa fa-user"></i> Password Updated!<a class="anchorjs-link" href="#oh-snap!-you-got-an-error!"><span class="anchorjs-icon"></span></a>
                 </div>
 
+                <div id="password_not_updated_status" class="alert alert-danger alert-dismissible fade in" role="alert" style="display:none;">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    <i class="fa fa-exclamation-triangle"></i> Old password mismatch.
+                </div>
                 <?=Form::open('user/change_password/save', array('class'=>'search_form','id'=>'change_password_form'));?>
 
                     <div class="form-group">
