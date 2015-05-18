@@ -179,13 +179,15 @@ Route::set('user/profile','user/profile((/<action>(/<id>)))',array('action'=>'in
         'action'     => 'index',
     ));
 
-Route::set('user/change_password','user/change_password((/<action>(/<id>)))',array('action'=>'index'))
+//CHANGE PASSWORD
+Route::set('user/change_password/<id>','user/change_password((/<action>(/<id>)))',array('action'=>'index|save'))
     ->defaults(array(
         'directory' => 'user',
         'controller' => 'changepassword',
         'action'     => 'index',
     ));
 
+//MINISTRY
 Route::set('admin/ministry','admin/ministry((/<action>(/<id>)))',array('action'=>'index|save'))
     ->defaults(array(
         'directory' => 'admin',

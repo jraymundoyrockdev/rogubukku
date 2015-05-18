@@ -71,5 +71,20 @@ class Model_Users extends Model_User {
         }
     }
 
+    public function save_password($user_id,$fields=array())
+    {
+        $user = ORM::factory('Users', $user_id);
+
+        if ($user->loaded())
+        {
+            if($user->password == $fields['old_password'])
+            {
+                $user->password = $fields['new_password'];
+                return $user->save();
+            }
+
+            return false;
+        }
+    }
 
 } // End User Model
