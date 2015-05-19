@@ -94,7 +94,7 @@ class Model_Users extends Model_User {
 
     public function save_dp($user_id,$file_name)
     {
-
+        $user = ORM::factory('Users', $user_id);
         $user->profile_pic = $file_name;
         return $user->save();
     }
