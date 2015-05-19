@@ -8,7 +8,7 @@
 			'connection' => array(
 				'dsn'        => 'mysql:host=localhost;dbname=rogubukku',
 				'username'   => 'root',
-				'password'   => 'default',
+				'password'   => '',
 				'persistent' => FALSE,
 			),
 			'table_prefix' => '',
