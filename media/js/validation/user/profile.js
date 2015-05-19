@@ -49,3 +49,36 @@ $('#user_profile_form').formValidation({
             
         }, 'json');
     });
+
+  //Change Profile Picure
+jQuery(document).off('click', '#click_dp');
+jQuery(document).on('click', '#click_dp', function(e){
+    
+    $('#change_dp').click();
+
+});
+
+$("#change_dp").change(function(){
+    bootbox.confirm(
+        'Change Your Profile Picture?'
+        , function(confirm_result) 
+            {
+                if(confirm_result === true)
+                {
+                    $("#form-change-dp").ajaxSubmit({
+                        dataType:  'json',
+                        success: function(result){
+                                if(result.isSuccess)
+                                {
+                                    console.log('success');
+                                }
+                                else
+                                {
+                                    console.log('sorry hindi success');
+                                }
+                        }
+                    });
+                }
+            }
+    );
+});
