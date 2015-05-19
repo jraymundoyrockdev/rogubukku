@@ -30,6 +30,7 @@
         <ul class="dropdown-menu">
             <li><a href="<?=URL::site('admin/ministry');?>"><i class="fa fa-user"></i> Ministries</a></li>
             <li><a href="<?=URL::site('admin/userroles');?>"><i class="fa fa-gear"></i> User Roles</a></li>
+            <li><a href="<?=URL::site('admin/users');?>"><i class="fa fa-gear"></i> User Management</a></li>
         </ul>
     </li>
     <?php //endif;?>
@@ -38,7 +39,7 @@
         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?=Auth::instance()->get_user()->full_name?> <b class="caret"></b></a>
         <ul class="dropdown-menu">
             <li><a href="<?=URL::site('user/profile');?>"><i class="fa fa-user"></i> Profile</a></li>
-            <li><a href="<?=URL::site('user/change_password');?>"><i class="fa fa-user"></i> Change Password</a></li>
+            <li><a href="<?=URL::site('user/change_password');?>"><i class="fa fa-cog"></i> Change Password</a></li>
             <li><a href="<?=URL::site('login/logout');?>"><i class="fa fa-power-off"></i> Log Out</a></li>
         </ul>
     </li>

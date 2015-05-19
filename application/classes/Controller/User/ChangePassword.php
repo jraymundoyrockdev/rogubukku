@@ -8,11 +8,56 @@ class Controller_User_ChangePassword extends Controller_Base {
         
         parent::before();
 
+        $this->template->loc_scripts = ['/media/js/validation/user/change_password.js'];
     }
     
     public function action_index()
     {
-        $this->template->body = View::factory('user/change_password');
+    	$user = ORM::factory('Users', Auth::instance()->get_user()->id);
+        
+        $this->template->body = View::factory('user/change_password')
+        									->bind('user', $user);
+    }
+
+    public function action_save(){
+    	
+    	$auth = Auth::instance();
+    	if (HTTP_Request::POST == $this->request->method()) 
+        {   
+            $user_id = $auth->get_user()->id;
+
+            $post = $this->request->post();
+            $result = ['isSuccess'=>false, 'updatedPasswordUser'=>'','errorFields'=>[]];
+            $post['old_password'] = $auth->hash($post['old_password']);
+
+            try
+            {
+    			$user_model = new Model_Users;
+        		$user_result = $user_model->save_password($user_id, $post);          	
+
+                $result['isSuccess'] = true;
+                $result['updatedPasswordUser'] = $post['new_password'];
+                
+                if(! $user_result){
+                    $result['isSuccess'] = false;
+                }
+                
+                echo json_encode($result); die; //@TODO CREATE A HELPER CLASS TO OUTPUT JSON DATA
+            }
+            
+            catch (ORM_Validation_Exception $e) 
+            { 
+                $result['errorFields'] = $e->errors('models');
+                echo json_encode($result); die; //@TODO CREATE A HELPER CLASS TO OUTPUT JSON DATA
+            }
+            catch (Exception $error)
+            {
+                $result['errorFields'] = $error->getMessage();
+                echo json_encode($result); die; //@TODO CREATE A HELPER CLASS TO OUTPUT JSON DATA
+            }
+
+            
+        }
     }
         
 } // End of class
