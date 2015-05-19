@@ -26,7 +26,6 @@ class Controller_Admin_Ministry extends Controller_Base {
            try
             {       
                 $ministry = new Model_Ministry;     
-                $ministry->create_ministry($this->request->post('ministry'));
                 $ministry_result = $ministry->create_ministry($post['ministry']);
                 $result['isSuccess'] = true;
                 $result['updatedMinistry'] = $post['ministry'];
