@@ -74,17 +74,14 @@ class Model_Users extends Model_User {
         }
     }
 
-<<<<<<< HEAD
+
     public function save_password($user_id,$fields=array())
-=======
-    public function save_dp($user_id,$file_name)
->>>>>>> ticket_27
     {
         $user = ORM::factory('Users', $user_id);
 
         if ($user->loaded())
         {
-<<<<<<< HEAD
+
             if($user->password == $fields['old_password'])
             {
                 $user->password = $fields['new_password'];
@@ -94,12 +91,12 @@ class Model_Users extends Model_User {
             return false;
         }
     }
-=======
-            $user->profile_pic = $file_name;
-            return $user->save();
-        }
-    }
 
->>>>>>> ticket_27
+    public function save_dp($user_id,$file_name)
+    {
+
+        $user->profile_pic = $file_name;
+        return $user->save();
+    }
 
 } // End User Model
