@@ -15,6 +15,7 @@ class Model_Users extends Model_User {
         'password' => NULL,
         'logins' => NULL,
         'last_login' => NULL,
+        'profile_pic' => NULL
     );
 
 
@@ -67,6 +68,17 @@ class Model_Users extends Model_User {
         {
             $user->full_name = $fields['full_name'];
             $user->ministry_id = $fields['ministry'];
+            return $user->save();
+        }
+    }
+
+    public function save_dp($user_id,$file_name)
+    {
+        $user = ORM::factory('Users', $user_id);
+
+        if ($user->loaded())
+        {
+            $user->profile_pic = $file_name;
             return $user->save();
         }
     }

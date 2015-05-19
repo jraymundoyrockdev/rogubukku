@@ -8,7 +8,10 @@ class Controller_User_Profile extends Controller_Base {
         
         parent::before();
 
-        $this->template->loc_scripts = ['/media/js/validation/user/profile.js'];
+        $this->template->loc_scripts = ['/media/js/validation/user/profile.js',
+                                        '/media/js/bootbox/bootbox.min.js',
+                                        '/media/js/jquery/jquery.form.js'
+                                        ];
 
     }
     
@@ -29,7 +32,8 @@ class Controller_User_Profile extends Controller_Base {
 
         $this->template->body = View::factory('user/profile')
         									->bind('user', $user)
-        									->bind('ministries', $ministries);
+        									->bind('ministries', $ministries)
+                                            ->bind('uploads_directory', $this->_uploads_directory);
     }
 
     public function action_save()
@@ -64,12 +68,13 @@ class Controller_User_Profile extends Controller_Base {
         }
     }
 
-    public function action_dp()
+    public function action_avatar()
     {
         $user_id = Auth::instance()->get_user()->id;
 
         $post = $this->request->post();
-        print_r($_POST);
+
+        $result = ['isSuccess'=>false, 'updatedUser'=>'','errorFields'=>[]];
 
         $filename = NULL;
 
@@ -77,13 +82,12 @@ class Controller_User_Profile extends Controller_Base {
         {
             if ($this->request->method() == Request::POST)
             {
-                echo 'post mo to';
                 if (isset($_FILES['avatar']))
                 {
-                    echo 'avatar';
                     $filename = $this->_save_image($_FILES['avatar']);
                     $result['isSuccess'] = true;
                     $result['filename'] = $filename;
+                    $result['src'] = $this->_uploads_directory['avatar']['relative'].$user_id.'/'.$filename;
                     echo json_encode($result); die;
                 }
             }
@@ -93,7 +97,6 @@ class Controller_User_Profile extends Controller_Base {
                 throw new Exception('There was a problem while uploading the image.
                     Make sure it is uploaded and must be JPG/PNG/GIF file.');
             }
-
 
         }
         catch(ORM_Validation_Exception $e)
@@ -117,12 +120,15 @@ class Controller_User_Profile extends Controller_Base {
             ! Upload::not_empty($image) OR
             ! Upload::type($image, array('jpg', 'jpeg', 'png', 'gif')))
         {
-            return FALSE;
+            throw new Exception('Error. Unknown Format');
         }
-        $directory = DOCROOT.'uploads/'.$user_id;
+        //$this->_uploads_directory = Kohana::$config->load('uploads_directory')->get('root');
+        $directory = $this->_uploads_directory['avatar']['absolute'] . 'avatar/' . $user_id . '/';
+
+        //$directory = DOCROOT.'uploads/avatar/'.$user_id.'/';
         if(!is_dir($directory))
         {
-            mkdir($directory,0755,TRUE);
+            mkdir($directory,0777,TRUE);
         }
 
         if ($file = Upload::save($image, NULL, $directory))
@@ -132,14 +138,27 @@ class Controller_User_Profile extends Controller_Base {
             $img = Image::factory($file);
             
             // Crop the image square half the height and crop from center
+            $height = (int) $img->height;
+            $width = (int) $img->width;
+
+            if($height > $width)
+                $size = $width;
+            elseif($height < $width)
+                $size = $height;
+            elseif($height = $width)
+                $size = $width;
+
             $new_height = (int) $img->height / 2;
+            $plus_height = (int) $new_height/2;
+            $new_height = (int) $new_height + $plus_height;
             
-            $img->crop($new_height, $new_height)
+            $img->crop($size, $size)
                 ->save($directory.$filename);
                 
             // Delete the temporary file
             unlink($file);
 
+            $user = new Model_Users;
             $user_result = $user->save_dp($user_id, $filename);
             
             return $filename;

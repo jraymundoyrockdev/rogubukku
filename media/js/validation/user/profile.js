@@ -53,12 +53,11 @@ $('#user_profile_form').formValidation({
   //Change Profile Picure
 jQuery(document).off('click', '#click_dp');
 jQuery(document).on('click', '#click_dp', function(e){
-    
-    $('#change_dp').click();
+    $('#avatar').click();
 
 });
 
-$("#change_dp").change(function(){
+$("#avatar").change(function(){
     bootbox.confirm(
         'Change Your Profile Picture?'
         , function(confirm_result) 
@@ -67,13 +66,16 @@ $("#change_dp").change(function(){
                 {
                     $("#form-change-dp").ajaxSubmit({
                         dataType:  'json',
+                        type: 'post',
                         success: function(result){
                                 if(result.isSuccess)
                                 {
+                                    $("#img_avatar").attr('src', result.src);
                                     console.log('success');
                                 }
                                 else
                                 {
+                                    alert(result.errorFields);
                                     console.log('sorry hindi success');
                                 }
                         }
