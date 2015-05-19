@@ -29,13 +29,13 @@ Class Controller_Base extends Controller_Template{
         $this->template->glob_scripts = ['/media/js/jquery/jquery-1.10.2.min.js',
                                         '/media/js/bootstrap/bootstrap.js',
                                         '/media/js/bootstrap_validator/dist/formValidation.js',
-                                        '/media/js/bootstrap_validator/dist/bootstrap.js',
-                                        '/media/js/bootbox/bootbox.min.js',
-                                        '/media/js/jquery/ajaxsubmit.js'];
+                                        '/media/js/bootstrap_validator/dist/bootstrap.js'];
 
         $this->template->loc_styles = [];
 
         $this->template->loc_scripts = [];
+
+        $this->_uploads_directory = Kohana::$config->load('uploads_directory')->get('root');
     }
 
     protected function _is_logged_in()

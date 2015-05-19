@@ -9,12 +9,13 @@
             </div>
             <div class="panel-body">
 
-            <?=Form::open('user/profile/dp', array('action'=> 'post','enctype'=>'multipart/form-data','class'=>'form-change-dp','id'=>'form-change-dp'));?>
-            
-                <a href="#" id="click_dp" class="thumbnail">
-                    <img src="http://dismagazine.com/uploads/2011/08/notw_silhouette-1.jpg" alt="125x125">
-                </a>
-                <?=Form::input('avatar', '', ['id'=>'change_dp', 'type'=>'file', 'class' => 'form-control', 'style'=>'display:none']);?>
+            <?=Form::open('user/profile/avatar', array('method'=> 'post','enctype'=>'multipart/form-data','class'=>'form-change-dp','id'=>'form-change-dp'));?>
+                <div class="change_avatar">
+                    <a href="#" id="click_dp" class="thumbnail">
+                        <img id="img_avatar" src="<?php ECHO EMPTY($user->profile_pic) ? URL::base() . 'media/images/default.gif' : $uploads_directory['avatar']['relative'] . Auth::instance()->get_user()->id . '/' . $user->profile_pic; ?>" alt="125x125">
+                    </a>
+                </div>
+                <?=Form::input('avatar', '', ['id'=>'avatar', 'type'=>'file', 'class' => 'form-control', 'style'=>'display:none']);?>
                 <!-- <input name="avatar" id="change_dp" type="file" style="display:none;"> -->
             <?=Form::close();?>
 

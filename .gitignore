@@ -4,3 +4,4 @@ LICENSE.m
 .htaccess
 application/logs/*
 application/config/database.php
+uploads/avatar/*
