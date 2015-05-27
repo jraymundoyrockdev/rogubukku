@@ -3,40 +3,24 @@
 Class Controller_Base extends Controller_Template
 {
 
+    // Define the template to use
     public $template = 'templates/main';
 
     public function before()
     {
+
         parent::before();
 
-        if ($this->request->is_ajax()) {
-            $this->auto_render = false;
-        }
+        $this->isRequestAjax();
 
+        //TEMPLATE CONTENTS
         $this->template->title = 'DEV-practice';
         $this->template->nav = View::factory('templates/nav');
-        $this->template->footer = View::factory('templates/footer')->set('message','');
-
-        //SCRIPTS AND STYLES
-        $this->template->glob_styles = [
-            '/media/css/bootstrap/bootstrap.css' => 'screen',
-            '/media/css/fonts/css/font-awesome.min.css' => 'screen',
-            '/media/css/main/main_style.css' => 'screen',
-            '/media/css/shieldui/shieldui-all.min.css' => 'screen',
-            '/media/css/shieldui/all.min.css' => 'screen',
-            '/media/css/hackmain.css' => 'screen'
-        ];
-
-        $this->template->glob_scripts = [
-            '/media/js/jquery/jquery-1.10.2.min.js',
-            '/media/js/bootstrap/bootstrap.js',
-            '/media/js/bootstrap_validator/dist/formValidation.js',
-            '/media/js/bootstrap_validator/dist/bootstrap.js'
-        ];
+        $this->template->footer = View::factory('templates/footer')->set('message','sampler');
 
         $this->template->loc_styles = [];
         $this->template->loc_scripts = [];
-        $this->uploadsDirectory = Kohana::$config->load('uploads_directory')->get('root');
+        $this->_uploads_directory = Kohana::$config->load('resource_dir')->get('avatar');
     }
 
     protected function _is_logged_in()
@@ -48,7 +32,14 @@ Class Controller_Base extends Controller_Template
         return true;
     }
 
-    protected function responseAjaxResult($message = [])
+    protected function isRequestAjax()
+    {
+        if ($this->request->is_ajax()) {
+            $this->auto_render = false;
+        }
+    }
+
+    protected function responseAjaxResult(Array $message)
     {
         $this->response->headers('Content-type', 'application/json; charset=' . Kohana::$charset);
         $this->response->body(json_encode($message));

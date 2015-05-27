@@ -1,35 +1,34 @@
 <!DOCTYPE html>
 <html lang="en-US">
 
-    <head>
-        <meta charset="utf-8">
-        <title><?php echo $title;?></title>
-        <!--Global Styles -->
-        <?php foreach ($glob_styles as $href=>$media): echo HTML::style($href, array('media' => $media), 'RMV/')."\n"; endforeach; ?>
+<head>
+    <meta charset="utf-8">
+    <title><?php echo $title; ?></title>
+    <!--Global Styles -->
+    <?php echo html::style('min?g=globalStyles', ['media' => 'screen']); ?>
+    <!--Local Styles-->
+    <?php foreach ($loc_styles as $href => $media): echo HTML::style($href, array('media' => $media),
+            'RMV/') . "\n"; endforeach; ?>
+</head>
 
-        <!--Local Styles-->
-        <?php foreach ($loc_styles as $href=>$media): echo HTML::style($href, array('media' => $media), 'RMV/')."\n"; endforeach; ?>
+<body>
 
-    </head>
+<div id="wrapper">
 
-    <body>
+    <?php echo $nav; ?>
 
-        <div id="wrapper">
+    <div id="page-wrapper">
+        <?php echo $body; ?>
+    </div>
 
-            <?php echo $nav; ?>
+</div>
 
-            <div id="page-wrapper">
-                <?php echo $body; ?>
-            </div>
-            
-        </div>
+<!--Global Scripts-->
+<?php echo HTML::script('min?g=globalScripts');?>
 
-        <!--Global Scripts-->
-        <?php foreach ($glob_scripts as $globjs): echo HTML::script($globjs, NULL, 'RMV/')."\n"; endforeach; ?>
+<!--Local Scripts-->
+<?php foreach ($loc_scripts as $locjs): echo HTML::script($locjs, null, 'RMV/') . "\n"; endforeach; ?>
 
-        <!--Local Scripts-->
-        <?php foreach ($loc_scripts as $locjs): echo HTML::script($locjs, NULL, 'RMV/')."\n"; endforeach; ?>
+</body>
 
-    </body>    
-    
 </html>

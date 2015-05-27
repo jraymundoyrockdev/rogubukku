@@ -91,6 +91,7 @@ if (isset($_SERVER['KOHANA_ENV']))
 Kohana::init(array(
     'base_url'   => '/',
     'index_file' => FALSE,
+    'caching'=> true
 ));
 /**
  * Attach the file write to logging. Multiple writers are supported.
@@ -105,7 +106,7 @@ Kohana::$config->attach(new Config_File);
  */
 Kohana::modules(array(
      'auth'       => MODPATH.'auth',       // Basic authentication
-    // 'cache'      => MODPATH.'cache',      // Caching with multiple backends
+     'cache'      => MODPATH.'cache',      // Caching with multiple backends
     // 'codebench'  => MODPATH.'codebench',  // Benchmarking tool
      'database'   => MODPATH.'database',   // Database access
      'image'      => MODPATH.'image',      // Image manipulation
@@ -113,6 +114,7 @@ Kohana::modules(array(
      'orm'        => MODPATH.'orm',        // Object Relationship Mapping
     // 'unittest'   => MODPATH.'unittest',   // Unit testing
     // 'userguide'  => MODPATH.'userguide',  // User guide and API documentation
+    'minify' => MODPATH.'minify', // Minify
     ));
 /**
  * Cookie Salt
@@ -207,3 +209,18 @@ Route::set('admin/users','admin/users((/<action>(/<id>)))',array('action'=>'inde
         'controller' => 'users',
         'action'     => 'index',
     ));
+
+
+if ( ! Route::cache())
+{
+    Route::set('minify', 'min(/<group>)', array(
+        'group' => '[^/.,;?\n]++'
+    ))
+        ->defaults(array(
+            'directory'  => '',
+            'controller' => 'Minify',
+            'action'     => 'index',
+            'group'      => '',
+        ));
+}
+
