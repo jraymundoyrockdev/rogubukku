@@ -9,17 +9,7 @@ class Controller_Login_Login extends Controller_Base
 
         parent::before();
 
-        $this->template->loc_styles = [
-            '/media/css/login/login.css' => 'screen',
-            '/media/css/bootstrap_validator/formValidation.css' => 'screen'
-        ];
-
-        $this->template->loc_scripts = [
-            '/media/js/bootstrap_validator/dist/formValidation.js',
-            '/media/js/bootstrap_validator/dist/bootstrap.js',
-            '/media/js/login/login.js',
-            '/media/js/validation/login/login.js'
-        ];
+        $this->template->resourceModule = 'login';
 
         $this->template->body = View::factory('login/login');
     }

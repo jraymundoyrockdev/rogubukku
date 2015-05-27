@@ -8,7 +8,7 @@ class Controller_Admin_Users extends Controller_Base
         parent::before();
 
         $this->template->loc_styles = ['/media/css/bootstrap/bootstrap-switch.css' => 'screen'];
-        $this->template->loc_scripts = ['/media/js/bootstrap/bootstrap-switch.js', '/media/js/admin/users.js'];
+        $this->template->resourceModule = 'admin-users-management';
     }
 
     public function action_index()

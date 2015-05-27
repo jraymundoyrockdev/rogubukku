@@ -6,7 +6,7 @@ class Controller_Admin_Ministry extends Controller_Base
     {
         parent::before();
 
-        $this->template->loc_scripts = ['/media/js/validation/admin/ministry.js'];
+        $this->template->resourceModule = 'admin-ministry';
     }
 
     public function action_index()

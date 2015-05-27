@@ -9,7 +9,7 @@ class Controller_User_ChangePassword extends Controller_Base
 
         parent::before();
 
-        $this->template->loc_scripts = ['/media/js/validation/user/change_password.js'];
+        $this->template->resourceModule = 'change-password';
     }
 
     public function action_index()

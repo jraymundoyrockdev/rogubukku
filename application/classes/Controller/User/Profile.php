@@ -9,12 +9,7 @@ class Controller_User_Profile extends Controller_Base
 
         parent::before();
 
-        $this->template->loc_scripts = [
-            '/media/js/validation/user/profile.js',
-            '/media/js/bootbox/bootbox.min.js',
-            '/media/js/jquery/jquery.form.js'
-        ];
-
+        $this->template->resourceModule = 'profile';
     }
 
     public function action_index()

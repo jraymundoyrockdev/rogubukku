@@ -91,7 +91,6 @@ if (isset($_SERVER['KOHANA_ENV']))
 Kohana::init(array(
     'base_url'   => '/',
     'index_file' => FALSE,
-    'caching'=> true
 ));
 /**
  * Attach the file write to logging. Multiple writers are supported.
@@ -129,27 +128,6 @@ Cookie::$salt = 'jempogi123';
  * Set the routes. Each route must have a minimum of a name, a URI and a set of
  * defaults for the URI.
  */
-/*Route::set('login', 'login(/<controller>(/<action>(/<id>)))')
-    ->defaults(array(
-        'directory' => 'login',
-        'controller' => 'login',
-        'action'     => 'index',
-    ));*/
-
-/*
-Route::set('login','login((/<action>(/<id>)))',array('action'=>'index|create|login'))
-    ->defaults(array(
-        'directory' => 'login',
-        'controller' => 'login',
-        'action'     => 'index',
-    ));
-Route::set('defaults', '(<controller>(/<action>(/<id>)))')
-    ->defaults(array(
-        'controller' => 'welcome',
-        'action'     => 'index',
-    ));
-*/
-
 Route::set('defaults','((/<action>(/<id>)))',array('action'=>'index|create|login|signin'))
     ->defaults(array(
         'directory' => 'login',
@@ -174,7 +152,7 @@ Route::set('dashboard','dashboard((/<action>(/<id>)))',array('action'=>'index'))
     ));
 
 //USER PROFILES
-Route::set('user/profile','user/profile((/<action>(/<id>)))',array('action'=>'index|save|avatar'))
+Route::set('profile','user/profile((/<action>(/<id>)))',array('action'=>'index|save|avatar'))
     ->defaults(array(
         'directory' => 'user',
         'controller' => 'profile',
@@ -218,9 +196,8 @@ if ( ! Route::cache())
     ))
         ->defaults(array(
             'directory'  => '',
-            'controller' => 'Minify',
+            'controller' => 'minify',
             'action'     => 'index',
             'group'      => '',
         ));
 }
-

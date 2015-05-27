@@ -5,10 +5,12 @@
         <meta charset="utf-8">
         <title><?php echo $title;?></title>
         <!--Global Styles -->
-        <?php foreach ($glob_styles as $href=>$media): echo HTML::style($href, array('media' => $media), 'RMV/')."\n"; endforeach; ?>
-
-        <!--Local Styles-->
-        <?php foreach ($loc_styles as $href=>$media): echo HTML::style($href, array('media' => $media), 'RMV/')."\n"; endforeach; ?>
+        <?php echo html::style('min?g=global-styles', ['media' => 'screen']); ?>
+        <!--Module Styles-->
+        <?php
+        if (!empty($resourceSource[$resourceModule . '-styles'])) {
+            echo HTML::style('min?g=' . $resourceModule . '-styles', ['media' => 'screen']);
+        }; ?>
 
     </head>
 
@@ -19,9 +21,11 @@
         <?php //echo $footer; ?>
 
         <!--Global Scripts-->
-        <?php foreach ($glob_scripts as $globjs): echo HTML::script($globjs, NULL, 'RMV/')."\n"; endforeach; ?>
+        <?php echo HTML::script('min?g=global-scripts');?>
 
-        <!--Local Scripts-->
-        <?php foreach ($loc_scripts as $locjs): echo HTML::script($locjs, NULL, 'RMV/')."\n"; endforeach; ?>
-    </body>    
+        <!--Module Scripts-->
+        <?php if (!empty($resourceSource[$resourceModule . '-scripts'])) {
+            echo HTML::script('min?g=' . $resourceModule . '-scripts');
+        } ?>
+    </body>
 </html>

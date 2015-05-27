@@ -8,19 +8,19 @@ Class Controller_Base extends Controller_Template
 
     public function before()
     {
-
         parent::before();
 
         $this->isRequestAjax();
 
-        //TEMPLATE CONTENTS
         $this->template->title = 'DEV-practice';
         $this->template->nav = View::factory('templates/nav');
-        $this->template->footer = View::factory('templates/footer')->set('message','sampler');
+        $this->template->footer = View::factory('templates/footer')->set('message', 'sampler');
 
-        $this->template->loc_styles = [];
-        $this->template->loc_scripts = [];
+        $this->template->resourceSource = Kohana::$config->load('styles-scripts-resource')->get('resource');
+        $this->template->resourceModule = '';
+
         $this->_uploads_directory = Kohana::$config->load('resource_dir')->get('avatar');
+
     }
 
     protected function _is_logged_in()
