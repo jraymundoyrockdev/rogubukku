@@ -10,12 +10,12 @@ return array
 
         //GLOBAL
         'global-styles' => [
-            '//media/css/bootstrap/bootstrap.css',
-            '//media/css/fonts/css/font-awesome.min.css',
+            '//media/css/lib/bootstrap/bootstrap.css',
+            '//media/css/lib/fonts/css/font-awesome.min.css',
             '//media/css/main/main_style.css',
-            '//media/css/shieldui/shieldui-all.min.css',
-            '//media/css/shieldui/all.min.css',
-            '//media/css/bootstrap_validator/formValidation.css',
+            '//media/css/lib/shieldui/shieldui-all.min.css',
+            '//media/css/lib/shieldui/all.min.css',
+            '//media/css/lib/bootstrap/bootstrap_validator/formValidation.css',
             '//media/css/hackmain.css'
         ],
         'global-scripts' => [
@@ -27,7 +27,7 @@ return array
 
         //MODULE-LOGIN
         'login-styles' => [
-            '//media/css/login/login.css',
+            '//media/css/modules/login/login.css',
         ],
         'login-scripts' => [
             '//media/js/modules/login/login.js',
@@ -49,7 +49,7 @@ return array
         ],
         //MODULE-USERS-MANAGEMENT
         'admin-users-management-styles' => [
-            '//media/css/bootstrap/bootstrap-switch.css',
+            '//media/css/lib/bootstrap/bootstrap-switch.css',
         ],
         'admin-users-management-scripts' => [
             '//media/js/lib/bootstrap/bootstrap-switch.js',
