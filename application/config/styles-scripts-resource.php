@@ -19,10 +19,10 @@ return array
             '//media/css/hackmain.css'
         ],
         'global-scripts' => [
-            '//media/js/jquery/jquery-1.10.2.min.js',
-            '//media/js/bootstrap/bootstrap.js',
-            '//media/js/bootstrap_validator/dist/formValidation.js',
-            '//media/js/bootstrap_validator/dist/bootstrap.js'
+            '//media/js/lib/jquery/jquery-1.10.2.min.js',
+            '//media/js/lib/bootstrap/bootstrap.js',
+            '//media/js/lib/bootstrap/bootstrap_validator/dist/formValidation.js',
+            '//media/js/lib/bootstrap/bootstrap_validator/dist/bootstrap.js'
         ],
 
         //MODULE-LOGIN
@@ -30,14 +30,14 @@ return array
             '//media/css/login/login.css',
         ],
         'login-scripts' => [
-            '//media/js/login/login.js',
+            '//media/js/modules/login/login.js',
             '//media/js/validation/login/login.js'
         ],
         //MODULE-PROFILE
         'profile-scripts' => [
             '//media/js/validation/user/profile.js',
-            '//media/js/bootbox/bootbox.min.js',
-            '//media/js/jquery/jquery.form.js'
+            '//media/js/lib/bootbox/bootbox.min.js',
+            '//media/js/lib/jquery/jquery.form.js'
         ],
         //MODULE-CHANGE-PASSWORD
         'change-password-scripts' => [
@@ -52,8 +52,8 @@ return array
             '//media/css/bootstrap/bootstrap-switch.css',
         ],
         'admin-users-management-scripts' => [
-            '//media/js/bootstrap/bootstrap-switch.js',
-            '//media/js/admin/users.js'
+            '//media/js/lib/bootstrap/bootstrap-switch.js',
+            '//media/js/modules/admin/users.js'
         ],
     ]
 );
