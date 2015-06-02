@@ -40,7 +40,7 @@
                     <tbody>
                         <?php $i=1; foreach ($userroles as $m):?>
                         <tr class="sui-<?=($i % 2 == 0) ? 'row' : 'alt-row';?>">
-                            <td class="sui-cell"><?=$i++?></th>
+                            <td class="sui-cell"><?=$i++?></td>
                             <td class="sui-cell"><?=$m->name?></td>
                             <td class="sui-cell"><?=$m->description?></td>
                         </tr>

@@ -44,7 +44,7 @@
                     <tbody>
                         <?php $i=1; foreach ($ministries as $m):?>
                         <tr class="sui-<?=($i % 2 == 0) ? 'row' : 'alt-row';?>">
-                            <td class="sui-cell"><?=$i++?></th>
+                            <td class="sui-cell"><?=$i++?></td>
                             <td class="sui-cell"><?=$m->ministry?></td>
                         </tr>
                         <?php endforeach;?>
