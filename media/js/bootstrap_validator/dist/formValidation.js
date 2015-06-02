@@ -1,18 +1,9 @@
-/*!
- * FormValidation (http://formvalidation.io)
- * The best jQuery plugin to validate form fields. Support Bootstrap, Foundation, Pure, SemanticUI, UIKit and custom frameworks
- *
- * @version     v0.6.2-dev, built on 2015-03-13 8:15:45 AM
- * @author      https://twitter.com/nghuuphuoc
- * @copyright   (c) 2013 - 2015 Nguyen Huu Phuoc
- * @license     http://formvalidation.io/license/
- */
-// Register the namespace
+
 window.FormValidation = {
-    AddOn:     {},  // Add-ons
-    Framework: {},  // Supported frameworks
-    I18n:      {},  // i18n
-    Validator: {}   // Available validators
+    AddOn:     {},
+    Framework: {},
+    I18n:      {},
+    Validator: {}
 };
 
 if (typeof jQuery === 'undefined') {
@@ -27,37 +18,21 @@ if (typeof jQuery === 'undefined') {
 }(jQuery));
 
 (function($) {
-    // TODO: Remove backward compatibility in v0.7.0
-    /**
-     * Constructor
-     *
-     * @param {jQuery|String} form The form element or selector
-     * @param {Object} options The options
-     * @param {String} [namespace] The optional namespace which is used for data-{namespace}-xxx attributes and internal data.
-     * Currently, it's used to support backward version
-     * @constructor
-     */
     FormValidation.Base = function(form, options, namespace) {
         this.$form      = $(form);
         this.options    = $.extend({}, $.fn.formValidation.DEFAULT_OPTIONS, options);
         this._namespace = namespace || 'fv';
 
-        this.$invalidFields = $([]);    // Array of invalid fields
-        this.$submitButton  = null;     // The submit button which is clicked to submit form
+        this.$invalidFields = $([]);
+        this.$submitButton  = null;
         this.$hiddenButton  = null;
 
-        // Validating status
         this.STATUS_NOT_VALIDATED = 'NOT_VALIDATED';
         this.STATUS_VALIDATING    = 'VALIDATING';
         this.STATUS_INVALID       = 'INVALID';
         this.STATUS_VALID         = 'VALID';
         this.STATUS_IGNORED       = 'IGNORED';
 
-        // Determine the event that is fired when user change the field value
-        // Most modern browsers supports input event except IE 7, 8.
-        // IE 9 supports input event but the event is still not fired if I press the backspace key.
-        // Get IE version
-        // https://gist.github.com/padolsey/527683/#comment-7595
         var ieVersion = (function() {
             var v = 3, div = document.createElement('div'), a = div.all || [];
             while (div.innerHTML = '<!--[if gt IE '+(++v)+']><br><![endif]-->', a[0]) {}
@@ -66,11 +41,7 @@ if (typeof jQuery === 'undefined') {
 
         var el = document.createElement('div');
         this._changeEvent = (ieVersion === 9 || !('oninput' in el)) ? 'keyup' : 'input';
-
-        // The flag to indicate that the form is ready to submit when a remote/callback validator returns
         this._submitIfValid = null;
-
-        // Field elements
         this._cacheFields = {};
 
         this._init();
@@ -78,13 +49,6 @@ if (typeof jQuery === 'undefined') {
 
     FormValidation.Base.prototype = {
         constructor: FormValidation.Base,
-
-        /**
-         * Check if the number of characters of field value exceed the threshold or not
-         *
-         * @param {jQuery} $field The field element
-         * @returns {Boolean}
-         */
         _exceedThreshold: function($field) {
             var ns        = this._namespace,
                 field     = $field.attr('data-' + ns + '-field'),
@@ -158,22 +122,18 @@ if (typeof jQuery === 'undefined') {
                 };
 
             this.$form
-                // Disable client side validation in HTML 5
                 .attr('novalidate', 'novalidate')
                 .addClass(this.options.elementClass)
-                // Disable the default submission first
                 .on('submit.' + ns, function(e) {
                     e.preventDefault();
                     that.validate();
                 })
                 .on('click.' + ns, this.options.button.selector, function() {
                     that.$submitButton  = $(this);
-                    // The user just click the submit button
                     that._submitIfValid = true;
                 });
 
             if (this.options.declarative === true || this.options.declarative === 'true') {
-                // Find all fields which have either "name" or "data-{namespace}-field" attribute
                 this.$form
                     .find('[name], [data-' + ns + '-field]')
                     .each(function () {
@@ -188,13 +148,10 @@ if (typeof jQuery === 'undefined') {
             }
 
             this.options = $.extend(true, this.options, options);
-
-            // Normalize the err.parent option
             if ('string' === typeof this.options.err.parent) {
                 this.options.err.parent = new RegExp(this.options.err.parent);
             }
 
-            // Support backward
             if (this.options.container) {
                 this.options.err.container = this.options.container;
                 delete this.options.container;
@@ -212,19 +169,13 @@ if (typeof jQuery === 'undefined') {
                 delete this.options.submitButtons;
             }
 
-            // If the locale is not found, reset it to default one
             if (!FormValidation.I18n[this.options.locale]) {
                 this.options.locale = $.fn.formValidation.DEFAULT_OPTIONS.locale;
             }
 
-            // Parse the add-on options from HTML attributes
             if (this.options.declarative === true || this.options.declarative === 'true') {
                 this.options = $.extend(true, this.options, { addOns: this._parseAddOnOptions() });
             }
-
-            // When pressing Enter on any field in the form, the first submit button will do its job.
-            // The form then will be submitted.
-            // I create a first hidden submit button
             this.$hiddenButton = $('<button/>')
                                     .attr('type', 'submit')
                                     .prependTo(this.$form)
@@ -233,14 +184,10 @@ if (typeof jQuery === 'undefined') {
 
             this.$form
                 .on('click.' +  this._namespace, '[type="submit"]', function(e) {
-                    // #746: Check if the button click handler returns false
                     if (!e.isDefaultPrevented()) {
                         var $target = $(e.target),
-                            // The button might contain HTML tag
                             $button = $target.is('[type="submit"]') ? $target.eq(0) : $target.parent('[type="submit"]').eq(0);
 
-                        // Don't perform validation when clicking on the submit button/input
-                        // which aren't defined by the 'button.selector' option
                         if (that.options.button.selector && !$button.is(that.options.button.selector) && !$button.is(that.$hiddenButton)) {
                             that.$form.off('submit.' + that._namespace).submit();
                         }
@@ -277,11 +224,6 @@ if (typeof jQuery === 'undefined') {
             }
         },
 
-        /**
-         * Init field
-         *
-         * @param {String|jQuery} field The field name or field element
-         */
         _initField: function(field) {
             var ns     = this._namespace,
                 fields = $([]);
@@ -298,7 +240,6 @@ if (typeof jQuery === 'undefined') {
                     break;
             }
 
-            // We don't need to validate non-existing fields
             if (fields.length === 0) {
                 return;
             }
@@ -330,8 +271,6 @@ if (typeof jQuery === 'undefined') {
                 var $field    = fields.eq(i),
                     row       = this.options.fields[field].row || this.options.row.selector,
                     $parent   = $field.closest(row),
-                    // Allow user to indicate where the error messages are shown
-                    // Support backward
                     container = ('function' === typeof (this.options.fields[field].container || this.options.fields[field].err || this.options.err.container))
                                 ? (this.options.fields[field].container || this.options.fields[field].err || this.options.err.container).call(this, $field, this)
                                 : (this.options.fields[field].container || this.options.fields[field].err || this.options.err.container),
@@ -341,16 +280,16 @@ if (typeof jQuery === 'undefined') {
                     $message.addClass(this.options.err.clazz);
                 }
 
-                // Remove all error messages and feedback icons
+
                 $message.find('.' + this.options.err.clazz.split(' ').join('.') + '[data-' + ns + '-validator][data-' + ns + '-for="' + field + '"]').remove();
                 $parent.find('i[data-' + ns + '-icon-for="' + field + '"]').remove();
 
-                // Whenever the user change the field value, mark it as not validated yet
+
                 $field.off(events).on(events, function() {
                     that.updateStatus($(this), that.STATUS_NOT_VALIDATED);
                 });
 
-                // Create help block elements for showing the error messages
+
                 $field.data(ns + '.messages', $message);
                 for (validatorName in this.options.fields[field].validators) {
                     $field.data(ns + '.result.' + validatorName, this.STATUS_NOT_VALIDATED);
@@ -366,20 +305,18 @@ if (typeof jQuery === 'undefined') {
                             .appendTo($message);
                     }
 
-                    // Init the validator
+
                     if ('function' === typeof FormValidation.Validator[validatorName].init) {
                         FormValidation.Validator[validatorName].init(this, $field, this.options.fields[field].validators[validatorName]);
                     }
                 }
 
-                // Prepare the feedback icons
+
                 if (this.options.fields[field].icon !== false && this.options.fields[field].icon !== 'false'
                     && this.options.icon
                     && this.options.icon.valid && this.options.icon.invalid && this.options.icon.validating
                     && (!updateAll || i === total - 1))
                 {
-                    // $parent.removeClass(this.options.row.valid).removeClass(this.options.row.invalid).addClass(this.options.row.feedback);
-                    // Keep error messages which are populated from back-end
                     $parent.addClass(this.options.row.feedback);
                     var $icon = $('<i/>')
                                     .css('display', 'none')
@@ -387,7 +324,6 @@ if (typeof jQuery === 'undefined') {
                                     .attr('data-' + ns + '-icon-for', field)
                                     .insertAfter($field);
 
-                    // Store the icon as a data of field element
                     (!updateAll ? $field : fields).data(ns + '.icon', $icon);
 
                     if ('tooltip' === container || 'popover' === container) {
@@ -400,12 +336,12 @@ if (typeof jQuery === 'undefined') {
                             });
 
                         $field
-                            // Show tooltip/popover message when field gets focus
+
                             .off('focus.container.' + ns)
                             .on('focus.container.' + ns, function() {
                                 that._showTooltip($field, container);
                             })
-                            // and hide them when losing focus
+
                             .off('blur.container.' + ns)
                             .on('blur.container.' + ns, function() {
                                 that._hideTooltip($field, container);
@@ -420,7 +356,7 @@ if (typeof jQuery === 'undefined') {
                 }
             }
 
-            // Prepare the events
+
             fields
                 .on(this.options.events.fieldSuccess, function(e, data) {
                     var onSuccess = that.getOptions(data.field, null, 'onSuccess');
@@ -453,7 +389,7 @@ if (typeof jQuery === 'undefined') {
                     }
                 });
 
-            // Set live mode
+
             this.onLiveChange(fields, 'live', function() {
                 if (that._exceedThreshold($(this))) {
                     that.validateField($(this));
@@ -461,24 +397,16 @@ if (typeof jQuery === 'undefined') {
             });
 
             fields.trigger($.Event(this.options.events.fieldInit), {
-                bv: this,   // Support backward
+                bv: this,
                 fv: this,
                 field: field,
                 element: fields
             });
         },
 
-        /**
-         * Check if the field is excluded.
-         * Returning true means that the field will not be validated
-         *
-         * @param {jQuery} $field The field element
-         * @returns {Boolean}
-         */
         _isExcluded: function($field) {
             var ns           = this._namespace,
                 excludedAttr = $field.attr('data-' + ns + '-excluded'),
-                // I still need to check the 'name' attribute while initializing the field
                 field        = $field.attr('data-' + ns + '-field') || $field.attr('name');
 
             switch (true) {
@@ -8622,15 +8550,6 @@ if (typeof jQuery === 'undefined') {
             return ((parseInt(value.substr(0, 6), 10) % 89) + '' === value.substr(6, 2));
         },
 
-        /**
-         * Validate Latvian VAT number
-         * Examples:
-         * - Valid: LV40003521600, LV16117519997
-         * - Invalid: LV40003521601, LV16137519997
-         *
-         * @param {String} value VAT number
-         * @returns {Boolean}
-         */
         _lv: function(value) {
             if (/^LV[0-9]{11}$/.test(value)) {
                 value = value.substr(2);
@@ -8645,7 +8564,6 @@ if (typeof jQuery === 'undefined') {
                 i,
                 length = value.length;
             if (first > 3) {
-                // Legal entity
                 sum    = 0;
                 weight = [9, 1, 4, 8, 3, 10, 2, 5, 7, 6, 1];
                 for (i = 0; i < length; i++) {
@@ -8654,7 +8572,6 @@ if (typeof jQuery === 'undefined') {
                 sum = sum % 11;
                 return (sum === 3);
             } else {
-                // Check birth date
                 var day   = parseInt(value.substr(0, 2), 10),
                     month = parseInt(value.substr(2, 2), 10),
                     year  = parseInt(value.substr(4, 2), 10);
@@ -8664,7 +8581,6 @@ if (typeof jQuery === 'undefined') {
                     return false;
                 }
 
-                // Check personal code
                 sum    = 0;
                 weight = [10, 5, 8, 4, 2, 1, 6, 3, 7, 9];
                 for (i = 0; i < length - 1; i++) {
@@ -8675,15 +8591,6 @@ if (typeof jQuery === 'undefined') {
             }
         },
 
-        /**
-         * Validate Maltese VAT number
-         * Examples:
-         * - Valid: MT11679112
-         * - Invalid: MT11679113
-         *
-         * @param {String} value VAT number
-         * @returns {Boolean}
-         */
         _mt: function(value) {
             if (/^MT[0-9]{8}$/.test(value)) {
                 value = value.substr(2);
@@ -8702,15 +8609,6 @@ if (typeof jQuery === 'undefined') {
             return (sum % 37 === 0);
         },
 
-        /**
-         * Validate Dutch VAT number
-         * Examples:
-         * - Valid: NL004495445B01
-         * - Invalid: NL123456789B90
-         *
-         * @param {String} value VAT number
-         * @returns {Boolean}
-         */
         _nl: function(value) {
             if (/^NL[0-9]{9}B[0-9]{2}$/.test(value)) {
                value = value.substr(2);
@@ -8732,13 +8630,6 @@ if (typeof jQuery === 'undefined') {
             return (sum + '' === value.substr(8, 1));
         },
 
-        /**
-         * Validate Norwegian VAT number
-         *
-         * @see http://www.brreg.no/english/coordination/number.html
-         * @param {String} value VAT number
-         * @returns {Boolean}
-         */
         _no: function(value) {
             if (/^NO[0-9]{9}$/.test(value)) {
                value = value.substr(2);
@@ -8760,15 +8651,6 @@ if (typeof jQuery === 'undefined') {
             return (sum + '' === value.substr(8, 1));
         },
 
-        /**
-         * Validate Polish VAT number
-         * Examples:
-         * - Valid: PL8567346215
-         * - Invalid: PL8567346216
-         *
-         * @param {String} value VAT number
-         * @returns {Boolean}
-         */
         _pl: function(value) {
             if (/^PL[0-9]{10}$/.test(value)) {
                 value = value.substr(2);
@@ -8787,15 +8669,6 @@ if (typeof jQuery === 'undefined') {
             return (sum % 11 === 0);
         },
 
-        /**
-         * Validate Portuguese VAT number
-         * Examples:
-         * - Valid: PT501964843
-         * - Invalid: PT501964842
-         *
-         * @param {String} value VAT number
-         * @returns {Boolean}
-         */
         _pt: function(value) {
             if (/^PT[0-9]{9}$/.test(value)) {
                 value = value.substr(2);
@@ -8817,15 +8690,6 @@ if (typeof jQuery === 'undefined') {
             return (sum + '' === value.substr(8, 1));
         },
 
-        /**
-         * Validate Romanian VAT number
-         * Examples:
-         * - Valid: RO18547290
-         * - Invalid: RO18547291
-         *
-         * @param {String} value VAT number
-         * @returns {Boolean}
-         */
         _ro: function(value) {
             if (/^RO[1-9][0-9]{1,9}$/.test(value)) {
                 value = value.substr(2);
@@ -8845,12 +8709,6 @@ if (typeof jQuery === 'undefined') {
             return (sum + '' === value.substr(length - 1, 1));
         },
 
-        /**
-         * Validate Russian VAT number (Taxpayer Identification Number - INN)
-         *
-         * @param {String} value VAT number
-         * @returns {Boolean}
-         */
         _ru: function(value) {
             if (/^RU([0-9]{10}|[0-9]{12})$/.test(value)) {
                 value = value.substr(2);
@@ -8897,12 +8755,6 @@ if (typeof jQuery === 'undefined') {
             return false;
         },
 
-        /**
-         * Validate Serbian VAT number
-         *
-         * @param {String} value VAT number
-         * @returns {Boolean}
-         */
         _rs: function(value) {
             if (/^RS[0-9]{9}$/.test(value)) {
                 value = value.substr(2);
@@ -8924,15 +8776,6 @@ if (typeof jQuery === 'undefined') {
             return ((sum + parseInt(value.substr(8, 1), 10)) % 10 === 1);
         },
 
-        /**
-         * Validate Swedish VAT number
-         * Examples:
-         * - Valid: SE123456789701
-         * - Invalid: SE123456789101
-         *
-         * @param {String} value VAT number
-         * @returns {Boolean}
-         */
         _se: function(value) {
             if (/^SE[0-9]{10}01$/.test(value)) {
                 value = value.substr(2);
@@ -8945,18 +8788,7 @@ if (typeof jQuery === 'undefined') {
             return FormValidation.Helper.luhn(value);
         },
 
-        /**
-         * Validate Slovenian VAT number
-         * Examples:
-         * - Valid: SI50223054
-         * - Invalid: SI50223055
-         * - Invalid: SI09999990
-         *
-         * @param {String} value VAT number
-         * @returns {Boolean}
-         */
         _si: function(value) {
-            // The Slovenian VAT numbers don't start with zero
             var res = value.match(/^(SI)?([1-9][0-9]{7})$/);
             if (!res) {
                 return false;
@@ -8978,15 +8810,6 @@ if (typeof jQuery === 'undefined') {
             return (sum + '' === value.substr(7, 1));
         },
 
-        /**
-         * Validate Slovak VAT number
-         * Examples:
-         * - Valid: SK2022749619
-         * - Invalid: SK2022749618
-         *
-         * @param {String} value VAT number
-         * @returns {Boolean}
-         */
         _sk: function(value) {
             if (/^SK[1-9][0-9][(2-4)|(6-9)][0-9]{7}$/.test(value)) {
                 value = value.substr(2);
@@ -8998,15 +8821,6 @@ if (typeof jQuery === 'undefined') {
             return (parseInt(value, 10) % 11 === 0);
         },
 
-        /**
-         * Validate Venezuelan VAT number (RIF)
-         * Examples:
-         * - Valid: VEJ309272292, VEV242818101, VEJ000126518, VEJ000458324, J309272292, V242818101, J000126518, J000458324
-         * - Invalid: VEJ309272293, VEV242818100, J000126519, J000458323
-         *
-         * @param {String} value VAT number
-         * @returns {Boolean}
-         */
         _ve: function(value) {
             if (/^VE[VEJPG][0-9]{9}$/.test(value)) {
                 value = value.substr(2);
@@ -9036,15 +8850,6 @@ if (typeof jQuery === 'undefined') {
             return (sum + '' === value.substr(9, 1));
         },
 
-        /**
-         * Validate South African VAT number
-         * Examples:
-         * - Valid: 4012345678
-         * - Invalid: 40123456789, 3012345678
-         *
-         * @params {String} value VAT number
-         * @returns {Boolean}
-         */
          _za: function(value) {
             if (/^ZA4[0-9]{9}$/.test(value)) {
                 value = value.substr(2);
@@ -9064,22 +8869,12 @@ if (typeof jQuery === 'undefined') {
     });
 
     FormValidation.Validator.vin = {
-        /**
-         * Validate an US VIN (Vehicle Identification Number)
-         *
-         * @param {FormValidation.Base} validator The validator plugin instance
-         * @param {jQuery} $field Field element
-         * @param {Object} options Consist of key:
-         * - message: The invalid message
-         * @returns {Boolean}
-         */
         validate: function(validator, $field, options) {
             var value = validator.getFieldValue($field, 'vin');
             if (value === '') {
                 return true;
             }
 
-            // Don't accept I, O, Q characters
             if (!/^[a-hj-npr-z0-9]{8}[0-9xX][a-hj-npr-z0-9]{8}$/i.test(value)) {
                 return false;
             }
@@ -9151,29 +8946,6 @@ if (typeof jQuery === 'undefined') {
 
         COUNTRY_CODES: ['AT', 'BG', 'BR', 'CA', 'CH', 'CZ', 'DE', 'DK', 'ES', 'FR', 'GB', 'IE', 'IN', 'IT', 'MA', 'NL', 'PL', 'PT', 'RO', 'RU', 'SE', 'SG', 'SK', 'US'],
 
-        /**
-         * Return true if and only if the input value is a valid country zip code
-         *
-         * @param {FormValidation.Base} validator The validator plugin instance
-         * @param {jQuery} $field Field element
-         * @param {Object} options Consist of key:
-         * - message: The invalid message
-         * - country: The country
-         *
-         * The country can be defined by:
-         * - An ISO 3166 country code
-         * - Name of field which its value defines the country code
-         * - Name of callback function that returns the country code
-         * - A callback function that returns the country code
-         *
-         *  callback: function(value, validator, $field) {
-         *      // value is the value of field
-         *      // validator is the BootstrapValidator instance
-         *      // $field is jQuery element representing the field
-         *  }
-         *
-         * @returns {Boolean|Object}
-         */
         validate: function(validator, $field, options) {
             var value = validator.getFieldValue($field, 'zipCode');
             if (value === '' || !options.country) {
@@ -9183,7 +8955,6 @@ if (typeof jQuery === 'undefined') {
             var locale  = validator.getLocale(),
                 country = options.country;
             if (typeof country !== 'string' || $.inArray(country, this.COUNTRY_CODES) === -1) {
-                // Try to determine the country
                 country = validator.getDynamicOption($field, country);
             }
 
@@ -9194,7 +8965,6 @@ if (typeof jQuery === 'undefined') {
             var isValid = false;
             country = country.toUpperCase();
             switch (country) {
-                // http://en.wikipedia.org/wiki/List_of_postal_codes_in_Austria
                 case 'AT':
                     isValid = /^([1-9]{1})(\d{3})$/.test(value);
                     break;
@@ -9216,11 +8986,9 @@ if (typeof jQuery === 'undefined') {
                     break;
 
                 case 'CZ':
-                    // Test: http://regexr.com/39hhr
                     isValid = /^(\d{3})([ ]?)(\d{2})$/.test(value);
                     break;
 
-                // http://stackoverflow.com/questions/7926687/regular-expression-german-zip-codes
                 case 'DE':
                     isValid = /^(?!01000|99999)(0[1-9]\d{3}|[1-9]\d{4})$/.test(value);
                     break;
@@ -9229,13 +8997,10 @@ if (typeof jQuery === 'undefined') {
                     isValid = /^(DK(-|\s)?)?\d{4}$/i.test(value);
                     break;
 
-                // Zip codes in Spain go from 01XXX to 52XXX.
-                // Test: http://refiddle.com/1ufo
                 case 'ES':
                     isValid = /^(?:0[1-9]|[1-4][0-9]|5[0-2])\d{3}$/.test(value);
                     break;
 
-                // http://en.wikipedia.org/wiki/Postal_codes_in_France
                 case 'FR':
                     isValid = /^[0-9]{5}$/i.test(value);
                     break;
@@ -9244,40 +9009,30 @@ if (typeof jQuery === 'undefined') {
                     isValid = this._gb(value);
                     break;
 
-                // Indian PIN (Postal Index Number) validation
-                // http://en.wikipedia.org/wiki/Postal_Index_Number
-                // Test: http://regex101.com/r/kV0vH3/1
                 case 'IN':
                     isValid = /^\d{3}\s?\d{3}$/.test(value);
                     break;
 
-                // http://www.eircode.ie/docs/default-source/Common/prepare-your-business-for-eircode---published-v2.pdf?sfvrsn=2
-                // Test: http://refiddle.com/1kpl
                 case 'IE':
                     isValid = /^(D6W|[ACDEFHKNPRTVWXY]\d{2})\s[0-9ACDEFHKNPRTVWXY]{4}$/.test(value);
                     break;
 
-                // http://en.wikipedia.org/wiki/List_of_postal_codes_in_Italy
                 case 'IT':
                     isValid = /^(I-|IT-)?\d{5}$/i.test(value);
                     break;
 
-                // http://en.wikipedia.org/wiki/List_of_postal_codes_in_Morocco
                 case 'MA':
                     isValid = /^[1-9][0-9]{4}$/i.test(value);
                     break;
 
-                // http://en.wikipedia.org/wiki/Postal_codes_in_the_Netherlands
                 case 'NL':
                     isValid = /^[1-9][0-9]{3} ?(?!sa|sd|ss)[a-z]{2}$/i.test(value);
                     break;
 
-                // http://en.wikipedia.org/wiki/List_of_postal_codes_in_Poland
                 case 'PL':
                     isValid = /^[0-9]{2}\-[0-9]{3}$/.test(value);
                     break;
 
-                // Test: http://refiddle.com/1l2t
                 case 'PT':
                     isValid = /^[1-9]\d{3}-\d{3}$/.test(value);
                     break;
@@ -9299,12 +9054,10 @@ if (typeof jQuery === 'undefined') {
                     break;
 
                 case 'SK':
-                    // Test: http://regexr.com/39hhr
                     isValid = /^(\d{3})([ ]?)(\d{2})$/.test(value);
                     break;
 
                 case 'US':
-                /* falls through */
                 default:
                     isValid = /^\d{4,5}([\-]?\d{4})?$/.test(value);
                     break;
@@ -9315,30 +9068,17 @@ if (typeof jQuery === 'undefined') {
                 message: FormValidation.Helper.format(options.message || FormValidation.I18n[locale].zipCode.country, FormValidation.I18n[locale].zipCode.countries[country])
             };
         },
-
-        /**
-         * Validate United Kingdom postcode
-         * Examples:
-         * - Standard: EC1A 1BB, W1A 1HQ, M1 1AA, B33 8TH, CR2 6XH, DN55 1PT
-         * - Special cases:
-         * AI-2640, ASCN 1ZZ, GIR 0AA
-         *
-         * @see http://en.wikipedia.org/wiki/Postcodes_in_the_United_Kingdom
-         * @param {String} value The postcode
-         * @returns {Boolean}
-         */
         _gb: function(value) {
-            var firstChar  = '[ABCDEFGHIJKLMNOPRSTUWYZ]',     // Does not accept QVX
-                secondChar = '[ABCDEFGHKLMNOPQRSTUVWXY]',     // Does not accept IJZ
+            var firstChar  = '[ABCDEFGHIJKLMNOPRSTUWYZ]',
+                secondChar = '[ABCDEFGHKLMNOPQRSTUVWXY]',
                 thirdChar  = '[ABCDEFGHJKPMNRSTUVWXY]',
                 fourthChar = '[ABEHMNPRVWXY]',
                 fifthChar  = '[ABDEFGHJLNPQRSTUWXYZ]',
                 regexps    = [
-                    // AN NAA, ANN NAA, AAN NAA, AANN NAA format
                     new RegExp('^(' + firstChar + '{1}' + secondChar + '?[0-9]{1,2})(\\s*)([0-9]{1}' + fifthChar + '{2})$', 'i'),
-                    // ANA NAA
+
                     new RegExp('^(' + firstChar + '{1}[0-9]{1}' + thirdChar + '{1})(\\s*)([0-9]{1}' + fifthChar + '{2})$', 'i'),
-                    // AANA NAA
+
                     new RegExp('^(' + firstChar + '{1}' + secondChar + '{1}?[0-9]{1}' + fourthChar + '{1})(\\s*)([0-9]{1}' + fifthChar + '{2})$', 'i'),
 
                     new RegExp('^(BF1)(\\s*)([0-6]{1}[ABDEFGHJLNPQRST]{1}[ABDEFGHJLNPQRSTUWZYZ]{1})$', 'i'),        // BFPO postcodes
