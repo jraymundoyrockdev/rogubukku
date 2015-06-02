@@ -105,7 +105,7 @@ Kohana::$config->attach(new Config_File);
  */
 Kohana::modules(array(
      'auth'       => MODPATH.'auth',       // Basic authentication
-    // 'cache'      => MODPATH.'cache',      // Caching with multiple backends
+     'cache'      => MODPATH.'cache',      // Caching with multiple backends
     // 'codebench'  => MODPATH.'codebench',  // Benchmarking tool
      'database'   => MODPATH.'database',   // Database access
      'image'      => MODPATH.'image',      // Image manipulation
@@ -113,6 +113,7 @@ Kohana::modules(array(
      'orm'        => MODPATH.'orm',        // Object Relationship Mapping
     // 'unittest'   => MODPATH.'unittest',   // Unit testing
     // 'userguide'  => MODPATH.'userguide',  // User guide and API documentation
+    'minify' => MODPATH.'minify', // Minify
     ));
 /**
  * Cookie Salt
@@ -127,27 +128,6 @@ Cookie::$salt = 'jempogi123';
  * Set the routes. Each route must have a minimum of a name, a URI and a set of
  * defaults for the URI.
  */
-/*Route::set('login', 'login(/<controller>(/<action>(/<id>)))')
-    ->defaults(array(
-        'directory' => 'login',
-        'controller' => 'login',
-        'action'     => 'index',
-    ));*/
-
-/*
-Route::set('login','login((/<action>(/<id>)))',array('action'=>'index|create|login'))
-    ->defaults(array(
-        'directory' => 'login',
-        'controller' => 'login',
-        'action'     => 'index',
-    ));
-Route::set('defaults', '(<controller>(/<action>(/<id>)))')
-    ->defaults(array(
-        'controller' => 'welcome',
-        'action'     => 'index',
-    ));
-*/
-
 Route::set('defaults','((/<action>(/<id>)))',array('action'=>'index|create|login|signin'))
     ->defaults(array(
         'directory' => 'login',
@@ -172,7 +152,7 @@ Route::set('dashboard','dashboard((/<action>(/<id>)))',array('action'=>'index'))
     ));
 
 //USER PROFILES
-Route::set('user/profile','user/profile((/<action>(/<id>)))',array('action'=>'index|save|avatar'))
+Route::set('profile','user/profile((/<action>(/<id>)))',array('action'=>'index|save|avatar'))
     ->defaults(array(
         'directory' => 'user',
         'controller' => 'profile',
@@ -207,6 +187,7 @@ Route::set('admin/users','admin/users((/<action>(/<id>)))',array('action'=>'inde
         'controller' => 'users',
         'action'     => 'index',
     ));
+
 //TRANSACTIONS
 Route::set('transactions/transactions','transactions((/<action>(/<id>)))',array('action'=>'index|save'))
     ->defaults(array(
@@ -214,3 +195,19 @@ Route::set('transactions/transactions','transactions((/<action>(/<id>)))',array(
         'controller' => 'transactions',
         'action'     => 'index',
     ));
+
+
+
+if ( ! Route::cache())
+{
+    Route::set('minify', 'min(/<group>)', array(
+        'group' => '[^/.,;?\n]++'
+    ))
+        ->defaults(array(
+            'directory'  => '',
+            'controller' => 'minify',
+            'action'     => 'index',
+            'group'      => '',
+        ));
+}
+>>>>>>> story_3_42

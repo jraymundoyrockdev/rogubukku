@@ -4,11 +4,16 @@
     <head>
         <meta charset="utf-8">
         <title><?php echo $title;?></title>
-        <!--Global Styles -->
-        <?php foreach ($glob_styles as $href=>$media): echo HTML::style($href, array('media' => $media), 'RMV/')."\n"; endforeach; ?>
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="/favicon.ico" type="image/x-icon">
 
-        <!--Local Styles-->
-        <?php foreach ($loc_styles as $href=>$media): echo HTML::style($href, array('media' => $media), 'RMV/')."\n"; endforeach; ?>
+        <!--Global Styles -->
+        <?php echo html::style('min?g=global-styles', ['media' => 'screen']); ?>
+        <!--Module Styles-->
+        <?php
+        if (!empty($resourceSource[$resourceModule . '-styles'])) {
+            echo HTML::style('min?g=' . $resourceModule . '-styles', ['media' => 'screen']);
+        }; ?>
 
     </head>
 
@@ -19,9 +24,11 @@
         <?php //echo $footer; ?>
 
         <!--Global Scripts-->
-        <?php foreach ($glob_scripts as $globjs): echo HTML::script($globjs, NULL, 'RMV/')."\n"; endforeach; ?>
+        <?php echo HTML::script('min?g=global-scripts',['defer']);?>
 
-        <!--Local Scripts-->
-        <?php foreach ($loc_scripts as $locjs): echo HTML::script($locjs, NULL, 'RMV/')."\n"; endforeach; ?>
-    </body>    
+        <!--Module Scripts-->
+        <?php if (!empty($resourceSource[$resourceModule . '-scripts'])) {
+            echo HTML::script('min?g=' . $resourceModule . '-scripts',['defer']);
+        } ?>
+    </body>
 </html>

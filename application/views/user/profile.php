@@ -12,7 +12,7 @@
             <?=Form::open('user/profile/avatar', array('method'=> 'post','enctype'=>'multipart/form-data','class'=>'form-change-dp','id'=>'form-change-dp'));?>
                 <div class="change_avatar">
                     <a href="#" id="click_dp" class="thumbnail">
-                        <img id="img_avatar" src="<?php ECHO EMPTY($user->profile_pic) ? URL::base() . 'media/images/default.gif' : $uploads_directory['avatar']['relative'] . Auth::instance()->get_user()->id . '/' . $user->profile_pic; ?>" alt="125x125">
+                        <img id="img_avatar" src="<?php ECHO EMPTY($user->profile_pic) ? URL::base() . 'media/images/default_avatar.gif' : $uploads_directory['avatar']['relative'] . Auth::instance()->get_user()->id . '/' . $user->profile_pic; ?>" alt="125x125">
                     </a>
                 </div>
                 <?=Form::input('avatar', '', ['id'=>'avatar', 'type'=>'file', 'class' => 'form-control', 'style'=>'display:none']);?>

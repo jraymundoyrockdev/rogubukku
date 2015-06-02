@@ -1,35 +1,38 @@
 <!DOCTYPE html>
 <html lang="en-US">
 
-    <head>
-        <meta charset="utf-8">
-        <title><?php echo $title;?></title>
-        <!--Global Styles -->
-        <?php foreach ($glob_styles as $href=>$media): echo HTML::style($href, array('media' => $media), 'RMV/')."\n"; endforeach; ?>
+<head>
+    <meta charset="utf-8">
+    <title><?php echo $title; ?></title>
+    <link rel='shortcut icon' href='/favicon.ico' type='image/x-icon'/> 
+    <!--Global Styles -->
+    <?php echo html::style('min?g=global-styles', ['media' => 'screen']); ?>
+    <!--Module Styles-->
+    <?php
+    if (!empty($resourceSource[$resourceModule . '-styles'])) {
+        echo HTML::style('min?g=' . $resourceModule . '-styles', ['media' => 'screen']);
+    }; ?>
+</head>
 
-        <!--Local Styles-->
-        <?php foreach ($loc_styles as $href=>$media): echo HTML::style($href, array('media' => $media), 'RMV/')."\n"; endforeach; ?>
+<body>
 
-    </head>
+<div id="wrapper">
 
-    <body>
+    <?php echo $nav; ?>
 
-        <div id="wrapper">
+    <div id="page-wrapper">
+        <?php echo $body; ?>
+    </div>
 
-            <?php echo $nav; ?>
+</div>
 
-            <div id="page-wrapper">
-                <?php echo $body; ?>
-            </div>
-            
-        </div>
+<!--Global Scripts-->
+<?php echo HTML::script('min?g=global-scripts'); ?>
+<!--Module Scripts-->
+<?php if (!empty($resourceSource[$resourceModule . '-scripts'])) {
+    echo HTML::script('min?g=' . $resourceModule . '-scripts');
+} ?>
 
-        <!--Global Scripts-->
-        <?php foreach ($glob_scripts as $globjs): echo HTML::script($globjs, NULL, 'RMV/')."\n"; endforeach; ?>
+</body>
 
-        <!--Local Scripts-->
-        <?php foreach ($loc_scripts as $locjs): echo HTML::script($locjs, NULL, 'RMV/')."\n"; endforeach; ?>
-
-    </body>    
-    
 </html>

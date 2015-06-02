@@ -102,5 +102,6 @@
                 <button type="button" class="btn btn-danger">Login Now</button>
                 <button type="button" class="btn btn-default signUpSuccessfullModalClose" data-dismiss="modal">Login Later</button>
             </div>
+        </div>
     </div>
 </div>

@@ -53,7 +53,7 @@
                     <tbody>
                         <?php $i=1; foreach ($users as $m):?>
                         <tr class="sui-<?=($i % 2 == 0) ? 'row' : 'alt-row';?>">
-                            <td class="sui-cell"><?=$i++?></th>
+                            <td class="sui-cell"><?=$i++?></td>
                             <td class="sui-cell"><?=$m->full_name?></td>
                             <td class="sui-cell"><?=$m->username?></td>
                             <td class="sui-cell"><?=$m->ministry->ministry?></td>
