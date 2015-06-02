@@ -10,11 +10,12 @@ return array
 
         //GLOBAL
         'global-styles' => [
-            '//media/css/bootstrap/bootstrap.min.css',
+            '//media/css/bootstrap/bootstrap.css',
             '//media/css/fonts/css/font-awesome.min.css',
             '//media/css/main/main_style.css',
             '//media/css/shieldui/shieldui-all.min.css',
             '//media/css/shieldui/all.min.css',
+            '//media/css/bootstrap_validator/formValidation.css',
             '//media/css/hackmain.css'
         ],
         'global-scripts' => [
@@ -27,11 +28,8 @@ return array
         //MODULE-LOGIN
         'login-styles' => [
             '//media/css/login/login.css',
-            '//media/css/bootstrap_validator/formValidation.css'
         ],
         'login-scripts' => [
-            '//media/js/bootstrap_validator/dist/formValidation.js',
-            '//media/js/bootstrap_validator/dist/bootstrap.js',
             '//media/js/login/login.js',
             '//media/js/validation/login/login.js'
         ],
