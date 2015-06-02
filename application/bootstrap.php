@@ -210,4 +210,4 @@ if ( ! Route::cache())
             'group'      => '',
         ));
 }
->>>>>>> story_3_42
+
