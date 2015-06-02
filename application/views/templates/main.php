@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <title><?php echo $title; ?></title>
+    <link rel='shortcut icon' href='/favicon.ico' type='image/x-icon'/> 
     <!--Global Styles -->
     <?php echo html::style('min?g=global-styles', ['media' => 'screen']); ?>
     <!--Module Styles-->

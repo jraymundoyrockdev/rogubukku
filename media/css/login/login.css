@@ -1,22 +1,26 @@
 
-body{
-	background-color: #F0EEEE;
-	overflow-y:hidden;
-	margin-top: 10px;
+body {
+    background-color: #F0EEEE;
+    overflow-y: hidden;
+    margin-top: 10px;
 }
+
 .page-header {
-  padding-bottom: 49px;
-  margin: 30px 0 20px;
-  border-bottom: 1px solid #eee;
+    padding-bottom: 49px;
+    margin: 30px 0 20px;
+    border-bottom: 1px solid #eee;
 }
+
 .redborder {
     border: 2px solid #f96145;
     border-radius: 2px;
 }
+
 .has-error .login-input {
     border: 2px solid #f96145;
     border-radius: 2px;
 }
+
 .hidden {
     display: none;
 }
@@ -33,9 +37,11 @@ body{
     font-size: 97px;
     color: #f96145;
 }
-.inputs{
-	padding: 20px;
+
+.inputs {
+    padding: 20px;
 }
+
 .contcustom {
     text-align: center;
     width: 40%;
@@ -47,7 +53,7 @@ body{
     right: 0;
     margin: 10px auto;
     background-color: white;
-    
+
 }
 
 input {
@@ -64,12 +70,14 @@ h2 {
     color: #ABABAB;
 }
 
-.form-control-feedback{
+.form-control-feedback {
     margin-top: 10px;
 }
+
 .form-group {
-  margin-bottom: 10px;
+    margin-bottom: 10px;
 }
+
 .btn {
     border-radius: 2px;
     padding: 10px;
@@ -88,16 +96,16 @@ h2 {
 }
 
 .panel {
-	
-	height:60px;
-	transition: opacity .3s ease-in-out;
+
+    height: 60px;
+    transition: opacity .3s ease-in-out;
     -moz-transition: opacity .3s ease-in-out;
     -webkit-transition: opacity .3s ease-in-out;
 }
 
-	.panel-primary{
-		border-color: #ffffff;
-	}
+.panel-primary {
+    border-color: #ffffff;
+}
 
 .header-text
 .wide {
@@ -126,13 +134,15 @@ h2 {
     -webkit-transition: opacity .40s ease-in-out;
 
 }
-.form_hover:hover{
-	overflow: visible;
-	opacity: 1.0;
-	transition: opacity .40s ease-in-out;
+
+.form_hover:hover {
+    overflow: visible;
+    opacity: 1.0;
+    transition: opacity .40s ease-in-out;
     -moz-transition: opacity .40s ease-in-out;
     -webkit-transition: opacity .40s ease-in-out;
 }
+
 .form_hover:hover .header {
     opacity: 1;
     transform: translateY(-260px);
@@ -140,30 +150,33 @@ h2 {
     -moz-transform: translateY(-260px);
     -ms-transform: translateY(-260px);
     -o-transform: translateY(-260px);
-     
-     transition: all 0.3s ease;
+
+    transition: all 0.3s ease;
 
 }
+
 .form_hover:hover .header-text {
-	overflow: visible;
-	transition: opacity .40s ease-in-out;
+    overflow: visible;
+    transition: opacity .40s ease-in-out;
     -moz-transition: opacity .40s ease-in-out;
     -webkit-transition: opacity .40s ease-in-out;
 }
 
 .form_hover:hover .panel {
-	opacity: 1.0;
-	transition: opacity .40s ease-in-out;
+    opacity: 1.0;
+    transition: opacity .40s ease-in-out;
     -moz-transition: opacity .40s ease-in-out;
     -webkit-transition: opacity .40s ease-in-out;
-	height:auto;
+    height: auto;
 }
-.form_hover:hover .panel-body{
-	opacity: 1.0;
-	transition: opacity .40s ease-in-out;
+
+.form_hover:hover .panel-body {
+    opacity: 1.0;
+    transition: opacity .40s ease-in-out;
     -moz-transition: opacity .40s ease-in-out;
     -webkit-transition: opacity .40s ease-in-out;
 }
+
 .form_hover .header {
     position: absolute;
     -webkit-transition: all 0.3s ease;
@@ -175,7 +188,7 @@ h2 {
     width: 100%;
 }
 
-.form_hover .blur {            
+.form_hover .blur {
     height: 300px;
     z-index: 5;
     position: absolute;
@@ -183,7 +196,7 @@ h2 {
 }
 
 .form_hover .header-text {
-	
+
     z-index: 10;
     position: absolute;
     height: 300px;
@@ -194,49 +207,44 @@ h2 {
 
 }
 
-.panel-body{
-	opacity: 0;
-	transition: opacity .3s ease-in-out;
+.panel-body {
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
     -moz-transition: opacity .3s ease-in-out;
     -webkit-transition: opacity .3s ease-in-out;
 }
-/* Sticky footer styles
--------------------------------------------------- */
 
 .footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  /* Set the fixed height of the footer here */
-  height: auto;
-  background-color: #f5f5f5;
-  text-align: center;
-  padding: 10px;
-  
-}
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: auto;
+    background-color: #f5f5f5;
+    text-align: center;
+    padding: 10px;
 
-/* Custom page CSS
--------------------------------------------------- */
-/* Not required for template or sticky footer method. */
+}
 
 body > .container {
-  padding: 0px 15px 0;
+    padding: 0px 15px 0;
 }
+
 .container .text-muted {
-  margin: 20px 0;
+    margin: 20px 0;
 }
 
 .footer > .container {
-  padding-right: 15px;
-  padding-left: 15px;
+    padding-right: 15px;
+    padding-left: 15px;
 }
 
 /* added up from the inline */
- h3{
+h3 {
     background-color: #044c92;
     color: white;
     padding: 10px;
- }
+}
+
 .page-header {
     padding-bottom: 20px !important;
 }

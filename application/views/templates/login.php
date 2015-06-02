@@ -4,6 +4,9 @@
     <head>
         <meta charset="utf-8">
         <title><?php echo $title;?></title>
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
         <!--Global Styles -->
         <?php echo html::style('min?g=global-styles', ['media' => 'screen']); ?>
         <!--Module Styles-->
@@ -21,11 +24,11 @@
         <?php //echo $footer; ?>
 
         <!--Global Scripts-->
-        <?php echo HTML::script('min?g=global-scripts');?>
+        <?php echo HTML::script('min?g=global-scripts',['defer']);?>
 
         <!--Module Scripts-->
         <?php if (!empty($resourceSource[$resourceModule . '-scripts'])) {
-            echo HTML::script('min?g=' . $resourceModule . '-scripts');
+            echo HTML::script('min?g=' . $resourceModule . '-scripts',['defer']);
         } ?>
     </body>
 </html>
