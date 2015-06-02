@@ -13,4 +13,7 @@ return array(
         'max_length' => 'The username must be less than :param2 characters long.',
         'username_available' => 'Username is not available.',
     ),
+    'old_password' => array(
+        'old_password_exist' => 'Old password does not exist.'
+    ),
 );

@@ -111,7 +111,7 @@ $('#change_password_form').formValidation({
                 $('small[data-fv-for=' + fieldName + ']').text(fieldMessage).addClass('removableFromAjax');
             });
 
-            $that.formValidation('resetForm', true);
+            //$that.formValidation('resetForm', true);
             $("#password_not_updated_status").show().delay(1000).fadeOut(2000);
         }
         

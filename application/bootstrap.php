@@ -194,16 +194,23 @@ Route::set('admin/ministry','admin/ministry((/<action>(/<id>)))',array('action'=
         'controller' => 'ministry',
         'action'     => 'index',
     ));
-
+//USERROLES
 Route::set('admin/userroles','admin/userroles((/<action>(/<id>)))',array('action'=>'index'))
     ->defaults(array(
         'directory' => 'admin',
         'controller' => 'userroles',
 ));
-    
+//USERS   
 Route::set('admin/users','admin/users((/<action>(/<id>)))',array('action'=>'index|changestatus'))
     ->defaults(array(
         'directory' => 'admin',
         'controller' => 'users',
+        'action'     => 'index',
+    ));
+//TRANSACTIONS
+Route::set('transactions/transactions','transactions((/<action>(/<id>)))',array('action'=>'index|save'))
+    ->defaults(array(
+        'directory' => 'transactions',
+        'controller' => 'transactions',
         'action'     => 'index',
     ));

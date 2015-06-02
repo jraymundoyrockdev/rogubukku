@@ -21,7 +21,7 @@
 
                     <div class="form-group">
                     	<div class="old-password-error">
-                        	<label class="control-label" for="username">Old Password</label>
+                        	<label class="control-label" for="old_password">Old Password</label>
                          	<?=Form::password('old_password', '', ['placeholder'=>'Old Password', 'class'=>'form-control']);?>
                     	</div>
                     </div>

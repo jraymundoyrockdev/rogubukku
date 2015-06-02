@@ -22,6 +22,9 @@ class Controller_User_ChangePassword extends Controller_Base {
     public function action_save(){
     	
     	$auth = Auth::instance();
+
+        $username = $message = $errors = $email = NULL;
+
     	if (HTTP_Request::POST == $this->request->method()) 
         {   
             $user_id = $auth->get_user()->id;
@@ -40,6 +43,7 @@ class Controller_User_ChangePassword extends Controller_Base {
                 
                 if(! $user_result){
                     $result['isSuccess'] = false;
+                    $result['errorFields']['old_password'] = 'Old password does not exist.';
                 }
                 
                 echo json_encode($result); die; //@TODO CREATE A HELPER CLASS TO OUTPUT JSON DATA
