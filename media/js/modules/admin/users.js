@@ -1,9 +1,10 @@
-$(".ministrySwitch").click(function () {
+$(".ministrySwitch").bootstrapSwitch();
+
+$(".ministrySwitch").on('switchChange.bootstrapSwitch', function (event, state) {
 
     var userId = $(this).attr('id');
-    var isChecked = $(this).is(':checked') ? 'Y' : 'N';
 
-    $.post("/admin/users/changestatus", {userId: userId, activeFlag: isChecked})
+    $.post("/admin/users/changestatus", {userId: userId, activeFlag: state})
         .done(function (data) {
 
         });

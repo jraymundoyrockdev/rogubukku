@@ -2,6 +2,7 @@
 
 class Model_Roles_Users extends ORM
 {
+    protected $_primary_key = 'user_id';
 
     protected $_table_columns = array(
         'user_id' => null,
@@ -10,6 +11,12 @@ class Model_Roles_Users extends ORM
 
     protected $_table_name = 'roles_users';
 
+    protected $_has_one = array(
+        'users' => array(
+            'model' => 'Users',
+            'foreign_key' => 'id',
+        ),
+    );
 
     public function create_user_roles($user_id, $user_role = 1)
     {

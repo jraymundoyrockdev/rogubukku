@@ -26,7 +26,12 @@ class Model_Users extends Model_User
         'ministry' => array(
             'model' => 'Ministry',
             'foreign_key' => 'ministry_id'
-        )
+        ),
+        'rolesUsers' => array(
+            'model' => 'Roles_Users',
+            'foreign_key' => 'id'
+        ),
+
     );
 
     public function rules()

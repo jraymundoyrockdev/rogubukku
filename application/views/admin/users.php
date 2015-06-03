@@ -13,6 +13,10 @@
                     <colgroup>
                         <col style="width:70px">
                         <col>
+                        <col>
+                        <col>
+                        <col>
+                        <col style="width:150px">
                     </colgroup>
 
                     <thead>
@@ -48,26 +52,27 @@
                         <col>
                         <col>
                         <col>
-                        <col>
+                        <col style="width:150px">
                     </colgroup>
                     <tbody>
                     <?php $i = 1;
                     foreach ($users as $m): ?>
                         <tr class="sui-<?= ($i % 2 == 0) ? 'row' : 'alt-row'; ?>">
                             <td class="sui-cell"><?= $i++ ?></td>
-                            <td class="sui-cell"><?= $m->full_name ?></td>
-                            <td class="sui-cell"><?= $m->username ?></td>
-                            <td class="sui-cell"><?= $m->ministry->ministry ?></td>
-                            <td class="sui-cell"><?= $m->created_date ?></td>
+                            <td class="sui-cell"><?= $m->users->full_name ?></td>
+                            <td class="sui-cell"><?= $m->users->username ?></td>
+                            <td class="sui-cell"><?= $m->users->ministry->ministry ?></td>
+                            <td class="sui-cell"><?= $m->users->created_date ?></td>
                             <td class="sui-cell">
 
-                                <input id="<?= $m->id ?>"
-                                       class="ministrySwitch" data-switch-get="<?= $m->active_flag ?>"
+                                <input id="<?= $m->users->id ?>"
+                                       class="ministrySwitch"
+                                       data-switch-get="<?= $m->users->active_flag ?>"
                                        data-switch-value="N"
-                                       type="checkbox" <?= ($m->active_flag == 'Y') ? 'checked' : '' ?>
+                                       data-on-text="active"
+                                       data-off-text="inactive"
+                                       type="checkbox" <?= ($m->users->active_flag == 'Y') ? 'checked' : '' ?>
                                        data-size="mini">
-
-
                             </td>
                         </tr>
                     <?php endforeach; ?>

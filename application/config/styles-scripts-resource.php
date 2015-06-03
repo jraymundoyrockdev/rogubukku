@@ -19,11 +19,12 @@ return array
             '//media/css/hackmain.css'
         ],
         'global-scripts' => [
-            '//media/js/lib/jquery/jquery-1.10.2.min.js',
+            '//media/js/lib/jquery/jquery-2.1.4.js',
             '//media/js/lib/bootstrap/bootstrap.js',
             '//media/js/lib/bootstrap/bootstrap_validator/dist/formValidation.js',
             '//media/js/lib/bootstrap/bootstrap_validator/dist/bootstrap.js'
         ],
+
         //MODULE-LOGIN
         'login-styles' => [
             '//media/css/modules/login/login.css',
@@ -36,8 +37,7 @@ return array
         'profile-scripts' => [
             '//media/js/validation/user/profile.js',
             '//media/js/lib/bootbox/bootbox.min.js',
-            '//media/js/lib/jquery/jquery.form.js',
-            '//media/js/modules/user/profile.js'
+            '//media/js/lib/jquery/jquery.form.js'
         ],
         //MODULE-CHANGE-PASSWORD
         'change-password-scripts' => [
