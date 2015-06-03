@@ -1,7 +1,7 @@
-$(document).ready(function() {
-    
+$(document).ready(function () {
+
     FormValidation.Validator.securePassword = {
-        validate: function(validator, $field, options) {
+        validate: function (validator, $field, options) {
             var value = $field.val();
             if (value === '') {
                 return true;
@@ -60,7 +60,7 @@ $(document).ready(function() {
                     notEmpty: {
                         message: 'Userame is required.'
                     },
-                }   
+                }
             },
             signin_password: {
                 row: '.signin-password-error',
@@ -77,17 +77,17 @@ $(document).ready(function() {
      * Validate signup form
      */
 
-	$('#signup_form').formValidation({
-		message: 'This value is not valid',
+    $('#signup_form').formValidation({
+        message: 'This value is not valid',
 
-		icon: {
+        icon: {
             valid: 'glyphicon glyphicon-ok',
             invalid: 'glyphicon glyphicon-remove',
             validating: 'glyphicon glyphicon-refresh'
         },
-       
+
         fields: {
-	        full_name: {
+            full_name: {
                 row: '.signup-full-name-error',
                 validators: {
                     notEmpty: {
@@ -99,8 +99,8 @@ $(document).ready(function() {
                         message: 'The full name must be more than 5 and less than 40 characters long'
                     },
                 }
-        	},
-        	username: {
+            },
+            username: {
                 row: '.signup-user-name-error',
                 validators: {
                     notEmpty: {
@@ -116,7 +116,7 @@ $(document).ready(function() {
                         message: 'Username is not available'
                     }
                 }
-        	},
+            },
             password: {
                 row: '.signup-password-error',
                 validators: {
@@ -142,37 +142,37 @@ $(document).ready(function() {
                 }
             }
         }
-	})
-    .on('success.form.fv', function(e) {
+    })
+        .on('success.form.fv', function (e) {
 
-        e.preventDefault();
+            e.preventDefault();
 
-        var $form = $(e.target);    
-        var $that = $(this);
-        var $thatSignin = $('#signin_form');
+            var $form = $(e.target);
+            var $that = $(this);
+            var $thatSignin = $('#signin_form');
 
-        $.post($form.attr('action'), $form.serialize(), function(result) {
-            if(result.isSuccess){
+            $.post($form.attr('action'), $form.serialize(), function (result) {
+                if (result.isSuccess) {
 
-                $('b.newlySignedUpUser').text(result.signupUser);
-                $('.the_login_page').hide();
-                $('#signUpSuccessfullModal').modal('show');
+                    $('b.newlySignedUpUser').text(result.signupUser);
+                    $('.the_login_page').hide();
+                    $('#signUpSuccessfullModal').modal('show');
 
-                //ifModalClose
-                $('.signUpSuccessfullModalClose').click(function() {
-                    $('.the_login_page').show();
-                    $that.formValidation('resetForm', true);
-                    $thatSignin.formValidation('resetForm',true);
-                });
-            }
-            else{
-                $.each(result.errorFields, function(fieldName, fieldMessage) {
-                    $that.formValidation('updateStatus', fieldName, 'INVALID', 'notEmpty');
-                    $('small[data-fv-for=' + fieldName + ']').text(fieldMessage).addClass('removableFromAjax');
-                });
-            }
-            
-        }, 'json');
-    });
+                    //ifModalClose
+                    $('.signUpSuccessfullModalClose').click(function () {
+                        $('.the_login_page').show();
+                        $that.formValidation('resetForm', true);
+                        $thatSignin.formValidation('resetForm', true);
+                    });
+                }
+                else {
+                    $.each(result.errorFields, function (fieldName, fieldMessage) {
+                        $that.formValidation('updateStatus', fieldName, 'INVALID', 'notEmpty');
+                        $('small[data-fv-for=' + fieldName + ']').text(fieldMessage).addClass('removableFromAjax');
+                    });
+                }
+
+            }, 'json');
+        });
 
 });

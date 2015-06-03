@@ -18,22 +18,16 @@
                 <div class="change_avatar">
                     <a href="#" id="click_dp" class="thumbnail">
                         <img id="img_avatar"
-                             src="<?php ECHO EMPTY($user->profile_pic) ? URL::base() . 'media/images/default_avatar.gif' : $uploads_directory['avatar']['relative'] . Auth::instance()->get_user()->id . '/' . $user->profile_pic; ?>"
+                             src="<?php echo empty($user->profile_pic) ? $avatarDirectory['relative'] . 'default_avatar.gif' : $avatarDirectory['relative'] . $user->id . '/' . $user->profile_pic; ?>"
                              alt="125x125">
                     </a>
                 </div>
                 <?= Form::input('avatar', '',
                     ['id' => 'avatar', 'type' => 'file', 'class' => 'form-control', 'style' => 'display:none']); ?>
-                <!-- <input name="avatar" id="change_dp" type="file" style="display:none;"> -->
                 <?= Form::close(); ?>
 
                 <div class="caption" style="text-align:center;">
                     <h3 class="full_avatar_name"><?= $user->full_name ?></h3>
-
-                    <p>Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula.
-                        Cras justo odio, dapibus ac facilisis in quam.</p>
-
-                    <p><a href="#" class="btn btn-primary">Change</a></p>
                 </div>
 
             </div>

@@ -3,7 +3,7 @@
 return array
 (
     'avatar' => [
-        'absolute' => DOCROOT . 'uploads' . DIRECTORY_SEPARATOR,
+        'absolute' => DOCROOT . 'uploads' . DIRECTORY_SEPARATOR . 'avatar' . DIRECTORY_SEPARATOR,
         'relative' => URL::base() . 'uploads' . '/' . 'avatar' . '/'
     ],
 );
