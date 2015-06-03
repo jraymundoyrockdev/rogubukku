@@ -6,6 +6,8 @@ Class Controller_Base extends Controller_Template
     // Define the template to use
     public $template = 'templates/main';
 
+    protected $uploadsDirectory;
+
     public function before()
     {
         parent::before();
@@ -19,7 +21,7 @@ Class Controller_Base extends Controller_Template
         $this->template->resourceSource = Kohana::$config->load('styles-scripts-resource')->get('resource');
         $this->template->resourceModule = '';
 
-        $this->_uploads_directory = Kohana::$config->load('resource_dir')->get('avatar');
+        $this->avatarDirectory = Kohana::$config->load('path-resource')->get('avatar');
 
     }
 

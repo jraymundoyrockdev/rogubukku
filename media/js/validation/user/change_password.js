@@ -1,104 +1,105 @@
-$(document).ready(function() {
-FormValidation.Validator.securePassword = {
-    validate: function(validator, $field, options) {
-        var value = $field.val();
-        if (value === '') {
+$(document).ready(function () {
+    FormValidation.Validator.securePassword = {
+        validate: function (validator, $field, options) {
+            var value = $field.val();
+            if (value === '') {
+                return true;
+            }
+
+            if (value.length < 8) {
+                return {
+                    valid: false,
+                    message: 'The password must be more than 8 characters long'
+                };
+            }
+
+            if (value === value.toLowerCase()) {
+                return {
+                    valid: false,
+                    message: 'The password must contain at least one upper case character'
+                }
+            }
+
+            if (value === value.toUpperCase()) {
+                return {
+                    valid: false,
+                    message: 'The password must contain at least one lower case character'
+                }
+            }
+
+            if (value.search(/[0-9]/) < 0) {
+                return {
+                    valid: false,
+                    message: 'The password must contain at least one digit'
+                }
+            }
+
             return true;
         }
+    };
 
-        if (value.length < 8) {
-            return {
-                valid: false,
-                message: 'The password must be more than 8 characters long'
-            };
-        }
+    /*
+     * Validate change password form
+     */
 
-        if (value === value.toLowerCase()) {
-            return {
-                valid: false,
-                message: 'The password must contain at least one upper case character'
-            }
-        }
+    $('#change_password_form').formValidation({
+        message: 'This value is not valid',
 
-        if (value === value.toUpperCase()) {
-            return {
-                valid: false,
-                message: 'The password must contain at least one lower case character'
-            }
-        }
-
-        if (value.search(/[0-9]/) < 0) {
-            return {
-                valid: false,
-                message: 'The password must contain at least one digit'
-            }
-        }
-
-        return true;
-    }
-};
-
-/*
- * Validate change password form
- */
-
-$('#change_password_form').formValidation({
-	message: 'This value is not valid',
-
-	icon: {
-        valid: 'glyphicon glyphicon-ok',
-        invalid: 'glyphicon glyphicon-remove',
-        validating: 'glyphicon glyphicon-refresh'
-    },
-   
-    fields: {
-        old_password: {
-            row: '.old-password-error',
-            validators: {
-                notEmpty: {
-                    message: 'Old password is required.'
-                },
-                securePassword: {
-                    message: 'Old password is not valid.'
-                }
-
-            }
+        icon: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
         },
 
-        new_password: {
-            row: '.new-password-error',
-            validators: {
-                notEmpty: {
-                    message: 'New password is required.'
-                },
-                securePassword: {
-                    message: 'New password is not valid.'
+        fields: {
+            old_password: {
+                row: '.old-password-error',
+                validators: {
+                    notEmpty: {
+                        message: 'Old password is required.'
+                    },
+                    securePassword: {
+                        message: 'Old password is not valid.'
+                    }
+
                 }
+            },
 
-            }
-        },
+            new_password: {
+                row: '.new-password-error',
+                validators: {
+                    notEmpty: {
+                        message: 'New password is required.'
+                    },
+                    securePassword: {
+                        message: 'New password is not valid.'
+                    }
 
-        confirm_new_password: {
-            row: '.confirm-new-password-error',
-            validators: {
-                notEmpty: {
-                    message: 'Confirm new password is required.'
-                },
-                identical: {
-                    field: 'new_password',
-                    message: 'Confirm new password did not match.'
+                }
+            },
+
+            confirm_new_password: {
+                row: '.confirm-new-password-error',
+                validators: {
+                    notEmpty: {
+                        message: 'Confirm new password is required.'
+                    },
+                    identical: {
+                        field: 'new_password',
+                        message: 'Confirm new password did not match.'
+                    }
                 }
             }
         }
-    }
-})
-.on('success.form.fv', function(e) {
+    })
+        .on('success.form.fv', function (e) {
 
-    e.preventDefault();
+            e.preventDefault();
 
-    var $form = $(e.target);    
-    var $that = $(this);
+            var $form = $(e.target);
+            var $that = $(this);
 
+<<<<<<< HEAD
     $.post($form.attr('action'), $form.serialize(), function(result) {
         if(result.isSuccess){
             console.log(result);
@@ -117,3 +118,24 @@ $('#change_password_form').formValidation({
         
     }, 'json');
 });});
+=======
+            $.post($form.attr('action'), $form.serialize(), function (result) {
+                if (result.isSuccess) {
+                    console.log(result);
+                    $that.formValidation('resetForm', true);
+                    $("#password_updated_status").show().delay(1000).fadeOut(2000);
+                }
+                else {
+                    $.each(result.errorFields, function (fieldName, fieldMessage) {
+                        $that.formValidation('updateStatus', fieldName, 'INVALID', 'notEmpty');
+                        $('small[data-fv-for=' + fieldName + ']').text(fieldMessage).addClass('removableFromAjax');
+                    });
+
+                    $that.formValidation('resetForm', true);
+                    $("#password_not_updated_status").show().delay(1000).fadeOut(2000);
+                }
+
+            }, 'json');
+        });
+});
+>>>>>>> story_3_42

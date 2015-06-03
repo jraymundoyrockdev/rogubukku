@@ -14,7 +14,7 @@ $('#user_profile_form').formValidation({
                 notEmpty: {
                     message: 'Fullname is required.'
                 },
-            }   
+            }
         },
         ministry: {
             row: '.ministry-error',
@@ -22,65 +22,29 @@ $('#user_profile_form').formValidation({
                 notEmpty: {
                     message: 'Ministry is required.'
                 },
-            }   
+            }
         },
     }
-})
- .on('success.form.fv', function(e) {
+}).on('success.form.fv', function (e) {
 
-        e.preventDefault();
+    e.preventDefault();
 
-        var $form = $(e.target);    
-        var $that = $(this);
+    var $form = $(e.target);
+    var $that = $(this);
 
-        $.post($form.attr('action'), $form.serialize(), function(result) {
-            if(result.isSuccess){
-                console.log(result);
-                $that.formValidation('resetForm', false);
-                $('.full_avatar_name').text(result.updatedUser);
-                $("#profile_updated_status").show().delay(1000).fadeOut(2000);
-            }
-            else{
-                $.each(result.errorFields, function(fieldName, fieldMessage) {
-                    $that.formValidation('updateStatus', fieldName, 'INVALID', 'notEmpty');
-                    $('small[data-fv-for=' + fieldName + ']').text(fieldMessage).addClass('removableFromAjax');
-                });
-            }
-            
-        }, 'json');
-    });
+    $.post($form.attr('action'), $form.serialize(), function (result) {
+        if (result.isSuccess) {
+            console.log(result);
+            $that.formValidation('resetForm', false);
+            $('.full_avatar_name').text(result.updatedUser);
+            $("#profile_updated_status").show().delay(1000).fadeOut(2000);
+        }
+        else {
+            $.each(result.errorFields, function (fieldName, fieldMessage) {
+                $that.formValidation('updateStatus', fieldName, 'INVALID', 'notEmpty');
+                $('small[data-fv-for=' + fieldName + ']').text(fieldMessage).addClass('removableFromAjax');
+            });
+        }
 
-  //Change Profile Picure
-jQuery(document).off('click', '#click_dp');
-jQuery(document).on('click', '#click_dp', function(e){
-    $('#avatar').click();
-
-});
-
-$("#avatar").change(function(){
-    bootbox.confirm(
-        'Change Your Profile Picture?'
-        , function(confirm_result) 
-            {
-                if(confirm_result === true)
-                {
-                    $("#form-change-dp").ajaxSubmit({
-                        dataType:  'json',
-                        type: 'post',
-                        success: function(result){
-                                if(result.isSuccess)
-                                {
-                                    $("#img_avatar").attr('src', result.src);
-                                    console.log('success');
-                                }
-                                else
-                                {
-                                    alert(result.errorFields);
-                                    console.log('sorry hindi success');
-                                }
-                        }
-                    });
-                }
-            }
-    );
+    }, 'json');
 });

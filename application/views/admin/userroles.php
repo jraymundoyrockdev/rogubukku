@@ -16,17 +16,17 @@
                     </colgroup>
 
                     <thead>
-                        <tr class="sui-columnheader">
-                            <th class="sui-headercell" data-field="id">
-                               #
-                            </th>
-                            <th class="sui-headercell" data-field="name">
-                                Name
-                            </th>
-                            <th class="sui-headercell" data-field="description">
-                                Description
-                            </th>
-                        </tr>
+                    <tr class="sui-columnheader">
+                        <th class="sui-headercell" data-field="id">
+                            #
+                        </th>
+                        <th class="sui-headercell" data-field="name">
+                            Name
+                        </th>
+                        <th class="sui-headercell" data-field="description">
+                            Description
+                        </th>
+                    </tr>
                     </thead>
                 </table>
             </div>
@@ -38,13 +38,14 @@
                         <col>
                     </colgroup>
                     <tbody>
-                        <?php $i=1; foreach ($userroles as $m):?>
-                        <tr class="sui-<?=($i % 2 == 0) ? 'row' : 'alt-row';?>">
-                            <td class="sui-cell"><?=$i++?></td>
-                            <td class="sui-cell"><?=$m->name?></td>
-                            <td class="sui-cell"><?=$m->description?></td>
+                    <?php $i = 1;
+                    foreach ($userroles as $m): ?>
+                        <tr class="sui-<?= ($i % 2 == 0) ? 'row' : 'alt-row'; ?>">
+                            <td class="sui-cell"><?= $i++ ?></td>
+                            <td class="sui-cell"><?= $m->name ?></td>
+                            <td class="sui-cell"><?= $m->description ?></td>
                         </tr>
-                        <?php endforeach;?>
+                    <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>

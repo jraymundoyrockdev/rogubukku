@@ -19,7 +19,7 @@ return array
             '//media/css/hackmain.css'
         ],
         'global-scripts' => [
-            '//media/js/lib/jquery/jquery-1.10.2.min.js',
+            '//media/js/lib/jquery/jquery-2.1.4.js',
             '//media/js/lib/bootstrap/bootstrap.js',
             '//media/js/lib/bootstrap/bootstrap_validator/dist/formValidation.js',
             '//media/js/lib/bootstrap/bootstrap_validator/dist/bootstrap.js'

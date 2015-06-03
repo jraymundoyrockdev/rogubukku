@@ -1,9 +1,7 @@
-<!-- @todo LOADS ALL THE 2 MOST RECENT MESSAGE LIST IN THE "message table" USING THE BINDED ID FORM THE nav.php this is "last priority"-->
-<!-- @todo THE USER PROFILE-->
-
 <ul class="nav navbar-nav navbar-right navbar-user">
     <li class="dropdown messages-dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> Messages <span class="badge">2</span> <b class="caret"></b></a>
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> Messages <span
+                class="badge">2</span> <b class="caret"></b></a>
         <ul class="dropdown-menu">
             <li class="dropdown-header">2 New Messages</li>
             <li class="message-preview">
@@ -26,21 +24,23 @@
 
     <?php //if (Auth::instance()->logged_in("admin")): ?>
     <li class="dropdown user-dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-cogs"></i> System <b class="caret"></b></a>
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-cogs"></i> System <b
+                class="caret"></b></a>
         <ul class="dropdown-menu">
-            <li><a href="<?=URL::site('admin/ministry');?>"><i class="fa fa-user"></i> Ministries</a></li>
-            <li><a href="<?=URL::site('admin/userroles');?>"><i class="fa fa-gear"></i> User Roles</a></li>
-            <li><a href="<?=URL::site('admin/users');?>"><i class="fa fa-gear"></i> User Management</a></li>
+            <li><a href="<?= URL::site('admin/ministry'); ?>"><i class="fa fa-user"></i> Ministries</a></li>
+            <li><a href="<?= URL::site('admin/userroles'); ?>"><i class="fa fa-gear"></i> User Roles</a></li>
+            <li><a href="<?= URL::site('admin/users'); ?>"><i class="fa fa-gear"></i> User Management</a></li>
         </ul>
     </li>
     <?php //endif;?>
 
-     <li class="dropdown user-dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?=Auth::instance()->get_user()->full_name?> <b class="caret"></b></a>
+    <li class="dropdown user-dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
+                class="fa fa-user"></i> <?= Auth::instance()->get_user()->full_name ?> <b class="caret"></b></a>
         <ul class="dropdown-menu">
-            <li><a href="<?=URL::site('user/profile');?>"><i class="fa fa-user"></i> Profile</a></li>
-            <li><a href="<?=URL::site('user/change_password');?>"><i class="fa fa-cog"></i> Change Password</a></li>
-            <li><a href="<?=URL::site('login/logout');?>"><i class="fa fa-power-off"></i> Log Out</a></li>
+            <li><a href="<?= URL::site('user/profile'); ?>"><i class="fa fa-user"></i> Profile</a></li>
+            <li><a href="<?= URL::site('user/change_password'); ?>"><i class="fa fa-cog"></i> Change Password</a></li>
+            <li><a href="<?= URL::site('login/logout'); ?>"><i class="fa fa-power-off"></i> Log Out</a></li>
         </ul>
     </li>
 </ul>

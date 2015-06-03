@@ -1,6 +1,6 @@
-$(".form_hover").hover(function(){
+$(".form_hover").hover(function () {
     $(".login-input").attr("autocomplete", "off");
-    }, function(){
+}, function () {
     $(".login-input").attr("autocomplete", "on");
-    $( "#signin_username" ).focus(); /* Set focus to signin username field when hover is off */
+    $("#signin_username").focus();
 });

@@ -24,7 +24,7 @@ class Controller_User_Profile extends Controller_Base
         $this->template->body = View::factory('user/profile')
             ->bind('user', $user)
             ->bind('ministries', $ministries)
-            ->bind('uploads_directory', $this->uploadsDirectory);
+            ->bind('avatarDirectory', $this->avatarDirectory);
     }
 
     public function action_save()
@@ -66,9 +66,7 @@ class Controller_User_Profile extends Controller_Base
                     $filename = $this->_save_image($_FILES['avatar']);
                     $result['isSuccess'] = true;
                     $result['filename'] = $filename;
-                    $result['src'] = $this->uploadsDirectory['avatar']['relative'] . $user_id . '/' . $filename;
-                    echo json_encode($result);
-                    die;
+                    $result['src'] = $this->avatarDirectory['relative'] . $user_id . '/' . $filename;
                 }
             }
 
@@ -79,13 +77,11 @@ class Controller_User_Profile extends Controller_Base
 
         } catch (ORM_Validation_Exception $e) {
             $result['errorFields'] = $e->errors('models');
-            echo json_encode($result);
-            die; //@TODO CREATE A HELPER CLASS TO OUTPUT JSON DATA
         } catch (Exception $error) {
             $result['errorFields'] = $error->getMessage();
-            echo json_encode($result);
-            die; //@TODO CREATE A HELPER CLASS TO OUTPUT JSON DATA
         }
+
+        $this->responseAjaxResult($result);
     }
 
     protected function _save_image($image)
@@ -99,7 +95,7 @@ class Controller_User_Profile extends Controller_Base
         ) {
             throw new Exception('Error. Unknown Format');
         }
-        $directory = $this->uploadsDirectory['avatar']['absolute'] . 'avatar/' . $user_id . '/';
+        $directory = $this->avatarDirectory['absolute'] . $user_id . '/';
 
         if (!is_dir($directory)) {
             mkdir($directory, 0777, true);
