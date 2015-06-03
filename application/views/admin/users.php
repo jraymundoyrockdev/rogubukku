@@ -16,26 +16,26 @@
                     </colgroup>
 
                     <thead>
-                        <tr class="sui-columnheader">
-                            <th class="sui-headercell" data-field="id">
-                               #
-                            </th>
-                            <th class="sui-headercell" data-field="name">
-                                Fullname
-                            </th>
-                            <th class="sui-headercell" data-field="name">
-                                Username
-                            </th>
-                            <th class="sui-headercell" data-field="name">
-                                Ministry
-                            </th>                        
-                            <th class="sui-headercell" data-field="name">
-                                Created Date
-                            </th>                            
-                            <th class="sui-headercell" data-field="name">
-                                Status
-                            </th>
-                        </tr>
+                    <tr class="sui-columnheader">
+                        <th class="sui-headercell" data-field="id">
+                            #
+                        </th>
+                        <th class="sui-headercell" data-field="name">
+                            Fullname
+                        </th>
+                        <th class="sui-headercell" data-field="name">
+                            Username
+                        </th>
+                        <th class="sui-headercell" data-field="name">
+                            Ministry
+                        </th>
+                        <th class="sui-headercell" data-field="name">
+                            Created Date
+                        </th>
+                        <th class="sui-headercell" data-field="name">
+                            Status
+                        </th>
+                    </tr>
                     </thead>
                 </table>
             </div>
@@ -51,24 +51,26 @@
                         <col>
                     </colgroup>
                     <tbody>
-                        <?php $i=1; foreach ($users as $m):?>
-                        <tr class="sui-<?=($i % 2 == 0) ? 'row' : 'alt-row';?>">
-                            <td class="sui-cell"><?=$i++?></td>
-                            <td class="sui-cell"><?=$m->full_name?></td>
-                            <td class="sui-cell"><?=$m->username?></td>
-                            <td class="sui-cell"><?=$m->ministry->ministry?></td>
-                            <td class="sui-cell"><?=$m->created_date?></td>
+                    <?php $i = 1;
+                    foreach ($users as $m): ?>
+                        <tr class="sui-<?= ($i % 2 == 0) ? 'row' : 'alt-row'; ?>">
+                            <td class="sui-cell"><?= $i++ ?></td>
+                            <td class="sui-cell"><?= $m->full_name ?></td>
+                            <td class="sui-cell"><?= $m->username ?></td>
+                            <td class="sui-cell"><?= $m->ministry->ministry ?></td>
+                            <td class="sui-cell"><?= $m->created_date ?></td>
                             <td class="sui-cell">
 
-              <input id="<?=$m->id?>" 
-              class="ministrySwitch" data-switch-get="<?=$m->active_flag?>" 
-              data-switch-value="N"
-              type="checkbox" <?=($m->active_flag == 'Y') ? 'checked' : '' ?> data-size="mini">
+                                <input id="<?= $m->id ?>"
+                                       class="ministrySwitch" data-switch-get="<?= $m->active_flag ?>"
+                                       data-switch-value="N"
+                                       type="checkbox" <?= ($m->active_flag == 'Y') ? 'checked' : '' ?>
+                                       data-size="mini">
 
 
                             </td>
                         </tr>
-                        <?php endforeach;?>
+                    <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>

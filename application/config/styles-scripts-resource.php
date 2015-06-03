@@ -24,7 +24,6 @@ return array
             '//media/js/lib/bootstrap/bootstrap_validator/dist/formValidation.js',
             '//media/js/lib/bootstrap/bootstrap_validator/dist/bootstrap.js'
         ],
-
         //MODULE-LOGIN
         'login-styles' => [
             '//media/css/modules/login/login.css',

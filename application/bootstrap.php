@@ -1,16 +1,13 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 // -- Environment setup --------------------------------------------------------
 // Load the core Kohana class
-require SYSPATH.'classes/Kohana/Core'.EXT;
-if (is_file(APPPATH.'classes/Kohana'.EXT))
-{
+require SYSPATH . 'classes/Kohana/Core' . EXT;
+if (is_file(APPPATH . 'classes/Kohana' . EXT)) {
     // Application extends the core
-    require APPPATH.'classes/Kohana'.EXT;
-}
-else
-{
+    require APPPATH . 'classes/Kohana' . EXT;
+} else {
     // Load empty core extension
-    require SYSPATH.'classes/Kohana'.EXT;
+    require SYSPATH . 'classes/Kohana' . EXT;
 }
 /**
  * Set the default time zone.
@@ -58,8 +55,7 @@ mb_substitute_character('none');
  * Set the default language
  */
 I18n::lang('en-us');
-if (isset($_SERVER['SERVER_PROTOCOL']))
-{
+if (isset($_SERVER['SERVER_PROTOCOL'])) {
     // Replace the default protocol.
     HTTP::$protocol = $_SERVER['SERVER_PROTOCOL'];
 }
@@ -69,9 +65,8 @@ if (isset($_SERVER['SERVER_PROTOCOL']))
  * Note: If you supply an invalid environment name, a PHP warning will be thrown
  * saying "Couldn't find constant Kohana::<INVALID_ENV_NAME>"
  */
-if (isset($_SERVER['KOHANA_ENV']))
-{
-    Kohana::$environment = constant('Kohana::'.strtoupper($_SERVER['KOHANA_ENV']));
+if (isset($_SERVER['KOHANA_ENV'])) {
+    Kohana::$environment = constant('Kohana::' . strtoupper($_SERVER['KOHANA_ENV']));
 }
 /**
  * Initialize Kohana, setting the default options.
@@ -89,13 +84,13 @@ if (isset($_SERVER['KOHANA_ENV']))
  * - boolean  expose      set the X-Powered-By header                        FALSE
  */
 Kohana::init(array(
-    'base_url'   => '/',
-    'index_file' => FALSE,
+    'base_url' => '/',
+    'index_file' => false,
 ));
 /**
  * Attach the file write to logging. Multiple writers are supported.
  */
-Kohana::$log->attach(new Log_File(APPPATH.'logs'));
+Kohana::$log->attach(new Log_File(APPPATH . 'logs'));
 /**
  * Attach a file reader to config. Multiple readers are supported.
  */
@@ -104,17 +99,17 @@ Kohana::$config->attach(new Config_File);
  * Enable modules. Modules are referenced by a relative or absolute path.
  */
 Kohana::modules(array(
-     'auth'       => MODPATH.'auth',       // Basic authentication
-     'cache'      => MODPATH.'cache',      // Caching with multiple backends
+    'auth' => MODPATH . 'auth',       // Basic authentication
+    'cache' => MODPATH . 'cache',      // Caching with multiple backends
     // 'codebench'  => MODPATH.'codebench',  // Benchmarking tool
-     'database'   => MODPATH.'database',   // Database access
-     'image'      => MODPATH.'image',      // Image manipulation
+    'database' => MODPATH . 'database',   // Database access
+    'image' => MODPATH . 'image',      // Image manipulation
     // 'minion'     => MODPATH.'minion',     // CLI Tasks
-     'orm'        => MODPATH.'orm',        // Object Relationship Mapping
+    'orm' => MODPATH . 'orm',        // Object Relationship Mapping
     // 'unittest'   => MODPATH.'unittest',   // Unit testing
     // 'userguide'  => MODPATH.'userguide',  // User guide and API documentation
-    'minify' => MODPATH.'minify', // Minify
-    ));
+    'minify' => MODPATH . 'minify', // Minify
+));
 /**
  * Cookie Salt
  * @see  http://kohanaframework.org/3.3/guide/kohana/cookies
@@ -128,76 +123,74 @@ Cookie::$salt = 'jempogi123';
  * Set the routes. Each route must have a minimum of a name, a URI and a set of
  * defaults for the URI.
  */
-Route::set('defaults','((/<action>(/<id>)))',array('action'=>'index|create|login|signin'))
+Route::set('defaults', '((/<action>(/<id>)))', array('action' => 'index|create|login|signin'))
     ->defaults(array(
         'directory' => 'login',
         'controller' => 'login',
-        'action'     => 'index',
+        'action' => 'index',
     ));
 
-Route::set('login','login((/<action>(/<id>)))',array('action'=>'index|create|login|logout|signup'))
+Route::set('login', 'login((/<action>(/<id>)))', array('action' => 'index|create|login|logout|signup'))
     ->defaults(array(
         'directory' => 'login',
         'controller' => 'login',
-        'action'     => 'index',
+        'action' => 'index',
     ));
 
 
-
-Route::set('dashboard','dashboard((/<action>(/<id>)))',array('action'=>'index'))
+Route::set('dashboard', 'dashboard((/<action>(/<id>)))', array('action' => 'index'))
     ->defaults(array(
         'directory' => 'dashboard',
         'controller' => 'dashboard',
-        'action'     => 'index',
+        'action' => 'index',
     ));
 
 //USER PROFILES
-Route::set('profile','user/profile((/<action>(/<id>)))',array('action'=>'index|save|avatar'))
+Route::set('profile', 'user/profile((/<action>(/<id>)))', array('action' => 'index|save|avatar'))
     ->defaults(array(
         'directory' => 'user',
         'controller' => 'profile',
-        'action'     => 'index',
+        'action' => 'index',
     ));
 
 //CHANGE PASSWORD
-Route::set('user/change_password/<id>','user/change_password((/<action>(/<id>)))',array('action'=>'index|save'))
+Route::set('user/change_password/<id>', 'user/change_password((/<action>(/<id>)))', array('action' => 'index|save'))
     ->defaults(array(
         'directory' => 'user',
         'controller' => 'changepassword',
-        'action'     => 'index',
+        'action' => 'index',
     ));
 
 //MINISTRY
-Route::set('admin/ministry','admin/ministry((/<action>(/<id>)))',array('action'=>'index|save'))
+Route::set('admin/ministry', 'admin/ministry((/<action>(/<id>)))', array('action' => 'index|save'))
     ->defaults(array(
         'directory' => 'admin',
         'controller' => 'ministry',
-        'action'     => 'index',
+        'action' => 'index',
     ));
 
-Route::set('admin/userroles','admin/userroles((/<action>(/<id>)))',array('action'=>'index'))
+Route::set('admin/userroles', 'admin/userroles((/<action>(/<id>)))', array('action' => 'index'))
     ->defaults(array(
         'directory' => 'admin',
         'controller' => 'userroles',
-));
-    
-Route::set('admin/users','admin/users((/<action>(/<id>)))',array('action'=>'index|changestatus'))
+    ));
+
+Route::set('admin/users', 'admin/users((/<action>(/<id>)))', array('action' => 'index|changestatus'))
     ->defaults(array(
         'directory' => 'admin',
         'controller' => 'users',
-        'action'     => 'index',
+        'action' => 'index',
     ));
 
 
-if ( ! Route::cache())
-{
+if (!Route::cache()) {
     Route::set('minify', 'min(/<group>)', array(
         'group' => '[^/.,;?\n]++'
     ))
         ->defaults(array(
-            'directory'  => '',
+            'directory' => '',
             'controller' => 'minify',
-            'action'     => 'index',
-            'group'      => '',
+            'action' => 'index',
+            'group' => '',
         ));
 }

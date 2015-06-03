@@ -9,22 +9,33 @@
             </div>
             <div class="panel-body">
 
-            <?=Form::open('user/profile/avatar', array('method'=> 'post','enctype'=>'multipart/form-data','class'=>'form-change-dp','id'=>'form-change-dp'));?>
+                <?= Form::open('user/profile/avatar', array(
+                    'method' => 'post',
+                    'enctype' => 'multipart/form-data',
+                    'class' => 'form-change-dp',
+                    'id' => 'form-change-dp'
+                )); ?>
                 <div class="change_avatar">
                     <a href="#" id="click_dp" class="thumbnail">
-                        <img id="img_avatar" src="<?php ECHO EMPTY($user->profile_pic) ? URL::base() . 'media/images/default_avatar.gif' : $uploads_directory['avatar']['relative'] . Auth::instance()->get_user()->id . '/' . $user->profile_pic; ?>" alt="125x125">
+                        <img id="img_avatar"
+                             src="<?php ECHO EMPTY($user->profile_pic) ? URL::base() . 'media/images/default_avatar.gif' : $uploads_directory['avatar']['relative'] . Auth::instance()->get_user()->id . '/' . $user->profile_pic; ?>"
+                             alt="125x125">
                     </a>
                 </div>
-                <?=Form::input('avatar', '', ['id'=>'avatar', 'type'=>'file', 'class' => 'form-control', 'style'=>'display:none']);?>
+                <?= Form::input('avatar', '',
+                    ['id' => 'avatar', 'type' => 'file', 'class' => 'form-control', 'style' => 'display:none']); ?>
                 <!-- <input name="avatar" id="change_dp" type="file" style="display:none;"> -->
-            <?=Form::close();?>
+                <?= Form::close(); ?>
 
-            <div class="caption" style="text-align:center;">
-                <h3 class="full_avatar_name"><?=$user->full_name?></h3>
-                <p>Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula. Cras justo odio, dapibus ac facilisis in quam.</p>
-                <p><a href="#" class="btn btn-primary">Change</a></p>
-            </div>
-  
+                <div class="caption" style="text-align:center;">
+                    <h3 class="full_avatar_name"><?= $user->full_name ?></h3>
+
+                    <p>Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula.
+                        Cras justo odio, dapibus ac facilisis in quam.</p>
+
+                    <p><a href="#" class="btn btn-primary">Change</a></p>
+                </div>
+
             </div>
         </div>
     </div>
@@ -38,37 +49,45 @@
             </div>
             <div class="panel-body">
 
-                <div id="profile_updated_status" class="alert alert-success alert-dismissible fade in" role="alert" style="display:none;">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
-                    <i class="fa fa-user"></i> Profile Updated!<a class="anchorjs-link" href="#oh-snap!-you-got-an-error!"><span class="anchorjs-icon"></span></a>
+                <div id="profile_updated_status" class="alert alert-success alert-dismissible fade in" role="alert"
+                     style="display:none;">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                            aria-hidden="true">×</span></button>
+                    <i class="fa fa-user"></i> Profile Updated!<a class="anchorjs-link"
+                                                                  href="#oh-snap!-you-got-an-error!"><span
+                            class="anchorjs-icon"></span></a>
                 </div>
 
-                <?=Form::open('user/profile/save', array('class'=>'search_form','id'=>'user_profile_form'));?>
+                <?= Form::open('user/profile/save', array('class' => 'search_form', 'id' => 'user_profile_form')); ?>
 
-                    <div class="form-group">
-                        <label class="control-label" for="username">Username</label>
-                         <?=Form::input('username', $user->username, ['placeholder'=>'Username', 'class'=>'form-control', 'disabled'=>'disabled']);?>
-                    </div>
+                <div class="form-group">
+                    <label class="control-label" for="username">Username</label>
+                    <?= Form::input('username', $user->username,
+                        ['placeholder' => 'Username', 'class' => 'form-control', 'disabled' => 'disabled']); ?>
+                </div>
 
-                    <div class="form-group">
-                        <div class="full-name-error">
-                            <label class="control-label" for="full_name">Full Name</label>
-                            <?=Form::input('full_name', $user->full_name, ['placeholder'=>'Full Name', 'class'=>'form-control']);?>
-                        </div>
+                <div class="form-group">
+                    <div class="full-name-error">
+                        <label class="control-label" for="full_name">Full Name</label>
+                        <?= Form::input('full_name', $user->full_name,
+                            ['placeholder' => 'Full Name', 'class' => 'form-control']); ?>
                     </div>
-                    
-                    <div class="form-group">
-                        <div class="ministry-error">
+                </div>
+
+                <div class="form-group">
+                    <div class="ministry-error">
                         <label class="control-label force_display-block" for="ministry">Ministry</label>
-                            <?php echo Form::select('ministry', $ministries, $user->ministry_id, array('class'=> 'form-control') );?>
-                        </div>                      
+                        <?php echo Form::select('ministry', $ministries, $user->ministry_id,
+                            array('class' => 'form-control')); ?>
                     </div>
+                </div>
 
-                    <div class="form-group">
-                        <?=Form::button('update_profile', 'Update Profile', array('type' => 'submit', 'class'=>'btn btn-primary btn-block'));?>
-                    </div>
+                <div class="form-group">
+                    <?= Form::button('update_profile', 'Update Profile',
+                        array('type' => 'submit', 'class' => 'btn btn-primary btn-block')); ?>
+                </div>
 
-                <?=Form::close();?>
+                <?= Form::close(); ?>
 
             </div>
         </div>

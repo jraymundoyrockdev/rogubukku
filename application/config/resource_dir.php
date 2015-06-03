@@ -6,6 +6,4 @@ return array
         'absolute' => DOCROOT . 'uploads' . DIRECTORY_SEPARATOR,
         'relative' => URL::base() . 'uploads' . '/' . 'avatar' . '/'
     ],
-    'js' => [],
-    'css' => []
 );
