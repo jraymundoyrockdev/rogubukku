@@ -34,7 +34,6 @@ $('#user_profile_form').formValidation({
 
     $.post($form.attr('action'), $form.serialize(), function (result) {
         if (result.isSuccess) {
-            console.log(result);
             $that.formValidation('resetForm', false);
             $('.full_avatar_name').text(result.updatedUser);
             $("#profile_updated_status").show().delay(1000).fadeOut(2000);

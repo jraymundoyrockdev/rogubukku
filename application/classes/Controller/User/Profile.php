@@ -3,23 +3,25 @@
 class Controller_User_Profile extends Controller_Base
 {
 
+    protected $_users;
+
+    protected $_ministry;
+
     public function before()
     {
         $this->_is_logged_in();
 
         parent::before();
+        $this->_users = ORM::factory('Users');
+        $this->_ministry = ORM::factory('Ministry');
 
         $this->template->resourceModule = 'profile';
     }
 
     public function action_index()
     {
-        $user = ORM::factory('Users', Auth::instance()->get_user()->id);
-        $ministries = ORM::factory('Ministry')->find_all()->as_array('id', 'ministry');
-
-        if (HTTP_Request::POST == $this->request->method()) {
-            $post = $this->request->post();
-        }
+        $user = $this->_users->where('id', '=', Auth::instance()->get_user()->id)->find();
+        $ministries = $this->_ministry->find_all()->as_array('id', 'ministry');
 
         $this->template->body = View::factory('user/profile')
             ->bind('user', $user)
@@ -31,20 +33,10 @@ class Controller_User_Profile extends Controller_Base
     public function action_save()
     {
         if (HTTP_Request::POST == $this->request->method()) {
+            $result = $this->_users->roguSave(Rogubukku::mergeCurrentlyLoggedInUser($this->request->post()));
 
-            $user_id = Auth::instance()->get_user()->id;
-            $post = $this->request->post();
-            $result = ['isSuccess' => false, 'updatedUser' => '', 'errorFields' => []];
-
-            try {
-                $user = new Model_Users;
-                $result['isSuccess'] = $user->save_profile($user_id, $post) ? true : false;
-                $result['updatedUser'] = $post['full_name'];
-
-            } catch (ORM_Validation_Exception $e) {
-                $result['errorFields'] = $e->errors('models');
-            } catch (Exception $error) {
-                $result['errorFields'] = $error->getMessage();
+            if (!empty($result['objectModel'])) {
+                $result['updatedUser'] = $result['objectModel']->get('full_name');
             }
 
             $this->responseAjaxResult($result);

@@ -47,4 +47,7 @@ Class Controller_Base extends Controller_Template
         $this->response->headers('Content-type', 'application/json; charset=' . Kohana::$charset);
         $this->response->body(json_encode($message));
     }
+
+
+
 }//end of class

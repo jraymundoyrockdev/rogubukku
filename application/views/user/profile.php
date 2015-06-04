@@ -47,9 +47,8 @@
                      style="display:none;">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
                             aria-hidden="true">×</span></button>
-                    <i class="fa fa-user"></i> Profile Updated!<a class="anchorjs-link"
-                                                                  href="#oh-snap!-you-got-an-error!"><span
-                            class="anchorjs-icon"></span></a>
+                    <i class="fa fa-user"></i> Profile Updated!<a class="anchorjs-link">
+                        <span class="anchorjs-icon"></span></a>
                 </div>
 
                 <?= Form::open('user/profile/save', array('class' => 'search_form', 'id' => 'user_profile_form')); ?>

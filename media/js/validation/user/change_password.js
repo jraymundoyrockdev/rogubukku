@@ -65,7 +65,7 @@ $(document).ready(function () {
                 }
             },
 
-            new_password: {
+            password: {
                 row: '.new-password-error',
                 validators: {
                     notEmpty: {
@@ -85,7 +85,7 @@ $(document).ready(function () {
                         message: 'Confirm new password is required.'
                     },
                     identical: {
-                        field: 'new_password',
+                        field: 'password',
                         message: 'Confirm new password did not match.'
                     }
                 }

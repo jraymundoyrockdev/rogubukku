@@ -85,35 +85,6 @@ class Model_Users extends Model_User
     }
 
 
-    public function save_profile($user_id, $fields = array())
-    {
-        $user = ORM::factory('Users', $user_id);
-
-        if ($user->loaded()) {
-            $user->full_name = $fields['full_name'];
-            $user->ministry_id = $fields['ministry'];
-
-            return $user->save();
-        }
-    }
-
-
-    public function save_password($user_id, $fields = array())
-    {
-        $user = ORM::factory('Users', $user_id);
-
-        if ($user->loaded()) {
-
-            if ($user->password == $fields['old_password']) {
-                $user->password = $fields['new_password'];
-
-                return $user->save();
-            }
-
-            return false;
-        }
-    }
-
     public function save_dp($user_id, $file_name)
     {
         $user = ORM::factory('Users', $user_id);

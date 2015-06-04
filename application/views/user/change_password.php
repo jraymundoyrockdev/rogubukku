@@ -37,8 +37,8 @@
 
                 <div class="form-group">
                     <div class="new-password-error">
-                        <label class="control-label" for="new_password">New Password</label>
-                        <?= Form::password('new_password', '',
+                        <label class="control-label" for="password">New Password</label>
+                        <?= Form::password('password', '',
                             ['placeholder' => 'New Password', 'class' => 'form-control','autocomplete'=>'off']); ?>
                     </div>
                 </div>

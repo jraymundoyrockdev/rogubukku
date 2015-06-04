@@ -30,12 +30,8 @@ class Controller_User_ChangePassword extends Controller_Base
                 'objectModel' => []
             ];
 
-            $post = $this->request->post();
-
-            if($this->_validatePasswords($post)){
-                $post = array_merge(['id'=>Auth::instance()->get_user()->id],$post);
-                $post['password'] = Auth::instance()->hash($post['new_password']);
-
+            if($this->_validatePasswords($this->request->post())){
+                $post = Rogubukku::mergeCurrentlyLoggedInUser($this->request->post());
                 $result = $this->_users->roguSave($post);
             }
 
@@ -68,7 +64,7 @@ class Controller_User_ChangePassword extends Controller_Base
     }
 
     private function _validateNewPassword($post){
-        if($post['new_password']==$post['confirm_new_password']){
+        if($post['password']==$post['confirm_new_password']){
             return true;
         }
         return false;
