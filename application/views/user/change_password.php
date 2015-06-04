@@ -23,6 +23,7 @@
                             aria-hidden="true">×</span></button>
                     <i class="fa fa-exclamation-triangle"></i> Old password mismatch.
                 </div>
+
                 <?= Form::open('user/change_password/save',
                     array('class' => 'search_form', 'id' => 'change_password_form')); ?>
 

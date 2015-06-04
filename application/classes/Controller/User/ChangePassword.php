@@ -19,6 +19,7 @@ class Controller_User_ChangePassword extends Controller_Base
         $this->template->body = View::factory('user/change_password');
     }
 
+    //@todo in the future this must be handled backend like an endpoint api
     public function action_save()
     {
         if (HTTP_Request::POST == $this->request->method()) {
