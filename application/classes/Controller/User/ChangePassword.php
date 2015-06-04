@@ -3,45 +3,73 @@
 class Controller_User_ChangePassword extends Controller_Base
 {
 
+    protected $_users;
+
     public function before()
     {
         $this->_is_logged_in();
 
         parent::before();
-
+        $this->_users =  ORM::factory('Users');
         $this->template->resourceModule = 'change-password';
     }
 
     public function action_index()
     {
-        $user = ORM::factory('Users', Auth::instance()->get_user()->id);
-
-        $this->template->body = View::factory('user/change_password')
-            ->bind('user', $user);
+        $this->template->body = View::factory('user/change_password');
     }
 
     public function action_save()
     {
-
-        $auth = Auth::instance();
         if (HTTP_Request::POST == $this->request->method()) {
-            $user_id = $auth->get_user()->id;
+
+            $result = [
+                'isSuccess' => false,
+                'errorFields' => [],
+                'objectModel' => []
+            ];
 
             $post = $this->request->post();
-            $result = ['isSuccess' => false, 'errorFields' => []];
-            $post['old_password'] = $auth->hash($post['old_password']);
 
-            try {
-                $user_model = new Model_Users;
-                $result['isSuccess'] = $user_model->save_password($user_id, $post) ? true : false;
-            } catch (ORM_Validation_Exception $e) {
-                $result['errorFields'] = $e->errors('models');
-            } catch (Exception $error) {
-                $result['errorFields'] = $error->getMessage();
+            if($this->_validatePasswords($post)){
+                $post = array_merge(['id'=>Auth::instance()->get_user()->id],$post);
+                $post['password'] = Auth::instance()->hash($post['new_password']);
+
+                $result = $this->_users->roguSave($post);
             }
 
             $this->responseAjaxResult($result);
         }
     }
 
+    private function _validatePasswords($post){
+
+        if(! $this->_validateOldPassword($post)){
+            return false;
+        }
+
+        if(! $this->_validateNewPassword($post)){
+            return false;
+        }
+
+        return true;
+    }
+
+    private function _validateOldPassword($post){
+
+        $oldPassword = Auth::instance()->hash($post['old_password']);
+
+        if($oldPassword  ==  Auth::instance()->get_user()->password){
+            return true;
+        }
+
+        return false;
+    }
+
+    private function _validateNewPassword($post){
+        if($post['new_password']==$post['confirm_new_password']){
+            return true;
+        }
+        return false;
+    }
 } // End of class

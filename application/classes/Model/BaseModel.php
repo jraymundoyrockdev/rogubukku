@@ -10,7 +10,7 @@ class Model_BaseModel extends ORM
 
     protected function _prepareSave($fields, Array $fillable,$primaryKey)
     {
-        if (in_array($primaryKey,$fields)) {
+        if (array_key_exists($primaryKey,$fields)) {
             $this->where($primaryKey, '=', $fields[$primaryKey])->find();
         }
 

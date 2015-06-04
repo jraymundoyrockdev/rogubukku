@@ -20,18 +20,11 @@ class Controller_Admin_Users extends Controller_Base
 
     public function action_changestatus()
     {
-        $message = ['isSuccess' => 'false'];
-
         if (HTTP_Request::POST == $this->request->method()) {
-            $post = $this->request->post();
-
             $result = $this->_users->roguSave($this->request->post());
-
-            $users->active_flag = ($post['activeFlag'] == 'true') ? 'Y' : 'N';
-            $message['isSuccess'] = ($users->save()) ? true : false;
         }
 
-        $this->responseAjaxResult($message);
+        $this->responseAjaxResult($result);
     }
 
 

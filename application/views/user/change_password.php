@@ -30,7 +30,7 @@
                     <div class="old-password-error">
                         <label class="control-label" for="username">Old Password</label>
                         <?= Form::password('old_password', '',
-                            ['placeholder' => 'Old Password', 'class' => 'form-control']); ?>
+                            ['placeholder' => 'Old Password', 'class' => 'form-control','autocomplete'=>'off']); ?>
                     </div>
                 </div>
 
@@ -38,7 +38,7 @@
                     <div class="new-password-error">
                         <label class="control-label" for="new_password">New Password</label>
                         <?= Form::password('new_password', '',
-                            ['placeholder' => 'New Password', 'class' => 'form-control']); ?>
+                            ['placeholder' => 'New Password', 'class' => 'form-control','autocomplete'=>'off']); ?>
                     </div>
                 </div>
 
@@ -46,7 +46,7 @@
                     <div class="confirm-new-password-error">
                         <label class="control-label" for="confirm_new_password">Confirm New Password</label>
                         <?= Form::password('confirm_new_password', '',
-                            ['placeholder' => 'Confirm New Password', 'class' => 'form-control']); ?>
+                            ['placeholder' => 'Confirm New Password', 'class' => 'form-control','autocomplete'=>'off']); ?>
                     </div>
                 </div>
 
