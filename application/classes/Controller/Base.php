@@ -22,6 +22,7 @@ Class Controller_Base extends Controller_Template
         $this->template->resourceModule = '';
 
         $this->avatarDirectory = Kohana::$config->load('path-resource')->get('avatar');
+        $this->imagesDirectory = Kohana::$config->load('path-resource')->get('images');
 
     }
 

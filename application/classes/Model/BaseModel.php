@@ -5,18 +5,29 @@ class Model_BaseModel extends ORM
     protected $_modelResults = [
         'isSuccess' => false,
         'errorFields' => [],
-        'otherMessages' => []
+        'objectModel' => []
     ];
 
-    protected function _prepareSave($fields,$fillable){
+    protected function _prepareSave($fields, Array $fillable,$primaryKey)
+    {
+        if (in_array($primaryKey,$fields)) {
+            $this->where($primaryKey, '=', $fields[$primaryKey])->find();
+        }
+
         $this->_baseSave($this->values($fields, $fillable));
+
         return $this->_modelResults;
+
     }
 
     private function _baseSave($model)
     {
         try {
-            $this->_modelResults['isSuccess'] = $model->save()->id;
+            $this->_modelResults['objectModel'] = $model->save();
+
+            if (!empty($this->_modelResults['objectModel'])) {
+                $this->_modelResults['isSuccess'] = true;
+            }
         } catch (ORM_Validation_Exception $e) {
             $this->_modelResults['errorFields'] = $e->errors('models');
         } catch (Exception $error) {

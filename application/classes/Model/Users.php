@@ -21,6 +21,17 @@ class Model_Users extends Model_User
         'profile_pic' => null
     );
 
+    protected $_fillable = array(
+        'ministry_id',
+        'full_name',
+        'username',
+        'password',
+        'logins',
+        'last_login',
+        'created_date',
+        'active_flag',
+        'profile_pic'
+    );
 
     protected $_belongs_to = array(
         'ministry' => array(
@@ -55,6 +66,11 @@ class Model_Users extends Model_User
         );
     }
 
+
+    public function roguSave($fields)
+    {
+        return $this->_prepareSave($fields, $this->_fillable, $this->_primary_key);
+    }
 
     public function username_available($username)
     {

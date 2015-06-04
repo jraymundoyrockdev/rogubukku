@@ -15,7 +15,7 @@ class Controller_User_Profile extends Controller_Base
     public function action_index()
     {
         $user = ORM::factory('Users', Auth::instance()->get_user()->id);
-        $ministries = ORM::factory('Ministry')->find_all()->as_array('ministry_id', 'ministry');
+        $ministries = ORM::factory('Ministry')->find_all()->as_array('id', 'ministry');
 
         if (HTTP_Request::POST == $this->request->method()) {
             $post = $this->request->post();
@@ -24,7 +24,8 @@ class Controller_User_Profile extends Controller_Base
         $this->template->body = View::factory('user/profile')
             ->bind('user', $user)
             ->bind('ministries', $ministries)
-            ->bind('avatarDirectory', $this->avatarDirectory);
+            ->bind('avatarDirectory', $this->avatarDirectory)
+            ->bind('imagesDirectory', $this->imagesDirectory);
     }
 
     public function action_save()

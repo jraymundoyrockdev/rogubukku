@@ -32,7 +32,7 @@ class Model_Ministry extends Model_AbstractModel
 
     public function roguSave($fields)
     {
-        return $this->_prepareSave($fields, $this->_fillable);
+        return $this->_prepareSave($fields, $this->_fillable, $this->_primary_key);
     }
 
 
