@@ -19,9 +19,11 @@ class Controller_Admin_Ministry extends Controller_Base
     {
         if (HTTP_Request::POST == $this->request->method()) {
 
-            $post = $this->request->post();
+            $result = Model::factory('Rogubukku')->roguSave($this->request->post());
+            die;
+            $result = ORM::factory('Ministry')->roguSave($this->request->post());
 
-            $result = ['isSuccess' => false, 'errorFields' => []];
+            /*$result = ['isSuccess' => false, 'errorFields' => []];
 
             try {
                 $ministry = new Model_Ministry;
@@ -33,7 +35,7 @@ class Controller_Admin_Ministry extends Controller_Base
                 $result['errorFields'] = $e->errors('models');
             } catch (Exception $error) {
                 $result['errorFields'] = $error->getMessage();
-            }
+            }*/
 
             $this->responseAjaxResult($result);
         }

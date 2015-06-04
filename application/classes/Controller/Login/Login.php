@@ -16,6 +16,12 @@ class Controller_Login_Login extends Controller_Base
 
     public function action_index()
     {
+
+      //  $result = Model_Rogubukku::factory('Ministry')->roguSave(['ministry'=>'this is a test ministry']);
+
+        $ministries = ORM::factory('Ministry')->roguSave(['ministry'=>'ssssfd','testr'=>'asdf']);
+
+        print_r($ministries);die;
         $this->_redirect_if_logged_in();
 
         if (HTTP_Request::POST == $this->request->method()) {

@@ -2,13 +2,26 @@
 
 class Model_BaseModel extends ORM
 {
+    protected $_modelResults = [
+        'isSuccess' => false,
+        'errorFields' => [],
+        'otherMessages' => []
+    ];
 
-    public function is_field_available($field, $field_value, $model)
-    {
-        $is_exists = ORM::factory($model, array($field => $field_value))->loaded();
-
-        return ($is_exists) ? false : true;
+    protected function _prepareSave($fields,$fillable){
+        $this->_baseSave($this->values($fields, $fillable));
+        return $this->_modelResults;
     }
 
+    private function _baseSave($model)
+    {
+        try {
+            $this->_modelResults['isSuccess'] = $model->save()->id;
+        } catch (ORM_Validation_Exception $e) {
+            $this->_modelResults['errorFields'] = $e->errors('models');
+        } catch (Exception $error) {
+            $this->_modelResults['errorFields'] = $error->getMessage();
+        }
+    }
 
-} // End User Model
+} // End Base Model
