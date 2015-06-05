@@ -99,26 +99,6 @@ $(document).ready(function () {
             var $form = $(e.target);
             var $that = $(this);
 
-<<<<<<< HEAD
-    $.post($form.attr('action'), $form.serialize(), function(result) {
-        if(result.isSuccess){
-            console.log(result);
-            $that.formValidation('resetForm', true);
-            $("#password_updated_status").show().delay(1000).fadeOut(2000);
-        }
-        else{
-            $.each(result.errorFields, function(fieldName, fieldMessage) {
-                $that.formValidation('updateStatus', fieldName, 'INVALID', 'notEmpty');
-                $('small[data-fv-for=' + fieldName + ']').text(fieldMessage).addClass('removableFromAjax');
-            });
-
-            //$that.formValidation('resetForm', true);
-            $("#password_not_updated_status").show().delay(1000).fadeOut(2000);
-        }
-        
-    }, 'json');
-});});
-=======
             $.post($form.attr('action'), $form.serialize(), function (result) {
                 if (result.isSuccess) {
                     console.log(result);
@@ -138,4 +118,4 @@ $(document).ready(function () {
             }, 'json');
         });
 });
->>>>>>> story_3_42
+

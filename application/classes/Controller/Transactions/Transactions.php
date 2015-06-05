@@ -7,20 +7,16 @@ class Controller_Transactions_Transactions extends Controller_Base {
 		$this->_is_logged_in();
 
 		parent::before();
-
-		$this->template->loc_styles = ['/media/css/bootstrap_validator/formValidation.css'=>'screen',
-									   '/media/css/datepicker/bootstrap-datetimepicker.css'=>'screen'];
-		
-		$this->template->loc_scripts = ['/media/js/bootstrap_validator/dist/formValidation.js',
-                                        '/media/js/bootstrap_validator/dist/bootstrap.js',
-                                        '/media/js/validation/transactions/transactions.js',
-                                        '/media/js/transactions/transactions.js',
-                                        '/media/js/datepicker/moment.js',
-                                        '/media/js/datepicker/bootstrap-datetimepicker.js'];
+        
+        $this->template->resourceModule = 'transactions';
 	}
 	
 	public function action_index()
 	{
+        $auth = Auth::instance();
+
+        $user = ORM::factory('Users', $user_id = $auth->get_user()->id);
+
 		$transaction_type = [
 			'print' => 'Print',
 			'encode' => 'Encode',
@@ -28,7 +24,12 @@ class Controller_Transactions_Transactions extends Controller_Base {
 			'others' => 'Others'
 		];
 
-		$this->template->body = View::factory('transactions/transactions')->bind('transaction_type', $transaction_type);
+        $ministries = ORM::factory('Ministry')->find_all();
+
+		$this->template->body = View::factory('transactions/transactions')
+                                    ->bind('transaction_type', $transaction_type)
+                                    ->bind('ministries', $ministries)
+                                    ->bind('user', $user);
 	}
 
 	public function action_save()

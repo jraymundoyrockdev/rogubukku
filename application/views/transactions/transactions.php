@@ -1,10 +1,9 @@
 <div class="row">
-    <div class="col-lg-12">
+    <div class="col-lg-7">
         <div class="panel panel-primary">
             <div class="panel-heading">
                 <h3 class="panel-title">
                     <i class="fa fa-tasks"></i> Transactions
-                    <span class="pull-right"><i class="fa fa-list"></i> <a href="#" style="color:#FFFFFF">Recent Transactions</a></span>
                 </h3>
 
             </div>
@@ -28,6 +27,31 @@
                         <div class="transaction-type-error">
                             <label class="control-label" for="transaction">Transaction Type</label>
                             <?=Form::select('transaction_type', $transaction_type,'print' ,['placeholder'=>'Transaction', 'class'=>'form-control', 'id'=>'transaction_type']);?>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="ministry-type-error">
+                            <label class="control-label" for="ministry">Ministry</label>
+                            <span style="color:#2fa4e7" class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="right" title="Ministry involve in this transaction."></span>
+                           <select class="form-control" name="ministry_id">
+                                <?php 
+                                    $i = 1;
+                                    $selected = '';
+
+                                    foreach ($ministries as $m): 
+
+                                        if($i == $user->ministry_id) 
+                                            $selected='selected';
+
+                                        else
+                                            $selected='';
+                                ?>
+                                        <option value="<?=$i++?>" <?=$selected?>><?=$m->ministry?></option>
+
+                                <?php endforeach; ?>
+
+                           </select>
                         </div>
                     </div>
 
@@ -69,18 +93,38 @@
                         </div>
                     </div>
                     <?=Form::hidden('save_transaction_type', '', ['id'=>'save_transaction_type', 'readonly'=>'readonly']);?>
-                     <div class="col-lg-6">
-                    <div class="form-group">
-                        <?=Form::button('save_transaction', 'Save & Add New', array('value'=>'save_add_new', 'type' => 'submit', 'class'=>'btn btn-primary btn-block save_transaction'));?>
-                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <?=Form::button('save_transaction', 'Save & Add New', array('value'=>'save_add_new', 'type' => 'submit', 'class'=>'btn btn-primary btn-block save_transaction'));?>
+                        </div>
                     </div>
                     <div class="col-lg-6">
-                    <div class="form-group">
-                        <?=Form::button('save_transaction', 'Save & Exit', array('value'=>'save_exit', 'type' => 'submit', 'class'=>'btn btn-warning btn-block save_transaction'));?>
-                    </div>
+                        <div class="form-group">
+                            <?=Form::button('save_transaction', 'Save & Exit', array('value'=>'save_exit', 'type' => 'submit', 'class'=>'btn btn-warning btn-block save_transaction'));?>
+                        </div>
                     </div>
                 <?=Form::close();?>
 
+            </div>
+        </div>
+    </div>
+
+    <!--RECENT TRANSACTIONS LIST-->
+    <div class="col-lg-5">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    <i class="fa fa-list"></i> Recent Transactions
+                </h3>
+            </div>
+
+            <div class="panel-body">
+                <div class="list-group">
+                  <a href="#" class="list-group-item">
+                    <h4 class="list-group-item-heading">List group item heading</h4>
+                    <p class="list-group-item-text">...</p>
+                  </a>
+                </div>
             </div>
         </div>
     </div>

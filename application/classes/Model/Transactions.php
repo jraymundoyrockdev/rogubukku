@@ -34,8 +34,6 @@ class Model_Transactions extends Model_BaseModel {
 
             'transaction' => array(
                 array('not_empty'),
-                array('min_length', array(':value', 5)),
-                array('max_length', array(':value', 30)),
             ),
 
             'reason' => array(
@@ -53,7 +51,7 @@ class Model_Transactions extends Model_BaseModel {
     {
         $user = ORM::factory('Users', $user_id);
         $this->transaction      = $fields['transaction_type'];
-        $this->ministry_id      = (int)$user->ministry_id;
+        $this->ministry_id      = (int)$fields['ministry_id'];
         $this->colored          = $fields['colored'];
         $this->non_colored      = $fields['non_colored'];
         $this->reason           = $fields['reason'];

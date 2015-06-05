@@ -23,7 +23,7 @@ $("#transaction_type").change(function(){
         colored.removeClass("glyphicon-remove");
 
         $('.print_color').removeClass('has-feedback has-error');
-
+        //$('.colored_fields_input').val('');
         $('.colored_fields').fadeOut();
     }
 	
@@ -38,7 +38,7 @@ $("#transaction_type").change(function(){
 //SET DATETIME PICKER OPTIONS
 $(function () {
     $('#datetimepicker1').datetimepicker({
-        defaultDate: Date(),
+        //defaultDate: Date(),
         disabledDates: [
             moment("12/25/2013"),
             new Date(2013, 11 - 1, 21),

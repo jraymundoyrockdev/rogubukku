@@ -35,6 +35,7 @@ INSERT INTO `ministry` VALUES ('4', 'GTTAM');
 INSERT INTO `ministry` VALUES ('5', 'Usher');
 INSERT INTO `ministry` VALUES ('6', 'YROCK');
 INSERT INTO `ministry` VALUES ('7', 'Sunday School');
+INSERT INTO `ministry` VALUES ('8', 'All');
 
 -- ----------------------------
 -- Table structure for roles
