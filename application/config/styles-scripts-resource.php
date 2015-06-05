@@ -35,9 +35,11 @@ return array
         ],
         //MODULE-PROFILE
         'profile-scripts' => [
+            '//media/js/modules/user/profile.js',
             '//media/js/validation/user/profile.js',
             '//media/js/lib/bootbox/bootbox.min.js',
-            '//media/js/lib/jquery/jquery.form.js'
+            '//media/js/lib/jquery/jquery.form.js',
+            
         ],
         //MODULE-CHANGE-PASSWORD
         'change-password-scripts' => [
