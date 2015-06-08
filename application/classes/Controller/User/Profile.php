@@ -3,10 +3,20 @@
 class Controller_User_Profile extends Controller_Base
 {
 
+    /**
+     * @var Users
+     */
     protected $_users;
 
+    /**
+     * @var Ministry
+     */
     protected $_ministry;
 
+    /**
+     * default construct.
+     * Set global config variables
+     */
     public function before()
     {
         $this->_is_logged_in();
@@ -18,6 +28,11 @@ class Controller_User_Profile extends Controller_Base
         $this->template->resourceModule = 'profile';
     }
 
+    /**
+     * Display Use Profile form
+     *
+     * @return Response
+     */
     public function action_index()
     {
         $user = $this->_users->where('id', '=', Auth::instance()->get_user()->id)->find();
@@ -30,6 +45,11 @@ class Controller_User_Profile extends Controller_Base
             ->bind('imagesDirectory', $this->imagesDirectory);
     }
 
+    /**
+     * Stores Updated data to storage
+     *
+     * @return Response
+     */
     public function action_save()
     {
         if (HTTP_Request::POST == $this->request->method()) {
@@ -43,6 +63,11 @@ class Controller_User_Profile extends Controller_Base
         }
     }
 
+    /**
+     * Stores Updated data to storage
+     *
+     * @return Response
+     */
     public function action_avatar()
     {
 
@@ -70,11 +95,21 @@ class Controller_User_Profile extends Controller_Base
         }
     }
 
+    /**
+     * Creates an avatar directory
+     *
+     * @return string
+     */
     private function _getUserAvatarDirectory()
     {
         return $this->avatarDirectory['absolute'] . Auth::instance()->get_user()->id . DIRECTORY_SEPARATOR;
     }
 
+    /**
+     * Gets the newly created avatar directory
+     *
+     * @return string
+     */
     private function _getUserNewAvatar($result)
     {
         return $this->avatarDirectory['relative'] . $result['objectModel']->get('id') . '/' . $result['objectModel']->get('profile_pic');
