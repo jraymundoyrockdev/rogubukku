@@ -1,7 +1,20 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
+/**
+ * Database Connection that uses PDO. Deprecating old php "mysql" built methods.
+ * A more secured connection to database.
+ */
 class Database_PDO_MySQL extends Database_PDO
 {
+    /**
+     * List Columns.
+     *
+     * @param $table string table name
+     * @param $like string
+     * @param $add_prefix bool
+     *
+     * @return Array
+     */
     public function list_columns($table, $like = null, $add_prefix = true)
     {
         // Quote the table name

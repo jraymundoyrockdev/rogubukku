@@ -8,6 +8,16 @@ class Controller_Login_Login extends Controller_Base
 {
 
     /**
+     * @var Users
+     */
+    protected $_users;
+
+    /**
+     * @var Roles_Users
+     */
+    protected $_rolesUsers;
+
+    /**
      * default construct.
      * Set global config variables
      */
@@ -16,9 +26,9 @@ class Controller_Login_Login extends Controller_Base
         $this->template = 'templates/login';
 
         parent::before();
-
+        $this->_users = ORM::factory('Users');
+        $this->_rolesUsers = ORM::factory('Roles_Users');
         $this->template->resourceModule = 'login';
-
         $this->template->body = View::factory('login/login');
     }
 
@@ -64,22 +74,18 @@ class Controller_Login_Login extends Controller_Base
         if (HTTP_Request::POST == $this->request->method()) {
 
             $this->request->post('username');
-            $result = ['isSuccess' => false, 'signupUser' => null, 'errorFields' => []];
 
-            try {
-                $user = new Model_Users;
-                $user->create_user($this->request->post(), ['username', 'password', 'full_name']);
+            $userResult = $this->_users->roguSave($this->request->post());
 
-                $roles = new Model_Roles_Users;
-                $roles->create_user_roles($user->id);
+            if (! $userResult['isSuccess']) {
+                return $this->responseAjaxResult($userResult);
+            }
 
-                $result['isSuccess'] = true;
-                $result['signupUser'] = $user->full_name;
+            $data = ['role_id' => 1, 'user_id' => $userResult['objectModel']->get('id')];
+            $result = $this->_rolesUsers->roguSave($data);
 
-            } catch (ORM_Validation_Exception $e) {
-                $result['errorFields'] = $e->errors('models');
-            } catch (Exception $error) {
-                $result['errorFields'] = $error->getMessage();
+            if ($result['isSuccess']) {
+                $result['signupUser'] = $userResult['objectModel']->get('full_name');
             }
 
             $this->responseAjaxResult($result);

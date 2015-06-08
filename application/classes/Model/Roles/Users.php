@@ -5,7 +5,7 @@
  *
  * Users Roles Instance table
  */
-class Model_Roles_Users extends ORM
+class Model_Roles_Users extends Model_AbstractModel
 {
     protected $_primary_key = 'user_id';
 
@@ -13,6 +13,8 @@ class Model_Roles_Users extends ORM
         'user_id' => null,
         'role_id' => null,
     );
+
+    protected $_fillable = array('user_id','role_id');
 
     protected $_table_name = 'roles_users';
 
@@ -23,12 +25,10 @@ class Model_Roles_Users extends ORM
         ),
     );
 
-    public function create_user_roles($user_id, $user_role = 1)
+    public function roguSave($fields)
     {
-        $this->user_id = $user_id;
-        $this->role_id = $user_role;
-
-        return $this->save();
+        return $this->_prepareSave($fields, $this->_fillable, $this->_primary_key);
     }
+
 
 }//end of class

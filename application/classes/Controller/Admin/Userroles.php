@@ -8,12 +8,18 @@ class Controller_Admin_Userroles extends Controller_Base
 {
 
     /**
+     * @var Role
+     */
+    protected $_role;
+
+    /**
      * default construct.
      * Set global config variables
      */
     public function before()
     {
         parent::before();
+        $this->_role = ORM::factory('Role');
     }
 
     /**
@@ -23,8 +29,8 @@ class Controller_Admin_Userroles extends Controller_Base
      */
     public function action_index()
     {
-        $userroles = ORM::factory('Role')->find_all();
-        $this->template->body = View::factory('admin/userroles')->bind('userroles', $userroles);
+        $userRoles =  $this->_role->find_all();
+        $this->template->body = View::factory('admin/userroles')->bind('userroles', $userRoles);
 
     }
 

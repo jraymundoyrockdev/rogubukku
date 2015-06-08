@@ -16,4 +16,8 @@ class Model_Role extends Model_Auth_Role
 
     protected $_table_name = 'roles';
 
+    public function roguSave($fields)
+    {
+        return $this->_prepareSave($fields, $this->_fillable, $this->_primary_key);
+    }
 }

@@ -2,8 +2,6 @@
 
 Class Controller_Base extends Controller_Template
 {
-
-    // Define the template to use
     public $template = 'templates/main';
 
     protected $uploadsDirectory;

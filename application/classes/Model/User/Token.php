@@ -17,4 +17,9 @@ class Model_User_Token extends Model_Auth_User_Token
 
     protected $_table_name = 'user_tokens';
 
+    public function roguSave($fields)
+    {
+        return $this->_prepareSave($fields, $this->_fillable, $this->_primary_key);
+    }
+
 } // End User Token Model

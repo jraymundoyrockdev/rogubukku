@@ -12,6 +12,11 @@ class Controller_Admin_Users extends Controller_Base
     protected $_roles_users;
 
     /**
+     * @var Users
+     */
+    protected $_users;
+
+    /**
      * default construct.
      * Set global config variables
      */

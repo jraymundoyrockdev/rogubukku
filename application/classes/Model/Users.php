@@ -74,4 +74,22 @@ class Model_Users extends Model_User
         return $this->_prepareSave($fields, $this->_fillable, $this->_primary_key);
     }
 
+    /**
+     * Checks Username availability.
+     * This is default to be here. Any interactions to User model without this wil not work.
+     *
+     * @param $username string Username
+     * @return bool
+     *
+     */
+    public function username_available($username)
+    {
+        if (!Auth::instance()->logged_in()) {
+            $is_exists = ORM::factory('Users', array('username' => $username))->loaded();
+            return ($is_exists) ? false : true;
+        }
+        return true;
+
+    }
+
 } // End User Model

@@ -24,7 +24,7 @@ class Model_BaseModel extends ORM
      * @param $fillable array The fields from the calling Model that is fillable for mass assignment
      * @param $primaryKey int Calling Model Primary Key
      *
-     * @return array
+     * @return Array
      */
     protected function _prepareSave($fields, Array $fillable,$primaryKey)
     {
@@ -43,7 +43,7 @@ class Model_BaseModel extends ORM
      *
      * @param $model The instantiated model
      *
-     * @return array of results
+     * @return Array
      */
     private function _baseSave($model)
     {

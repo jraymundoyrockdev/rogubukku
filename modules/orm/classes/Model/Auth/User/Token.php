@@ -7,7 +7,7 @@
  * @copyright  (c) 2007-2012 Kohana Team
  * @license    http://kohanaframework.org/license
  */
-class Model_Auth_User_Token extends ORM {
+class Model_Auth_User_Token extends Model_AbstractModel {
 
 	// Relationships
 	protected $_belongs_to = array(
