@@ -1,13 +1,30 @@
 <?php defined('APPPATH') OR die('No direct access allowed.');
 
+/**
+ * This is the Base Model of all the Concrete Class Model. Basically this handles CRUD methods.
+ *
+ */
 class Model_BaseModel extends ORM
 {
+
+    /**
+     * Default values for responses via ajax and form submission
+     */
     protected $_modelResults = [
         'isSuccess' => false,
         'errorFields' => [],
         'objectModel' => []
     ];
 
+    /**
+     * Prepares saving of mass assignments. If $primaryKey exists then to update else insert new.
+     *
+     * @param $fields array The payload coming from the post data
+     * @param $fillable array The fields from the calling Model that is fillable for mass assignment
+     * @param $primaryKey int Calling Model Primary Key
+     *
+     * @return array
+     */
     protected function _prepareSave($fields, Array $fillable,$primaryKey)
     {
         if (array_key_exists($primaryKey,$fields)) {
@@ -20,6 +37,13 @@ class Model_BaseModel extends ORM
 
     }
 
+    /**
+     * Saves/Updates the model
+     *
+     * @param $model The instantiated model
+     *
+     * @return array of results
+     */
     private function _baseSave($model)
     {
         try {
