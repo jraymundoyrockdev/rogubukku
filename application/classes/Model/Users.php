@@ -1,13 +1,15 @@
 <?php defined('APPPATH') OR die('No direct access allowed.');
 
-# application/Model/User.php
+/**
+ * Model Users
+ *
+ * Users Instance table
+ */
 class Model_Users extends Model_User
 {
 
     protected $_primary_key = 'id';
-
     protected $_table_name = 'users';
-
     protected $_table_columns = array(
         'id' => null,
         'ministry_id' => null,
@@ -70,27 +72,6 @@ class Model_Users extends Model_User
     public function roguSave($fields)
     {
         return $this->_prepareSave($fields, $this->_fillable, $this->_primary_key);
-    }
-
-    public function username_available($username)
-    {
-
-        if (!Auth::instance()->logged_in()) {
-            $is_exists = ORM::factory('Users', array('username' => $username))->loaded();
-
-            return ($is_exists) ? false : true;
-        }
-
-        return true;
-    }
-
-
-    public function save_dp($user_id, $file_name)
-    {
-        $user = ORM::factory('Users', $user_id);
-        $user->profile_pic = $file_name;
-
-        return $user->save();
     }
 
 } // End User Model

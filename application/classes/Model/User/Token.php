@@ -1,5 +1,9 @@
 <?php
-
+/**
+ * Model Users Token
+ *
+ * Users Token Instance table
+ */
 class Model_User_Token extends Model_Auth_User_Token
 {
     protected $_table_columns = array(

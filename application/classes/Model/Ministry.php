@@ -1,5 +1,10 @@
 <?php defined('APPPATH') OR die('No direct access allowed.');
 
+/**
+ * Model Ministry
+ *
+ * Ministry Instance table
+ */
 class Model_Ministry extends Model_AbstractModel
 {
     protected $_primary_key = 'id';
@@ -29,6 +34,7 @@ class Model_Ministry extends Model_AbstractModel
             ),
         );
     }
+
 
     public function roguSave($fields)
     {

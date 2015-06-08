@@ -106,7 +106,7 @@
                         <ul class="dropdown-menu">
                             <li>
                                 <a href="../reports/errors.html">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">49</span>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">47</span>
                                 </a>
                             </li>
                             <li>
@@ -136,10 +136,10 @@
                                 <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-643035915"></a>
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-223317560"></a>
                                 <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
             </div>
-            <div id="namespace-643035915" class="accordion-body collapse in">
+            <div id="namespace-223317560" class="accordion-body collapse in">
                 <div class="accordion-inner">
 
                     
@@ -169,8 +169,8 @@
                     <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal"><i class="icon-code"></i></a>
 
                     <h1><small>\</small>Model_AbstractModel</h1>
-                    <p><em>This is the Base Model of all the Concrete Class Model. Basically this handles CRUD methods.</em></p>
-                    
+                    <p><em>This is the Base Model of all the Concrete Class Model</em></p>
+                    <p>Basically this handles CRUD methods.</p>
                     
                                         
                     <section id="summary">
@@ -353,7 +353,7 @@
                                                     <tr>
                                 <td></td>
                                 <td>$primaryKey </td>
-                                <td><p>int</p></td>
+                                <td><p>int Calling Model Primary Key</p></td>
                             </tr>
                                             </table>
                 
@@ -382,8 +382,8 @@
             <article class="method">
                 <h3 class="private ">_baseSave()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">_baseSave(  <span class="argument">$model</span>) </pre>
-                <p><em></em></p>
+                <pre class="signature" style="margin-right: 54px;">_baseSave(  <span class="argument">$model</span>) : array</pre>
+                <p><em>Saves/Updates the model</em></p>
                 
 
                                     <h4>Parameters</h4>
@@ -391,12 +391,15 @@
                                                     <tr>
                                 <td></td>
                                 <td>$model </td>
-                                <td></td>
+                                <td><p>The instantiated model</p></td>
                             </tr>
                                             </table>
                 
                 
-                				
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>of results</p>
+                                    				
                             </article>
         </div>
         <aside class="span4 detailsbar">
@@ -461,7 +464,7 @@
                 <section class="span10 offset1">
                     <hr />
                     Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
-                    on June 8th, 2015 at 08:25.
+                    on June 8th, 2015 at 08:41.
                 </section>
             </section>
         </section>

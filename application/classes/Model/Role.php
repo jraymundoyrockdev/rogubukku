@@ -1,6 +1,10 @@
 <?php defined('SYSPATH') OR die('No direct access allowed.');
 
-# application/Model/Role.php
+/**
+ * Model Role
+ *
+ * Role Instance table
+ */
 class Model_Role extends Model_Auth_Role
 {
 

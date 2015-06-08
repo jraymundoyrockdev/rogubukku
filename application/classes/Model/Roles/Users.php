@@ -1,5 +1,10 @@
 <?php defined('SYSPATH') OR die('No direct access allowed.');
 
+/**
+ * Model Users Roles
+ *
+ * Users Roles Instance table
+ */
 class Model_Roles_Users extends ORM
 {
     protected $_primary_key = 'user_id';

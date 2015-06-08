@@ -1,8 +1,9 @@
 <?php defined('APPPATH') OR die('No direct access allowed.');
 
 /**
- * This is the Base Model of all the Concrete Class Model. Basically this handles CRUD methods.
+ * This is the Base Model of all the Concrete Class Model
  *
+ * Basically this handles CRUD methods.
  */
 class Model_BaseModel extends ORM
 {

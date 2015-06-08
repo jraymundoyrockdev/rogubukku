@@ -1,14 +1,34 @@
 <?php defined('SYSPATH') OR die('No direct access allowed.');
 
+/**
+ * Rogubukku Helper Class
+ *
+ * Methods to be used only for Rogubukku application
+ */
 class Rogubukku
 {
 
-    public static function mergeCurrentlyLoggedInUser(Array $arrayToMerge)
+    /**
+     * Merge the passed array(post data) payload to the the currently logged in user
+     *
+     * @param $arrayToMerge array
+     *
+     * @return array The merged currently logged in user to post array payload
+     */
+    public static function mergeCurrentlyLoggedInUser($arrayToMerge)
     {
         return array_merge(['id' => Auth::instance()->get_user()->id], $arrayToMerge);
     }
 
 
+    /**
+     * Merge the passed array(post data) payload to the the currently logged in user
+     *
+     * @param $image array S_FILES data from the page containing information from the file uploaded
+     * @param $directory string Directory to save the Image
+     *
+     * @return array list (bool, string)
+     */
     public static function saveImage($image, $directory)
     {
         $result = false;
