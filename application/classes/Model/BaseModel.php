@@ -1,11 +1,11 @@
 <?php defined('APPPATH') OR die('No direct access allowed.');
 
 /**
- * This is the Base Model of all the Concrete Class Model
+ * This is the Base Model of all the Concrete Class Model implementation of the MassAssignmentInterface
  *
  * Basically this handles CRUD methods.
  */
-class Model_BaseModel extends ORM
+class Model_BaseModel extends ORM implements Interfaces_MassAssignmentInterface
 {
 
     /**
@@ -26,7 +26,7 @@ class Model_BaseModel extends ORM
      *
      * @return Array
      */
-    protected function _prepareSave($fields, Array $fillable,$primaryKey)
+    public function _prepareSave($fields, Array $fillable = [],$primaryKey)
     {
         if (array_key_exists($primaryKey,$fields)) {
             $this->where($primaryKey, '=', $fields[$primaryKey])->find();
@@ -45,7 +45,7 @@ class Model_BaseModel extends ORM
      *
      * @return Array
      */
-    private function _baseSave($model)
+    public function _baseSave($model)
     {
         try {
             $this->_modelResults['objectModel'] = $model->save();

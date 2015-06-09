@@ -53,7 +53,9 @@ class Controller_User_Profile extends Controller_Base
     public function action_save()
     {
         if (HTTP_Request::POST == $this->request->method()) {
+
             $result = $this->_users->roguSave(Rogubukku::mergeCurrentlyLoggedInUser($this->request->post()));
+
 
             if (!empty($result['objectModel'])) {
                 $result['updatedUser'] = $result['objectModel']->get('full_name');

@@ -22,7 +22,7 @@ DROP TABLE IF EXISTS `ministry`;
 CREATE TABLE `ministry` (
   `id` tinyint(2) NOT NULL AUTO_INCREMENT,
   `ministry` varchar(50) NOT NULL,
-  PRIMARY KEY (`ministry_id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
