@@ -23,21 +23,22 @@
                             aria-hidden="true">×</span></button>
                     <i class="fa fa-exclamation-triangle"></i> Old password mismatch.
                 </div>
+
                 <?= Form::open('user/change_password/save',
                     array('class' => 'search_form', 'id' => 'change_password_form')); ?>
                 <div class="form-group">
                     <div class="old-password-error">
                         <label class="control-label" for="username">Old Password</label>
                         <?= Form::password('old_password', '',
-                            ['placeholder' => 'Old Password', 'class' => 'form-control']); ?>
+                            ['placeholder' => 'Old Password', 'class' => 'form-control','autocomplete'=>'off']); ?>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="new-password-error">
-                        <label class="control-label" for="new_password">New Password</label>
-                        <?= Form::password('new_password', '',
-                            ['placeholder' => 'New Password', 'class' => 'form-control']); ?>
+                        <label class="control-label" for="password">New Password</label>
+                        <?= Form::password('password', '',
+                            ['placeholder' => 'New Password', 'class' => 'form-control','autocomplete'=>'off']); ?>
                     </div>
                 </div>
 
@@ -45,7 +46,7 @@
                     <div class="confirm-new-password-error">
                         <label class="control-label" for="confirm_new_password">Confirm New Password</label>
                         <?= Form::password('confirm_new_password', '',
-                            ['placeholder' => 'Confirm New Password', 'class' => 'form-control']); ?>
+                            ['placeholder' => 'Confirm New Password', 'class' => 'form-control','autocomplete'=>'off']); ?>
                     </div>
                 </div>
 

@@ -1,13 +1,15 @@
 <?php defined('APPPATH') OR die('No direct access allowed.');
 
-# application/Model/User.php
+/**
+ * Model Users
+ *
+ * Users Instance table
+ */
 class Model_Users extends Model_User
 {
 
     protected $_primary_key = 'id';
-
     protected $_table_name = 'users';
-
     protected $_table_columns = array(
         'id' => null,
         'ministry_id' => null,
@@ -21,6 +23,17 @@ class Model_Users extends Model_User
         'profile_pic' => null
     );
 
+    protected $_fillable = array(
+        'ministry_id',
+        'full_name',
+        'username',
+        'password',
+        'logins',
+        'last_login',
+        'created_date',
+        'active_flag',
+        'profile_pic'
+    );
 
     protected $_belongs_to = array(
         'ministry' => array(
@@ -55,54 +68,28 @@ class Model_Users extends Model_User
         );
     }
 
+
+    public function roguSave($fields)
+    {
+        return $this->_prepareSave($fields, $this->_fillable, $this->_primary_key);
+    }
+
+    /**
+     * Checks Username availability.
+     * This is default to be here. Any interactions to User model without this wil not work.
+     *
+     * @param $username string Username
+     * @return bool
+     *
+     */
     public function username_available($username)
     {
-
         if (!Auth::instance()->logged_in()) {
             $is_exists = ORM::factory('Users', array('username' => $username))->loaded();
-
             return ($is_exists) ? false : true;
         }
-
         return true;
-    }
 
-
-    public function save_profile($user_id, $fields = array())
-    {
-        $user = ORM::factory('Users', $user_id);
-
-        if ($user->loaded()) {
-            $user->full_name = $fields['full_name'];
-            $user->ministry_id = $fields['ministry'];
-
-            return $user->save();
-        }
-    }
-
-
-    public function save_password($user_id, $fields = array())
-    {
-        $user = ORM::factory('Users', $user_id);
-
-        if ($user->loaded()) {
-
-            if ($user->password == $fields['old_password']) {
-                $user->password = $fields['new_password'];
-
-                return $user->save();
-            }
-
-            return false;
-        }
-    }
-
-    public function save_dp($user_id, $file_name)
-    {
-        $user = ORM::factory('Users', $user_id);
-        $user->profile_pic = $file_name;
-
-        return $user->save();
     }
 
 } // End User Model

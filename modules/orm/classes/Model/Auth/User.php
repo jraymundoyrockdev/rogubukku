@@ -7,7 +7,7 @@
  * @copyright  (c) 2007-2012 Kohana Team
  * @license    http://kohanaframework.org/license
  */
-class Model_Auth_User extends ORM {
+class Model_Auth_User extends Model_AbstractModel {
 
 	 protected $_table_columns = array(
         'id' => NULL,
@@ -18,7 +18,7 @@ class Model_Auth_User extends ORM {
 		'logins' => NULL,
 		'last_login' => NULL,
      );
-     
+
 	/**
 	 * A user has many tokens and roles
 	 *
@@ -40,7 +40,7 @@ class Model_Auth_User extends ORM {
 	public function rules()
 	{
 		return array(
-            
+
 			'username' => array(
 				array('not_empty'),
 				array('max_length', array(':value', 32)),
@@ -210,5 +210,7 @@ class Model_Auth_User extends ORM {
 
 		return $this->values($values, $expected)->update($extra_validation);
 	}
+
+    public function roguSave($fields){}
 
 } // End Auth User Model

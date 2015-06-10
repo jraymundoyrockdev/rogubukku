@@ -959,7 +959,7 @@ class Kohana_Request implements HTTP_Request {
 
 				if (isset($params['directory']))
 				{
-					// Controllers are in a sub-directory
+					// controllers are in a sub-directory
 					$this->_directory = $params['directory'];
 				}
 

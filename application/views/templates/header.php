@@ -35,7 +35,7 @@
     <?php //endif;?>
 
     <li class="dropdown user-dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
+        <a href="#" class="dropdown-toggle full_avatar_name" data-toggle="dropdown"><i
                 class="fa fa-user"></i> <?= Auth::instance()->get_user()->full_name ?> <b class="caret"></b></a>
         <ul class="dropdown-menu">
             <li><a href="<?= URL::site('user/profile'); ?>"><i class="fa fa-user"></i> Profile</a></li>

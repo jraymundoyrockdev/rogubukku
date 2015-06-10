@@ -1,8 +1,8 @@
 <?php defined('SYSPATH') OR die('No direct script access.');
 /**
- * Abstract controller class. Controllers should only be created using a [Request].
+ * Abstract controller class. controllers should only be created using a [Request].
  *
- * Controllers methods will be automatically called in the following order by
+ * controllers methods will be automatically called in the following order by
  * the request:
  *
  *     $controller = new Controller_Foo($request);

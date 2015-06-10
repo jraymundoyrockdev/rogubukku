@@ -7,7 +7,7 @@
  * @copyright  (c) 2007-2009 Kohana Team
  * @license    http://kohanaphp.com/license.html
  */
-class Model_Auth_Role extends ORM {
+class Model_Auth_Role extends Model_AbstractModel {
 
 	// Relationships
 	protected $_has_many = array(
@@ -27,5 +27,10 @@ class Model_Auth_Role extends ORM {
 			)
 		);
 	}
+
+    public function roguSave($fields)
+    {
+        return $this->_prepareSave($fields, $this->_fillable, $this->_primary_key);
+    }
 
 } // End Auth Role Model

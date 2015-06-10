@@ -18,7 +18,7 @@
                 <div class="change_avatar">
                     <a href="#" id="click_dp" class="thumbnail">
                         <img id="img_avatar"
-                             src="<?php echo empty($user->profile_pic) ? $avatarDirectory['relative'] . 'default_avatar.gif' : $avatarDirectory['relative'] . $user->id . '/' . $user->profile_pic; ?>"
+                             src="<?php echo empty($user->profile_pic) ? $imagesDirectory['relative'] . 'default_avatar.gif' : $avatarDirectory['relative'] . $user->id . '/' . $user->profile_pic; ?>"
                              alt="125x125">
                     </a>
                 </div>
@@ -47,9 +47,8 @@
                      style="display:none;">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
                             aria-hidden="true">×</span></button>
-                    <i class="fa fa-user"></i> Profile Updated!<a class="anchorjs-link"
-                                                                  href="#oh-snap!-you-got-an-error!"><span
-                            class="anchorjs-icon"></span></a>
+                    <i class="fa fa-user"></i> Profile Updated!<a class="anchorjs-link">
+                        <span class="anchorjs-icon"></span></a>
                 </div>
 
                 <?= Form::open('user/profile/save', array('class' => 'search_form', 'id' => 'user_profile_form')); ?>
@@ -70,8 +69,8 @@
 
                 <div class="form-group">
                     <div class="ministry-error">
-                        <label class="control-label force_display-block" for="ministry">Ministry</label>
-                        <?php echo Form::select('ministry', $ministries, $user->ministry_id,
+                        <label class="control-label force_display-block" for="ministry_id">Ministry</label>
+                        <?php echo Form::select('ministry_id', $ministries, $user->ministry_id,
                             array('class' => 'form-control')); ?>
                     </div>
                 </div>

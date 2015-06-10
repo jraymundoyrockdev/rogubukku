@@ -2,8 +2,6 @@
 
 Class Controller_Base extends Controller_Template
 {
-
-    // Define the template to use
     public $template = 'templates/main';
 
     protected $uploadsDirectory;
@@ -22,6 +20,7 @@ Class Controller_Base extends Controller_Template
         $this->template->resourceModule = '';
 
         $this->avatarDirectory = Kohana::$config->load('path-resource')->get('avatar');
+        $this->imagesDirectory = Kohana::$config->load('path-resource')->get('images');
 
     }
 
@@ -46,4 +45,7 @@ Class Controller_Base extends Controller_Template
         $this->response->headers('Content-type', 'application/json; charset=' . Kohana::$charset);
         $this->response->body(json_encode($message));
     }
+
+
+
 }//end of class
