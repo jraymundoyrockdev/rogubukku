@@ -75,8 +75,8 @@ $('#transactions_form').formValidation({
 
             if(result.save_type == 'save_exit')
                 setTimeout(function(){  window.location.href="http://rogubukku.com/dashboard"; }, 2000);
-            else
-                setTimeout(function(){  window.location.reload(); }, 2000);
+            //else
+              //  setTimeout(function(){  window.location.reload(); }, 2000);
         }
         else {
             $.each(result.errorFields, function(fieldName, fieldMessage) {

@@ -90,7 +90,7 @@ CREATE TABLE `users` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `uniq_username` (`username`),
   KEY `fk_users_2_idx` (`ministry_id`),
-  CONSTRAINT `fk_users_2` FOREIGN KEY (`ministry_id`) REFERENCES `ministry` (`ministry_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_users_2` FOREIGN KEY (`ministry_id`) REFERENCES `ministry` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -118,3 +118,24 @@ CREATE TABLE `user_tokens` (
 -- ----------------------------
 -- Records of user_tokens
 -- ----------------------------
+
+-- ----------------------------
+-- Table structure for table `transactions`
+-- ----------------------------
+
+CREATE TABLE IF NOT EXISTS `transactions` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `ministry_id` int(10) unsigned NOT NULL,
+  `transaction` varchar(50) NOT NULL,
+  `colored` int(3) NOT NULL,
+  `non_colored` int(3) NOT NULL,
+  `reason` text NOT NULL,
+  `transaction_date` datetime NOT NULL,
+  `logged_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `logged_by` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

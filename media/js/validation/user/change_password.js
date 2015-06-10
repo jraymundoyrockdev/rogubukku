@@ -60,8 +60,11 @@ $(document).ready(function () {
                     },
                     securePassword: {
                         message: 'Old password is not valid.'
+                    },
+                    unique: {
+                        enabled: false,
+                        message: 'Username is not available'
                     }
-
                 }
             },
 
@@ -101,13 +104,16 @@ $(document).ready(function () {
 
             $.post($form.attr('action'), $form.serialize(), function (result) {
                 if (result.isSuccess) {
-                    $that.formValidation('resetForm', true);
+                    
                     $("#password_updated_status").show().delay(1000).fadeOut(2000);
                 }
                 else {
-                    $that.formValidation('resetForm', true);
+                    $("#div_old_password_error").addClass('has-feedback has-error');
+                    $("#old_pass_not_exist").show().delay(1000);
                     $("#password_not_updated_status").show().delay(1000).fadeOut(2000);
                 }
+
+                $that.formValidation('resetForm', true);
 
             }, 'json');
         });

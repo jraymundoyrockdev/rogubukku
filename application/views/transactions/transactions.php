@@ -34,20 +34,13 @@
                         <div class="ministry-type-error">
                             <label class="control-label" for="ministry">Ministry</label>
                             <span style="color:#2fa4e7" class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="right" title="Ministry involve in this transaction."></span>
-                           <select class="form-control" name="ministry_id">
-                                <?php 
-                                    $i = 1;
-                                    $selected = '';
+                            <select class="form-control" name="ministry_id">
+                            
+                                <?php foreach ($ministries as $m): ?>
 
-                                    foreach ($ministries as $m): 
+                                    <?php $selected = ($i == $user->ministry_id) ? 'selected':''; ?>
 
-                                        if($i == $user->ministry_id) 
-                                            $selected='selected';
-
-                                        else
-                                            $selected='';
-                                ?>
-                                        <option value="<?=$i++?>" <?=$selected?>><?=$m->ministry?></option>
+                                    <option value="<?=$i++?>" <?=$selected?>><?=$m->ministry?></option>
 
                                 <?php endforeach; ?>
 

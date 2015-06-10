@@ -18,19 +18,23 @@ $("#transaction_type").change(function(){
 
         var non_colored = $( "i[data-fv-icon-for*='non_colored']" );
         var colored = $( "i[data-fv-icon-for*='colored']" );
-        
+
         non_colored.removeClass("glyphicon-remove");
         colored.removeClass("glyphicon-remove");
 
         $('.print_color').removeClass('has-feedback has-error');
-        //$('.colored_fields_input').val('');
+        $('.colored_fields_input').val('');
         $('.colored_fields').fadeOut();
     }
 	
 	else
     {
+        var colored_small = $( "small[data-fv-icon-for*='colored']" );
+
         $('.colored-error').removeClass('has-feedback has-success');
         $('.non-colored-error').removeClass('has-feedback has-success');
+        $('.print_color').removeClass('has-success');
+        
 		$('.print_color').fadeIn();
     }
 });

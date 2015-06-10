@@ -45,13 +45,14 @@ class Controller_User_ChangePassword extends Controller_Base
 
             $result = [
                 'isSuccess' => false,
-                'errorFields' => [],
+                'errorFields' => ['old_password'=>'Old Password does not exist.'],
                 'objectModel' => []
             ];
 
             if ($this->_validatePasswords($this->request->post())) {
                 $post = Rogubukku::mergeCurrentlyLoggedInUser($this->request->post());
                 $result = $this->_users->roguSave($post);
+                $result['errorFields'] = [];
             }
 
             $this->responseAjaxResult($result);

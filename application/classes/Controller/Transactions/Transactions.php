@@ -26,10 +26,15 @@ class Controller_Transactions_Transactions extends Controller_Base {
 
         $ministries = ORM::factory('Ministry')->find_all();
 
+        $i = 1;
+        $selected = '';
+
 		$this->template->body = View::factory('transactions/transactions')
                                     ->bind('transaction_type', $transaction_type)
                                     ->bind('ministries', $ministries)
-                                    ->bind('user', $user);
+                                    ->bind('user', $user)
+                                    ->bind('selected', $selected)
+                                    ->bind('i', $i);
 	}
 
 	public function action_save()
@@ -45,14 +50,15 @@ class Controller_Transactions_Transactions extends Controller_Base {
             $post['transaction_date'] =  date_format(date_create($post['transaction_date']), 'Y-m-d H:i:s');
             
             $save_type = 'save_exit';
-
+            
            	$result = ['isSuccess'=>true, 
         			   'transaction_type'=> $post['transaction_type'],
+                       'ministry_id'=> $post['ministry_id'],
         			   'colored'=>$post['colored'],
         			   'nonColored'=>$post['non_colored'],
         			   'reason'=>$post['reason'],
         			   'transactionDate'=>$post['transaction_date'],
-        			   'errorFields'=>'',
+        			   'errorFields'=>[],
         			   'save_type'=> $post['save_transaction_type']
                     ];
 

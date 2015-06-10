@@ -43,6 +43,7 @@ return array
         ],
         //MODULE-CHANGE-PASSWORD
         'change-password-scripts' => [
+            '//media/js/modules/user/change_password.js',
             '//media/js/validation/user/change_password.js'
         ],
         //MODULE-MINISTRY

@@ -12,9 +12,7 @@
                      style="display:none;">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
                             aria-hidden="true">×</span></button>
-                    <i class="fa fa-user"></i> Password Updated!<a class="anchorjs-link"
-                                                                   href="#oh-snap!-you-got-an-error!"><span
-                            class="anchorjs-icon"></span></a>
+                    <i class="fa fa-user"></i> Password Updated!<a class="anchorjs-link" href="#oh-snap!-you-got-an-error!"><span class="anchorjs-icon"></span></a>
                 </div>
 
                 <div id="password_not_updated_status" class="alert alert-danger alert-dismissible fade in" role="alert"
@@ -26,11 +24,12 @@
 
                 <?= Form::open('user/change_password/save',
                     array('class' => 'search_form', 'id' => 'change_password_form')); ?>
-                <div class="form-group">
+                <div class="form-group" id="div_old_password_error">
                     <div class="old-password-error">
                         <label class="control-label" for="username">Old Password</label>
                         <?= Form::password('old_password', '',
-                            ['placeholder' => 'Old Password', 'class' => 'form-control','autocomplete'=>'off']); ?>
+                            ['placeholder' => 'Old Password', 'class' => 'old-password form-control','autocomplete'=>'off']); ?>
+                        <small id="old_pass_not_exist" style="display: none;" class="help-block removableFromAjax" data-fv-for="old_password" data-fv-result="INVALID">Old password does not exist.</small>
                     </div>
                 </div>
 
