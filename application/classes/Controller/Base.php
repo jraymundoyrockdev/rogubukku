@@ -13,7 +13,7 @@ Class Controller_Base extends Controller_Template
         $this->isRequestAjax();
 
         $this->template->title = 'DEV-practice';
-        $this->template->nav = View::factory('templates/nav');
+        $this->template->nav = View::factory('templates/nav')->set('routeName', Route::name($this->request->route()));
         $this->template->footer = View::factory('templates/footer')->set('message', 'sampler');
 
         $this->template->resourceSource = Kohana::$config->load('styles-scripts-resource')->get('resource');
@@ -45,7 +45,6 @@ Class Controller_Base extends Controller_Template
         $this->response->headers('Content-type', 'application/json; charset=' . Kohana::$charset);
         $this->response->body(json_encode($message));
     }
-
 
 
 }//end of class

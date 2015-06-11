@@ -130,6 +130,7 @@ Route::set('defaults', '((/<action>(/<id>)))', array('action' => 'index|create|l
         'action' => 'index',
     ));
 
+//LOGIN
 Route::set('login', 'login((/<action>(/<id>)))', array('action' => 'index|create|login|logout|signup'))
     ->defaults(array(
         'directory' => 'login',
@@ -138,6 +139,7 @@ Route::set('login', 'login((/<action>(/<id>)))', array('action' => 'index|create
     ));
 
 
+//LEFT MENU
 Route::set('dashboard', 'dashboard((/<action>(/<id>)))', array('action' => 'index'))
     ->defaults(array(
         'directory' => 'dashboard',
@@ -145,7 +147,14 @@ Route::set('dashboard', 'dashboard((/<action>(/<id>)))', array('action' => 'inde
         'action' => 'index',
     ));
 
-//USER PROFILES
+Route::set('reports-transactions', 'reports/transactions((/<action>(/<id>)))', array('action' => 'index'))
+    ->defaults(array(
+        'directory' => 'reports',
+        'controller' => 'transactions',
+        'action' => 'index',
+    ));
+
+//USER
 Route::set('profile', 'user/profile((/<action>(/<id>)))', array('action' => 'index|save|avatar'))
     ->defaults(array(
         'directory' => 'user',
@@ -153,7 +162,6 @@ Route::set('profile', 'user/profile((/<action>(/<id>)))', array('action' => 'ind
         'action' => 'index',
     ));
 
-//CHANGE PASSWORD
 Route::set('user/change_password/<id>', 'user/change_password((/<action>(/<id>)))', array('action' => 'index|save'))
     ->defaults(array(
         'directory' => 'user',
@@ -161,7 +169,7 @@ Route::set('user/change_password/<id>', 'user/change_password((/<action>(/<id>))
         'action' => 'index',
     ));
 
-//MINISTRY
+//ADMIN
 Route::set('admin/ministry', 'admin/ministry((/<action>(/<id>)))', array('action' => 'index|save'))
     ->defaults(array(
         'directory' => 'admin',
