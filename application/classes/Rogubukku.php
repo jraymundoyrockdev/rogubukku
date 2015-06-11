@@ -12,12 +12,12 @@ class Rogubukku
      * Merge the passed array(post data) payload to the the currently logged in user
      *
      * @param $arrayToMerge array
-     *
+     * @param $key_value string
      * @return array The merged currently logged in user to post array payload
      */
-    public static function mergeCurrentlyLoggedInUser($arrayToMerge)
+    public static function mergeCurrentlyLoggedInUser($arrayToMerge, $key_value = 'id')
     {
-        return array_merge(['id' => Auth::instance()->get_user()->id], $arrayToMerge);
+        return array_merge([$key_value => Auth::instance()->get_user()->id], $arrayToMerge);
     }
 
 

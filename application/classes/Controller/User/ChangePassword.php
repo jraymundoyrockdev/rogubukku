@@ -52,7 +52,6 @@ class Controller_User_ChangePassword extends Controller_Base
             if ($this->_validatePasswords($this->request->post())) {
                 $post = Rogubukku::mergeCurrentlyLoggedInUser($this->request->post());
                 $result = $this->_users->roguSave($post);
-                $result['errorFields'] = [];
             }
 
             $this->responseAjaxResult($result);

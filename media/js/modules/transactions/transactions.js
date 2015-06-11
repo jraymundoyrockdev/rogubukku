@@ -8,7 +8,7 @@ $('#nav_reports').removeAttr('class');
 $('#nav_transactions').addClass('active');
 
 //HIDE COLORED AND NONCOLORED FIELDS WHEN SELECTING ENCODE AND OTHERS AS TRANSACTION TYPE
-$("#transaction_type").change(function(){
+$("#transaction").change(function(){
 
 	var transaction_value = $(this).val();
 
@@ -67,28 +67,21 @@ $('.save_transaction').click(function(){
 });
 
 $('.colored_fields_input').keyup(function(){
+
     var colored_fields_value = ($(this).val());
     var non_colored = $( "i[data-fv-icon-for*='non_colored']" );
     var colored = $( "i[data-fv-icon-for*='colored']" );
+    var print_color = $('.print_color');
+    var colored_fields = $('.colored_fields');
 
-    if($.isNumeric(colored_fields_value))
-    {
-        $('.print_color').removeClass('has-error');
-        $('.print_color').addClass('has-success');
-
-        non_colored.removeClass("glyphicon-remove");
-        colored.removeClass("glyphicon-remove");
-
-        non_colored.addClass("glyphicon-ok");
-        colored.addClass("glyphicon-ok");
-    }
+    colorFieldIsNumeric(colored_fields_value, non_colored, colored, print_color);
     
-    $('.colored_fields').fadeOut();
+    colored_fields.fadeOut();
 
     if(!$(this).val())//if null
     {
-        $('.print_color').addClass('has-error');
-        $('.print_color').removeClass('has-success');
+        print_color.addClass('has-error');
+        print_color.removeClass('has-success');
 
         non_colored.addClass("glyphicon-remove");
         colored.addClass("glyphicon-remove");
@@ -96,7 +89,22 @@ $('.colored_fields_input').keyup(function(){
         non_colored.removeClass("glyphicon-ok");
         colored.removeClass("glyphicon-ok");
 
-        $('.colored_fields').fadeIn();
+        colored_fields.fadeIn();
     }
 
 });
+
+function colorFieldIsNumeric(colored_fields_value, non_colored, colored, print_color)
+{
+    if($.isNumeric(colored_fields_value))
+    {
+        print_color.removeClass('has-error');
+        print_color.addClass('has-success');
+
+        non_colored.removeClass("glyphicon-remove");
+        colored.removeClass("glyphicon-remove");
+
+        non_colored.addClass("glyphicon-ok");
+        colored.addClass("glyphicon-ok");
+    }
+}

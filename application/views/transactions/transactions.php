@@ -26,7 +26,7 @@
                     <div class="form-group">
                         <div class="transaction-type-error">
                             <label class="control-label" for="transaction">Transaction Type</label>
-                            <?=Form::select('transaction_type', $transaction_type,'print' ,['placeholder'=>'Transaction', 'class'=>'form-control', 'id'=>'transaction_type']);?>
+                            <?=Form::select('transaction', $transaction_type,'print' ,['placeholder'=>'Transaction', 'class'=>'form-control', 'id'=>'transaction']);?>
                         </div>
                     </div>
 
@@ -77,7 +77,7 @@
                         <div class="col-lg-12 transaction-date-error input-group date" id='datetimepicker1'>
                             <label class="control-label" for="transaction_date">Transaction Date</label>
                             <div class="input-group">
-                                <?=Form::input('transaction_date', '', ['id'=>'transaction_date', 'class'=>'form-control', 'readonly'=>'readonly']);?>
+                                <?=Form::input('transaction_date', date('m/d/Y H:i A'), ['id'=>'transaction_date', 'class'=>'form-control', 'readonly'=>'readonly']);?>
                                 <span class="input-group-addon" id="icon-calendar">
                                     <span class="glyphicon glyphicon-calendar"></span>
                                 </span>
@@ -85,15 +85,15 @@
                             <small class="help-block transaction_date" style="color:#b94a48;display:none;">Transaction date is required.</small>
                         </div>
                     </div>
-                    <?=Form::hidden('save_transaction_type', '', ['id'=>'save_transaction_type', 'readonly'=>'readonly']);?>
+                    
                     <div class="col-lg-6">
                         <div class="form-group">
-                            <?=Form::button('save_transaction', 'Save & Add New', array('value'=>'save_add_new', 'type' => 'submit', 'class'=>'btn btn-primary btn-block save_transaction'));?>
+                            <?=Form::button('save_transaction', 'Save & Add New', array('type' => 'submit', 'class'=>'btn btn-primary btn-block save_transaction'));?>
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="form-group">
-                            <?=Form::button('save_transaction', 'Save & Exit', array('value'=>'save_exit', 'type' => 'submit', 'class'=>'btn btn-warning btn-block save_transaction'));?>
+                            <?=Form::button('save_transaction', 'Save & Exit', array( 'type' => 'submit', 'class'=>'btn btn-warning btn-block save_transaction'));?>
                         </div>
                     </div>
                 <?=Form::close();?>
@@ -113,10 +113,13 @@
 
             <div class="panel-body">
                 <div class="list-group">
-                  <a href="#" class="list-group-item">
-                    <h4 class="list-group-item-heading">List group item heading</h4>
-                    <p class="list-group-item-text">...</p>
-                  </a>
+
+                <?php foreach($transactions as $tran) :?>
+                    <a href="#" class="list-group-item">
+                        <h4 class="list-group-item-heading">List group item heading</h4>
+                        <p class="list-group-item-text">...</p>
+                    </a>
+                <?php endforeach; ?>
                 </div>
             </div>
         </div>

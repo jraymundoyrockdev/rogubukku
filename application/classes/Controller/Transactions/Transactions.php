@@ -2,94 +2,90 @@
 
 class Controller_Transactions_Transactions extends Controller_Base {
 
-	public function before()
-	{
-		$this->_is_logged_in();
+     /**
+     * @var Transactions
+     */
+    protected $_transactions;
 
-		parent::before();
+
+    public function before()
+    {
+        $this->_is_logged_in();
+
+        parent::before();
         
+        $this->_transactions = ORM::factory('Transactions');
+
         $this->template->resourceModule = 'transactions';
-	}
-	
-	public function action_index()
-	{
+    }
+    
+    public function action_index()
+    {
         $auth = Auth::instance();
 
         $user = ORM::factory('Users', $user_id = $auth->get_user()->id);
 
-		$transaction_type = [
-			'print' => 'Print',
-			'encode' => 'Encode',
-			'all' => 'All',
-			'others' => 'Others'
-		];
+        $transaction_type = [
+            'print' => 'Print',
+            'encode' => 'Encode',
+            'all' => 'All',
+            'others' => 'Others'
+        ];
 
         $ministries = ORM::factory('Ministry')->find_all();
-
+        $transactions = ORM::factory('Transactions')->find_all();
         $i = 1;
         $selected = '';
 
-		$this->template->body = View::factory('transactions/transactions')
+        $this->template->body = View::factory('transactions/transactions')
                                     ->bind('transaction_type', $transaction_type)
                                     ->bind('ministries', $ministries)
+                                    ->bind('transactions', $transactions)
                                     ->bind('user', $user)
                                     ->bind('selected', $selected)
                                     ->bind('i', $i);
-	}
+    }
 
-	public function action_save()
-	{	
-		$auth = Auth::instance();
+    public function action_save()
+    {   
+        $auth = Auth::instance();
 
-		if (HTTP_Request::POST == $this->request->method()) 
+        if (HTTP_Request::POST == $this->request->method()) 
         {   
-            $user_id = $auth->get_user()->id;
 
             $post = $this->request->post();
 
             $post['transaction_date'] =  date_format(date_create($post['transaction_date']), 'Y-m-d H:i:s');
             
-            $save_type = 'save_exit';
-            
-           	$result = ['isSuccess'=>true, 
-        			   'transaction_type'=> $post['transaction_type'],
-                       'ministry_id'=> $post['ministry_id'],
-        			   'colored'=>$post['colored'],
-        			   'nonColored'=>$post['non_colored'],
-        			   'reason'=>$post['reason'],
-        			   'transactionDate'=>$post['transaction_date'],
-        			   'errorFields'=>[],
-        			   'save_type'=> $post['save_transaction_type']
+            $data = [
+                        'isSuccess' => false,
+                        'save_type' => !(empty($this->request->post('save_transaction_type')) )? 'save_and_addnew' : 'save_exit',
+                        'errorFields'=>[],
+                        'colored'=>$post['colored'],
+                        'nonColored'=>$post['non_colored'],
+                        'objectModel' => []
                     ];
 
-            try
-            {
-    			if($post['transaction_type'] != 'encode' && $post['transaction_type'] != 'others'){
-
-		        	if($post['colored'] == '' && $post['non_colored'] == '')
-		        		$result['isSuccess'] = false;
-            	}
-                
-                $transaction_model = new Model_Transactions;
-                
-                $transaction_result = $transaction_model->save_transaction($user_id, $post);
-                
-                echo json_encode($result); die; //@TODO CREATE A HELPER CLASS TO OUTPUT JSON DATA
+            $post = array_merge($data, $post);
+         
+            if($this->_validateTransactionType($post)) {
+                $this->responseAjaxResult($this->_transactions->roguSave(Rogubukku::mergeCurrentlyLoggedInUser($post,'logged_by'))); 
             }
-            
-            catch (ORM_Validation_Exception $e) 
-            { 
-                $result['errorFields'] = $e->errors('models');
-                echo json_encode($result); die; //@TODO CREATE A HELPER CLASS TO OUTPUT JSON DATA
-            }
-            catch (Exception $error)
-            {
-                $result['errorFields'] = $error->getMessage();
-                echo json_encode($result); die; //@TODO CREATE A HELPER CLASS TO OUTPUT JSON DATA
-            }
-
-            
+            else
+                $this->responseAjaxResult($data);
+           
         }
-	}
+    }
+
+    private function _validateTransactionType($post)
+    {
+        if($post['transaction'] != 'encode' && $post['transaction'] != 'others'){
+
+            if($post['colored'] == '' && $post['non_colored'] == '')
+                return false;
+        }
+
+        return true;
+    }
 
 } // End of class

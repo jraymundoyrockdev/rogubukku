@@ -8,11 +8,20 @@ $('#transactions_form').formValidation({
     },
    
     fields: {
-        transaction_type: {
+        transaction: {
             row: '.transaction-type-error',
             validators: {
                 notEmpty: {
-                    message: 'Transaction type is required.'
+                    message: 'Transaction is required.'
+                }
+            }
+        },
+
+        ministry_id: {
+            row: '.ministry-type-error',
+            validators: {
+                notEmpty: {
+                    message: 'Ministry is required.'
                 }
             }
         },
@@ -40,18 +49,24 @@ $('#transactions_form').formValidation({
             validators: {
                 notEmpty: {
                     message: 'Reason is required.'
-                }
+                },
+
+                stringLength: {
+                    min: 5,
+                    max: 500,
+                    message: 'The full name must be more than 5 and less than 500 characters long'
+                },
             }
         },
         
-        transaction_date: {
+        /*transaction_date: {
             row: '.transaction-date-error',
             validators: {
                 notEmpty: {
                     message: 'Transaction date is required.'
                 }
             }
-        }
+        }*/
     }
 })
 .on('success.form.fv', function(e) {
@@ -68,10 +83,17 @@ $('#transactions_form').formValidation({
 
     $.post($form.attr('action'), $form.serialize(), function(result) {
 
+        var print_color = $('.print_color');
+
         if(result.isSuccess){
             $("#transaction_failed").fadeOut();
             $that.formValidation('resetForm', true);
             $("#trasaction_created").show().delay(1000).fadeOut(2000);
+
+            print_color.removeClass('has-success');
+            print_color.removeClass('has-error');
+            
+            $('.colored_fields').fadeOut();
 
             if(result.save_type == 'save_exit')
                 setTimeout(function(){  window.location.href="http://rogubukku.com/dashboard"; }, 2000);
@@ -84,10 +106,11 @@ $('#transactions_form').formValidation({
                 $('small[data-fv-for=' + fieldName + ']').text(fieldMessage).addClass('removableFromAjax');
             });
 
-            if(result.transaction_type != 'encode' && result.transaction_type != 'others')
+            if(result.transaction != 'encode' && result.transaction!= 'others')
             {
                 if(result.colored == '' && result.nonColored == '')
                 {
+                    
                     var non_colored = $( "i[data-fv-icon-for*='non_colored']" );
                     var colored = $( "i[data-fv-icon-for*='colored']" );
 
@@ -99,7 +122,9 @@ $('#transactions_form').formValidation({
                     colored.removeClass("glyphicon-ok");
                     colored.addClass("glyphicon-remove");
 
-                    $('.print_color').addClass('has-feedback has-error');
+                    
+
+                    print_color.addClass('has-feedback has-error');
                 }
             }
 

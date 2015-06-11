@@ -19,6 +19,17 @@ class Model_Transactions extends Model_BaseModel {
         'logged_by' => NULL,
     );
 
+    protected $_fillable = array(
+        'ministry_id',
+        'transaction',
+        'reason',
+        'colored',
+        'non_colored',
+        'last_login',
+        'transaction_date',
+        'logged_date',
+        'logged_by'
+    );
 
     protected $_belongs_to = array(
       'users' => array ('model' => 'Users',
@@ -36,6 +47,10 @@ class Model_Transactions extends Model_BaseModel {
                 array('not_empty'),
             ),
 
+            'ministry_id' => array(
+                array('not_empty'),
+            ),
+
             'reason' => array(
                 array('not_empty'),
                 array('min_length', array(':value', 5)),
@@ -43,22 +58,13 @@ class Model_Transactions extends Model_BaseModel {
             ),
             'transaction_date' => array(
                 array('not_empty'),
-            ),
+            )
         );
     }
 
-    public function save_transaction($user_id,$fields=array())
+    public function roguSave($fields)
     {
-        $user = ORM::factory('Users', $user_id);
-        $this->transaction      = $fields['transaction_type'];
-        $this->ministry_id      = (int)$fields['ministry_id'];
-        $this->colored          = $fields['colored'];
-        $this->non_colored      = $fields['non_colored'];
-        $this->reason           = $fields['reason'];
-        $this->transaction_date = $fields['transaction_date'];
-        $this->logged_by        = (int)$user_id;
-
-        return $this->save();
-        
+        return $this->_prepareSave($fields, $this->_fillable, $this->_primary_key);
     }
+    
 } // End User Model
