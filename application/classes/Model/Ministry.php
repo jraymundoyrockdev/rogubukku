@@ -16,7 +16,7 @@ class Model_Ministry extends Model_AbstractModel
 
     protected $_fillable = array('ministry');
 
-    protected $_has_one = array(
+    protected $_has_many = array(
         'users' => array(
             'model' => 'Users',
             'foreign_key' => 'id',

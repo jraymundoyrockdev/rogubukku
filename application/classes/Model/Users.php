@@ -44,7 +44,13 @@ class Model_Users extends Model_User
             'model' => 'Roles_Users',
             'foreign_key' => 'id'
         ),
+    );
 
+    protected $_has_many = array(
+        'transactions' => array(
+            'model' => 'Transactions',
+            'foreign_key' => 'logged_by',
+        ),
     );
 
     public function rules()

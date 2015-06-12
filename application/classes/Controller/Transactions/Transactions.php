@@ -1,30 +1,37 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
-class Controller_Transactions_Transactions extends Controller_Base {
-
-     /**
+class Controller_Transactions_Transactions extends Controller_Base
+{
+    /**
      * @var Transactions
      */
     protected $_transactions;
 
+    /**
+     * @var Ministry
+     */
+    protected $_ministry;
+
+    /**
+     * @var Users
+     */
+    protected $_users;
 
     public function before()
     {
         $this->_is_logged_in();
 
         parent::before();
-        
+
         $this->_transactions = ORM::factory('Transactions');
+        $this->_ministry = ORM::factory('Ministry');
+        $this->_users = ORM::factory('Users');
 
         $this->template->resourceModule = 'transactions';
     }
-    
+
     public function action_index()
     {
-        $auth = Auth::instance();
-
-        $user = ORM::factory('Users', $user_id = $auth->get_user()->id);
-
         $transaction_type = [
             'print' => 'Print',
             'encode' => 'Encode',
@@ -32,60 +39,24 @@ class Controller_Transactions_Transactions extends Controller_Base {
             'others' => 'Others'
         ];
 
-        $ministries = ORM::factory('Ministry')->find_all();
-        $transactions = ORM::factory('Transactions')->find_all();
-        $i = 1;
-        $selected = '';
+        $ministries = $this->_ministry->find_all()->as_array('id', 'ministry');
+        $user = $this->_users->where('id', '=', Auth::instance()->get_user()->id)->find();
 
         $this->template->body = View::factory('transactions/transactions')
-                                    ->bind('transaction_type', $transaction_type)
-                                    ->bind('ministries', $ministries)
-                                    ->bind('transactions', $transactions)
-                                    ->bind('user', $user)
-                                    ->bind('selected', $selected)
-                                    ->bind('i', $i);
+            ->bind('transactionType', $transaction_type)
+            ->bind('ministries', $ministries)
+            ->bind('user', $user);
     }
 
     public function action_save()
-    {   
-        $auth = Auth::instance();
-
-        if (HTTP_Request::POST == $this->request->method()) 
-        {   
-
-            $post = $this->request->post();
-
-            $post['transaction_date'] =  date_format(date_create($post['transaction_date']), 'Y-m-d H:i:s');
-            
-            $data = [
-                        'isSuccess' => false,
-                        'save_type' => !(empty($this->request->post('save_transaction_type')) )? 'save_and_addnew' : 'save_exit',
-                        'errorFields'=>[],
-                        'colored'=>$post['colored'],
-                        'nonColored'=>$post['non_colored'],
-                        'objectModel' => []
-                    ];
-
-            $post = array_merge($data, $post);
-         
-            if($this->_validateTransactionType($post)) {
-                $this->responseAjaxResult($this->_transactions->roguSave(Rogubukku::mergeCurrentlyLoggedInUser($post,'logged_by'))); 
-            }
-            else
-                $this->responseAjaxResult($data);
-           
-        }
-    }
-
-    private function _validateTransactionType($post)
     {
-        if($post['transaction'] != 'encode' && $post['transaction'] != 'others'){
-
-            if($post['colored'] == '' && $post['non_colored'] == '')
-                return false;
+        if (HTTP_Request::POST == $this->request->method()) {
+            $this->responseAjaxResult(
+                $this->_transactions->roguSave(
+                    Rogubukku::mergeCurrentlyLoggedInUser($this->request->post(), 'logged_by')
+                )
+            );
         }
-
-        return true;
     }
 
 } // End of class

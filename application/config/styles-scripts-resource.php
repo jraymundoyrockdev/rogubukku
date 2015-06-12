@@ -60,13 +60,14 @@ return array
         ],
         //MODULE-TRANSACTIONS
         'transactions-styles' => [
-            '//media/css/datepicker/bootstrap-datetimepicker.css',
+            '//media/css/lib/bootstrap/datepicker/bootstrap-datetimepicker.css',
         ],
         'transactions-scripts' => [
-            '//media/js/validation/transactions/transactions.js',
             '//media/js/modules/transactions/transactions.js',
-            '//media/js/datepicker/moment.js',
-            '//media/js/datepicker/bootstrap-datetimepicker.js'
+            '//media/js/lib/datepicker/moment.js',
+            '//media/js/lib/datepicker/bootstrap-datetimepicker.js',
+            '//media/js/lib/jquery/formatDateTime.js',
+            '//media/js/validation/transactions/transactions.js'
         ]
     ]
 );
