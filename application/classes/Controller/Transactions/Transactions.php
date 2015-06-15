@@ -51,12 +51,26 @@ class Controller_Transactions_Transactions extends Controller_Base
     public function action_save()
     {
         if (HTTP_Request::POST == $this->request->method()) {
-            $this->responseAjaxResult(
-                $this->_transactions->roguSave(
-                    Rogubukku::mergeCurrentlyLoggedInUser($this->request->post(), 'logged_by')
-                )
-            );
+
+            $result = $this->_transactions->roguSave(Rogubukku::mergeCurrentlyLoggedInUser($this->request->post(), 'logged_by'));
+
+            if (!empty($result['objectModel'])) {
+                $result['lastTransaction'] = $result['objectModel']->get('transaction');
+                $result['lastLoggedDate'] = $result['objectModel']->get('logged_date');
+                $result['lastReason'] = $result['objectModel']->get('reason');
+            }
+
+            $this->responseAjaxResult($result);
+
         }
+    }
+
+    public function action_list()
+    {
+        $user = $this->_users->where('id', '=', Auth::instance()->get_user()->id)->find();
+
+        $this->template->body = View::factory('transactions/transactions_list')
+            ->bind('user', $user);
     }
 
 } // End of class

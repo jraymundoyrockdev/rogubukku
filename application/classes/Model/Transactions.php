@@ -60,6 +60,7 @@ class Model_Transactions extends Model_AbstractModel
 
     public function roguSave($fields)
     {
+        $fields['logged_date'] = date('Y-m-d H:i:s');
         return $this->_prepareSave($fields, $this->_fillable, $this->_primary_key);
     }
 

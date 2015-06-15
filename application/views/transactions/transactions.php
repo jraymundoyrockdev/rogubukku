@@ -50,7 +50,7 @@
                         <label class="control-label" for="colored">Colored</label>
                         <span style="color:#2fa4e7" class="glyphicon glyphicon-info-sign" data-toggle="tooltip"
                               data-placement="right"
-                              title="Number of printed papers with colors(If no printed papers, type 0)."></span>
+                              title="Number of printed papers with colors."></span>
                         <?= Form::input('colored', 0, ['id' => 'colored', 'placeholder' => 'Colored', 'class' => 'form-control input_print', 'maxlength' => 3]); ?>
                     </div>
                 </div>
@@ -60,7 +60,7 @@
                         <label class="control-label" for="non_colored">Non-colored</label>
                         <span style="color:#2fa4e7" class="glyphicon glyphicon-info-sign" data-toggle="tooltip"
                               data-placement="right"
-                              title="Number of printed papers without colors. Black &amp; white(If no printed papers, type 0)."></span>
+                              title="Number of printed papers without colors. Black &amp; white."></span>
                         <?= Form::input('non_colored', 0, ['id' => 'non_colored', 'placeholder' => 'Non colored', 'class' => 'form-control input_print', 'maxlength' => 3]); ?>
                     </div>
                 </div>
@@ -68,7 +68,7 @@
                 <div class="form-group">
                     <div class="reason-error">
                         <label class="control-label" for="reason">Reason</label>
-                        <?= Form::textarea('reason', '', ['placeholder' => 'Reason', 'class' => 'form-control']); ?>
+                        <?= Form::textarea('reason', '', ['placeholder' => 'Reason', 'class' => 'form-control','rows'=>2]); ?>
                     </div>
                 </div>
 
@@ -116,14 +116,22 @@
 
             <div class="panel-body">
                 <div class="list-group">
-                    <?php foreach ($user->transactions->order_by('logged_date', 'desc')->limit(5)->find_all() as $tran) : ?>
-                        <a href="#" class="list-group-item">
-                            <h4 class="list-group-item-heading"><?=$tran->reason?></h4>
 
-                            <p class="list-group-item-text">...</p>
-                        </a>
-                    <?php endforeach; ?>
+                    <ul class="list-group" id="transaction_list">
+                        <?php $i=1; foreach ($user->transactions->order_by('logged_date', 'desc')->limit(5)->find_all() as $tran) : ?>
+
+                            <li class="list-group-item list-number-<?=$i++?>">
+                                <b><?=ucfirst($tran->transaction)?></b>
+                                <i class="pull-right"><small><?=$tran->logged_date?></small></i>
+                                <p class="list-group-item-text"><?=ucfirst($tran->reason)?></p>
+                            </li>
+
+                        <?php endforeach; ?>
+                    </ul>
+
                 </div>
+
+                <a href="<?=URL::site('transactions/list');?>"  class="pull-right">View All Transactions</a>
             </div>
         </div>
     </div>

@@ -61,13 +61,15 @@ return array
         //MODULE-TRANSACTIONS
         'transactions-styles' => [
             '//media/css/lib/bootstrap/datepicker/bootstrap-datetimepicker.css',
+            '//media/css/lib/dataTables/jquery.dataTables.css'
         ],
         'transactions-scripts' => [
-            '//media/js/modules/transactions/transactions.js',
             '//media/js/lib/datepicker/moment.js',
             '//media/js/lib/datepicker/bootstrap-datetimepicker.js',
             '//media/js/lib/jquery/formatDateTime.js',
-            '//media/js/validation/transactions/transactions.js'
+            '//media/js/validation/transactions/transactions.js',
+            '//media/js/lib/dataTables/jquery.dataTables.js',
+            '//media/js/modules/transactions/transactions.js',
         ]
     ]
 );

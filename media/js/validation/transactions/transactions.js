@@ -114,12 +114,13 @@ $('#transactions_form').formValidation({
         $.post($form.attr('action'), convertDateTime($form.serializeArray()), function (result) {
 
             if (result.isSuccess) {
-                var saveType = $('#saveType').val();
-                alert(saveType);
+                var insertNewTransactionItem = '<li class="list-group-item list-number-0"> <b>'+result.lastTransaction.charAt(0).toUpperCase()+result.lastTransaction.slice(1).toLowerCase()+'</b> <i class="pull-right"><small>'+result.lastLoggedDate+'</small></i> <p class="list-group-item-text">'+result.lastReason+'</p> </li>';
 
+                $("#transaction_list li").eq(4).remove();
+                $(insertNewTransactionItem).insertBefore('#transaction_list li:eq(0)')
 
-                IF(SAVETYPE == 'SAVEAND ADD NEW')
-                $("#trasaction_created").fadeIn().hide(2000);
+                if($('#saveType').val() == 'saveAndAddNew')
+                    $("#trasaction_created").fadeIn().hide(2000);
             }
             else {
                 $.each(result.errorFields, function (fieldName, fieldMessage) {

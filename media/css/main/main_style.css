@@ -8,7 +8,7 @@
 
 #page-wrapper {
     width: 100%;
-    padding: 5px 15px;
+    padding: 0px 15px;
 }
 
 .sui-cell {
@@ -1654,7 +1654,7 @@ table.tablesorter thead tr th:hover {
     }
 
     #page-wrapper {
-        padding: 15px 25px;
+        padding: 0px 25px;
     }
 
     /* Side Nav */
