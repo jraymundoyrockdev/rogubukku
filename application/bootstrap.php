@@ -190,6 +190,15 @@ Route::set('admin/users', 'admin/users((/<action>(/<id>)))', array('action' => '
         'action' => 'index',
     ));
 
+//TRANSACTIONS
+Route::set('transactions/transactions','transactions((/<action>(/<id>)))',array('action'=>'index|save'))
+    ->defaults(array(
+        'directory' => 'transactions',
+        'controller' => 'transactions',
+        'action'     => 'index',
+    ));
+
+
 
 if (!Route::cache()) {
     Route::set('minify', 'min(/<group>)', array(
@@ -202,3 +211,4 @@ if (!Route::cache()) {
             'group' => '',
         ));
 }
+

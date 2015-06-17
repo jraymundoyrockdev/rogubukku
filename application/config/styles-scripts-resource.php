@@ -43,6 +43,7 @@ return array
         ],
         //MODULE-CHANGE-PASSWORD
         'change-password-scripts' => [
+            '//media/js/modules/user/change_password.js',
             '//media/js/validation/user/change_password.js'
         ],
         //MODULE-MINISTRY
@@ -57,5 +58,15 @@ return array
             '//media/js/lib/bootstrap/bootstrap-switch.js',
             '//media/js/modules/admin/users.js'
         ],
+        //MODULE-TRANSACTIONS
+        'transactions-styles' => [
+            '//media/css/datepicker/bootstrap-datetimepicker.css',
+        ],
+        'transactions-scripts' => [
+            '//media/js/validation/transactions/transactions.js',
+            '//media/js/modules/transactions/transactions.js',
+            '//media/js/datepicker/moment.js',
+            '//media/js/datepicker/bootstrap-datetimepicker.js'
+        ]
     ]
 );

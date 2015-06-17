@@ -60,11 +60,11 @@ class Model_Users extends Model_User
                 array('not_empty'),
                 array('min_length', array(':value', 5)),
                 array('max_length', array(':value', 30)),
-                array(array($this, 'username_available')),
+                array(array($this, 'username_available'))
             ),
             'password' => array(
                 array('not_empty'),
-            ),
+            )
         );
     }
 
