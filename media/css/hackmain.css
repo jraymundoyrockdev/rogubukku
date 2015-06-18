@@ -1,3 +1,11 @@
 .force_display-block {
 	display: block;	
 }
+
+select{
+    cursor: pointer;
+}
+
+.glyphicon-info-sign{
+    cursor: help;
+}
