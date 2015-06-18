@@ -104,7 +104,7 @@ $(document).ready(function () {
                 row: '.signup-user-name-error',
                 validators: {
                     notEmpty: {
-                        message: 'Userame is required.'
+                        message: 'Username is required.'
                     },
                     stringLength: {
                         min: 5,

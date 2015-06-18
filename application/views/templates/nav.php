@@ -13,9 +13,8 @@
             <li><a href="<?= URL::site('dashboard'); ?>"><i class="fa fa-bullseye"></i> Dashboard </a>
             </li>
             <li><a href="#"><i class="fa fa-tasks"></i> Transcation</a></li>
-            <li class="<?php if ($routeName == 'reports-transactions') {
-                echo 'active';
-            } ?>"><a href="<?= URL::site('reports/transactions'); ?>"><i class="fa fa-globe"></i> Reports</a></li>
+            <li class="<?php if ($routeName == 'reports-transactions') {echo 'active';} ?>"></li>
+            <li><a href="<?= URL::site('reports/transactions'); ?>"><i class="fa fa-globe"></i> Reports</a></li>
 
             <?php if (Auth::instance()->logged_in("admin")): ?>
                 <li><a href="#"><i class="fa fa-font"></i> Timeline</a></li>

@@ -45,7 +45,7 @@ class Controller_User_ChangePassword extends Controller_Base
 
             $result = [
                 'isSuccess' => false,
-                'errorFields' => [],
+                'errorFields' => ['old_password'=>'Old Password does not exist.'],
                 'objectModel' => []
             ];
 
