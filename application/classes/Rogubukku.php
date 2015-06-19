@@ -77,4 +77,18 @@ class Rogubukku
 
         return array($result, $errorMessageOrFilename);
     }
+
+    /**
+     * Call the Api
+     *
+     * @$name string API name
+     *
+     * @return object api
+     */
+    public static function API($name)
+    {
+        $api = 'Api_' . $name;
+
+        return new $api();
+    }
 }

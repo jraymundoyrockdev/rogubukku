@@ -11,7 +11,7 @@
                         <i class="fa fa-truck fa-5x"></i>
                     </div>
                     <div class="col-xs-5 text-right">
-                        <p class="alerts-heading">343</p>
+                        <p class="alerts-heading dash-print">&nbsp;</p>
 
                         <p class="alerts-text">Print</p>
                     </div>
@@ -26,7 +26,7 @@
                         <i class="fa fa-money fa-5x"></i>
                     </div>
                     <div class="col-xs-5 text-right">
-                        <p class="alerts-heading">56</p>
+                        <p class="alerts-heading dash-encode">&nbsp;</p>
 
                         <p class="alerts-text">Encode</p>
                     </div>
@@ -41,7 +41,7 @@
                         <i class="fa fa-money fa-5x"></i>
                     </div>
                     <div class="col-xs-5 text-right">
-                        <p class="alerts-heading">6</p>
+                        <p class="alerts-heading dash-others">&nbsp;</p>
 
                         <p class="alerts-text">Others</p>
                     </div>
@@ -56,7 +56,7 @@
                         <i class="fa fa-money fa-5x"></i>
                     </div>
                     <div class="col-xs-5 text-right">
-                        <p class="alerts-heading">0</p>
+                        <p class="alerts-heading dash-all">&nbsp;</p>
 
                         <p class="alerts-text">All</p>
                     </div>

@@ -26,6 +26,13 @@
 
 </div>
 
+
+<script type="text/javascript">
+    var serverYear = "<?php echo date('Y')?>";
+    var serverCurrentUser = "<?php echo Auth::instance()->get_user()->id;?>";
+    var serverCurrentUserTypeAdmin = "<?php echo Auth::instance()->logged_in("admin")?>";
+</script>
+
 <!--Global Scripts-->
 <?php echo HTML::script('min?g=global-scripts'); ?>
 <!--Module Scripts-->

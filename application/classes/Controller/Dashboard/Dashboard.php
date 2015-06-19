@@ -6,7 +6,6 @@
  */
 class Controller_Dashboard_Dashboard extends Controller_Base
 {
-
     /**
      * default construct.
      * Set global config variables
