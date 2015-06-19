@@ -10,9 +10,8 @@
     </div>
     <div class="collapse navbar-collapse navbar-ex1-collapse">
         <ul class="nav navbar-nav side-nav">
-            <li><a href="<?= URL::site('dashboard'); ?>"><i class="fa fa-bullseye"></i> Dashboard </a>
-            </li>
-            <li><a href="<?=URL::site('transactions');?>"><i class="fa fa-tasks"></i> Transactions</a></li>
+            <li class="<?php if ($routeName == 'dashboard') {echo 'active';} ?>"><a href="<?= URL::site('dashboard'); ?>"><i class="fa fa-bullseye"></i> Dashboard </a></li>
+            <li class="<?php if ($routeName == 'transactions') {echo 'active';} ?>"><a href="<?=URL::site('transactions');?>"><i class="fa fa-tasks"></i> Transactions</a></li>
             <li class="<?php if ($routeName == 'reports-transactions') {echo 'active';} ?>">
                 <a href="<?= URL::site('reports/transactions'); ?>"><i class="fa fa-globe"></i> Reports</a>
             </li>
