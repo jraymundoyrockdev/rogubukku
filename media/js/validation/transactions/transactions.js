@@ -91,11 +91,11 @@ $('#transactions_form').formValidation({
             validators: {
                 notEmpty: {
                     message: 'Transaction date is required.'
-                },
-                date: {
-                    format: 'MM/DD/YYYY h:m A',
-                    message: 'The value is not a valid date'
                 }
+               /* date: {
+                    format: 'yy-mm-dd hh:ii:ss',
+                    message: 'The value is not a valid date'
+                }*/
             }
         }
     }
@@ -114,13 +114,25 @@ $('#transactions_form').formValidation({
         $.post($form.attr('action'), convertDateTime($form.serializeArray()), function (result) {
 
             if (result.isSuccess) {
+                $that.formValidation('resetForm', true);
                 var insertNewTransactionItem = '<li class="list-group-item list-number-0"> <b>'+result.lastTransaction.charAt(0).toUpperCase()+result.lastTransaction.slice(1).toLowerCase()+'</b> <i class="pull-right"><small>'+result.lastLoggedDate+'</small></i> <p class="list-group-item-text">'+result.lastReason+'</p> </li>';
+                
+                if($('#saveType').val() == 'saveAndExit')
+                    window.location = "http://rogubukku.com/dashboard";
 
-                $("#transaction_list li").eq(4).remove();
-                $(insertNewTransactionItem).insertBefore('#transaction_list li:eq(0)')
+                if($('#saveType').val() == 'update')
+                    window.location = "http://rogubukku.com/transactions/list";
 
-                if($('#saveType').val() == 'saveAndAddNew')
-                    $("#trasaction_created").fadeIn().hide(2000);
+                if($("#transaction_list li").eq(4).val() == 0)
+                {
+                    $("#transaction_list li").eq(4).remove();
+                    $(insertNewTransactionItem).insertBefore('#transaction_list li:eq(0)')
+                }
+                else
+                    $( "#prepend_list" ).prepend( insertNewTransactionItem );
+
+                $("#no_transaction").fadeOut().
+                $("#trasaction_created").fadeIn().hide(2000);
             }
             else {
                 $.each(result.errorFields, function (fieldName, fieldMessage) {

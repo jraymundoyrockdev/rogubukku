@@ -133,6 +133,7 @@ CREATE TABLE IF NOT EXISTS `transactions` (
   `transaction_date` datetime NOT NULL,
   `logged_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `logged_by` int(10) unsigned NOT NULL,
+  `last_login` varchar(10) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
