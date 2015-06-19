@@ -21,6 +21,7 @@ return array
         'global-scripts' => [
             '//media/js/lib/jquery/jquery-2.1.4.js',
             '//media/js/lib/bootstrap/bootstrap.js',
+            '//media/js/lib/shieldui/shieldui-all.min.js',
             '//media/js/lib/bootstrap/bootstrap_validator/dist/formValidation.js',
             '//media/js/lib/bootstrap/bootstrap_validator/dist/bootstrap.js'
         ],
@@ -69,6 +70,7 @@ return array
             '//media/js/validation/transactions/transactions.js',
             '//media/js/modules/transactions/transactions.js',
         ],
+<<<<<<< HEAD
         //TRANSACTION LIST
         'transactions-list-styles' => [
             '//media/css/lib/dataTables/jquery.dataTables.css'
@@ -76,6 +78,26 @@ return array
         'transactions-list-scripts' => [
             '//media/js/lib/dataTables/jquery.dataTables.js',
             '//media/js/modules/transactions/list.js',
+=======
+
+        //MODULE-REPORTS
+        'reports-styles' => [
+            '//media/css/lib/dataTables/dataTables.bootstrap.css'
+        ],
+        'reports-scripts' => [
+            '//media/js/lib/dataTables/jquery.dataTables.js',
+            '//media/js/lib/dataTables/dataTables.bootstrap.js',
+            '//media/js/modules/reports/transactions.js'
+        ],
+
+        //MODULE-DASHBOARD CLIENT
+        'dashboard-client-styles' => [
+
+        ],
+        'dashboard-client-scripts' => [
+            '//media/js/modules/dashboard/client.js'
+>>>>>>> story_3_17
         ]
+
     ]
 );

@@ -22,7 +22,7 @@
         </ul>
     </li>
 
-    <?php //if (Auth::instance()->logged_in("admin")): ?>
+    <?php if (Auth::instance()->logged_in("admin")): ?>
     <li class="dropdown user-dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-cogs"></i> System <b
                 class="caret"></b></a>
@@ -32,7 +32,7 @@
             <li><a href="<?= URL::site('admin/users'); ?>"><i class="fa fa-gear"></i> User Management</a></li>
         </ul>
     </li>
-    <?php //endif;?>
+    <?php endif;?>
 
     <li class="dropdown user-dropdown">
         <a href="#" class="dropdown-toggle full_avatar_name" data-toggle="dropdown"><i

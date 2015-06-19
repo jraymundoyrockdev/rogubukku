@@ -15,7 +15,7 @@ if (is_file(APPPATH . 'classes/Kohana' . EXT)) {
  * @link http://kohanaframework.org/guide/using.configuration
  * @link http://www.php.net/manual/timezones
  */
-    date_default_timezone_set('Asia/Singapore');
+date_default_timezone_set('Asia/Singapore');
 /**
  * Set the default locale.
  *
@@ -191,15 +191,14 @@ Route::set('admin/users', 'admin/users((/<action>(/<id>)))', array('action' => '
     ));
 
 //TRANSACTIONS
-Route::set('transactions/transactions','transactions((/<action>(/<id>)))',array('action'=>'index|save|list|edit|update'))
+Route::set('transactions','transactions((/<action>(/<id>)))',array('action'=>'index|save|list|edit|update'))
     ->defaults(array(
         'directory' => 'transactions',
         'controller' => 'transactions',
-        'action'     => 'index',
+        'action' => 'index',
     ));
 
-
-
+//MINIFY
 if (!Route::cache()) {
     Route::set('minify', 'min(/<group>)', array(
         'group' => '[^/.,;?\n]++'
@@ -212,3 +211,11 @@ if (!Route::cache()) {
         ));
 }
 
+//API
+Route::set('api.dashboard', 'api.dashboard((/<action>(/<year>))(/<id>))',
+    array('action' => 'index|transaction_totals|transaction_totals_per_month'))
+    ->defaults(array(
+        'directory' => 'api',
+        'controller' => 'dashboard',
+        'action' => 'index',
+    ));
