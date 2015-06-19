@@ -8,6 +8,11 @@ class Controller_Reports_Transactions extends Controller_Base
 {
 
     /**
+     * @var Transactions
+     */
+    protected $_transactions;
+
+    /**
      * default construct.
      * Set global config variables
      */
@@ -16,6 +21,10 @@ class Controller_Reports_Transactions extends Controller_Base
         $this->_is_logged_in();
 
         parent::before();
+
+        $this->_transactions = ORM::factory('Transactions');
+
+        $this->template->resourceModule = 'reports';
 
     }
 
@@ -26,7 +35,23 @@ class Controller_Reports_Transactions extends Controller_Base
      */
     public function action_index()
     {
-        $this->template->body = View::factory('reports/transactions');
+        $transactions = [];
+
+        if (!Auth::instance()->logged_in("admin")) {
+
+            $transactions = $this->_transactions->where(
+                'logged_by',
+                '=',
+                Auth::instance()->get_user()->id
+            )->order_by(
+                'logged_date',
+                'desc'
+            )->find_all();
+        }
+
+        $this->template->body = View::factory('reports/transactions')
+            ->bind('transactions', $transactions);
+
     }
 
 } // End of class

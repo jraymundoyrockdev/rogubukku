@@ -70,6 +70,16 @@ return array
             '//media/js/validation/transactions/transactions.js',
             '//media/js/lib/dataTables/jquery.dataTables.js',
             '//media/js/modules/transactions/transactions.js',
+        ],
+
+        //MODULE-REPORTS
+        'reports-styles' => [
+            '//media/css/lib/dataTables/dataTables.bootstrap.css'
+        ],
+        'reports-scripts' => [
+            '//media/js/lib/dataTables/jquery.dataTables.js',
+            '//media/js/lib/dataTables/dataTables.bootstrap.js',
+            '//media/js/modules/reports/transactions.js'
         ]
     ]
 );
