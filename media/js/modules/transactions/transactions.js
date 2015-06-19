@@ -22,7 +22,7 @@ $(function () {
     
     $('#datetimepicker1').on('dp.change dp.show', function (e) {
         
-        //$('#transactions_form').formValidation('revalidateField', 'transaction_date');
+        $('#transactions_form').formValidation('revalidateField', 'transaction_date');
     });
 });
 

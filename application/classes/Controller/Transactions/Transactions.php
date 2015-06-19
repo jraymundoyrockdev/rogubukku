@@ -79,11 +79,16 @@ class Controller_Transactions_Transactions extends Controller_Base
     {
         $this->template->resourceModule = 'transactions-list';
 
-        $transactions = $this->_transactions->where('logged_by', '=', $this->_user_id)->order_by('logged_date', 'desc')->find_all();
+        $transactions = $this->_transactions->where(
+                                                'logged_by',
+                                                '=', $this->_user_id
+                                            )->order_by(
+                                                'logged_date',
+                                                'desc'
+                                            )->find_all();
         
         $this->template->body = View::factory('transactions/index')
-            ->bind('transactions', $transactions)
-            ->bind('user_id', $this->_user_id);
+            ->bind('transactions', $transactions);
     }
 
     public function action_edit()

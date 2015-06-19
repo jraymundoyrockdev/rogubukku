@@ -36,7 +36,7 @@
 
                     <?php if (Auth::instance()->logged_in("admin")):?>
                         <div class="form-group">
-                            <label class="col-sm-1" for="user">Logged By</label>
+                            <label class="col-sm-1" for="user">Logged&nbsp;By</label>
                             <div class="col-sm-3">
                                 <?= Form::input('user', '', [
                                     'id' => 'loggedBy',

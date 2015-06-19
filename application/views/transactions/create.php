@@ -8,7 +8,6 @@
 
             </div>
             <div class="panel-body">
-
                 <div id="trasaction_created" class="alert alert-success alert-dismissible fade in" role="alert"
                      style="display:none;">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span

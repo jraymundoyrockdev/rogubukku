@@ -1,17 +1,12 @@
 <div class="row">
-    <div class="col-lg-12">
+    <div class="col-lg-9">
         <div class="panel panel-primary">
             <div class="panel-heading">
                 <h3 class="panel-title">
                     <i class="fa fa-pencil"></i> Edit Transactions
-                    <a href="<?=URL::site('transactions');?>" class="pull-right"><i class="fa fa-plus"></i> Create Transactions</a>
-                    <span class="pull-right">&nbsp;|&nbsp;</span> 
-                    <a href="<?=URL::site('transactions/list');?>" class="pull-right"><i class="fa fa-list"></i> All Transactions</a>
                 </h3>
-
             </div>
             <div class="panel-body">
-
                 <div id="trasaction_created" class="alert alert-success alert-dismissible fade in" role="alert"
                      style="display:none;">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
@@ -80,7 +75,7 @@
                         <label class="control-label" for="transaction_date">Transaction Date</label>
 
                         <div class="input-group">
-                            <?= Form::input('transaction_date', /*$transaction->transaction_date*/'', ['id' => 'transaction_date', 'class' => 'form-control', 'readonly' => 'readonly']); ?>
+                            <?= Form::input('transaction_date', $transaction->transaction_date, ['id' => 'transaction_date', 'class' => 'form-control', 'readonly' => 'readonly']); ?>
                             <span class="input-group-addon" id="icon-calendar">
                                     <span class="glyphicon glyphicon-calendar"></span>
                                 </span>
@@ -91,16 +86,24 @@
                         <?= Form::hidden('saveType', '', ['id' => 'saveType']); ?>
                     </div>
                 </div>
-
+                <?= Form::hidden('id', $transaction->id); ?>
                 <div class="col-lg-12">
                     <div class="form-group">
-                        <?= Form::button('saveAndExit', 'Update', array('type' => 'submit', 'class' => 'btn btn-warning btn-block saveTransaction', 'id' => 'update', 'value' => 'saveAndExit')); ?>
+                        <?= Form::button('saveAndExit', 'Update', array('type' => 'submit', 'class' => 'btn btn-primary btn-block saveTransaction', 'id' => 'update', 'value' => 'saveAndExit')); ?>
                     </div>
                 </div>
 
                 <?= Form::close(); ?>
-
             </div>
         </div>
+    </div>
+    <div class="col-lg-3 well">
+        <a href="<?=URL::site('transactions');?>" class="btn btn-info col-lg-12" role="button">
+            <i class="fa fa-plus-square"></i> Create New Transaction
+        </a>
+        <hr style="padding-top:10px;">
+        <a href="<?=URL::site('transactions/list');?>" class="btn btn-warning col-lg-12" role="button">
+            <i class="fa fa-plus-square"></i> Transaction List
+        </a>
     </div>
 </div>

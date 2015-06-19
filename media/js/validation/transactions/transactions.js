@@ -91,11 +91,11 @@ $('#transactions_form').formValidation({
             validators: {
                 notEmpty: {
                     message: 'Transaction date is required.'
-                }
-               /* date: {
-                    format: 'yy-mm-dd hh:ii:ss',
+                },
+                date: {
+                    format: 'yy/mm/dd',
                     message: 'The value is not a valid date'
-                }*/
+                }
             }
         }
     }

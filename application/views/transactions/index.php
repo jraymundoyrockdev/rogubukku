@@ -1,10 +1,9 @@
 <div class="row">
-    <div class="col-lg-12">
+    <div class="col-lg-9">
         <div class="panel panel-primary">
             <div class="panel-heading">
                 <h3 class="panel-title">
                     <i class="fa fa-list"></i> All Transactions
-                    <a href="<?=URL::site('transactions');?>" class="pull-right"><i class="fa fa-plus"></i> Create Transactions</a>
                 </h3>
             </div>
 
@@ -29,9 +28,6 @@
                                 Transaction Date
                             </th>
                             <th>
-                                Logged Date
-                            </th>
-                            <th>
                                 Action
                             </th>
                         </tr>
@@ -45,7 +41,6 @@
                                 <td><?= ucfirst($tran->transaction)?></td>
                                 <td><?= ucfirst($tran->reason) ?></td>
                                 <td><?= $tran->transaction_date ?></td>
-                                <td><?= $tran->logged_date ?></td>
                                 <td><a href="<?=URL::site('transactions/edit/'.$tran->id);?>">EDIT</a></td>
                             </tr>
 
@@ -55,5 +50,10 @@
                 </table>
             </div>
         </div>
+    </div>
+    <div class="col-lg-3 well">
+        <a href="<?=URL::site('transactions');?>" class="btn btn-info col-lg-12" role="button">
+           <i class="fa fa-plus-square"></i> Create New Transaction
+        </a>
     </div>
 </div>

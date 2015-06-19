@@ -70,16 +70,6 @@ return array
             '//media/js/validation/transactions/transactions.js',
             '//media/js/modules/transactions/transactions.js',
         ],
-<<<<<<< HEAD
-        //TRANSACTION LIST
-        'transactions-list-styles' => [
-            '//media/css/lib/dataTables/jquery.dataTables.css'
-        ],
-        'transactions-list-scripts' => [
-            '//media/js/lib/dataTables/jquery.dataTables.js',
-            '//media/js/modules/transactions/list.js',
-=======
-
         //MODULE-REPORTS
         'reports-styles' => [
             '//media/css/lib/dataTables/dataTables.bootstrap.css'
@@ -96,7 +86,6 @@ return array
         ],
         'dashboard-client-scripts' => [
             '//media/js/modules/dashboard/client.js'
->>>>>>> story_3_17
         ]
 
     ]

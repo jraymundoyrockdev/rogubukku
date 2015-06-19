@@ -4,59 +4,64 @@
     <i class="fa fa-user"></i> Ministry Save!<a class="anchorjs-link" href="#oh-snap!-you-got-an-error!"><span
             class="anchorjs-icon"></span></a>
 </div>
-<p class="text-right">
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ministryModal"><i
-            class="fa fa-plus-square"></i> Add New
-    </button>
-</p>
-<div class="panel panel-primary">
-    <div class="panel-heading">
-        <h3 class="panel-title">
-            <i class="fa fa-bar-chart-o"></i>
-            Ministries
-        </h3>
-    </div>
-
-    <div class="panel-body">
-        <div id="shieldui-grid1" class="sui-grid sui-grid-core">
-            <div class="sui-gridheader">
-                <table class="sui-table sui-non-selectable">
-                    <colgroup>
-                        <col style="width:70px">
-                        <col>
-                    </colgroup>
-
-                    <thead>
-                    <tr class="sui-columnheader">
-                        <th class="sui-headercell" data-field="id">
-                            #
-                        </th>
-                        <th class="sui-headercell" data-field="name">
-                            Ministry
-                        </th>
-                    </tr>
-                    </thead>
-                </table>
+<div class="row">
+    <div class="col-lg-9">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    <i class="fa fa-bar-chart-o"></i>
+                    Ministries
+                </h3>
             </div>
 
-            <div class="sui-gridcontent">
-                <table class="sui-table sui-hover sui-selectable" id="ministryList">
-                    <colgroup>
-                        <col style="width:70px">
-                        <col>
-                    </colgroup>
-                    <tbody>
-                    <?php $i = 1;
-                    foreach ($ministries as $m): ?>
-                        <tr class="sui-<?= ($i % 2 == 0) ? 'row' : 'alt-row'; ?>">
-                            <td class="sui-cell"><?= $i++ ?></td>
-                            <td class="sui-cell"><?= $m->ministry ?></td>
-                        </tr>
-                    <?php endforeach; ?>
-                    </tbody>
-                </table>
+            <div class="panel-body">
+                <div id="shieldui-grid1" class="sui-grid sui-grid-core">
+                    <div class="sui-gridheader">
+                        <table class="sui-table sui-non-selectable">
+                            <colgroup>
+                                <col style="width:70px">
+                                <col>
+                            </colgroup>
+
+                            <thead>
+                            <tr class="sui-columnheader">
+                                <th class="sui-headercell" data-field="id">
+                                    #
+                                </th>
+                                <th class="sui-headercell" data-field="name">
+                                    Ministry
+                                </th>
+                            </tr>
+                            </thead>
+                        </table>
+                    </div>
+
+                    <div class="sui-gridcontent">
+                        <table class="sui-table sui-hover sui-selectable" id="ministryList">
+                            <colgroup>
+                                <col style="width:70px">
+                                <col>
+                            </colgroup>
+                            <tbody>
+                            <?php $i = 1;
+                            foreach ($ministries as $m): ?>
+                                <tr class="sui-<?= ($i % 2 == 0) ? 'row' : 'alt-row'; ?>">
+                                    <td class="sui-cell"><?= $i++ ?></td>
+                                    <td class="sui-cell"><?= $m->ministry ?></td>
+                                </tr>
+                            <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
+
         </div>
+    </div>
+    <div class="col-lg-3 well">
+        <button type="button" class="btn btn-primary col-lg-12" data-toggle="modal" data-target="#ministryModal"><i
+                class="fa fa-plus-square"></i> Add New
+        </button>
     </div>
 </div>
 
