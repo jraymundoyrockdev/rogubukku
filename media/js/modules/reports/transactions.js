@@ -7,7 +7,7 @@ $(document).ready(function () {
             "orderable": false,
             "targets": 0
         }],
-        "order": [[3, "desc"]]
+        "order": [[7, "desc"]]
     });
 
     transactionTable.on('order.dt search.dt', function () {
@@ -26,18 +26,28 @@ $(document).ready(function () {
             var ministryType = $('#ministry').val().toLowerCase();
             var ministryTypeColumn = data[5].toLowerCase();
 
-            if (transactionTypeColumn.indexOf(transactionType) != -1 && ministryTypeColumn.indexOf(ministryType) != -1) {
-                return true;
+            var loggedBy = $('#loggedBy').val().toLowerCase();
+            var loggedByColumn = data[8].toLowerCase();
+
+            if (loggedBy) {
+                if (transactionTypeColumn.indexOf(transactionType) != -1 && ministryTypeColumn.indexOf(ministryType) != -1 && loggedByColumn.indexOf(loggedBy) != -1) {
+                    return true;
+                }
+            }
+
+            if (!loggedBy) {
+                if (transactionTypeColumn.indexOf(transactionType) != -1 && ministryTypeColumn.indexOf(ministryType) != -1) {
+                    return true;
+                }
             }
 
             return false;
-
         }
     );
 
-    $('#transactionType, #ministry').keyup(function () {
+    $('#transactionType, #ministry, #loggedBy').keyup(function () {
         transactionTable.draw();
     });
 
-});
 
+});

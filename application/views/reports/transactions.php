@@ -33,6 +33,21 @@
                             ]); ?>
                         </div>
                     </div>
+
+                    <?php if (Auth::instance()->logged_in("admin")):?>
+                        <div class="form-group">
+                            <label class="col-sm-1" for="user">Logged By</label>
+                            <div class="col-sm-3">
+                                <?= Form::input('user', '', [
+                                    'id' => 'loggedBy',
+                                    'placeholder' => 'Search by: [John Doe, Jem, etc..]',
+                                    'class' => 'form-control',
+                                    'maxlength' => 20
+                                ]); ?>
+                            </div>
+                        </div>
+                    <?php endif;?>
+
                 </form>
                 <hr>
                 <table class="table table-striped table-bordered hover" cellspacing="0" width="100%"
@@ -48,11 +63,17 @@
                         <th>Transaction Date</th>
                         <th>Logged Date</th>
 
+                        <?php if (Auth::instance()->logged_in("admin")):?>
+
+                        <th>Logged By</th>
+
+                        <?php endif;?>
+
                     </tr>
                     </thead>
                     <tbody>
 
-                    <?php $i = 1;
+                    <?php $i=1;
                     foreach ($transactions as $tran) : ?>
 
                         <tr>
@@ -64,6 +85,12 @@
                             <td><?= $tran->ministry->ministry ?></td>
                             <td><?= $tran->transaction_date ?></td>
                             <td><?= $tran->logged_date ?></td>
+
+                            <?php if (Auth::instance()->logged_in("admin")):?>
+
+                            <td><?= $tran->users->full_name ?></td>
+
+                            <?php endif;?>
                         </tr>
 
                     <?php endforeach; ?>

@@ -16,10 +16,7 @@
             <li class="<?php if ($routeName == 'reports-transactions') {echo 'active';} ?>">
                 <a href="<?= URL::site('reports/transactions'); ?>"><i class="fa fa-globe"></i> Reports</a>
             </li>
-            
-            <?php if (Auth::instance()->logged_in("admin")): ?>
-                <li><a href="#"><i class="fa fa-font"></i> Timeline</a></li>
-            <?php endif; ?>
+            <li><a href="#"><i class="fa fa-font"></i> Timeline</a></li>
         </ul>
 
         <?php echo View::factory('templates/header')->bind('user', $user) ?>

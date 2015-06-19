@@ -49,6 +49,14 @@ class Controller_Reports_Transactions extends Controller_Base
             )->find_all();
         }
 
+        if (Auth::instance()->logged_in("admin")) {
+
+            $transactions = $this->_transactions->order_by(
+                'logged_date',
+                'desc'
+            )->find_all();
+        }
+
         $this->template->body = View::factory('reports/transactions')
             ->bind('transactions', $transactions);
 
