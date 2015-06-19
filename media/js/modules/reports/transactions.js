@@ -26,10 +26,12 @@ $(document).ready(function () {
             var ministryType = $('#ministry').val().toLowerCase();
             var ministryTypeColumn = data[5].toLowerCase();
 
-            var loggedBy = $('#loggedBy').val().toLowerCase();
-            var loggedByColumn = data[8].toLowerCase();
+            var loggedBy = $('#loggedBy').length;
+
 
             if (loggedBy) {
+                var loggedBy = $('#loggedBy').val().toLowerCase()
+                var loggedByColumn = data[8].toLowerCase();
                 if (transactionTypeColumn.indexOf(transactionType) != -1 && ministryTypeColumn.indexOf(ministryType) != -1 && loggedByColumn.indexOf(loggedBy) != -1) {
                     return true;
                 }

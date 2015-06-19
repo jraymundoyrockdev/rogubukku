@@ -17,6 +17,7 @@ class Controller_Dashboard_Dashboard extends Controller_Base
 
         parent::before();
 
+        $this->template->resourceModule = 'dashboard-client';
     }
 
     /**
@@ -26,7 +27,7 @@ class Controller_Dashboard_Dashboard extends Controller_Base
      */
     public function action_index()
     {
-        $this->template->body = View::factory('dashboard/dashboard');
+        $this->template->body = View::factory('dashboard/client');
     }
 
 } // End of class
