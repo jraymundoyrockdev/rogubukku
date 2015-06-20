@@ -27,8 +27,9 @@ class Controller_Api_Dashboard extends Controller_Base
 
     public function action_transaction_totals_per_month()
     {
-        die;
-        return [];
+        $data = $this->_dashboard->transactionPerMonth($this->request->param('year'), $this->request->param('id'));
+
+        $this->responseAjaxResult($data);
     }
 
 }

@@ -1,26 +1,25 @@
 $(document).ready(function () {
     var user = (serverCurrentUserTypeAdmin != '') ? '' : serverCurrentUser;
-    var transactionTotalUri = '/api.dashboard/transaction_totals/'+ serverYear + '/' + user;
+    var transactionTotalUri = '/api.dashboard/transaction_totals/' + serverYear + '/' + user;
 
     $.ajax({
         url: transactionTotalUri,
         method: 'get',
         dataTypa: 'json'
     }).done(function (result) {
-
-        $.grep(result,
-            function (apiRes) {
-                $('.dash-print').hide().text(apiRes.print).fadeIn(1000);
-                $('.dash-encode').hide().text(apiRes.encode).fadeIn(1000);
-                $('.dash-all').hide().text(apiRes._all).fadeIn(1000);
-                $('.dash-others').hide().text(apiRes.others).fadeIn(1000);
-            }
-        );
+        $('.dash-print').hide().text(result.print).fadeIn(1000);
+        $('.dash-encode').hide().text(result.encode).fadeIn(1000);
+        $('.dash-all'). hide().text(result._all).fadeIn(1000);
+        $('.dash-others').hide().text(result.others).fadeIn(1000);
     });
 
-    var uri = "//api.worldweatheronline.com/free/v1/weather.ashx?q=Washington&format=json&num_of_days=5&key=zbgkc4rxu5agfhf4rugfwcuk";
+    var transactionTotalUri = '/api.dashboard/transaction_totals_per_month/' + serverYear + '/' + user;
 
-    $.get(uri, function (r) {
+    $.get(transactionTotalUri, function (result) {
+        var monthlyResult = $.map(result, function (value, key) {
+            return parseInt(value);
+        });
+
         $("#clientTransactionChart").shieldChart({
             theme: "bootstrap",
             primaryHeader: {
@@ -43,9 +42,9 @@ $(document).ready(function () {
             dataSeries: [{
                 seriesType: 'bar',
                 collectionAlias: "Transaction Monitor per month",
-                data: [100, 320, 453, 234, 553, 665, 345, 123, 432, 545, 654, 988]
+                data: monthlyResult
             }]
         });
-    }, "jsonp"); // end jQuery.get()
+    }, "json"); // end jQuery.get()
 
 });
