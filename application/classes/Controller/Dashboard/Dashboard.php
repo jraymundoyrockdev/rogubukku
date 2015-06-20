@@ -26,7 +26,7 @@ class Controller_Dashboard_Dashboard extends Controller_Base
      */
     public function action_index()
     {
-        $this->template->body = View::factory('dashboard/client');
+        $this->template->body = View::factory('dashboard/main');
     }
 
 } // End of class

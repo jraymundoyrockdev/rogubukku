@@ -15,6 +15,8 @@ $(document).ready(function () {
 
     var transactionTotalUri = '/api.dashboard/transaction_totals_per_month/' + serverYear + '/' + user;
 
+    var reportType = ['stepline','bar','line'];
+
     $.get(transactionTotalUri, function (result) {
         var monthlyResult = $.map(result, function (value, key) {
             return parseInt(value);
@@ -36,11 +38,11 @@ $(document).ready(function () {
                 chartBound: true,
                 axisMarkers: {
                     enabled: true,
-                    mode: 'xy'
+                    mode: 'x'
                 }
             },
             dataSeries: [{
-                seriesType: 'bar',
+                seriesType: reportType[Math.floor(Math.random()*reportType.length)],
                 collectionAlias: "Transaction Monitor per month",
                 data: monthlyResult
             }]
