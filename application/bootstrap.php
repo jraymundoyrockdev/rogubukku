@@ -218,11 +218,21 @@ if (!Route::cache()) {
         ));
 }
 
-//API
+//APIs
+
 Route::set('api.dashboard', 'api.dashboard((/<action>(/<year>))(/<id>))',
     array('action' => 'index|transaction_totals|transaction_totals_per_month'))
     ->defaults(array(
         'directory' => 'api',
         'controller' => 'dashboard',
+        'action' => 'index',
+    ));
+
+
+Route::set('api.timeline', 'api.timeline((/<action>(/<limit>))(/<offset>)(/<id>))',
+    array('action' => 'index|transaction_timeline'))
+    ->defaults(array(
+        'directory' => 'api',
+        'controller' => 'timeline',
         'action' => 'index',
     ));

@@ -8,11 +8,6 @@ class Controller_Timeline_Main extends Controller_Base
 {
 
     /**
-     * @var Transactions
-     */
-    protected $_transactions;
-
-    /**
      * default construct.
      * Set global config variables
      */
@@ -22,10 +17,7 @@ class Controller_Timeline_Main extends Controller_Base
 
         parent::before();
 
-        $this->_transactions = ORM::factory('Transactions');
-
         $this->template->resourceModule = 'timeline';
-
     }
 
     /**
@@ -35,7 +27,6 @@ class Controller_Timeline_Main extends Controller_Base
      */
     public function action_index()
     {
-
         $this->template->body = View::factory('timeline/main');
     }
 

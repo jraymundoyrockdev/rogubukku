@@ -86,7 +86,18 @@ return array
         ],
         'dashboard-client-scripts' => [
             '//media/js/modules/dashboard/client.js'
+        ],
+
+        //MODULE-TIMELINE
+        'timeline-styles' => [
+
+        ],
+        'timeline-scripts' => [
+            '//media/js/modules/timeline/box-builder.js',
+            '//media/js/modules/timeline/main.js'
         ]
+
+
 
     ]
 );
