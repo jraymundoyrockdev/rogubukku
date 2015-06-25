@@ -26,7 +26,7 @@
                     </small>
                 </div>
 
-                <?= Form::open('transactions/update', array('class' => 'search_form', 'id' => 'transactions_form')); ?>
+                <?= Form::open('transactions/save', array('class' => 'search_form', 'id' => 'transactions_form')); ?>
 
                 <div class="form-group">
                     <div class="transaction-type-error">
@@ -75,21 +75,30 @@
                         <label class="control-label" for="transaction_date">Transaction Date</label>
 
                         <div class="input-group">
+
                             <?= Form::input('transaction_date', $transaction->transaction_date, ['id' => 'transaction_date', 'class' => 'form-control', 'readonly' => 'readonly']); ?>
+                            
                             <span class="input-group-addon" id="icon-calendar">
-                                    <span class="glyphicon glyphicon-calendar"></span>
-                                </span>
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
                         </div>
                         <small class="help-block transaction_date" style="color:#b94a48;display:none;">Transaction date
                             is required.
                         </small>
+
+                        <?= Form::hidden('id', $transaction->id); ?>
                         <?= Form::hidden('saveType', '', ['id' => 'saveType']); ?>
+
                     </div>
                 </div>
+
                 <?= Form::hidden('id', $transaction->id); ?>
+                
                 <div class="col-lg-12">
                     <div class="form-group">
+
                         <?= Form::button('saveAndExit', 'Update', array('type' => 'submit', 'class' => 'btn btn-primary btn-block saveTransaction', 'id' => 'update', 'value' => 'saveAndExit')); ?>
+                    
                     </div>
                 </div>
 
@@ -103,7 +112,7 @@
         </a>
         <hr style="padding-top:10px;">
         <a href="<?=URL::site('transactions/list');?>" class="btn btn-warning col-lg-12" role="button">
-            <i class="fa fa-plus-square"></i> Transaction List
+            <i class="fa fa-list-square"></i> Transaction List
         </a>
     </div>
 </div>

@@ -191,7 +191,7 @@ Route::set('admin/users', 'admin/users((/<action>(/<id>)))', array('action' => '
     ));
 
 //TRANSACTIONS
-Route::set('transactions','transactions((/<action>(/<id>)))',array('action'=>'index|save|list|edit|update'))
+Route::set('transactions','transactions((/<action>(/<id>)))',array('action'=>'index|save|list|edit|destroy'))
     ->defaults(array(
         'directory' => 'transactions',
         'controller' => 'transactions',

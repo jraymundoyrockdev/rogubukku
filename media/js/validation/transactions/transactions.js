@@ -93,7 +93,7 @@ $('#transactions_form').formValidation({
                     message: 'Transaction date is required.'
                 },
                 date: {
-                    format: 'yy/mm/dd',
+                    format: 'MM/DD/YYYY g:ii a',
                     message: 'The value is not a valid date'
                 }
             }
@@ -129,9 +129,11 @@ $('#transactions_form').formValidation({
                     $(insertNewTransactionItem).insertBefore('#transaction_list li:eq(0)')
                 }
                 else
+                {
                     $( "#prepend_list" ).prepend( insertNewTransactionItem );
+                }
 
-                $("#no_transaction").fadeOut().
+                $("#no_transaction").fadeOut();
                 $("#trasaction_created").fadeIn().hide(2000);
             }
             else {

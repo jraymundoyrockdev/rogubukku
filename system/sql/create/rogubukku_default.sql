@@ -131,6 +131,7 @@ CREATE TABLE IF NOT EXISTS `transactions` (
   `non_colored` int(3) NOT NULL,
   `reason` text NOT NULL,
   `transaction_date` datetime NOT NULL,
+  `status` varchar(10) DEFAULT NULL,
   `logged_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `logged_by` int(10) unsigned NOT NULL,
   `last_login` varchar(10) DEFAULT NULL,

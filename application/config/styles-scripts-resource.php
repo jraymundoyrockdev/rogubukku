@@ -39,7 +39,7 @@ return array
             '//media/js/modules/user/profile.js',
             '//media/js/validation/user/profile.js',
             '//media/js/lib/bootbox/bootbox.min.js',
-            '//media/js/lib/jquery/jquery.form.js',
+            '//media/js/lib/jquery/jquery.form.js'
             
         ],
         //MODULE-CHANGE-PASSWORD
@@ -61,14 +61,17 @@ return array
         ],
         //MODULE-TRANSACTIONS
         'transactions-styles' => [
-            '//media/css/lib/bootstrap/datepicker/bootstrap-datetimepicker.css',
+            '//media/css/lib/dataTables/dataTables.bootstrap.css',
+            '//media/css/lib/bootstrap/datepicker/bootstrap-datetimepicker.css'
         ],
         'transactions-scripts' => [
+            '//media/js/lib/dataTables/jquery.dataTables.js',
+            '//media/js/lib/dataTables/dataTables.bootstrap.js',
             '//media/js/lib/datepicker/moment.js',
             '//media/js/lib/datepicker/bootstrap-datetimepicker.js',
             '//media/js/lib/jquery/formatDateTime.js',
             '//media/js/validation/transactions/transactions.js',
-            '//media/js/modules/transactions/transactions.js',
+            '//media/js/modules/transactions/transactions.js'
         ],
         //MODULE-REPORTS
         'reports-styles' => [

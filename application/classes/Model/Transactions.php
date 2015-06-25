@@ -13,6 +13,7 @@ class Model_Transactions extends Model_AbstractModel
         'colored' => 0,
         'non_colored' => 0,
         'transaction_date' => NULL,
+        'status'=>NULL,
         'logged_date' => NULL,
         'logged_by' => NULL,
     );
@@ -25,6 +26,7 @@ class Model_Transactions extends Model_AbstractModel
         'non_colored',
         'last_login',
         'transaction_date',
+        'status',
         'logged_date',
         'logged_by'
     );
