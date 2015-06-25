@@ -15,7 +15,7 @@
             <li class="<?php if ($routeName == 'reports-transactions') {echo 'active';} ?>">
                 <a href="<?= URL::site('reports/transactions'); ?>"><i class="fa fa-globe"></i> Reports</a>
             </li>
-            <li><a href="#"><i class="fa fa-font"></i> Timeline</a></li>
+            <li class="<?php if ($routeName == 'timeline') {echo 'active';} ?>"><a href="<?= URL::site('timeline'); ?>"><i class="fa fa-font"></i> Timeline</a></li>
         </ul>
 
         <?php echo View::factory('templates/header')->bind('user', $user) ?>

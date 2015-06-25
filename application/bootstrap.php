@@ -154,6 +154,13 @@ Route::set('reports-transactions', 'reports/transactions((/<action>(/<id>)))', a
         'action' => 'index',
     ));
 
+Route::set('timeline', 'timeline((/<action>(/<id>)))', array('action' => 'index'))
+    ->defaults(array(
+        'directory' => 'timeline',
+        'controller' => 'main',
+        'action' => 'index',
+    ));
+
 //USER
 Route::set('profile', 'user/profile((/<action>(/<id>)))', array('action' => 'index|save|avatar'))
     ->defaults(array(
