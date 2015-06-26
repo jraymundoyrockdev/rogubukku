@@ -1,5 +1,6 @@
 $(document).ready(function () {
 
+
     var user = (serverCurrentUserTypeAdmin != '') ? '' : serverCurrentUser;
 
     loadTimeline(10, 0, user);

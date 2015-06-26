@@ -9,3 +9,8 @@ select{
 .glyphicon-info-sign{
     cursor: help;
 }
+
+.transactionType{
+    text-transform: capitalize;
+    font-weight: bold;
+}

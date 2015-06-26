@@ -94,7 +94,7 @@ return array
         ],
         'timeline-scripts' => [
             '//media/js/modules/timeline/box-builder.js',
-            '//media/js/modules/timeline/main.js'
+            '//media/js/modules/timeline/transactions.js'
         ]
 
 

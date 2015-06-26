@@ -17,12 +17,21 @@ class Api_Timeline
      */
     public function transactionTimeline($limit, $offset = 0, $userId = null)
     {
-        $where = ($userId) ? ' WHERE logged_by = ' . $userId : '';
+        $where = ($userId) ? ' WHERE a.logged_by = ' . $userId : '';
         $limitCommand = ' LIMIT ' . $limit;
         $offsetCommand = ' OFFSET ' . $offset;
 
-        return DB::query(Database::SELECT,
-            'SELECT * FROM transactions' . $where . $limitCommand . $offsetCommand)->execute()->as_array();
+        return DB::query(Database::SELECT, '
+            SELECT
+              a.id,
+              a.transaction,
+              a.reason,
+              a.transaction_date,
+              b.full_name
+            FROM transactions a
+            LEFT JOIN users b
+            ON a.logged_by = b.id' . $where . $limitCommand . $offsetCommand)->execute()->as_array();
+
     }
 
 }

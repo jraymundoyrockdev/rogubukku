@@ -157,7 +157,7 @@ Route::set('reports-transactions', 'reports/transactions((/<action>(/<id>)))', a
 Route::set('timeline', 'timeline((/<action>(/<id>)))', array('action' => 'index'))
     ->defaults(array(
         'directory' => 'timeline',
-        'controller' => 'main',
+        'controller' => 'transactions',
         'action' => 'index',
     ));
 

@@ -1,10 +1,10 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
 /**
- * Dashboard Controller For Timeline Reports.
+ * Dashboard Controller For Timeline Reports. Specifically Transactions
  *
  */
-class Controller_Timeline_Main extends Controller_Base
+class Controller_Timeline_Transactions extends Controller_Base
 {
 
     /**
@@ -27,7 +27,7 @@ class Controller_Timeline_Main extends Controller_Base
      */
     public function action_index()
     {
-        $this->template->body = View::factory('timeline/main');
+        $this->template->body = View::factory('timeline/transactions');
     }
 
 } // End of class
