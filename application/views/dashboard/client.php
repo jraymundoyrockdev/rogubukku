@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-lg-12">
         <div class="page-header">
-            <h1>Dashboard</h1>
+            <h1><i class="fa fa-tachometer"></i> Dashboard</h1>
         </div>
         <h2><small>Transaction Totals</small></h2>
         <div class="col-lg-3">

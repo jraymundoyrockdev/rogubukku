@@ -1,9 +1,9 @@
 <div class="row">
-    <div class="col-lg-9">
+    <div class="col-lg-6">
         <div class="panel panel-primary">
             <div class="panel-heading">
                 <h3 class="panel-title">
-                    <i class="fa fa-cog"></i> Change Password
+                    <i class="fa fa-unlock-alt"></i> Change Password
                 </h3>
             </div>
             <div class="panel-body">

@@ -11,7 +11,7 @@ return array
         //GLOBAL
         'global-styles' => [
             '//media/css/lib/bootstrap/bootstrap.css',
-            '//media/css/lib/fonts/css/font-awesome.min.css',
+            '//media/css/lib/fonts/css/font-awesome.css',
             '//media/css/main/main_style.css',
             '//media/css/lib/shieldui/shieldui-all.min.css',
             '//media/css/lib/shieldui/all.min.css',

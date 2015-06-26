@@ -3,7 +3,7 @@
         <div class="panel panel-primary">
             <div class="panel-heading">
                 <h3 class="panel-title">
-                    <i class="fa fa-list"></i> Transactions Report
+                    <i class="fa fa-bar-chart"></i> Transactions Report
                 </h3>
             </div>
 
@@ -68,7 +68,7 @@
                         <th>Logged By</th>
 
                         <?php endif;?>
-
+                        <th>Status</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -91,6 +91,8 @@
                             <td><?= $tran->users->full_name ?></td>
 
                             <?php endif;?>
+
+                            <td><?= (! $tran->status) ? '<span class="label label-success">Active</span>' : '<span class="label label-danger">Deleted</span>' ?></td>
                         </tr>
 
                     <?php endforeach; ?>

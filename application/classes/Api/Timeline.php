@@ -17,7 +17,7 @@ class Api_Timeline
      */
     public function transactionTimeline($limit, $offset = 0, $userId = null)
     {
-        $where = ($userId) ? ' WHERE a.logged_by = ' . $userId : '';
+        $where = ($userId) ? ' WHERE a.status IS NULL  AND a.logged_by = ' . $userId : 'WHERE a.status IS NULL';
         $limitCommand = ' LIMIT ' . $limit;
         $offsetCommand = ' OFFSET ' . $offset;
 

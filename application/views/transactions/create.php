@@ -160,7 +160,7 @@
                     <h4 align="center" id="no_transaction"><?= $noTransactions ?></h4>
                 </div>
 
-                <a href="<?= URL::site('transactions/list'); ?>" class="pull-right">View All Transactions</a>
+                <a href="<?= URL::site('transactions/list'); ?>" class="pull-right"><i>View All Transactions</i></a>
             </div>
         </div>
     </div>

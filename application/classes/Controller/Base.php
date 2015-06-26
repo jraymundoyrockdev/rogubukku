@@ -12,9 +12,8 @@ Class Controller_Base extends Controller_Template
 
         $this->isRequestAjax();
 
-        $this->template->title = 'DEV-practice';
+        $this->template->title = 'Rogubukku - GFCCM';
         $this->template->nav = View::factory('templates/nav')->set('routeName', Route::name($this->request->route()));
-        $this->template->footer = View::factory('templates/footer')->set('message', 'sampler');
 
         $this->template->resourceSource = Kohana::$config->load('styles-scripts-resource')->get('resource');
         $this->template->resourceModule = '';
