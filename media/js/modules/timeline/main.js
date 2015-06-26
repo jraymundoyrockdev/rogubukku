@@ -1,7 +1,24 @@
 $(document).ready(function () {
 
     var user = (serverCurrentUserTypeAdmin != '') ? '' : serverCurrentUser;
-    var uri = '/api.timeline/transaction_timeline/10/0/' + user;
+
+    loadTimeline(10, 0, user);
+
+    $(window).scroll(function() {
+
+        var scrollOffset = $('#offset').val();
+
+        if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+            loadTimeline(10, scrollOffset, user);
+            $('#offset').val(parseInt(scrollOffset) + 10);
+        }
+    });
+
+});
+
+function loadTimeline(limit, offset, userId) {
+
+    var uri = '/api.timeline/transaction_timeline/' + limit + '/' + offset + '/' + userId;
 
     $.ajax({
         url: uri,
@@ -13,4 +30,4 @@ $(document).ready(function () {
             $('.timeline').append(timelineBox);
         });
     });
-});
+}
