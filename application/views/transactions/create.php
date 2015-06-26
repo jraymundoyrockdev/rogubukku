@@ -32,7 +32,8 @@
                 <div class="form-group">
                     <div class="transaction-type-error">
                         <label class="control-label" for="transaction">Transaction Type</label>
-                        <?= Form::select('transaction', $transactionType, 'print', ['placeholder' => 'Transaction', 'class' => 'form-control', 'id' => 'transaction']); ?>
+                        <?= Form::select('transaction', $transactionType, 'print',
+                            ['placeholder' => 'Transaction', 'class' => 'form-control', 'id' => 'transaction']); ?>
                     </div>
                 </div>
 
@@ -50,7 +51,12 @@
                         <span style="color:#2fa4e7" class="glyphicon glyphicon-info-sign" data-toggle="tooltip"
                               data-placement="right"
                               title="Number of printed papers with colors."></span>
-                        <?= Form::input('colored', 0, ['id' => 'colored', 'placeholder' => 'Colored', 'class' => 'form-control input_print', 'maxlength' => 3]); ?>
+                        <?= Form::input('colored', 0, [
+                            'id' => 'colored',
+                            'placeholder' => 'Colored',
+                            'class' => 'form-control input_print',
+                            'maxlength' => 3
+                        ]); ?>
                     </div>
                 </div>
 
@@ -60,14 +66,20 @@
                         <span style="color:#2fa4e7" class="glyphicon glyphicon-info-sign" data-toggle="tooltip"
                               data-placement="right"
                               title="Number of printed papers without colors. Black &amp; white."></span>
-                        <?= Form::input('non_colored', 0, ['id' => 'non_colored', 'placeholder' => 'Non colored', 'class' => 'form-control input_print', 'maxlength' => 3]); ?>
+                        <?= Form::input('non_colored', 0, [
+                            'id' => 'non_colored',
+                            'placeholder' => 'Non colored',
+                            'class' => 'form-control input_print',
+                            'maxlength' => 3
+                        ]); ?>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="reason-error">
                         <label class="control-label" for="reason">Reason</label>
-                        <?= Form::textarea('reason', '', ['placeholder' => 'Reason', 'class' => 'form-control','rows'=>2]); ?>
+                        <?= Form::textarea('reason', '',
+                            ['placeholder' => 'Reason', 'class' => 'form-control', 'rows' => 2]); ?>
                     </div>
                 </div>
 
@@ -76,7 +88,8 @@
                         <label class="control-label" for="transaction_date">Transaction Date</label>
 
                         <div class="input-group">
-                            <?= Form::input('transaction_date', '', ['id' => 'transaction_date', 'class' => 'form-control', 'readonly' => 'readonly']); ?>
+                            <?= Form::input('transaction_date', '',
+                                ['id' => 'transaction_date', 'class' => 'form-control', 'readonly' => 'readonly']); ?>
                             <span class="input-group-addon" id="icon-calendar">
                                     <span class="glyphicon glyphicon-calendar"></span>
                                 </span>
@@ -90,12 +103,22 @@
 
                 <div class="col-lg-6">
                     <div class="form-group">
-                        <?= Form::button('saveAndAddNew', 'Save & Add New', array('type' => 'submit', 'class' => 'btn btn-primary btn-block saveTransaction', 'id' => 'saveAndAddNew', 'value' => 'saveAndAddNew')); ?>
+                        <?= Form::button('saveAndAddNew', 'Save & Add New', array(
+                            'type' => 'submit',
+                            'class' => 'btn btn-primary btn-block saveTransaction',
+                            'id' => 'saveAndAddNew',
+                            'value' => 'saveAndAddNew'
+                        )); ?>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="form-group">
-                        <?= Form::button('saveAndExit', 'Save & Exit', array('type' => 'submit', 'class' => 'btn btn-warning btn-block saveTransaction', 'id' => 'saveAndExit', 'value' => 'saveAndExit')); ?>
+                        <?= Form::button('saveAndExit', 'Save & Exit', array(
+                            'type' => 'submit',
+                            'class' => 'btn btn-warning btn-block saveTransaction',
+                            'id' => 'saveAndExit',
+                            'value' => 'saveAndExit'
+                        )); ?>
                     </div>
                 </div>
                 <?= Form::close(); ?>
@@ -109,7 +132,7 @@
         <div class="panel panel-primary">
             <div class="panel-heading">
                 <h3 class="panel-title">
-                    <i class="fa fa-list"></i> Recent Transactions
+                    <i class="fa fa-list"></i> My Recent Transactions
                 </h3>
             </div>
 
@@ -118,22 +141,26 @@
 
                     <ul class="list-group" id="transaction_list">
                         <span id="prepend_list"></span>
-                        
-                        <?php $i=1; foreach ($transactions as $tran) : ?>
 
-                            <li class="list-group-item list-number-<?=$i++?>">
-                                <b><?=ucfirst($tran->transaction)?></b>
-                                <i class="pull-right"><small><?=$tran->logged_date?></small></i>
-                                <p class="list-group-item-text"><?=ucfirst($tran->reason)?></p>
+                        <?php $i = 1;
+                        foreach ($transactions as $tran) : ?>
+
+                            <li class="list-group-item list-number-<?= $i++ ?>">
+                                <b><?= ucfirst($tran->transaction) ?></b>
+                                <i class="pull-right">
+                                    <small><?= $tran->logged_date ?></small>
+                                </i>
+
+                                <p class="list-group-item-text"><?= ucfirst($tran->reason) ?></p>
                             </li>
 
                         <?php endforeach; ?>
 
                     </ul>
-                    <h4 align="center" id="no_transaction"><?=$noTransactions?></h4>
+                    <h4 align="center" id="no_transaction"><?= $noTransactions ?></h4>
                 </div>
 
-                <a href="<?=URL::site('transactions/list');?>"  class="pull-right">View All Transactions</a>
+                <a href="<?= URL::site('transactions/list'); ?>" class="pull-right">View All Transactions</a>
             </div>
         </div>
     </div>

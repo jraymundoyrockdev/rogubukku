@@ -18,11 +18,12 @@ class Controller_Transactions_Transactions extends Controller_Base
     protected $_users;
 
     /**
-     *@var Logged In User Id
+     * @var Logged In User Id
      */
     protected $_user_id;
+
     /**
-     *@var List of transaction type
+     * @var List of transaction type
      */
     protected $_transaction_type;
 
@@ -33,31 +34,36 @@ class Controller_Transactions_Transactions extends Controller_Base
         parent::before();
 
         $this->_transactions = ORM::factory('Transactions');
-        $this->_ministry     = ORM::factory('Ministry');
-        $this->_users        = ORM::factory('Users');
-        $this->_user_id      = Auth::instance()->get_user()->id;
-        $this->_transaction_type = ['print' => 'Print', 'encode' => 'Encode', 'all' => 'All', 'others' => 'Others'];
+        $this->_ministry = ORM::factory('Ministry');
+        $this->_users = ORM::factory('Users');
+        $this->_user_id = Auth::instance()->get_user()->id;
+        $this->_transaction_type = [
+            'print' => 'Print',
+            'encode' => 'Encode',
+            'all' => 'All',
+            'others' => 'Others'
+        ];
 
         $this->template->resourceModule = 'transactions';
     }
 
     public function action_index()
-    { 
+    {
 
         $ministries = $this->_ministry->find_all()->as_array('id', 'ministry');
         $user = $this->_users->where('id', '=', $this->_user_id)->find();
         $transactions = $this->_transactions->where(
-                                                'logged_by',
-                                                '=', $this->_user_id
-                                            )->where(
-                                                'status',
-                                                '=', NULL
-                                            )->order_by(
-                                            'logged_date','desc'
-                                            )->limit(5)->find_all();
+            'logged_by',
+            '=', $this->_user_id
+        )->where(
+            'status',
+            '=', null
+        )->order_by(
+            'logged_date', 'desc'
+        )->limit(5)->find_all();
 
-        $noTransactions = $transactions->count()==0 ? 'No Transactions':'';
-        
+        $noTransactions = $transactions->count() == 0 ? 'No Transactions' : '';
+
         $this->template->body = View::factory('transactions/create')
             ->bind('transactionType', $this->_transaction_type)
             ->bind('ministries', $ministries)
@@ -69,8 +75,9 @@ class Controller_Transactions_Transactions extends Controller_Base
     public function action_save()
     {
         if (HTTP_Request::POST == $this->request->method()) {
-            
-            $result = $this->_transactions->roguSave(Rogubukku::mergeCurrentlyLoggedInUser($this->request->post(), 'logged_by'));
+
+            $result = $this->_transactions->roguSave(Rogubukku::mergeCurrentlyLoggedInUser($this->request->post(),
+                'logged_by'));
 
             if (!empty($result['objectModel'])) {
                 $result['lastTransaction'] = $result['objectModel']->get('transaction');
@@ -79,32 +86,29 @@ class Controller_Transactions_Transactions extends Controller_Base
             }
 
             $this->responseAjaxResult($result);
-
         }
     }
 
     public function action_list()
     {
         $transactions = $this->_transactions->where(
-                                                'logged_by',
-                                                '=', $this->_user_id
-                                            )->where(
-                                                'status',
-                                                '=', NULL
-                                            )->order_by(
-                                                'logged_date',
-                                                'desc'
-                                            )->find_all();
-        
+            'logged_by',
+            '=', $this->_user_id
+        )->where(
+            'status',
+            '=', null
+        )->order_by(
+            'logged_date',
+            'desc'
+        )->find_all();
+
         $this->template->body = View::factory('transactions/index')
             ->bind('transactions', $transactions);
     }
 
     public function action_edit()
     {
-        $transaction_id = $this->request->param('id');
-
-        $transaction = $this->_transactions->where('id', '=', $transaction_id)->find();
+        $transaction = $this->_transactions->where('id', '=', $this->request->param('id'))->find();
         $ministries = $this->_ministry->find_all()->as_array('id', 'ministry');
 
         $this->template->body = View::factory('transactions/edit')
@@ -115,7 +119,7 @@ class Controller_Transactions_Transactions extends Controller_Base
 
     public function action_destroy()
     {
-        $result = $this->_transactions->roguSave(Rogubukku::mergeCurrentlyLoggedInUser(['id'=>$this->request->param('id'), 'status'=>'delete']));
+        $result = $this->_transactions->roguSave(['id' => $this->request->param('id'), 'status' => 'delete']);
         $this->responseAjaxResult($result);
     }
 

@@ -118,10 +118,10 @@ $('#transactions_form').formValidation({
                 var insertNewTransactionItem = '<li class="list-group-item list-number-0"> <b>'+result.lastTransaction.charAt(0).toUpperCase()+result.lastTransaction.slice(1).toLowerCase()+'</b> <i class="pull-right"><small>'+result.lastLoggedDate+'</small></i> <p class="list-group-item-text">'+result.lastReason+'</p> </li>';
                 
                 if($('#saveType').val() == 'saveAndExit')
-                    window.location = "http://rogubukku.com/dashboard";
+                    window.location = "/dashboard";
 
                 if($('#saveType').val() == 'update')
-                    window.location = "http://rogubukku.com/transactions/list";
+                    window.location = "/transactions/list";
 
                 if($("#transaction_list li").eq(4).val() == 0)
                 {

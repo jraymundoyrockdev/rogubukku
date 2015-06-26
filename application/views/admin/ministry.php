@@ -59,8 +59,8 @@
         </div>
     </div>
     <div class="col-lg-3 well">
-        <button type="button" class="btn btn-primary col-lg-12" data-toggle="modal" data-target="#ministryModal"><i
-                class="fa fa-plus-square"></i> Add New
+        <button type="button" class="btn btn-info col-lg-12" data-toggle="modal" data-target="#ministryModal"><i
+                class="fa fa-plus-square"></i> Create New
         </button>
     </div>
 </div>

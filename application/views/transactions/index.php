@@ -58,7 +58,7 @@
     </div>
     <div class="col-lg-3 well">
         <a href="<?=URL::site('transactions');?>" class="btn btn-info col-lg-12" role="button">
-           <i class="fa fa-plus-square"></i> Create New Transaction
+           <i class="fa fa-plus-square"></i> Create New
         </a>
     </div>
 </div>
