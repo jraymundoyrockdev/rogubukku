@@ -38,7 +38,7 @@
                 </div>
 
                 <div class="form-group">
-                    <div class="ministry_id-error">
+                    <div class="ministry-id-error">
                         <label class="control-label force_display-block" for="ministry_id">Ministry</label>
                         <?php echo Form::select('ministry_id', $ministries, $user->ministry_id,
                             array('class' => 'form-control')); ?>

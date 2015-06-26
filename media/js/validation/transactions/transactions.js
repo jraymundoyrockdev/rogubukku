@@ -30,7 +30,7 @@ $('#transactions_form').formValidation({
             }
         },
         ministry_id: {
-            row: '.ministry-type-error',
+            row: '.ministry-id-error',
             validators: {
                 notEmpty: {
                     message: 'Ministry is required.'
