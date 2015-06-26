@@ -21,7 +21,7 @@ class Api_Dashboard
 
     public function transactionPerMonth($year, $userId)
     {
-        $queryUser = ($userId) ? ' AND logged_by = ' . $userId : '';
+        $queryUser = ($userId) ? ' AND status IS NULL AND logged_by = ' . $userId : ' AND status IS NULL';
 
         $result = DB::query(Database::SELECT,
             'select logged_by,

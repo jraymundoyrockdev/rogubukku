@@ -18,6 +18,7 @@ class Api_Timeline
     public function transactionTimeline($limit, $offset = 0, $userId = null)
     {
         $where = ($userId) ? ' WHERE a.status IS NULL  AND a.logged_by = ' . $userId : '';
+        $orderBy = ' ORDER BY transaction_date desc';
         $limitCommand = ' LIMIT ' . $limit;
         $offsetCommand = ' OFFSET ' . $offset;
 
@@ -32,7 +33,7 @@ class Api_Timeline
               b.avatar
             FROM transactions a
             LEFT JOIN users b
-            ON a.logged_by = b.id' . $where . $limitCommand . $offsetCommand)->execute()->as_array();
+            ON a.logged_by = b.id' . $where . $orderBy . $limitCommand . $offsetCommand)->execute()->as_array();
 
     }
 

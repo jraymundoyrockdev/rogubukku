@@ -14,3 +14,8 @@ select{
     text-transform: capitalize;
     font-weight: bold;
 }
+.page-header-dashboard{
+    border-bottom: 1px solid #eee;
+    margin: 0 0 0px;
+    padding-bottom: 9px;
+}

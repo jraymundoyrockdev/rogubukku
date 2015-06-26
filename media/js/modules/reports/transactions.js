@@ -7,7 +7,7 @@ $(document).ready(function () {
             "orderable": false,
             "targets": 0
         }],
-        "order": [[7, "desc"]]
+        "order": [[6, "desc"]]
     });
 
     transactionTable.on('order.dt search.dt', function () {

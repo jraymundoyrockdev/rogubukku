@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-lg-12">
-        <div class="page-header">
+        <div class="page-header-dashboard">
             <h1><i class="fa fa-tachometer"></i> Dashboard</h1>
         </div>
         <h2><small>Transaction Totals</small></h2>
@@ -8,7 +8,7 @@
             <div class="panel panel-default ">
                 <div class="panel-body alert-info">
                     <div class="col-xs-5">
-                        <i class="fa fa-truck fa-5x"></i>
+                        <i class="fa fa-print fa-5x"></i>
                     </div>
                     <div class="col-xs-5 text-right">
                         <p class="alerts-heading dash-print">&nbsp;</p>
@@ -23,7 +23,7 @@
             <div class="panel panel-default ">
                 <div class="panel-body alert-info">
                     <div class="col-xs-5">
-                        <i class="fa fa-money fa-5x"></i>
+                        <i class="fa fa-keyboard-o fa-5x"></i>
                     </div>
                     <div class="col-xs-5 text-right">
                         <p class="alerts-heading dash-encode">&nbsp;</p>
@@ -38,7 +38,7 @@
             <div class="panel panel-default ">
                 <div class="panel-body alert-info">
                     <div class="col-xs-5">
-                        <i class="fa fa-money fa-5x"></i>
+                        <i class="fa fa-file-text-o fa-5x"></i>
                     </div>
                     <div class="col-xs-5 text-right">
                         <p class="alerts-heading dash-others">&nbsp;</p>
@@ -53,7 +53,7 @@
             <div class="panel panel-default ">
                 <div class="panel-body alert-info">
                     <div class="col-xs-5">
-                        <i class="fa fa-money fa-5x"></i>
+                        <i class="fa fa-circle-o-notch fa-5x"></i>
                     </div>
                     <div class="col-xs-5 text-right">
                         <p class="alerts-heading dash-all">&nbsp;</p>
