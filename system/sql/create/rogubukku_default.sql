@@ -82,7 +82,7 @@ CREATE TABLE `users` (
   `full_name` varchar(255) DEFAULT NULL,
   `username` varchar(32) NOT NULL DEFAULT '',
   `password` varchar(64) NOT NULL,
-  `profile_pic` varchar(100) DEFAULT NULL,
+  `avatar` varchar(100) DEFAULT NULL,
   `created_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `active_flag` enum('Y','N') DEFAULT 'N',
   `logins` int(10) unsigned NOT NULL DEFAULT '0',

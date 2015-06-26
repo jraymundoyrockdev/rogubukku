@@ -11,14 +11,19 @@ var timelineBoxBuilder = {
     },
 
     body: function (message) {
-        return '<div class="timeline-body"> <p>' + message + '</p> </div>';
+        return '<div class="timeline-body pull-left" > <p>' + message + '</p> </div>';
     },
 
     heading: function (transaction) {
 
-        var heading = '<div class="timeline-heading"> <h4 class="timeline-title">' + transaction.full_name + ' did <span class="transactionType">' + transaction.transaction + '</span> on </h4>';
+        var heading = '<div class="timeline-heading heading-main"> <h4 class="timeline-title">' + transaction.full_name + ' did <span class="transactionType">' + transaction.transaction + '</span> on </h4>';
 
-        return heading += '<span><i class="fa fa-clock-o fa-2x"></i> ' + transaction.transaction_date + '</span> <hr /> </div>';
+        heading += '<span><i class="fa fa-clock-o fa-2x"></i> ' + transaction.transaction_date + '</span> <hr /> </div>';
+
+        var avatar = (transaction.avatar) ? '/uploads/avatar/' + transaction.logged_by + '/' + transaction.avatar : '/media/images/default_avatar.gif';
+        var image = '<div class="image-div"> <img src="' + avatar + '" class="pull-right image-avatar"></div>'
+
+        return heading + image;
 
     },
     getIcon: function (transactionType) {

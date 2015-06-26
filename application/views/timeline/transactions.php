@@ -5,3 +5,5 @@
     <ul class="timeline"></ul>
     <?= Form::hidden('offset', 10, ['id' => 'offset']); ?>
 </div>
+
+<script type="text/javascript">var test;</script>

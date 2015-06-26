@@ -83,7 +83,7 @@ class Controller_User_Profile extends Controller_Base
                 list($res, $message) = Rogubukku::saveImage($_FILES['avatar'], $this->_getUserAvatarDirectory());
 
                 if ($res) {
-                    $post['profile_pic'] = $message;
+                    $post['avatar'] = $message;
                     $result = $this->_users->roguSave(Rogubukku::mergeCurrentlyLoggedInUser($post));
                     $result['src'] = $this->_getUserNewAvatar($result);
                 }
@@ -114,7 +114,7 @@ class Controller_User_Profile extends Controller_Base
      */
     private function _getUserNewAvatar($result)
     {
-        return $this->avatarDirectory['relative'] . $result['objectModel']->get('id') . '/' . $result['objectModel']->get('profile_pic');
+        return $this->avatarDirectory['relative'] . $result['objectModel']->get('id') . '/' . $result['objectModel']->get('avatar');
     }
 
 } // End of class

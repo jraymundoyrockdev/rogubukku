@@ -20,7 +20,7 @@ class Model_Users extends Model_User
         'last_login' => null,
         'created_date' => null,
         'active_flag' => null,
-        'profile_pic' => null
+        'avatar' => null
     );
 
     protected $_fillable = array(
@@ -31,7 +31,7 @@ class Model_Users extends Model_User
         'logins',
         'last_login',
         'created_date',
-        'active_flag',
+        'avatar',
         'profile_pic'
     );
 

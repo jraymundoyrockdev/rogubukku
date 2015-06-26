@@ -18,7 +18,7 @@
                 <div class="change_avatar">
                     <a href="#" id="click_dp" class="thumbnail">
                         <img id="img_avatar"
-                             src="<?php echo empty($user->profile_pic) ? $imagesDirectory['relative'] . 'default_avatar.gif' : $avatarDirectory['relative'] . $user->id . '/' . $user->profile_pic; ?>"
+                             src="<?php echo empty($user->avatar) ? $imagesDirectory['relative'] . 'default_avatar.gif' : $avatarDirectory['relative'] . $user->id . '/' . $user->avatar; ?>"
                              alt="125x125">
                     </a>
                 </div>

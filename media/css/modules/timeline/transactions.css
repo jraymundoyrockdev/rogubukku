@@ -1,0 +1,15 @@
+.image-div{
+    width: 20%;
+    float:left;
+    height: 110px;
+}
+
+.image-avatar{
+    height: 50px;
+    width: 50px;
+}
+
+.heading-main{
+    width:80%;
+    float:left;
+}

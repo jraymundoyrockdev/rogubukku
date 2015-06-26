@@ -93,7 +93,7 @@ return array
 
         //MODULE-TIMELINE
         'timeline-styles' => [
-
+            '//media/css/modules/timeline/transactions.css'
         ],
         'timeline-scripts' => [
             '//media/js/modules/timeline/box-builder.js',

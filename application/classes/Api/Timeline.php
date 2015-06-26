@@ -27,7 +27,9 @@ class Api_Timeline
               a.transaction,
               a.reason,
               a.transaction_date,
-              b.full_name
+              a.logged_by,
+              b.full_name,
+              b.avatar
             FROM transactions a
             LEFT JOIN users b
             ON a.logged_by = b.id' . $where . $limitCommand . $offsetCommand)->execute()->as_array();
