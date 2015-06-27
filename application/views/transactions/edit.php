@@ -108,7 +108,7 @@
     </div>
     <div class="col-lg-3 well">
         <a href="<?=URL::site('transactions');?>" class="btn btn-info col-lg-12" role="button">
-            <i class="fa fa-plus-square"></i> Create New Transaction
+            Create New Transaction
         </a>
         <hr style="padding-top:10px;">
         <a href="<?=URL::site('transactions/list');?>" class="btn btn-warning col-lg-12" role="button">

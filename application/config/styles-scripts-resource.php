@@ -23,7 +23,8 @@ return array
             '//media/js/lib/bootstrap/bootstrap.js',
             '//media/js/lib/shieldui/shieldui-all.min.js',
             '//media/js/lib/bootstrap/bootstrap_validator/dist/formValidation.js',
-            '//media/js/lib/bootstrap/bootstrap_validator/dist/bootstrap.js'
+            '//media/js/lib/bootstrap/bootstrap_validator/dist/bootstrap.js',
+            '//media/js/rogubukku.js'
         ],
 
         //MODULE-LOGIN

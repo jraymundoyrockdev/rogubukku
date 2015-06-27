@@ -35,6 +35,10 @@ class Controller_Admin_Users extends Controller_Base
      */
     public function action_index()
     {
+        if (!Rogubukku::isAdmin()) {
+            $this->request->redirect('404');
+        }
+
         $users = $this->_roles_users->where('role_id', '=', 1)->find_all();
         $this->template->body = View::factory('admin/users')->bind('users', $users);
     }

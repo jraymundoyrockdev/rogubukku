@@ -91,4 +91,18 @@ class Rogubukku
 
         return new $api();
     }
+
+    /**
+     * Return user type
+     *
+     * @return bool
+     */
+    public static function isAdmin()
+    {
+        if (Auth::instance()->logged_in("admin")) {
+            return true;
+        }
+
+        return false;
+    }
 }

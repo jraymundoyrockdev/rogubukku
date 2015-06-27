@@ -15,7 +15,6 @@
                         <div class="col-sm-3">
                             <?= Form::input('transaction_type', '', [
                                 'id' => 'transactionType',
-                                'placeholder' => 'Search by: [Print, Encode, etc..]',
                                 'class' => 'form-control',
                                 'maxlength' => 10
                             ]); ?>
@@ -27,7 +26,6 @@
                         <div class="col-sm-3">
                             <?= Form::input('ministry', '', [
                                 'id' => 'ministry',
-                                'placeholder' => 'Search by: [Dance, Theater, Music etc..]',
                                 'class' => 'form-control',
                                 'maxlength' => 10
                             ]); ?>
@@ -40,7 +38,6 @@
                             <div class="col-sm-3">
                                 <?= Form::input('user', '', [
                                     'id' => 'loggedBy',
-                                    'placeholder' => 'Search by: [John Doe, Jem, etc..]',
                                     'class' => 'form-control',
                                     'maxlength' => 20
                                 ]); ?>

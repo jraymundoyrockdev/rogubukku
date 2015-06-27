@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container timeline-container">
     <div class="page-header">
         <h1 id="timeline">Transaction Events</h1>
     </div>

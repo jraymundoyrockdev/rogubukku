@@ -108,13 +108,26 @@ class Controller_Transactions_Transactions extends Controller_Base
 
     public function action_edit()
     {
-        $transaction = $this->_transactions->where('id', '=', $this->request->param('id'))->find();
+
+        $transaction = $this->_transactions->where(
+            'id',
+            '=', $this->request->param('id')
+        )->where(
+            'logged_by',
+            '=', $this->_user_id
+        )->find();
+
         $ministries = $this->_ministry->find_all()->as_array('id', 'ministry');
+
+        if (empty($transaction->id)) {
+            $this->request->redirect('404');
+        }
 
         $this->template->body = View::factory('transactions/edit')
             ->bind('transaction', $transaction)
             ->bind('transactionType', $this->_transaction_type)
             ->bind('ministries', $ministries);
+
     }
 
     public function action_destroy()
