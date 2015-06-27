@@ -1,4 +1,6 @@
 $(document).ready(function () {
+
+    //TOTALS PER TRANSACTIONS
     var user = (serverCurrentUserTypeAdmin != '') ? '' : serverCurrentUser;
     var transactionTotalUri = '/api.dashboard/transaction_totals/' + serverYear + '/' + user;
 
@@ -9,23 +11,24 @@ $(document).ready(function () {
     }).done(function (result) {
         $('.dash-print').hide().text(result.print).fadeIn(1000);
         $('.dash-encode').hide().text(result.encode).fadeIn(1000);
-        $('.dash-all'). hide().text(result._all).fadeIn(1000);
+        $('.dash-all').hide().text(result._all).fadeIn(1000);
         $('.dash-others').hide().text(result.others).fadeIn(1000);
     });
 
-    var transactionTotalUri = '/api.dashboard/transaction_totals_per_month/' + serverYear + '/' + user;
+    //TOTAL TRANSACTIONS PER MONTH
+    var perMonthUri = '/api.dashboard/transaction_totals_per_month/' + serverYear + '/' + user;
 
-    var reportType = ['stepline','bar','line'];
+    var reportType = ['stepline', 'line'];
 
-    $.get(transactionTotalUri, function (result) {
+    $.get(perMonthUri, function (result) {
         var monthlyResult = $.map(result, function (value, key) {
             return parseInt(value);
         });
 
-        $("#clientTransactionChart").shieldChart({
+        $("#totalTransactionsPerMonth").shieldChart({
             theme: "bootstrap",
             primaryHeader: {
-                text: "User Transaction Overview 2015"
+                text: "Transactions Monthly Overview"
             },
             exportOptions: {
                 image: true,
@@ -42,11 +45,52 @@ $(document).ready(function () {
                 }
             },
             dataSeries: [{
-                seriesType: reportType[Math.floor(Math.random()*reportType.length)],
-                collectionAlias: "Transaction Monitor per month",
+                seriesType: reportType[Math.floor(Math.random() * reportType.length)],
+                collectionAlias: "Total",
                 data: monthlyResult
             }]
         });
-    }, "json"); // end jQuery.get()
+    }, "json");
+
+    //TOTAL TRANSACTIONS PER MINISTRY
+
+    var ministryURI = '/api.dashboard/transaction_totals_per_ministry/' + serverYear;
+
+    $.get(ministryURI, function (result) {
+        var ministries = $.map(result, function (value, key) {
+            return value.ministry;
+        });
+
+        var ministryTotal = $.map(result, function (value, key) {
+            return parseInt(value.total);
+        });
+
+        $("#totalTransactionsPerMinistry").shieldChart({
+            theme: "bootstrap",
+            primaryHeader: {
+                text: "Ministry Usage"
+            },
+            exportOptions: {
+                image: true,
+                print: true
+            },
+            axisX: {
+                categoricalValues: ministries,
+            },
+            isInverted: true,
+            tooltipSettings: {
+                chartBound: true,
+                axisMarkers: {
+                    enabled: true,
+                    mode: 'x'
+                }
+            },
+            dataSeries: [{
+                seriesType: 'bar',
+                collectionAlias: "Total",
+                data: ministryTotal
+            }]
+        });
+    }, "json");
 
 });

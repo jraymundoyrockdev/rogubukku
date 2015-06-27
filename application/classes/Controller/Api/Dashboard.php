@@ -32,4 +32,11 @@ class Controller_Api_Dashboard extends Controller_Base
         $this->responseAjaxResult($data);
     }
 
+    public function action_transaction_totals_per_ministry()
+    {
+        $data = $this->_dashboard->transactionPerMinistry($this->request->param('year'));
+
+        $this->responseAjaxResult($data);
+    }
+
 }

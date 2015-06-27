@@ -49,9 +49,16 @@ class Controller_Transactions_Transactions extends Controller_Base
 
     public function action_index()
     {
+        $ministries = $this->_ministry->where(
+            'id',
+            '!=',
+            1)->find_all()->as_array('id', 'ministry');
 
-        $ministries = $this->_ministry->find_all()->as_array('id', 'ministry');
-        $user = $this->_users->where('id', '=', $this->_user_id)->find();
+        $user = $this->_users->where(
+            'id',
+            '=',
+            $this->_user_id)->find();
+
         $transactions = $this->_transactions->where(
             'logged_by',
             '=', $this->_user_id

@@ -221,7 +221,7 @@ if (!Route::cache()) {
 //APIs
 
 Route::set('api.dashboard', 'api.dashboard((/<action>(/<year>))(/<id>))',
-    array('action' => 'index|transaction_totals|transaction_totals_per_month'))
+    array('action' => 'index|transaction_totals|transaction_totals_per_month|transaction_totals_per_ministry'))
     ->defaults(array(
         'directory' => 'api',
         'controller' => 'dashboard',
