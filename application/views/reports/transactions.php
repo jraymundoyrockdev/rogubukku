@@ -53,7 +53,7 @@
                 <table class="table table-striped table-bordered hover" cellspacing="0" width="100%"
                        id="transactionsList">
                     <thead>
-                    <tr>
+                    <tr class="hack-shield-th">
                         <th>#</th>
                         <th>Transaction</th>
                         <th>Colored</th>
@@ -76,7 +76,7 @@
                     <?php $i = 1;
                     foreach ($transactions as $tran) : ?>
 
-                        <tr>
+                        <tr class="hack-shield-td">
                             <td><?= $i++ ?></td>
                             <td><?= ucfirst($tran->transaction) ?></td>
                             <td><?= $tran->colored ?></td>
