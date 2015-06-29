@@ -1,24 +1,35 @@
 .force_display-block {
-	display: block;	
+    display: block;
 }
 
-select{
+select {
     cursor: pointer;
 }
 
-.glyphicon-info-sign{
+.glyphicon-info-sign {
     cursor: help;
 }
 
-.transactionType{
+.transactionType {
     text-transform: capitalize;
     font-weight: bold;
 }
-.page-header-dashboard{
+
+.page-header-dashboard {
     border-bottom: 1px solid #eee;
     margin: 0 0 0px;
     padding-bottom: 9px;
 }
-.timeline-container{
+
+.timeline-container {
     width: 100% !important;
+}
+
+.hack-shield-th > th {
+    border-bottom: 2px solid #4fa7ef !important;
+}
+
+.hack-shield-td:hover  {
+    background-color: #4fa7ef !important;
+    color: #fff;
 }

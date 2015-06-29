@@ -1,8 +1,16 @@
 <?php defined('SYSPATH') OR die('No direct access allowed.');
 
+/**
+ * Minify resources (third-party-content)
+ *
+ */
 abstract class Controller_Minify_Index extends Controller_Base
 {
 
+    /**
+     * Default method to call minify
+     *
+     */
     public function action_index()
     {
         extract(Kohana::$config->load('minify')->as_array(), EXTR_SKIP);

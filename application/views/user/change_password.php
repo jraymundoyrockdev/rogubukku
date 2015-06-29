@@ -12,7 +12,9 @@
                      style="display:none;">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
                             aria-hidden="true">×</span></button>
-                    <i class="fa fa-user"></i> Password Updated!<a class="anchorjs-link" href="#oh-snap!-you-got-an-error!"><span class="anchorjs-icon"></span></a>
+                    <i class="fa fa-user"></i> Password Updated!<a class="anchorjs-link"
+                                                                   href="#oh-snap!-you-got-an-error!"><span
+                            class="anchorjs-icon"></span></a>
                 </div>
 
                 <div id="password_not_updated_status" class="alert alert-danger alert-dismissible fade in" role="alert"
@@ -28,8 +30,14 @@
                     <div class="old-password-error">
                         <label class="control-label" for="username">Old Password</label>
                         <?= Form::password('old_password', '',
-                            ['placeholder' => 'Old Password', 'class' => 'old-password form-control','autocomplete'=>'off']); ?>
-                        <small id="old_pass_not_exist" style="display: none;" class="help-block removableFromAjax" data-fv-for="old_password" data-fv-result="INVALID">Old password does not exist.</small>
+                            [
+                                'placeholder' => 'Old Password',
+                                'class' => 'old-password form-control',
+                                'autocomplete' => 'off'
+                            ]); ?>
+                        <small id="old_pass_not_exist" style="display: none;" class="help-block removableFromAjax"
+                               data-fv-for="old_password" data-fv-result="INVALID">Old password does not exist.
+                        </small>
                     </div>
                 </div>
 
@@ -37,7 +45,7 @@
                     <div class="new-password-error">
                         <label class="control-label" for="password">New Password</label>
                         <?= Form::password('password', '',
-                            ['placeholder' => 'New Password', 'class' => 'form-control','autocomplete'=>'off']); ?>
+                            ['placeholder' => 'New Password', 'class' => 'form-control', 'autocomplete' => 'off']); ?>
                     </div>
                 </div>
 
@@ -45,7 +53,11 @@
                     <div class="confirm-new-password-error">
                         <label class="control-label" for="confirm_new_password">Confirm New Password</label>
                         <?= Form::password('confirm_new_password', '',
-                            ['placeholder' => 'Confirm New Password', 'class' => 'form-control','autocomplete'=>'off']); ?>
+                            [
+                                'placeholder' => 'Confirm New Password',
+                                'class' => 'form-control',
+                                'autocomplete' => 'off'
+                            ]); ?>
                     </div>
                 </div>
 

@@ -8,7 +8,9 @@
 class Model_Ministry extends Model_AbstractModel
 {
     protected $_primary_key = 'id';
+
     protected $_table_name = 'ministry';
+
     protected $_table_columns = array(
         'id' => null,
         'ministry' => null,
@@ -35,7 +37,14 @@ class Model_Ministry extends Model_AbstractModel
         );
     }
 
-
+    /**
+     * Derived from the AbstractModel
+     *
+     * Default mass assignment method for saving and updating tables.
+     * @param $fields array payload of data coming form post send
+     *
+     * @return object
+     */
     public function roguSave($fields)
     {
         return $this->_prepareSave($fields, $this->_fillable, $this->_primary_key);

@@ -56,6 +56,7 @@ class Api_Dashboard
                         FROM transactions WHERE YEAR(transaction_date) = ' . $year . $queryUser)->execute()->as_array();
 
         unset($result[0]['logged_by']);
+
         return $result[0];
     }
 

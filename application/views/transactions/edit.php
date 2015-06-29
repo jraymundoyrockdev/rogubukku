@@ -31,7 +31,8 @@
                 <div class="form-group">
                     <div class="transaction-type-error">
                         <label class="control-label" for="transaction">Transaction Type</label>
-                        <?= Form::select('transaction', $transactionType, $transaction->transaction, ['placeholder' => 'Transaction', 'class' => 'form-control', 'id' => 'transaction']); ?>
+                        <?= Form::select('transaction', $transactionType, $transaction->transaction,
+                            ['placeholder' => 'Transaction', 'class' => 'form-control', 'id' => 'transaction']); ?>
                     </div>
                 </div>
 
@@ -49,7 +50,12 @@
                         <span style="color:#2fa4e7" class="glyphicon glyphicon-info-sign" data-toggle="tooltip"
                               data-placement="right"
                               title="Number of printed papers with colors."></span>
-                        <?= Form::input('colored', $transaction->colored, ['id' => 'colored', 'placeholder' => 'Colored', 'class' => 'form-control input_print', 'maxlength' => 3]); ?>
+                        <?= Form::input('colored', $transaction->colored, [
+                            'id' => 'colored',
+                            'placeholder' => 'Colored',
+                            'class' => 'form-control input_print',
+                            'maxlength' => 3
+                        ]); ?>
                     </div>
                 </div>
 
@@ -59,14 +65,20 @@
                         <span style="color:#2fa4e7" class="glyphicon glyphicon-info-sign" data-toggle="tooltip"
                               data-placement="right"
                               title="Number of printed papers without colors. Black &amp; white."></span>
-                        <?= Form::input('non_colored', $transaction->non_colored, ['id' => 'non_colored', 'placeholder' => 'Non colored', 'class' => 'form-control input_print', 'maxlength' => 3]); ?>
+                        <?= Form::input('non_colored', $transaction->non_colored, [
+                            'id' => 'non_colored',
+                            'placeholder' => 'Non colored',
+                            'class' => 'form-control input_print',
+                            'maxlength' => 3
+                        ]); ?>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="reason-error">
                         <label class="control-label" for="reason">Reason</label>
-                        <?= Form::textarea('reason', $transaction->reason, ['placeholder' => 'Reason', 'class' => 'form-control','rows'=>2]); ?>
+                        <?= Form::textarea('reason', $transaction->reason,
+                            ['placeholder' => 'Reason', 'class' => 'form-control', 'rows' => 2]); ?>
                     </div>
                 </div>
 
@@ -76,8 +88,9 @@
 
                         <div class="input-group">
 
-                            <?= Form::input('transaction_date', $transaction->transaction_date, ['id' => 'transaction_date', 'class' => 'form-control', 'readonly' => 'readonly']); ?>
-                            
+                            <?= Form::input('transaction_date', $transaction->transaction_date,
+                                ['id' => 'transaction_date', 'class' => 'form-control', 'readonly' => 'readonly']); ?>
+
                             <span class="input-group-addon" id="icon-calendar">
                                 <span class="glyphicon glyphicon-calendar"></span>
                             </span>
@@ -93,12 +106,17 @@
                 </div>
 
                 <?= Form::hidden('id', $transaction->id); ?>
-                
+
                 <div class="col-lg-12">
                     <div class="form-group">
 
-                        <?= Form::button('saveAndExit', 'Update', array('type' => 'submit', 'class' => 'btn btn-primary btn-block saveTransaction', 'id' => 'update', 'value' => 'saveAndExit')); ?>
-                    
+                        <?= Form::button('saveAndExit', 'Update', array(
+                            'type' => 'submit',
+                            'class' => 'btn btn-primary btn-block saveTransaction',
+                            'id' => 'update',
+                            'value' => 'saveAndExit'
+                        )); ?>
+
                     </div>
                 </div>
 
@@ -107,11 +125,11 @@
         </div>
     </div>
     <div class="col-lg-3 well">
-        <a href="<?=URL::site('transactions');?>" class="btn btn-info col-lg-12" role="button">
-            Create New Transaction
+        <a href="<?= URL::site('transactions'); ?>" class="btn btn-info col-lg-12" role="button">
+            Create New
         </a>
         <hr style="padding-top:10px;">
-        <a href="<?=URL::site('transactions/list');?>" class="btn btn-warning col-lg-12" role="button">
+        <a href="<?= URL::site('transactions/list'); ?>" class="btn btn-warning col-lg-12" role="button">
             <i class="fa fa-list-square"></i> Transaction List
         </a>
     </div>

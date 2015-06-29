@@ -86,7 +86,7 @@ class Controller_Login_Login extends Controller_Base
 
             $userResult = $this->_users->roguSave($post);
 
-            if (! $userResult['isSuccess']) {
+            if (!$userResult['isSuccess']) {
                 return $this->responseAjaxResult($userResult);
             }
 

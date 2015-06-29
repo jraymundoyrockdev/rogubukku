@@ -23,12 +23,12 @@
 
     <?php if (Auth::instance()->logged_in("admin")): ?>
 
-    <div class="col-lg-6">
-        <?= View::factory('dashboard/recent_transactions')->bind('transactions', $transactions) ?>
-    </div>
+        <div class="col-lg-6">
+            <?= View::factory('dashboard/recent_transactions')->bind('transactions', $transactions) ?>
+        </div>
 
-    <div class="col-lg-6">
-        <?= View::factory('dashboard/ministry_usage')?>
-    </div>
+        <div class="col-lg-6">
+            <?= View::factory('dashboard/ministry_usage') ?>
+        </div>
     <?php endif; ?>
 </div>

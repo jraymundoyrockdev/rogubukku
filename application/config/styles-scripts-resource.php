@@ -26,7 +26,6 @@ return array
             '//media/js/lib/bootstrap/bootstrap_validator/dist/bootstrap.js',
             '//media/js/rogubukku.js'
         ],
-
         //MODULE-LOGIN
         'login-styles' => [
             '//media/css/modules/login/login.css',
@@ -41,7 +40,7 @@ return array
             '//media/js/validation/user/profile.js',
             '//media/js/lib/bootbox/bootbox.min.js',
             '//media/js/lib/jquery/jquery.form.js'
-            
+
         ],
         //MODULE-CHANGE-PASSWORD
         'change-password-scripts' => [
@@ -83,7 +82,6 @@ return array
             '//media/js/lib/dataTables/dataTables.bootstrap.js',
             '//media/js/modules/reports/transactions.js'
         ],
-
         //MODULE-DASHBOARD CLIENT
         'dashboard-client-styles' => [
 
@@ -91,7 +89,6 @@ return array
         'dashboard-client-scripts' => [
             '//media/js/modules/dashboard/main.js'
         ],
-
         //MODULE-TIMELINE
         'timeline-styles' => [
             '//media/css/modules/timeline/transactions.css'
@@ -100,8 +97,6 @@ return array
             '//media/js/modules/timeline/box-builder.js',
             '//media/js/modules/timeline/transactions.js'
         ]
-
-
 
     ]
 );

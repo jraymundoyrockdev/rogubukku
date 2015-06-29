@@ -45,7 +45,7 @@ class Controller_User_ChangePassword extends Controller_Base
 
             $result = [
                 'isSuccess' => false,
-                'errorFields' => ['old_password'=>'Old Password does not exist.'],
+                'errorFields' => ['old_password' => 'Old Password does not exist.'],
                 'objectModel' => []
             ];
 
@@ -104,6 +104,7 @@ class Controller_User_ChangePassword extends Controller_Base
         if ($post['password'] == $post['confirm_new_password']) {
             return true;
         }
+
         return false;
     }
 } // End of class
