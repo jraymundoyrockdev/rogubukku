@@ -31,4 +31,5 @@ select {
 
 .hack-shield-td:hover  {
     background-color: #4fa7ef !important;
+    color: #fff;
 }
