@@ -33,7 +33,7 @@ class Controller_Admin_Userroles extends Controller_Base
             $this->request->redirect('404');
         }
 
-        $userRoles =  $this->_role->find_all();
+        $userRoles = $this->_role->find_all();
         $this->template->body = View::factory('admin/userroles')->bind('userroles', $userRoles);
 
     }

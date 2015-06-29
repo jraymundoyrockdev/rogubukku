@@ -27,6 +27,10 @@ class Controller_Transactions_Transactions extends Controller_Base
      */
     protected $_transaction_type;
 
+    /**
+     * default construct.
+     * Set global config variables
+     */
     public function before()
     {
         $this->_is_logged_in();
@@ -47,6 +51,10 @@ class Controller_Transactions_Transactions extends Controller_Base
         $this->template->resourceModule = 'transactions';
     }
 
+    /**
+     * Create Page
+     *
+     */
     public function action_index()
     {
         $ministries = $this->_ministry->where(
@@ -79,6 +87,9 @@ class Controller_Transactions_Transactions extends Controller_Base
             ->bind('noTransactions', $noTransactions);
     }
 
+    /**
+     * Insert or Update the Transaction
+     */
     public function action_save()
     {
         if (HTTP_Request::POST == $this->request->method()) {
@@ -96,6 +107,10 @@ class Controller_Transactions_Transactions extends Controller_Base
         }
     }
 
+    /**
+     * List Page
+     *
+     */
     public function action_list()
     {
         $transactions = $this->_transactions->where(
@@ -113,6 +128,10 @@ class Controller_Transactions_Transactions extends Controller_Base
             ->bind('transactions', $transactions);
     }
 
+    /**
+     * Edit Page
+     *
+     */
     public function action_edit()
     {
 
@@ -137,6 +156,10 @@ class Controller_Transactions_Transactions extends Controller_Base
 
     }
 
+    /**
+     * Delete Transaction
+     *
+     */
     public function action_destroy()
     {
         $result = $this->_transactions->roguSave(['id' => $this->request->param('id'), 'status' => 'delete']);

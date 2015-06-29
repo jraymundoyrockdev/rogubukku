@@ -1,10 +1,10 @@
 <?php
 
-return array(
-    'password_confirm' => array(
+[
+    'password_confirm' => [
         'matches' => 'Password fields did not match.',
-    ),
-    'password' => array(
+    ],
+    'password' => [
         'not_empty' => 'Password is required.',
-    ),
-);
+    ],
+];

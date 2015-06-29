@@ -8,7 +8,10 @@ class Controller_Api_Timeline extends Controller_Base
      */
     protected $_timeline;
 
-
+    /**
+     * default construct.
+     * Set global config variables
+     */
     public function before()
     {
         parent::before();
@@ -18,6 +21,9 @@ class Controller_Api_Timeline extends Controller_Base
         $this->_timeline = Rogubukku::API('Timeline');
     }
 
+    /**
+     * Fetch timeline
+     */
     public function action_transaction_timeline()
     {
         $data = $this->_timeline->transactionTimeline(

@@ -1,10 +1,17 @@
 <?php defined('SYSPATH') OR die('No Direct Script Access');
 
+/**
+ * Foundation Controller for all concrete and abstract class to extend.
+ * All default methods under this class is used globally
+ *
+ */
 Class Controller_Base extends Controller_Template
 {
+    /**
+     * Default template for all pages
+     *
+     */
     public $template = 'templates/main';
-
-    protected $uploadsDirectory;
 
     public function before()
     {
