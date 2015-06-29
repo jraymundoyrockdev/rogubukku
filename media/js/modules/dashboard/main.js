@@ -96,4 +96,15 @@ $(document).ready(function () {
 
     }
 
+    setTimeout(function () {
+        $('tspan ').each(function () {
+            if ($(this).text() == 'Demo Version') {
+                $(this).text('');
+            }
+        });
+    }, 400);
+
+
+
+
 });
