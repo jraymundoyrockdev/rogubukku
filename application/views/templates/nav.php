@@ -10,12 +10,20 @@
     </div>
     <div class="collapse navbar-collapse navbar-ex1-collapse">
         <ul class="nav navbar-nav side-nav">
-            <li class="<?php if ($routeName == 'dashboard') {echo 'active';} ?>"><a href="<?= URL::site('dashboard'); ?>"><i class="fa fa-tachometer"></i> Dashboard </a></li>
-            <li class="<?php if ($routeName == 'transactions') {echo 'active';} ?>"><a href="<?=URL::site('transactions');?>"><i class="fa fa-tasks"></i> Transactions</a></li>
-            <li class="<?php if ($routeName == 'reports-transactions') {echo 'active';} ?>">
+            <li class="<?php if ($routeName == 'dashboard') {
+                echo 'active';
+            } ?>"><a href="<?= URL::site('dashboard'); ?>"><i class="fa fa-tachometer"></i> Dashboard </a></li>
+            <li class="<?php if ($routeName == 'transactions') {
+                echo 'active';
+            } ?>"><a href="<?= URL::site('transactions'); ?>"><i class="fa fa-tasks"></i> Transactions</a></li>
+            <li class="<?php if ($routeName == 'reports-transactions') {
+                echo 'active';
+            } ?>">
                 <a href="<?= URL::site('reports/transactions'); ?>"><i class="fa fa-bar-chart"></i> Reports</a>
             </li>
-            <li class="<?php if ($routeName == 'timeline') {echo 'active';} ?>"><a href="<?= URL::site('timeline'); ?>"><i class="fa fa-clock-o"></i> Timeline</a></li>
+            <li class="<?php if ($routeName == 'timeline') {
+                echo 'active';
+            } ?>"><a href="<?= URL::site('timeline'); ?>"><i class="fa fa-clock-o"></i> Timeline</a></li>
         </ul>
 
         <?php echo View::factory('templates/header')->bind('user', $user) ?>

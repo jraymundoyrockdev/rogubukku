@@ -12,6 +12,7 @@
                 <form class="form-horizontal">
                     <div class="form-group">
                         <label class="col-sm-1" for="transaction">Transaction</label>
+
                         <div class="col-sm-3">
                             <?= Form::input('transaction_type', '', [
                                 'id' => 'transactionType',
@@ -23,6 +24,7 @@
 
                     <div class="form-group">
                         <label class="col-sm-1" for="transaction">Ministry</label>
+
                         <div class="col-sm-3">
                             <?= Form::input('ministry', '', [
                                 'id' => 'ministry',
@@ -32,9 +34,10 @@
                         </div>
                     </div>
 
-                    <?php if (Auth::instance()->logged_in("admin")):?>
+                    <?php if (Auth::instance()->logged_in("admin")): ?>
                         <div class="form-group">
                             <label class="col-sm-1" for="user">Logged&nbsp;By</label>
+
                             <div class="col-sm-3">
                                 <?= Form::input('user', '', [
                                     'id' => 'loggedBy',
@@ -43,7 +46,7 @@
                                 ]); ?>
                             </div>
                         </div>
-                    <?php endif;?>
+                    <?php endif; ?>
 
                 </form>
                 <hr>
@@ -60,17 +63,17 @@
                         <th>Transaction Date</th>
                         <th>Logged Date</th>
 
-                        <?php if (Auth::instance()->logged_in("admin")):?>
+                        <?php if (Auth::instance()->logged_in("admin")): ?>
 
-                        <th>Logged By</th>
+                            <th>Logged By</th>
 
-                        <?php endif;?>
+                        <?php endif; ?>
                         <th>Status</th>
                     </tr>
                     </thead>
                     <tbody>
 
-                    <?php $i=1;
+                    <?php $i = 1;
                     foreach ($transactions as $tran) : ?>
 
                         <tr>
@@ -83,13 +86,13 @@
                             <td><?= $tran->transaction_date ?></td>
                             <td><?= $tran->logged_date ?></td>
 
-                            <?php if (Auth::instance()->logged_in("admin")):?>
+                            <?php if (Auth::instance()->logged_in("admin")): ?>
 
-                            <td><?= $tran->users->full_name ?></td>
+                                <td><?= $tran->users->full_name ?></td>
 
-                            <?php endif;?>
+                            <?php endif; ?>
 
-                            <td><?= (! $tran->status) ? '<span class="label label-success">Active</span>' : '<span class="label label-danger">Deleted</span>' ?></td>
+                            <td><?= (!$tran->status) ? '<span class="label label-success">Active</span>' : '<span class="label label-danger">Deleted</span>' ?></td>
                         </tr>
 
                     <?php endforeach; ?>

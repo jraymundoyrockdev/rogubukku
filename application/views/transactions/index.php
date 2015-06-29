@@ -39,7 +39,7 @@
 
                                 <span data-toggle="tooltip" data-placement="top" title="Delete">
                                     <a data-toggle="modal" data-target="#deleteModal" role="button"
-                                            id="<?= $tran->id ?>" class="deleteLink">
+                                       id="<?= $tran->id ?>" class="deleteLink">
                                         <i class="fa fa-trash-o fa-2x"></i>
                                     </a>
                                 </span>

@@ -41,7 +41,7 @@
                             <td class="sui-cell"><?= $tran->transaction ?></td>
                             <td class="sui-cell"><?= $tran->users->full_name ?></td>
                             <td class="sui-cell"><?= $tran->transaction_date ?></td>
-                            <td class="sui-cell"><?= (! $tran->status) ? '<span class="label label-success">Active</span>' : '<span class="label label-danger">Deleted</span>' ?></td>
+                            <td class="sui-cell"><?= (!$tran->status) ? '<span class="label label-success">Active</span>' : '<span class="label label-danger">Deleted</span>' ?></td>
                         </tr>
                     <?php endforeach; ?>
                     </tbody>
