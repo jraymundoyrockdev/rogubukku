@@ -17,6 +17,7 @@ class Model_Auth_User extends Model_AbstractModel {
 		'password' => NULL,
 		'logins' => NULL,
 		'last_login' => NULL,
+        'active_flag' => NULL
      );
 
 	/**

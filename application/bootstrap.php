@@ -123,7 +123,7 @@ Cookie::$salt = 'jempogi123';
  * Set the routes. Each route must have a minimum of a name, a URI and a set of
  * defaults for the URI.
  */
-Route::set('defaults', '((/<action>(/<id>)))', array('action' => 'index|create|login|signin'))
+Route::set('defaults', '((/<action>(/<id>)))', array('action' => 'index|create|login|signin|'))
     ->defaults(array(
         'directory' => 'login',
         'controller' => 'login',
@@ -131,7 +131,7 @@ Route::set('defaults', '((/<action>(/<id>)))', array('action' => 'index|create|l
     ));
 
 //LOGIN
-Route::set('login', 'login((/<action>(/<id>)))', array('action' => 'index|create|login|logout|signup'))
+Route::set('login', 'login((/<action>(/<id>)))', array('action' => 'index|create|login|logout|signup|cancelLoginNow'))
     ->defaults(array(
         'directory' => 'login',
         'controller' => 'login',
