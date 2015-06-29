@@ -89,7 +89,7 @@ return array
 
         ],
         'dashboard-client-scripts' => [
-            '//media/js/modules/dashboard/client.js'
+            '//media/js/modules/dashboard/main.js'
         ],
 
         //MODULE-TIMELINE

@@ -52,45 +52,48 @@ $(document).ready(function () {
         });
     }, "json");
 
-    //TOTAL TRANSACTIONS PER MINISTRY
+    if (serverCurrentUserTypeAdmin) {
 
-    var ministryURI = '/api.dashboard/transaction_totals_per_ministry/' + serverYear;
+        //TOTAL TRANSACTIONS PER MINISTRY
+        var ministryURI = '/api.dashboard/transaction_totals_per_ministry/' + serverYear;
 
-    $.get(ministryURI, function (result) {
-        var ministries = $.map(result, function (value, key) {
-            return value.ministry;
-        });
+        $.get(ministryURI, function (result) {
+            var ministries = $.map(result, function (value, key) {
+                return value.ministry;
+            });
 
-        var ministryTotal = $.map(result, function (value, key) {
-            return parseInt(value.total);
-        });
+            var ministryTotal = $.map(result, function (value, key) {
+                return parseInt(value.total);
+            });
 
-        $("#totalTransactionsPerMinistry").shieldChart({
-            theme: "bootstrap",
-            primaryHeader: {
-                text: "Ministry Usage"
-            },
-            exportOptions: {
-                image: true,
-                print: true
-            },
-            axisX: {
-                categoricalValues: ministries,
-            },
-            isInverted: true,
-            tooltipSettings: {
-                chartBound: true,
-                axisMarkers: {
-                    enabled: true,
-                    mode: 'x'
-                }
-            },
-            dataSeries: [{
-                seriesType: 'bar',
-                collectionAlias: "Total",
-                data: ministryTotal
-            }]
-        });
-    }, "json");
+            $("#totalTransactionsPerMinistry").shieldChart({
+                theme: "bootstrap",
+                primaryHeader: {
+                    text: "Ministry Usage"
+                },
+                exportOptions: {
+                    image: true,
+                    print: true
+                },
+                axisX: {
+                    categoricalValues: ministries,
+                },
+                isInverted: true,
+                tooltipSettings: {
+                    chartBound: true,
+                    axisMarkers: {
+                        enabled: true,
+                        mode: 'x'
+                    }
+                },
+                dataSeries: [{
+                    seriesType: 'bar',
+                    collectionAlias: "Total",
+                    data: ministryTotal
+                }]
+            });
+        }, "json");
+
+    }
 
 });
