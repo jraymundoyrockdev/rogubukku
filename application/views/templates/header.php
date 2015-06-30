@@ -30,6 +30,7 @@
                 <li><a href="<?= URL::site('admin/ministry'); ?>"><i class="fa fa-life-ring"></i> Ministries</a></li>
                 <li><a href="<?= URL::site('admin/userroles'); ?>"><i class="fa fa-user"></i> User Roles</a></li>
                 <li><a href="<?= URL::site('admin/users'); ?>"><i class="fa fa-users"></i> User Management</a></li>
+                <li><a href="<?= URL::site('admin/announcements'); ?>"><i class="glyphicon glyphicon-pushpin"></i> Announcements</a></li>
             </ul>
         </li>
     <?php endif; ?>

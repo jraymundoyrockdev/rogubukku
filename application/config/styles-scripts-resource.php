@@ -59,6 +59,19 @@ return array
             '//media/js/lib/bootstrap/bootstrap-switch.js',
             '//media/js/modules/admin/users.js'
         ],
+        //MODULE-ANNOUNCEMENTS
+        'admin-announcements-styles' => [
+            '//media/css/lib/dataTables/dataTables.bootstrap.css',
+            '//media/css/lib/bootstrap/datepicker/bootstrap-datetimepicker.css'
+        ],
+        'admin-announcements-scripts' => [
+            '//media/js/lib/dataTables/jquery.dataTables.js',
+            '//media/js/lib/dataTables/dataTables.bootstrap.js',
+            '//media/js/lib/datepicker/moment.js',
+            '//media/js/lib/datepicker/bootstrap-datetimepicker.js',
+            '//media/js/lib/jquery/formatDateTime.js',
+            '//media/js/modules/admin/announcements.js'
+        ],
         //MODULE-TRANSACTIONS
         'transactions-styles' => [
             '//media/css/lib/dataTables/dataTables.bootstrap.css',
