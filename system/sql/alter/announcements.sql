@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 30, 2015 at 12:59 PM
+-- Generation Time: Jun 30, 2015 at 05:57 PM
 -- Server version: 5.6.16
 -- PHP Version: 5.5.11
 
@@ -23,15 +23,15 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `announcement`
+-- Table structure for table `announcements`
 --
 
 CREATE TABLE IF NOT EXISTS `announcements` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `message` text NOT NULL,
   `type` enum('critical','non-critical') NOT NULL DEFAULT 'critical',
-  `from_date` datetime NOT NULL,
-  `to_date` datetime NOT NULL,
+  `from_date` date NOT NULL,
+  `to_date` date NOT NULL,
   `announced_by` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
