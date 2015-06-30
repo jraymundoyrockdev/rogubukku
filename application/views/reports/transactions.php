@@ -103,3 +103,4 @@
         </div>
     </div>
 </div>
+<input class="NavButton" id="btnPrint" type="button" value="Print Me!">

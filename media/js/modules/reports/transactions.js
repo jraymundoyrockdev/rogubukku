@@ -52,4 +52,12 @@ $(document).ready(function () {
     });
 
 
+    $('#btnPrint').click(function(){
+        $,ajax({
+            url:'/print_report/transactions'
+            dataType: 'json',
+            method: 'post',
+        });
+    });
+
 });
