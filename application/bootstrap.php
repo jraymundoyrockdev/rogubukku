@@ -238,9 +238,9 @@ Route::set('api.timeline', 'api.timeline((/<action>(/<limit>))(/<offset>)(/<id>)
 
 
 Route::set('print_report', 'print_report((/<action>))',
-    array('action' => 'index'))
+    array('action' => 'index|transactions'))
     ->defaults(array(
-        'directory' => 'report',
-        'controller' => 'transactions',
+        'directory' => 'Print',
+        'controller' => 'Report',
         'action' => 'index',
     ));
