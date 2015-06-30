@@ -1,4 +1,4 @@
-<div class="container" style="padding-top: 150px;">
+<div class="container" style="padding-top: 50px;">
     <div align="center">
         <h1>Rogubukku</h1>
     </div>
@@ -125,8 +125,8 @@
             </div>
 
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger">Login Now</button>
-                <button type="button" class="btn btn-default signUpSuccessfullModalClose" data-dismiss="modal">Login
+                <a href="<?= URL::site('login'); ?>"role="button" class="btn btn-success">Login Now</a>
+                <button id="loginLater" type="button" class="btn btn-default signUpSuccessfullModalClose" data-dismiss="modal">Login
                     Later
                 </button>
             </div>

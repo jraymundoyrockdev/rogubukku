@@ -34,7 +34,8 @@ class Model_Users extends Model_User
         'last_login',
         'created_date',
         'avatar',
-        'profile_pic'
+        'profile_pic',
+        'active_flag'
     );
 
     protected $_belongs_to = array(

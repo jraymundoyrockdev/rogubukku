@@ -44,15 +44,22 @@ class Controller_Login_Login extends Controller_Base
 
         if (HTTP_Request::POST == $this->request->method()) {
             $post = $this->request->post();
-            $user = Auth::instance()->login($post['signin_username'], $post['signin_password']);
 
-            if ($user) {
-                $this->request->redirect('dashboard');
-            }
+            $user = Auth::instance()->login($post['signin_username'], $post['signin_password']);
 
             $message = 'Invalid Login Credentials';
             $has_error = 'has-error';
             $disable_button = 'disabled="disabled"';
+
+            if ($user) {
+
+                if($this->_isActive())
+                    $this->request->redirect('dashboard');
+
+                $message = 'Your account is not yet activated please contact your administrator.';
+                $has_error = '';
+                $disable_button = '';
+            }
         }
 
         $this->template->body
@@ -75,16 +82,22 @@ class Controller_Login_Login extends Controller_Base
 
             $this->request->post('username');
 
-            $userResult = $this->_users->roguSave($this->request->post());
+            $post = $this->request->post();
+
+            $userResult = $this->_users->roguSave($post);
 
             if (!$userResult['isSuccess']) {
                 return $this->responseAjaxResult($userResult);
             }
 
             $data = ['role_id' => 1, 'user_id' => $userResult['objectModel']->get('id')];
+
             $result = $this->_rolesUsers->roguSave($data);
 
             if ($result['isSuccess']) {
+
+                Auth::instance()->login($post['username'], $post['password']);
+
                 $result['signupUser'] = $userResult['objectModel']->get('full_name');
             }
 
@@ -111,6 +124,36 @@ class Controller_Login_Login extends Controller_Base
         if (Auth::instance()->logged_in()) {
             $this->request->redirect('dashboard');
         }
+
+        return false;
+    }
+
+    /**
+     * Check if user is approved by admin.
+     * Method to check the active flag and number of login of an authenticated user.
+     *
+     */
+    private function _isActive()
+    {
+        $active_flag = Auth::instance()->get_user()->active_flag;
+
+        if($active_flag == 'Y') return true;
+
+        if($active_flag == 'N' && (int) $this->_users->where('id','=', Auth::instance()->get_user()->id)->find()->logins == 1) return true;
+
+        Auth::instance()->logout();
+
+        return false;
+    }
+
+    /**
+     * Cancel login now.
+     * Method to destroy session of authenticated user after sign up.
+     *
+     */
+    public function action_cancelLoginNow()
+    {
+        Auth::instance()->logout();
 
         return false;
     }
