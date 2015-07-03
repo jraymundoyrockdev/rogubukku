@@ -9,7 +9,7 @@
 
             <div class="panel-body">
 
-                <form class="form-horizontal">
+                <form class="form-horizontal" id="reportQBE">
                     <div class="form-group">
                         <label class="col-sm-1" for="transaction">Transaction</label>
 
@@ -103,4 +103,5 @@
         </div>
     </div>
 </div>
-<input class="NavButton" id="btnPrint" type="button" value="Print Me!">
+
+<a href="/print_report/transactions" id="btnPrint" target="_blank">Print Me</a>

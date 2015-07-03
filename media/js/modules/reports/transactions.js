@@ -52,11 +52,15 @@ $(document).ready(function () {
     });
 
 
-    $('#btnPrint').click(function(){
-        $,ajax({
-            url:'/print_report/transactions'
+    $('#btnPrint').click(function () {
+        $.ajax({
+            url: '/print_report/transactions',
             dataType: 'json',
             method: 'post',
+            data: $('#reportQBE').serializeArray(),
+            success: function (result) {
+                alert('ss')
+            }
         });
     });
 
