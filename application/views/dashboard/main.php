@@ -1,5 +1,6 @@
 <div class="row">
     <div class="col-lg-12">
+        <?= View::factory('dashboard/announcements')->bind('announcements', $announcements) ?>
         <div class="page-header-dashboard">
             <h1><i class="fa fa-tachometer"></i> Dashboard</h1>
         </div>

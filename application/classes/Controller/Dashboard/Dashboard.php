@@ -8,6 +8,11 @@ class Controller_Dashboard_Dashboard extends Controller_Base
 {
 
     /**
+     * @var Announcements
+     */
+    protected $_announcements;
+
+    /**
      * @var Model_Transactions
      */
     protected $_ministry;
@@ -21,6 +26,8 @@ class Controller_Dashboard_Dashboard extends Controller_Base
         $this->_is_logged_in();
 
         parent::before();
+
+        $this->_announcements = ORM::factory('Announcements');
 
         $this->_transactions = ORM::factory('Transactions');
 
@@ -36,7 +43,11 @@ class Controller_Dashboard_Dashboard extends Controller_Base
     {
         $transactions = $this->_transactions->order_by('transaction_date desc')->limit(15)->find_all();
 
-        $this->template->body = View::factory('dashboard/main')->bind('transactions', $transactions);
+        $announcements = $this->_announcements->order_by('date_announced', 'desc')->limit(2)->find_all();
+
+        $this->template->body = View::factory('dashboard/main')
+                                                ->bind('transactions', $transactions)
+                                                ->bind('announcements', $announcements);
     }
 
 } // End of class

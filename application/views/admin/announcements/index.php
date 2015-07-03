@@ -28,8 +28,8 @@
                         <tr id="tr_<?= $a->id ?>" class="hack-shield-td">
                             <td><?= $i++ ?></td>
                             <td><?= ucfirst($a->message) ?></td>
-                            <td><?= date_format(date_create($a->from_date), 'Y-m-d h:i A') ?></td>
-                            <td><?= date_format(date_create($a->to_date), 'Y-m-d h:i A') ?></td>
+                            <td><?= date_format(date_create($a->from_date), 'Y-m-d') ?></td>
+                            <td><?= date_format(date_create($a->to_date), 'Y-m-d') ?></td>
                             <td><?= ucfirst($a->type) ?></td>
                             <td class="text-center">
                                 <a href="<?= URL::site('admin/announcements/edit/' . $a->id); ?>"

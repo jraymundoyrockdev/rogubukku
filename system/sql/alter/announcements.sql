@@ -33,6 +33,7 @@ CREATE TABLE IF NOT EXISTS `announcements` (
   `from_date` date NOT NULL,
   `to_date` date NOT NULL,
   `announced_by` int(11) NOT NULL,
+  `date_announced` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 

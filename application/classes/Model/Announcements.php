@@ -17,7 +17,8 @@ class Model_Announcements extends Model_AbstractModel {
         'type' => null,
         'from_date' => null,
         'to_date' => null,
-        'announced_by' => null
+        'announced_by' => null,
+        'date_announced' => null
     );
 
     protected $_fillable = array(
@@ -26,7 +27,8 @@ class Model_Announcements extends Model_AbstractModel {
         'type',
         'from_date',
         'to_date',
-        'announced_by'
+        'announced_by',
+        'date_announced'
     );
 
     protected $_belongs_to = array(
