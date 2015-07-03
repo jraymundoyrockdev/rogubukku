@@ -9,17 +9,17 @@
 
             <div class="panel-body">
 
-                <table class="table table-striped table-bordered" id="transaction_list">
+                <table class="table table-striped table-bordered hover" id="transaction_list">
                     <colgroup>
                         <col style="width:50px">
                     </colgroup>
                     <thead>
-                    <tr>
-                        <th class="col-md-1">Transaction</th>
-                        <th class="col-md-3">Reason</th>
-                        <th class="col-md-2">Transaction Date</th>
-                        <th class="col-md-1">Action</th>
-                    </tr>
+                        <tr class="hack-shield-th">
+                            <th class="col-md-1">Transaction</th>
+                            <th class="col-md-3">Reason</th>
+                            <th class="col-md-2">Transaction Date</th>
+                            <th class="col-md-1">Action</th>
+                        </tr>
                     </thead>
                     <tbody>
 
@@ -27,7 +27,7 @@
                     foreach ($transactions as $tran) : ?>
 
                         <span id="prepend_list"></span>
-                        <tr id="tr_<?= $tran->id ?>">
+                        <tr id="tr_<?= $tran->id ?>" class="hack-shield-td">
                             <td><?= ucfirst($tran->transaction) ?></td>
                             <td><?= substr(ucfirst($tran->reason), 0, -strlen($tran->reason) / 2) . '...'; ?></td>
                             <td><?= date_format(date_create($tran->transaction_date),
@@ -43,8 +43,6 @@
                                         <i class="fa fa-trash-o fa-2x"></i>
                                     </a>
                                 </span>
-
-
                             </td>
                         </tr>
 
@@ -75,7 +73,7 @@
 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">No</button>
-                    <button class="btn btn-info btn-sm" id="deleteButtonYes">Yes</button>
+                    <button class="btn btn-info btn-sm prevent-double-submit" id="deleteButtonYes">Yes</button>
                 </div>
             </div>
         </div>

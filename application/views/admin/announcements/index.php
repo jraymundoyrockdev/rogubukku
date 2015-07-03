@@ -25,7 +25,7 @@
                     <?php $i = 1;
                     foreach ($announcements as $a) : ?>
 
-                        <tr class="hack-shield-td">
+                        <tr id="tr_<?= $a->id ?>" class="hack-shield-td">
                             <td><?= $i++ ?></td>
                             <td><?= ucfirst($a->message) ?></td>
                             <td><?= date_format(date_create($a->from_date), 'Y-m-d h:i A') ?></td>

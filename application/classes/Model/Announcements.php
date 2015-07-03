@@ -1,9 +1,8 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: Gab
- * Date: 6/30/2015
- * Time: 4:15 PM
+ * Model Announcements
+ *
+ * Announcements Instance table
  */
 
 class Model_Announcements extends Model_AbstractModel {

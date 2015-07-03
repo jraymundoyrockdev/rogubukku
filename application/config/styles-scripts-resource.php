@@ -70,6 +70,7 @@ return array
             '//media/js/lib/datepicker/moment.js',
             '//media/js/lib/datepicker/bootstrap-datetimepicker.js',
             '//media/js/lib/jquery/formatDateTime.js',
+            '//media/js/validation/admin/announcements.js',
             '//media/js/modules/admin/announcements.js'
         ],
         //MODULE-TRANSACTIONS
@@ -84,7 +85,8 @@ return array
             '//media/js/lib/datepicker/bootstrap-datetimepicker.js',
             '//media/js/lib/jquery/formatDateTime.js',
             '//media/js/validation/transactions/transactions.js',
-            '//media/js/modules/transactions/transactions.js'
+            '//media/js/modules/transactions/transactions.js',
+            '//media/js/lib/jquery-prevent-double-submit.js',
         ],
         //MODULE-REPORTS
         'reports-styles' => [

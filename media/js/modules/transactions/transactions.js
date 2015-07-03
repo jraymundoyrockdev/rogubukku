@@ -14,11 +14,6 @@ $("#transaction").change(function () {
         $('#transactions_form').formValidation('updateStatus', 'non_colored', 'NOT_VALIDATED', 'notEmpty');
     }
 });
-$('#datetimepicker1').click(function(){
-        $('#transaction_date').val('');
-        $('#transactions_form').formValidation('revalidateField', 'transaction_date');
-    });
-
 
 $('.saveTransaction').click(function () {
     $('#saveType').val($(this).attr('id'))
@@ -66,23 +61,31 @@ $(document).ready(function () {
         });
     }
 
+    var transactionId = null;
+
     $(".deleteLink").on('click', function (event, state) {
 
-        var transactionId = $(this).attr('id');
+        transactionId = $(this).attr('id');
+    });
 
-        $('#deleteButtonYes').click(function(){
-            
-            $('#deleteModal').modal('hide');
+    $('#deleteButtonYes').click(function(e) {
+
+        $('#deleteModal').modal('hide');
+            if(!transactionId) {
+                return false;
+            }
 
             $.post("/transactions/destroy/"+transactionId, {id: transactionId})
-                .done(function (data) {
-                    $('#tr_'+transactionId).fadeOut(1000, function(){
-                        $(this).remove();
+                    .done(function (data) {
+                        $('#tr_'+transactionId).fadeOut(1000, function(){
+                            $(this).remove();
+                        });
                     });
-            });
-        });
     });
+
 });
+
+
 
 $(function () {
     $('#datetimepicker1').datetimepicker();

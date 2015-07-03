@@ -197,7 +197,7 @@ Route::set('admin/users', 'admin/users((/<action>(/<id>)))', array('action' => '
         'action' => 'index',
     ));
 
-Route::set('admin/announcements', 'admin/announcements((/<action>(/<id>)))', array('action' => 'index|create|save'))
+Route::set('admin/announcements', 'admin/announcements((/<action>(/<id>)))', array('action' => 'index|create|save|edit|destroy'))
     ->defaults(array(
         'directory' => 'admin',
         'controller' => 'announcements',

@@ -112,7 +112,7 @@
 
                         <?= Form::button('saveAndExit', 'Update', array(
                             'type' => 'submit',
-                            'class' => 'btn btn-primary btn-block saveTransaction',
+                            'class' => 'btn btn-primary btn-block',
                             'id' => 'update',
                             'value' => 'saveAndExit'
                         )); ?>
