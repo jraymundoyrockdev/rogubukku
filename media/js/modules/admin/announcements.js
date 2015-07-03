@@ -2,9 +2,8 @@ $("body").tooltip({selector: '[data-toggle=tooltip]'});
 
 $(document).ready(function () {
 
-    if($('#from_date').val() != '')
-    {
-        $('#icon-calendar').click(function(){
+    if ($('#from_date').val() != '') {
+        $('#icon-calendar').click(function () {
             $('#from_date').val('');
         });
 
@@ -18,9 +17,8 @@ $(document).ready(function () {
         );
     }
 
-    if($('#to_date').val() != '')
-    {
-        $('#icon-calendar').click(function(){
+    if ($('#to_date').val() != '') {
+        $('#icon-calendar').click(function () {
             $('#to_date').val('');
         });
 
@@ -50,25 +48,25 @@ $(document).ready(function () {
 
     $(".deleteLink").on('click', function (event, state) {
 
-         announcementId = $(this).attr('id');
+        announcementId = $(this).attr('id');
 
     });
 
-    
-    $('#deleteButtonYes').click(function() {
+
+    $('#deleteButtonYes').click(function () {
 
         $('#deleteModal').modal('hide');
-            if(!announcementId) {
-                return false; 
-            }
-            
-            $.post("/admin/announcements/destroy/"+announcementId)
-                    .done(function () {
-                        $('#tr_'+announcementId).fadeOut(1000, function(){
-                            $(this).remove();
-                        });
-                    });
-        
+        if (!announcementId) {
+            return false;
+        }
+
+        $.post("/admin/announcements/destroy/" + announcementId)
+            .done(function () {
+                $('#tr_' + announcementId).fadeOut(1000, function () {
+                    $(this).remove();
+                });
+            });
+
     });
 
     $('#updateAnnouncement').click(function () {
@@ -76,12 +74,12 @@ $(document).ready(function () {
     });
 
     $(function () {
-        $('#datetimepickerFromDate').datetimepicker({format:'L',pickTime: false});
-        $('#datetimepickerToDate').datetimepicker({format:'L',pickTime: false});
+        $('#datetimepickerFromDate').datetimepicker({format: 'L', pickTime: false});
+        $('#datetimepickerToDate').datetimepicker({format: 'L', pickTime: false});
 
         $('#datetimepickerFromDate').on('dp.change dp.show', function (e) {
             $('#announcements_form').formValidation('revalidateField', 'from_date');
-            
+
         });
 
         $('#datetimepickerToDate').on('dp.change dp.show', function (e) {

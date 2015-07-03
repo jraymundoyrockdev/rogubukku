@@ -1,12 +1,7 @@
 <?php defined('SYSPATH') or die('No direct script access.');
-/**
- * Created by PhpStorm.
- * User: Gab
- * Date: 6/30/2015
- * Time: 1:04 PM
- */
 
-class Controller_Admin_Announcements extends Controller_Base {
+class Controller_Admin_Announcements extends Controller_Base
+{
 
     /**
      * @var Announcements
@@ -17,6 +12,7 @@ class Controller_Admin_Announcements extends Controller_Base {
      * @var Logged In User Id
      */
     protected $_user_id;
+
     /**
      * default construct.
      * Set global config variables
@@ -75,7 +71,8 @@ class Controller_Admin_Announcements extends Controller_Base {
     public function action_save()
     {
         if (HTTP_Request::POST == $this->request->method()) {
-            $result = $this->_announcements->roguSave(Rogubukku::mergeCurrentlyLoggedInUser($this->request->post(), 'announced_by'));
+            $result = $this->_announcements->roguSave(Rogubukku::mergeCurrentlyLoggedInUser($this->request->post(),
+                'announced_by'));
 
             $this->responseAjaxResult($result);
         }
@@ -87,7 +84,6 @@ class Controller_Admin_Announcements extends Controller_Base {
      */
     public function action_edit()
     {
-
         $announcements = $this->_announcements->where(
             'id',
             '=', $this->request->param('id')
