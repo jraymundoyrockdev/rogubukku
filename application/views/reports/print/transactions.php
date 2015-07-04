@@ -1,13 +1,15 @@
-<div class="container transaction-print">
+<div class="container transaction-print" xmlns="http://www.w3.org/1999/html">
     <h2>Transaction List Report</h2>
 
         <div>
-            QBE Details: <br>
-            Transaction Type: Print <br>
-            User: Print <br>
-            Ministry: Print <br>
-            Date From: Jun 23, 2015 To: July 24, 2015 <br>
-            Print Date: <?php echo date('F j, Y' );?>
+            <p class="text-left">
+                <strong>Transaction Type:</strong> Print
+                Print Date: <?php echo date('F j, Y' );?></p>
+            <br>
+            <strong>User:</strong> Print <br>
+            <strong>Ministry:</strong> Print <br>
+            <strong>Date From:</strong> Jun 23, 2015 To: July 24, 2015 <br>
+
 
             <br>
             Legend: B - Black Ink C - Colored
@@ -48,5 +50,5 @@
     </div>
 </div>
 <script type="text/javascript">
-    window.print();
+  //  window.print();
 </script>
