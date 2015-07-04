@@ -1,26 +1,22 @@
-
-<div class="page-header-dashboard">
-    <h1><i class="glyphicon glyphicon-pushpin"></i> Announcements</h1>
-</div>    
+   
 <?php foreach ($announcements as $a) : ?>
 
     <div class="listing listing-radius listing-<?=($a->type=='critical') ? 'danger':'success'?>">
-        <div class="shape">
-            <div class="<?=$a->type?>-shape-text"><?=$a->type?></div>
-        </div>
         <i>
-            <small><?= $a->date_announced ?></small></p>
+            <small><?= date_format(date_create($a->date_announced), 'Y-m-d') ?></small>
         </i>
+        <i class="pull-right">- <?=$a->users->full_name?></i>
+        
         <div class="listing-content text-center">
-            
-            <p><?=$a->message?><?=$a->message?><?=$a->message?><?=$a->message?><?=$a->message?><?=$a->message?><?=$a->message?><?=$a->message?></p>
-            -<?=$a->announced_by?>
-            
+            <p><?=$a->message?></p>
         </div>
     </div>
+    <hr>
 
 <?php endforeach; ?>
-
+    <h4 align="center" >
+        <?=$noAnnouncements?>
+    </h4>
 <a href="<?= URL::site('admin/announcements'); ?>" class="pull-right"><i>View All Annoucements</i></a>
 <style>
 .shape {
@@ -39,8 +35,9 @@
     background: #fff;
     border: 1px solid #ddd;
     /*box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);*/
-    margin: 7px 0;
+    margin: 0px 0;
     overflow: hidden;
+    padding: 10px;
 }
 .listing:hover {
     -webkit-transform: scale(1.1);
@@ -122,6 +119,5 @@
     -webkit-transform: rotate(30deg); /* Safari and Chrome */
     transform: rotate(35deg);
 }
-.listing-content {
-    padding: 10px 5px 0px;
+
 </style>

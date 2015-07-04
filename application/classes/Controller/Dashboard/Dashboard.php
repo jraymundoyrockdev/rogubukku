@@ -43,11 +43,14 @@ class Controller_Dashboard_Dashboard extends Controller_Base
     {
         $transactions = $this->_transactions->order_by('transaction_date desc')->limit(15)->find_all();
 
-        $announcements = $this->_announcements->order_by('date_announced', 'desc')->limit(2)->find_all();
+        $announcements = $this->_announcements->order_by('date_announced', 'desc')->limit(3)->find_all();
+
+        $noAnnouncements = $announcements->count() == 0 ? 'No Announcements' : '';
 
         $this->template->body = View::factory('dashboard/main')
                                                 ->bind('transactions', $transactions)
-                                                ->bind('announcements', $announcements);
+                                                ->bind('announcements', $announcements)
+                                                ->bind('noAnnouncements', $noAnnouncements);
     }
 
 } // End of class
