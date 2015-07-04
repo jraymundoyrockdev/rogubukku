@@ -30,6 +30,10 @@ Class Controller_Base extends Controller_Template
 
     }
 
+    /**
+     * If user is logged in.
+     * Redirect to login page if not logged-in
+     */
     protected function _is_logged_in()
     {
         if (!Auth::instance()->logged_in()) {
@@ -39,6 +43,10 @@ Class Controller_Base extends Controller_Template
         return true;
     }
 
+    /**
+     * Sniff if the method sent to http is an ajax.
+     *
+     */
     protected function isRequestAjax()
     {
         if ($this->request->is_ajax()) {
@@ -46,6 +54,10 @@ Class Controller_Base extends Controller_Template
         }
     }
 
+    /**
+     * Output result to json template.
+     *
+     */
     protected function responseAjaxResult(Array $message)
     {
         $this->response->headers('Content-type', 'application/json; charset=' . Kohana::$charset);

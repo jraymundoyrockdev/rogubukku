@@ -50,8 +50,6 @@
 
                     <div class="form-group">
                         <label class="col-sm-1" for="dateFrom" style="margin-right: 15px;">Date&nbsp;From </label>
-
-
                         <div class="input-group col-sm-2 date">
                             <div id="dateFromDatepicker">
                                 <?= Form::input('dateFrom', '',
@@ -59,13 +57,13 @@
                                 <span class="input-group-addon" id="icon-calendar" style="padding: 8px 12px;">
                                     <span class="glyphicon glyphicon-calendar"></span>
                                 </span>
+                                <small>(For Print Only)</small>
                             </div>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="col-sm-1" for="dateFrom" style="margin-right: 15px;">Date&nbsp;To </label>
-
                         <div class="input-group col-sm-2 date">
                             <div id="dateToDatepicker">
                                 <?= Form::input('dateTo', '',
@@ -73,6 +71,7 @@
                                 <span class="input-group-addon" id="icon-calendar" style="padding: 8px 12px;">
                                     <span class="glyphicon glyphicon-calendar"></span>
                                 </span>
+                                <small>(For Print Only)</small>
                             </div>
                         </div>
                     </div>

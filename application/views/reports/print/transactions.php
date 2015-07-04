@@ -6,18 +6,19 @@
 
         <ul class="list-unstyled">
 
-            <?php if($query['transaction_type']):?>
-            <li><strong>Type: </strong><?=$query['transaction_type']?></li>
-            <?php endif;?>
+            <?php if ($query['transaction_type']): ?>
+                <li><strong>Type: </strong><?= $query['transaction_type'] ?></li>
+            <?php endif; ?>
 
-            <?php if($query['user']):?>
-            <li><strong>User: </strong><?=$query['user']?></li>
-            <?php endif;?>
+            <?php if ($query['user']): ?>
+                <li><strong>User: </strong><?= $query['user'] ?></li>
+            <?php endif; ?>
 
-            <?php if($query['user']):?>
-            <li><strong>Ministry: </strong><?=$query['ministry']?></li>
-            <?php endif;?>
-            <li><strong>Date From:</strong> Feb 6, 2015 <strong>To:</strong> Mar 6,2015</li>
+            <?php if ($query['user']): ?>
+                <li><strong>Ministry: </strong><?= $query['ministry'] ?></li>
+            <?php endif; ?>
+            <li><strong>Date From: </strong><?= date('F j, Y H:i:s', strtotime($query['dateFrom'])); ?></li>
+            <li><strong>Date To: </strong><?= date('F j, Y H:i:s', strtotime($query['dateTo'])); ?></li>
         </ul>
         <p class="text-right"><strong>Legend</strong>: <strong>B</strong> - Black Only <strong>C</strong> - Colored</p>
     </div>
@@ -57,5 +58,5 @@
     </div>
 </div>
 <script type="text/javascript">
-    //window.print();
+    window.print();
 </script>

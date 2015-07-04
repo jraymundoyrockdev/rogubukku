@@ -48,9 +48,9 @@ class Controller_Dashboard_Dashboard extends Controller_Base
         $noAnnouncements = $announcements->count() == 0 ? 'No Announcements' : '';
 
         $this->template->body = View::factory('dashboard/main')
-                                                ->bind('transactions', $transactions)
-                                                ->bind('announcements', $announcements)
-                                                ->bind('noAnnouncements', $noAnnouncements);
+            ->bind('transactions', $transactions)
+            ->bind('announcements', $announcements)
+            ->bind('noAnnouncements', $noAnnouncements);
     }
 
 } // End of class

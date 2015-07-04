@@ -7,6 +7,14 @@
 class Api_PrintReports
 {
 
+    /**
+     * Method to get transactions.
+     * Used query by example to fetch transaction data
+     *
+     * @param $query Get Query
+     *
+     * @return array
+     */
     public function transactions($query)
     {
         $where = (!empty($query['transaction_type'])) ? ' WHERE a.transaction LIKE "%' . $query['transaction_type'] . '%"' : ' WHERE transaction != ""';

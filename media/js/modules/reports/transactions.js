@@ -62,8 +62,8 @@ $(document).ready(function () {
             $('#transactionType').val() +
             '&ministry=' + $('#ministry').val() +
             '&user=' + $('#loggedBy').val() +
-            '&dateFrom=' + $.formatDateTime('yy-mm-dd hh:ii:ss', new Date($('#dateFrom').val()))  +
-            '&dateTo=' + $('#dateTo').val();
+            '&dateFrom=' + dateFrom +
+            '&dateTo=' + dateTo;
 
         window.open(url, '_blank');
     });
@@ -71,11 +71,11 @@ $(document).ready(function () {
     $('#dateFromDatepicker').datetimepicker({maxDate: moment()});
     $('#dateToDatepicker').datetimepicker();
 
-    function convert12HourTo24Hours(dateTime){
+    function convert12HourTo24Hours(dateTime) {
         return $.formatDateTime('yy-mm-dd hh:ii:ss', new Date(dateTime));
     }
 
-    function get24HoursNow(){
+    function get24HoursNow() {
         return $.formatDateTime('yy-mm-dd hh:ii:ss', new Date());
     }
 });
