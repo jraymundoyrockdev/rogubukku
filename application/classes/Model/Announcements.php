@@ -1,11 +1,12 @@
 <?php
+
 /**
  * Model Announcements
  *
  * Announcements Instance table
  */
-
-class Model_Announcements extends Model_AbstractModel {
+class Model_Announcements extends Model_AbstractModel
+{
 
     protected $_primary_key = 'id';
 
