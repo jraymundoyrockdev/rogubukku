@@ -53,7 +53,7 @@ class Controller_Login_Login extends Controller_Base
 
             if ($user) {
 
-                if($this->_isActive())
+                if ($this->_isActive())
                     $this->request->redirect('dashboard');
 
                 $message = 'Your account is not yet activated please contact your administrator.';
@@ -137,9 +137,9 @@ class Controller_Login_Login extends Controller_Base
     {
         $active_flag = Auth::instance()->get_user()->active_flag;
 
-        if($active_flag == 'Y') return true;
+        if ($active_flag == 'Y') return true;
 
-        if($active_flag == 'N' && (int) $this->_users->where('id','=', Auth::instance()->get_user()->id)->find()->logins == 1) return true;
+        if ($active_flag == 'N' && (int)$this->_users->where('id', '=', Auth::instance()->get_user()->id)->find()->logins == 1) return true;
 
         Auth::instance()->logout();
 

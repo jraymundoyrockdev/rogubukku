@@ -75,6 +75,7 @@ CREATE TABLE `roles_users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 INSERT INTO `roles_users` VALUES ('1', '2');
+INSERT INTO `roles_users` VALUES ('2', '2');
 
 -- ----------------------------
 -- Records of roles_users
@@ -102,7 +103,8 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
 
 INSERT INTO `users`(`id`, `ministry_id`, `full_name`, `username`, `password`, `avatar`, `created_date`, `active_flag`, `logins`, `last_login`)
-VALUES (1, '1', 'Mayflor Dilla', 'Mdilla', '2e60791c87630452f80bfdeb9935f659bf98f7818c5d8006fda6526935cdbdd9', NULL, CURRENT_TIMESTAMP, 'Y', '0', NULL);
+VALUES (1, '7', 'Mayflor Dilla', 'Mdilla', '2e60791c87630452f80bfdeb9935f659bf98f7818c5d8006fda6526935cdbdd9', NULL, CURRENT_TIMESTAMP, 'Y', '0', NULL),
+(2, '2', 'Jeremuel Raymundo', 'jraymundo', 'fe1e55dbf180d3266307672734a154153e75751d52590acae8d80628c3bf0137', NULL, CURRENT_TIMESTAMP, 'Y', '0', NULL);
 
 -- ----------------------------
 -- Records of users
