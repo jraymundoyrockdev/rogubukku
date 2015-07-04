@@ -103,7 +103,7 @@ return array
         ],
         //MODULE-DASHBOARD CLIENT
         'dashboard-client-styles' => [
-
+            '//media/css/modules/dashboard/announcements.css'
         ],
         'dashboard-client-scripts' => [
             '//media/js/modules/dashboard/main.js'
