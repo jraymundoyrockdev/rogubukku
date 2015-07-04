@@ -3,22 +3,22 @@
         <div class="panel panel-primary">
             <div class="panel-heading">
                 <h3 class="panel-title">
-                    <i class="fa fa-bar-chart"></i> Announcements
+                    <i class="glyphicon glyphicon-pushpin"></i> Announcements
                 </h3>
             </div>
 
             <div class="panel-body">
-                <table class="table table-striped table-bordered hover" cellspacing="0" width="100%"
+                <table class="table table-striped table-bordered hover tableIcon" cellspacing="0" width="100%"
                        id="announcementsList">
                     <thead>
-                        <tr class="hack-shield-th">
-                            <th>#</th>
-                            <th>Message</th>
-                            <th>From</th>
-                            <th>To</th>
-                            <th>Type</th>
-                            <th>Action</th>
-                        </tr>
+                    <tr class="hack-shield-th">
+                        <th>#</th>
+                        <th>Message</th>
+                        <th>From</th>
+                        <th>To</th>
+                        <th>Type</th>
+                        <th>Action</th>
+                    </tr>
                     </thead>
                     <tbody>
 
@@ -30,16 +30,16 @@
                             <td><?= ucfirst($a->message) ?></td>
                             <td><?= date_format(date_create($a->from_date), 'Y-m-d h:i A') ?></td>
                             <td><?= date_format(date_create($a->to_date), 'Y-m-d h:i A') ?></td>
-                            <td><?= ucfirst($a->type) ?></td>
+                            <td><?= ($a->type == 'critical') ? '<span class="label label-danger">Critical</span>' : '<span class="label label-success">Non-Critical</span>' ?></td>
                             <td class="text-center">
                                 <a href="<?= URL::site('admin/announcements/edit/' . $a->id); ?>"
                                    data-toggle="tooltip" data-placement="top"
-                                   title="Edit"><i class="fa fa-pencil fa-2x"></i></a>
+                                   title="Edit"><i class="fa fa-pencil fa-2x iconer"></i></a>
 
                                 <span data-toggle="tooltip" data-placement="top" title="Delete">
                                     <a data-toggle="modal" data-target="#deleteModal" role="button"
                                        id="<?= $a->id ?>" class="deleteLink">
-                                        <i class="fa fa-trash-o fa-2x"></i>
+                                        <i class="fa fa-trash-o fa-2x iconer"></i>
                                     </a>
                                 </span>
                             </td>
