@@ -1,19 +1,26 @@
 <div class="container transaction-print" xmlns="http://www.w3.org/1999/html">
-    <h2>Transaction List Report</h2>
+    <h4>Transactions Report</h4>
+    <hr/>
 
-        <div>
-            <p class="text-left">
-                <strong>Transaction Type:</strong> Print
-                Print Date: <?php echo date('F j, Y' );?></p>
-            <br>
-            <strong>User:</strong> Print <br>
-            <strong>Ministry:</strong> Print <br>
-            <strong>Date From:</strong> Jun 23, 2015 To: July 24, 2015 <br>
+    <div class="text-left">
 
+        <ul class="list-unstyled">
 
-            <br>
-            Legend: B - Black Ink C - Colored
-        </div>
+            <?php if($query['transaction_type']):?>
+            <li><strong>Type: </strong><?=$query['transaction_type']?></li>
+            <?php endif;?>
+
+            <?php if($query['user']):?>
+            <li><strong>User: </strong><?=$query['user']?></li>
+            <?php endif;?>
+
+            <?php if($query['user']):?>
+            <li><strong>Ministry: </strong><?=$query['ministry']?></li>
+            <?php endif;?>
+            <li><strong>Date From:</strong> Feb 6, 2015 <strong>To:</strong> Mar 6,2015</li>
+        </ul>
+        <p class="text-right"><strong>Legend</strong>: <strong>B</strong> - Black Only <strong>C</strong> - Colored</p>
+    </div>
     <div class="table-responsive">
         <table class="table-bordered table">
             <thead>
@@ -31,7 +38,7 @@
 
             </thead>
             <tbody>
-            <?php  $i=1;
+            <?php $i = 1;
             foreach ($transactionsList as $tl):?>
                 <tr>
                     <td><?= $i++ ?></td>
@@ -50,5 +57,5 @@
     </div>
 </div>
 <script type="text/javascript">
-  //  window.print();
+    //window.print();
 </script>

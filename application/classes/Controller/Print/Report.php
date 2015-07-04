@@ -37,8 +37,11 @@ class Controller_Print_Report extends Controller_Base
      */
     public function action_transactions()
     {
-        $result = $this->_print->transactions($this->request->post());
-        $this->template->body = View::factory('reports/print/transactions')->bind('transactionsList', $result);
+        $get = $this->request->query();
+        $result = $this->_print->transactions($this->request->query());
+        $this->template->body = View::factory('reports/print/transactions')
+            ->bind('transactionsList', $result)
+            ->bind('query', $get);
     }
 
 } // End of class

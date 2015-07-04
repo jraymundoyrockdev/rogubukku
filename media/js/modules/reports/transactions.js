@@ -52,16 +52,14 @@ $(document).ready(function () {
     });
 
 
-    $('#btnPrint').click(function () {
-        $.ajax({
-            url: '/print_report/transactions',
-            dataType: 'json',
-            method: 'post',
-            data: $('#reportQBE').serializeArray(),
-            success: function (result) {
-                alert('ss')
-            }
-        });
+    $('#btnPrint').click(function (e) {
+        e.preventDefault();
+        var url = '/print_report/transactions?transaction_type=' +
+            $('#transactionType').val() +
+            '&ministry=' + $('#ministry').val() +
+            '&user=' + $('#loggedBy').val();
+
+        window.open(url, '_blank');
     });
 
 });

@@ -1,3 +1,4 @@
+
 <?php defined('SYSPATH') or die('No direct script access.');
 
 /**
@@ -7,13 +8,13 @@
 class Api_PrintReports
 {
 
-    public function transactions($post)
+    public function transactions($query)
     {
-        $where = (!empty($post['transaction_type'])) ? ' WHERE a.transaction LIKE "%' . $post['transaction_type'] . '%"' : ' WHERE transaction != ""';
-        $user = (!empty($post['user'])) ? ' AND b.full_name LIKE "%' . $post['user'] . '%"' : '';
-        $ministry = (!empty($post['ministry'])) ? ' AND c.ministry LIKE "%' . $post['ministry'] . '%"' : '';
+        $where = (!empty($query['transaction_type'])) ? ' WHERE a.transaction LIKE "%' . $query['transaction_type'] . '%"' : ' WHERE transaction != ""';
+        $user = (!empty($query['user'])) ? ' AND b.full_name LIKE "%' . $query['user'] . '%"' : '';
+        $ministry = (!empty($query['ministry'])) ? ' AND c.ministry LIKE "%' . $query['ministry'] . '%"' : '';
 
-        if (!array_filter($post)) {
+        if (!array_filter($query)) {
             $where = '';
         }
 

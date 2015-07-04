@@ -50,6 +50,8 @@
 
                 </form>
                 <hr>
+                <p class="text-right"><a href="/print_report/transactions" id="btnPrint" target="_blank"><i
+                            class="fa fa-print fa-2x"></i></a></p>
                 <table class="table table-striped table-bordered hover" cellspacing="0" width="100%"
                        id="transactionsList">
                     <thead>
@@ -103,5 +105,3 @@
         </div>
     </div>
 </div>
-
-<a href="/print_report/transactions" id="btnPrint" target="_blank">Print Me</a>
