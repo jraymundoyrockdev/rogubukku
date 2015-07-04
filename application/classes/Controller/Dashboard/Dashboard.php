@@ -45,7 +45,7 @@ class Controller_Dashboard_Dashboard extends Controller_Base
 
         $announcements = $this->_announcements->order_by('date_announced', 'desc')->limit(3)->find_all();
 
-        $noAnnouncements = $announcements->count() == 0 ? 'No Announcements' : '';
+        $noAnnouncements = ($announcements->count() == 0 ) ? true : false;
 
         $this->template->body = View::factory('dashboard/main')
                                                 ->bind('transactions', $transactions)
