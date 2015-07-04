@@ -88,7 +88,7 @@ $(document).ready(function () {
 
 
 $(function () {
-    $('#datetimepicker1').datetimepicker();
+    $('#datetimepicker1').datetimepicker({maxDate:moment()});
     
     $('#datetimepicker1').on('dp.change dp.show', function (e) {
         
