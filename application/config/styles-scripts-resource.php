@@ -90,11 +90,15 @@ return array
         ],
         //MODULE-REPORTS
         'reports-styles' => [
-            '//media/css/lib/dataTables/dataTables.bootstrap.css'
+            '//media/css/lib/dataTables/dataTables.bootstrap.css',
+            '//media/css/lib/bootstrap/datepicker/bootstrap-datetimepicker.css'
         ],
         'reports-scripts' => [
             '//media/js/lib/dataTables/jquery.dataTables.js',
             '//media/js/lib/dataTables/dataTables.bootstrap.js',
+            '//media/js/lib/datepicker/moment.js',
+            '//media/js/lib/datepicker/bootstrap-datetimepicker.js',
+            '//media/js/lib/jquery/formatDateTime.js',
             '//media/js/modules/reports/transactions.js'
         ],
         //MODULE-DASHBOARD CLIENT

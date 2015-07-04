@@ -48,7 +48,37 @@
                         </div>
                     <?php endif; ?>
 
+                    <div class="form-group">
+                        <label class="col-sm-1" for="dateFrom" style="margin-right: 15px;">Date&nbsp;From </label>
+
+
+                        <div class="input-group col-sm-2 date">
+                            <div id="dateFromDatepicker">
+                                <?= Form::input('dateFrom', '',
+                                    ['id' => 'dateFrom', 'class' => 'form-control', 'readonly' => 'readonly']); ?>
+                                <span class="input-group-addon" id="icon-calendar" style="padding: 8px 12px;">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-1" for="dateFrom" style="margin-right: 15px;">Date&nbsp;To </label>
+
+                        <div class="input-group col-sm-2 date">
+                            <div id="dateToDatepicker">
+                                <?= Form::input('dateTo', '',
+                                    ['id' => 'dateTo', 'class' => 'form-control', 'readonly' => 'readonly']); ?>
+                                <span class="input-group-addon" id="icon-calendar" style="padding: 8px 12px;">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
                 </form>
+
                 <hr>
                 <p class="text-right"><a href="/print_report/transactions" id="btnPrint" target="_blank"><i
                             class="fa fa-print fa-2x"></i></a></p>

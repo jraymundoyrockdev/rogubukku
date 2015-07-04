@@ -38,6 +38,9 @@ class Controller_Print_Report extends Controller_Base
     public function action_transactions()
     {
         $get = $this->request->query();
+
+       // $get['dateFrom'] = (! empty($get['dateFrom'])) ? date("Y-m-d H:i:s", strtotime($get['dateFrom'])): $get['dateFrom'];
+
         $result = $this->_print->transactions($this->request->query());
         $this->template->body = View::factory('reports/print/transactions')
             ->bind('transactionsList', $result)

@@ -12,4 +12,6 @@ $('document').ready(function () {
         $(this).find('td:last > a').css('color', '#4fa7ef');
         $(this).find('td:last > span > a').css('color', '#4fa7ef');
     });
+
+
 });

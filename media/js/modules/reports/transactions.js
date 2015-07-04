@@ -54,12 +54,28 @@ $(document).ready(function () {
 
     $('#btnPrint').click(function (e) {
         e.preventDefault();
+
+        var dateFrom = ($('#dateFrom').val() != '') ? convert12HourTo24Hours($('#dateFrom').val()) : get24HoursNow();
+        var dateTo = ($('#dateTo').val() != '') ? convert12HourTo24Hours($('#dateTo').val()) : get24HoursNow();
+
         var url = '/print_report/transactions?transaction_type=' +
             $('#transactionType').val() +
             '&ministry=' + $('#ministry').val() +
-            '&user=' + $('#loggedBy').val();
+            '&user=' + $('#loggedBy').val() +
+            '&dateFrom=' + $.formatDateTime('yy-mm-dd hh:ii:ss', new Date($('#dateFrom').val()))  +
+            '&dateTo=' + $('#dateTo').val();
 
         window.open(url, '_blank');
     });
 
+    $('#dateFromDatepicker').datetimepicker({maxDate: moment()});
+    $('#dateToDatepicker').datetimepicker();
+
+    function convert12HourTo24Hours(dateTime){
+        return $.formatDateTime('yy-mm-dd hh:ii:ss', new Date(dateTime));
+    }
+
+    function get24HoursNow(){
+        return $.formatDateTime('yy-mm-dd hh:ii:ss', new Date());
+    }
 });
