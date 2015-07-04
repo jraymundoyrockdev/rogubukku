@@ -3,7 +3,7 @@
         <div class="panel panel-primary">
             <div class="panel-heading">
                 <h3 class="panel-title">
-                    <i class="fa fa-tasks"></i> Announcements
+                    <i class="glyphicon glyphicon-pushpin"></i> Announcements
                 </h3>
 
             </div>

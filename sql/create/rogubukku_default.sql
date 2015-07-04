@@ -102,7 +102,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
 
 INSERT INTO `users`(`id`, `ministry_id`, `full_name`, `username`, `password`, `avatar`, `created_date`, `active_flag`, `logins`, `last_login`)
-VALUES (1, '1', 'Mayflor Dilla', 'Mdilla', '2e60791c87630452f80bfdeb9935f659bf98f7818c5d8006fda6526935cdbdd9', NULL, CURRENT_TIMESTAMP, 'N', '0', NULL);
+VALUES (1, '1', 'Mayflor Dilla', 'Mdilla', '2e60791c87630452f80bfdeb9935f659bf98f7818c5d8006fda6526935cdbdd9', NULL, CURRENT_TIMESTAMP, 'Y', '0', NULL);
 
 -- ----------------------------
 -- Records of users

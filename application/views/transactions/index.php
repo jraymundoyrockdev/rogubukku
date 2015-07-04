@@ -9,7 +9,7 @@
 
             <div class="panel-body">
 
-                <table class="table table-striped table-bordered hover" id="transaction_list">
+                <table class="table table-striped table-bordered hover tableIcon" id="transaction_list">
                     <colgroup>
                         <col style="width:50px">
                     </colgroup>
@@ -35,11 +35,11 @@
                             <td class="text-center">
                                 <a href="<?= URL::site('transactions/edit/' . $tran->id); ?>"
                                    data-toggle="tooltip" data-placement="top"
-                                   title="Edit"><i class="fa fa-pencil fa-2x"></i></a>
+                                   title="Edit"><i class="fa fa-pencil fa-2x iconer"></i></a>
 
                                 <span data-toggle="tooltip" data-placement="top" title="Delete">
                                     <a data-toggle="modal" data-target="#deleteModal" role="button"
-                                       id="<?= $tran->id ?>" class="deleteLink">
+                                       id="<?= $tran->id ?>" class="deleteLink iconer">
                                         <i class="fa fa-trash-o fa-2x"></i>
                                     </a>
                                 </span>
