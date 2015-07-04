@@ -54,6 +54,10 @@ class Model_Users extends Model_User
             'model' => 'Transactions',
             'foreign_key' => 'logged_by',
         ),
+        'announcements' => array(
+            'model' => 'Announcements',
+            'foreign_key' => 'announced_by',
+        )
     );
 
     public function rules()

@@ -92,7 +92,7 @@ function convertDateTime(dateTime) {
 
     for (var item in dateTime) {
         if (dateTime[item].name == "from_date" || dateTime[item].name == "to_date") {
-            dateTime[item].value = $.formatDateTime('yy-mm-dd hh:ii:ss', new Date(dateTime[item].value));
+            dateTime[item].value = $.formatDateTime('yy-mm-dd', new Date(dateTime[item].value));
             continue;
         }
     }

@@ -28,9 +28,11 @@
                         <tr id="tr_<?= $a->id ?>" class="hack-shield-td">
                             <td><?= $i++ ?></td>
                             <td><?= ucfirst($a->message) ?></td>
+
                             <td><?= date_format(date_create($a->from_date), 'Y-m-d h:i A') ?></td>
                             <td><?= date_format(date_create($a->to_date), 'Y-m-d h:i A') ?></td>
                             <td><?= ($a->type == 'critical') ? '<span class="label label-danger">Critical</span>' : '<span class="label label-success">Non-Critical</span>' ?></td>
+
                             <td class="text-center">
                                 <a href="<?= URL::site('admin/announcements/edit/' . $a->id); ?>"
                                    data-toggle="tooltip" data-placement="top"
