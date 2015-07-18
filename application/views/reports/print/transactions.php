@@ -14,7 +14,7 @@
                 <li><strong>User: </strong><?= $query['user'] ?></li>
             <?php endif; ?>
 
-            <?php if ($query['user']): ?>
+            <?php if ($query['ministry']): ?>
                 <li><strong>Ministry: </strong><?= $query['ministry'] ?></li>
             <?php endif; ?>
             <li><strong>Date From: </strong><?= date('F j, Y H:i:s', strtotime($query['dateFrom'])); ?></li>

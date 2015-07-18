@@ -50,28 +50,28 @@
 
                     <div class="form-group">
                         <label class="col-sm-1" for="dateFrom" style="margin-right: 15px;">Date&nbsp;From </label>
-                        <div class="input-group col-sm-2 date">
+                        <div class="input-group date">
                             <div id="dateFromDatepicker">
                                 <?= Form::input('dateFrom', '',
-                                    ['id' => 'dateFrom', 'class' => 'form-control', 'readonly' => 'readonly']); ?>
+                                    ['id' => 'dateFrom', 'class' => 'form-control', 'readonly' => 'readonly',' style' => 'width:80%;']); ?>
                                 <span class="input-group-addon" id="icon-calendar" style="padding: 8px 12px;">
                                     <span class="glyphicon glyphicon-calendar"></span>
                                 </span>
-                                <small>(For Print Only)</small>
+                                <small>(Transaction Date - For Print Only)</small>
                             </div>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="col-sm-1" for="dateFrom" style="margin-right: 15px;">Date&nbsp;To </label>
-                        <div class="input-group col-sm-2 date">
+                        <div class="input-group date">
                             <div id="dateToDatepicker">
                                 <?= Form::input('dateTo', '',
-                                    ['id' => 'dateTo', 'class' => 'form-control', 'readonly' => 'readonly']); ?>
+                                    ['id' => 'dateTo', 'class' => 'form-control', 'readonly' => 'readonly', 'style' => 'width:80%;']); ?>
                                 <span class="input-group-addon" id="icon-calendar" style="padding: 8px 12px;">
                                     <span class="glyphicon glyphicon-calendar"></span>
                                 </span>
-                                <small>(For Print Only)</small>
+                                <small>(Transaction Date - For Print Only)</small>
                             </div>
                         </div>
                     </div>
@@ -112,7 +112,7 @@
                             <td><?= ucfirst($tran->transaction) ?></td>
                             <td><?= $tran->colored ?></td>
                             <td><?= $tran->non_colored ?></td>
-                            <td><?= ucfirst($tran->reason) ?></td>
+                            <td><?= ucfirst(nl2br($tran->reason)) ?></td>
                             <td><?= $tran->ministry->ministry ?></td>
                             <td><?= $tran->transaction_date ?></td>
                             <td><?= $tran->logged_date ?></td>
