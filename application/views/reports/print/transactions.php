@@ -33,7 +33,13 @@
                 <th>B</th>
                 <th>Transaction Date</th>
                 <th>Logged Date</th>
+
+                <?php if($query['isAdmin']):?>
+
                 <th>User</th>
+
+                <?php endif;?>
+
                 <th>Ministry</th>
             </tr>
 
@@ -49,7 +55,9 @@
                     <td><?= $tl['non_colored'] ?></td>
                     <td><?= $tl['transaction_date'] ?></td>
                     <td><?= $tl['logged_date'] ?></td>
+                    <?php if($query['isAdmin']):?>
                     <td><?= $tl['full_name'] ?></td>
+                    <?php endif;?>
                     <td><?= $tl['ministry'] ?></td>
                 </tr>
             <?php endforeach; ?>

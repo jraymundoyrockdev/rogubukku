@@ -58,12 +58,21 @@ $(document).ready(function () {
         var dateFrom = ($('#dateFrom').val() != '') ? convert12HourTo24Hours($('#dateFrom').val()) : get24HoursNow();
         var dateTo = ($('#dateTo').val() != '') ? convert12HourTo24Hours($('#dateTo').val()) : get24HoursNow();
 
+        if(serverCurrentUserTypeAdmin == ''){
+            var loggedBy = $('.full_avatar_name').text();    
+        }
+
+        if(serverCurrentUserTypeAdmin){
+            var loggedBy = $('#loggedBy').val();
+        }
+        
         var url = '/print_report/transactions?transaction_type=' +
             $('#transactionType').val() +
             '&ministry=' + $('#ministry').val() +
-            '&user=' + $('#loggedBy').val() +
+            '&user=' + loggedBy +
             '&dateFrom=' + dateFrom +
-            '&dateTo=' + dateTo;
+            '&dateTo=' + dateTo +
+            '&isAdmin=' + serverCurrentUserTypeAdmin;
 
         window.open(url, '_blank');
     });

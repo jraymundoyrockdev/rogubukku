@@ -17,9 +17,3 @@
     <h4 align="center" >No Announcements</h4>
 
 <?php endif; ?>
-
-<?php if(! $noAnnouncements): ?>
-
-    <a href="<?= URL::site('admin/announcements'); ?>" class="pull-right"><i>View All Annoucements</i></a>
-
-<?php endif; ?>

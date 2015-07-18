@@ -1,6 +1,10 @@
 <div class="container" style="padding-top: 50px;">
     <div align="center">
         <h1>Rogubukku</h1>
+       <blockquote>
+    <p>A logbook system project. Please log all your transactions in the computer.</p>
+  <footer> <cite title="Source Title">Admin</cite></footer>
+</blockquote>
     </div>
 
     <div class="row">
@@ -108,7 +112,7 @@
             <div class="modal-header">
                 <button type="button" class="close signUpSuccessfullModalClose" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="signUpSuccessfullModal"> Sign Up - Rogubukku</h4>
+                <h4 class="modal-title" id="signUpSuccessfullModal">Sign Up - Rogubukku</h4>
             </div>
 
             <div class="modal-body">
@@ -118,9 +122,8 @@
                                 class="anchorjs-icon"></span></a></h4>
 
                     <p>You have successfully created your account. <br/>
-                        You may only access the system for the next 24 hours. <br>
-                        Please contact your <strong>ADMINISTRATOR</strong> to activate <br/>your account for unlimited
-                        access.</p>
+                        You may only access the system one time by clicking Login Now.<br>
+                        Please contact your <strong>ADMINISTRATOR</strong> to activate <br/>your account.</p>
                 </div>
             </div>
 

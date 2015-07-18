@@ -146,7 +146,7 @@
                         foreach ($transactions as $tran) : ?>
 
                             <li class="list-group-item list-number-<?= $i++ ?>">
-                                <b><?= ucfirst($tran->transaction) ?></b>
+                                <b><?= ucfirst(nl2br($tran->transaction)) ?></b>
                                 <i class="pull-right">
                                     <small><?= $tran->logged_date ?></small>
                                 </i>
