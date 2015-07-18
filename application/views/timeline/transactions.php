@@ -1,6 +1,6 @@
 <div class="container timeline-container">
-    <div class="page-header">
-        <h1 id="timeline">Transaction Events</h1>
+    <div class="page-header" style="margin:0px;">
+        <h2 id="timeline">Transaction Events</h2>
     </div>
     <ul class="timeline"></ul>
     <?= Form::hidden('offset', 10, ['id' => 'offset']); ?>

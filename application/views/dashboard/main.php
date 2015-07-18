@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-lg-12">
         <div class="page-header-dashboard">
-            <h1><i class="fa fa-tachometer"></i> Dashboard</h1>
+            <h2><i class="fa fa-tachometer"></i> Dashboard</h2>
         </div>
         <?= View::factory('dashboard/transactions_total') ?>
     </div>
