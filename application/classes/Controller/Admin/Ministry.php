@@ -19,6 +19,7 @@ class Controller_Admin_Ministry extends Controller_Base
     public function before()
     {
         parent::before();
+
         $this->_ministry = ORM::factory('Ministry');
         $this->template->resourceModule = 'admin-ministry';
     }
@@ -30,6 +31,10 @@ class Controller_Admin_Ministry extends Controller_Base
      */
     public function action_index()
     {
+        if (!Rogubukku::isAdmin()) {
+            $this->request->redirect('404');
+        }
+
         $ministries = $this->_ministry->find_all();
         $this->template->body = View::factory('admin/ministry')->bind('ministries', $ministries);
     }

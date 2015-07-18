@@ -6,6 +6,17 @@
  */
 class Controller_Dashboard_Dashboard extends Controller_Base
 {
+
+    /**
+     * @var Announcements
+     */
+    protected $_announcements;
+
+    /**
+     * @var Model_Transactions
+     */
+    protected $_ministry;
+
     /**
      * default construct.
      * Set global config variables
@@ -15,6 +26,10 @@ class Controller_Dashboard_Dashboard extends Controller_Base
         $this->_is_logged_in();
 
         parent::before();
+
+        $this->_announcements = ORM::factory('Announcements');
+
+        $this->_transactions = ORM::factory('Transactions');
 
         $this->template->resourceModule = 'dashboard-client';
     }
@@ -26,7 +41,16 @@ class Controller_Dashboard_Dashboard extends Controller_Base
      */
     public function action_index()
     {
-        $this->template->body = View::factory('dashboard/client');
+        $transactions = $this->_transactions->order_by('transaction_date desc')->limit(15)->find_all();
+
+        $announcements = $this->_announcements->order_by('date_announced', 'desc')->limit(3)->find_all();
+
+        $noAnnouncements = ($announcements->count() == 0) ? true : false;
+
+        $this->template->body = View::factory('dashboard/main')
+            ->bind('transactions', $transactions)
+            ->bind('announcements', $announcements)
+            ->bind('noAnnouncements', $noAnnouncements);
     }
 
 } // End of class

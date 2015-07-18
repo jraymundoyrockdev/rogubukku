@@ -31,6 +31,7 @@ class Rogubukku
      */
     public static function saveImage($image, $directory)
     {
+
         $result = false;
         $errorMessageOrFilename = 'There was a problem while uploading the image.Make sure it is uploaded and must be JPG/PNG/GIF file.';
 
@@ -45,6 +46,8 @@ class Rogubukku
         if (!is_dir($directory)) {
             mkdir($directory, 0777, true);
         }
+
+        array_map('unlink', glob($directory . '/*'));
 
         if ($file = Upload::save($image, null, $directory)) {
             $filename = strtolower(Text::random('alnum', 20)) . '.jpg';
@@ -90,5 +93,19 @@ class Rogubukku
         $api = 'Api_' . $name;
 
         return new $api();
+    }
+
+    /**
+     * Return user type
+     *
+     * @return bool
+     */
+    public static function isAdmin()
+    {
+        if (Auth::instance()->logged_in("admin")) {
+            return true;
+        }
+
+        return false;
     }
 }

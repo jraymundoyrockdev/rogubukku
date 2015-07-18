@@ -15,4 +15,4 @@ abstract class Model_AbstractModel extends Model_BaseModel
      */
     abstract public function roguSave($fields);
 
-} // End Abstract Model
+} // End of class

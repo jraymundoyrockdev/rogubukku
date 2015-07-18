@@ -4,17 +4,20 @@ class Model_Transactions extends Model_AbstractModel
 {
 
     protected $_primary_key = 'id';
+
     protected $_table_name = 'transactions';
+
     protected $_table_columns = array(
-        'id' => NULL,
-        'ministry_id' => NULL,
-        'transaction' => NULL,
-        'reason' => NULL,
+        'id' => null,
+        'ministry_id' => null,
+        'transaction' => null,
+        'reason' => null,
         'colored' => 0,
         'non_colored' => 0,
-        'transaction_date' => NULL,
-        'logged_date' => NULL,
-        'logged_by' => NULL,
+        'transaction_date' => null,
+        'status' => null,
+        'logged_date' => null,
+        'logged_by' => null,
     );
 
     protected $_fillable = array(
@@ -25,16 +28,20 @@ class Model_Transactions extends Model_AbstractModel
         'non_colored',
         'last_login',
         'transaction_date',
+        'status',
         'logged_date',
         'logged_by'
     );
 
     protected $_belongs_to = array(
-        'users' => array('model' => 'Users',
-            'foreign_key' => 'logged_by'),
-
-        'ministry' => array('model' => 'Ministry',
-            'foreign_key' => 'ministry_id'),
+        'users' => array(
+            'model' => 'Users',
+            'foreign_key' => 'logged_by'
+        ),
+        'ministry' => array(
+            'model' => 'Ministry',
+            'foreign_key' => 'ministry_id'
+        ),
     );
 
     public function rules()
@@ -58,9 +65,18 @@ class Model_Transactions extends Model_AbstractModel
         );
     }
 
+    /**
+     * Derived from the AbstractModel
+     *
+     * Default mass assignment method for saving and updating tables.
+     * @param $fields array payload of data coming form post send
+     *
+     * @return object
+     */
     public function roguSave($fields)
     {
         $fields['logged_date'] = date('Y-m-d H:i:s');
+
         return $this->_prepareSave($fields, $this->_fillable, $this->_primary_key);
     }
 

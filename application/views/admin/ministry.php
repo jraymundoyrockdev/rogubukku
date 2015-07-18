@@ -9,7 +9,7 @@
         <div class="panel panel-primary">
             <div class="panel-heading">
                 <h3 class="panel-title">
-                    <i class="fa fa-bar-chart-o"></i>
+                    <i class="fa fa-life-ring"></i>
                     Ministries
                 </h3>
             </div>
@@ -59,8 +59,8 @@
         </div>
     </div>
     <div class="col-lg-3 well">
-        <button type="button" class="btn btn-primary col-lg-12" data-toggle="modal" data-target="#ministryModal"><i
-                class="fa fa-plus-square"></i> Add New
+        <button type="button" class="btn btn-info col-lg-12" data-toggle="modal" data-target="#ministryModal"> Create
+            New
         </button>
     </div>
 </div>
@@ -88,7 +88,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <?= Form::button('save_ministry', '<i class="fa fa-floppy-o"></i> Save',
+                    <?= Form::button('save_ministry', 'Save',
                         array('type' => 'submit', 'class' => 'btn btn-primary')); ?>
                 </div>
                 <?= Form::close(); ?>

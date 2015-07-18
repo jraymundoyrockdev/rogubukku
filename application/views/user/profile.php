@@ -4,7 +4,7 @@
         <div class="panel panel-primary">
             <div class="panel-heading">
                 <h3 class="panel-title">
-                    <i class="fa fa-bar-chart-o"></i> Avatar
+                    <i class="fa fa-picture-o"></i> Avatar
                 </h3>
             </div>
             <div class="panel-body">
@@ -18,7 +18,7 @@
                 <div class="change_avatar">
                     <a href="#" id="click_dp" class="thumbnail">
                         <img id="img_avatar"
-                             src="<?php echo empty($user->profile_pic) ? $imagesDirectory['relative'] . 'default_avatar.gif' : $avatarDirectory['relative'] . $user->id . '/' . $user->profile_pic; ?>"
+                             src="<?php echo empty($user->avatar) ? $imagesDirectory['relative'] . 'default_avatar.gif' : $avatarDirectory['relative'] . $user->id . '/' . $user->avatar; ?>"
                              alt="125x125">
                     </a>
                 </div>
@@ -38,7 +38,7 @@
         <div class="panel panel-primary">
             <div class="panel-heading">
                 <h3 class="panel-title">
-                    <i class="fa fa-bar-chart-o"></i> User Profile
+                    <i class="fa fa-user-secret"></i> User Profile
                 </h3>
             </div>
             <div class="panel-body">
@@ -47,7 +47,7 @@
                      style="display:none;">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
                             aria-hidden="true">×</span></button>
-                    <i class="fa fa-user"></i> Profile Updated!<a class="anchorjs-link">
+                    <i class="fa fa-user-secret"></i> Profile Updated!<a class="anchorjs-link">
                         <span class="anchorjs-icon"></span></a>
                 </div>
 

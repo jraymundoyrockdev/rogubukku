@@ -26,9 +26,9 @@ class Model_BaseModel extends ORM implements Interfaces_MassAssignmentInterface
      *
      * @return Array
      */
-    public function _prepareSave($fields, Array $fillable = [],$primaryKey)
+    public function _prepareSave($fields, Array $fillable = [], $primaryKey)
     {
-        if (array_key_exists($primaryKey,$fields)) {
+        if (array_key_exists($primaryKey, $fields)) {
             $this->where($primaryKey, '=', $fields[$primaryKey])->find();
         }
 

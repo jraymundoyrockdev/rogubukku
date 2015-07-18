@@ -75,22 +75,23 @@ class Controller_User_Profile extends Controller_Base
 
         if ($this->request->method() == Request::POST) {
 
-            if (isset($_FILES['avatar'])) {
+            if (!isset($_FILES['avatar'])) {
+                return false;
+            }
 
-                $post = [];
-                $result = [];
+            $post = [];
+            $result = [];
 
-                list($res, $message) = Rogubukku::saveImage($_FILES['avatar'], $this->_getUserAvatarDirectory());
+            list($res, $message) = Rogubukku::saveImage($_FILES['avatar'], $this->_getUserAvatarDirectory());
 
-                if ($res) {
-                    $post['profile_pic'] = $message;
-                    $result = $this->_users->roguSave(Rogubukku::mergeCurrentlyLoggedInUser($post));
-                    $result['src'] = $this->_getUserNewAvatar($result);
-                }
+            if ($res) {
+                $post['avatar'] = $message;
+                $result = $this->_users->roguSave(Rogubukku::mergeCurrentlyLoggedInUser($post));
+                $result['src'] = $this->_getUserNewAvatar($result);
+            }
 
-                if (!$res) {
-                    $result['errorFields'] = $message;
-                }
+            if (!$res) {
+                $result['errorFields'] = $message;
             }
 
             $this->responseAjaxResult($result);
@@ -114,7 +115,7 @@ class Controller_User_Profile extends Controller_Base
      */
     private function _getUserNewAvatar($result)
     {
-        return $this->avatarDirectory['relative'] . $result['objectModel']->get('id') . '/' . $result['objectModel']->get('profile_pic');
+        return $this->avatarDirectory['relative'] . $result['objectModel']->get('id') . '/' . $result['objectModel']->get('avatar');
     }
 
 } // End of class

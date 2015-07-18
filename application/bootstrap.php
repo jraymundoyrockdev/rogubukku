@@ -123,7 +123,7 @@ Cookie::$salt = 'jempogi123';
  * Set the routes. Each route must have a minimum of a name, a URI and a set of
  * defaults for the URI.
  */
-Route::set('defaults', '((/<action>(/<id>)))', array('action' => 'index|create|login|signin'))
+Route::set('defaults', '((/<action>(/<id>)))', array('action' => 'index|create|login|signin|'))
     ->defaults(array(
         'directory' => 'login',
         'controller' => 'login',
@@ -131,7 +131,7 @@ Route::set('defaults', '((/<action>(/<id>)))', array('action' => 'index|create|l
     ));
 
 //LOGIN
-Route::set('login', 'login((/<action>(/<id>)))', array('action' => 'index|create|login|logout|signup'))
+Route::set('login', 'login((/<action>(/<id>)))', array('action' => 'index|create|login|logout|signup|cancelLoginNow'))
     ->defaults(array(
         'directory' => 'login',
         'controller' => 'login',
@@ -150,6 +150,13 @@ Route::set('dashboard', 'dashboard((/<action>(/<id>)))', array('action' => 'inde
 Route::set('reports-transactions', 'reports/transactions((/<action>(/<id>)))', array('action' => 'index'))
     ->defaults(array(
         'directory' => 'reports',
+        'controller' => 'transactions',
+        'action' => 'index',
+    ));
+
+Route::set('timeline', 'timeline((/<action>(/<id>)))', array('action' => 'index'))
+    ->defaults(array(
+        'directory' => 'timeline',
         'controller' => 'transactions',
         'action' => 'index',
     ));
@@ -190,8 +197,15 @@ Route::set('admin/users', 'admin/users((/<action>(/<id>)))', array('action' => '
         'action' => 'index',
     ));
 
+Route::set('admin/announcements', 'admin/announcements((/<action>(/<id>)))', array('action' => 'index|create|save|edit|destroy'))
+    ->defaults(array(
+        'directory' => 'admin',
+        'controller' => 'announcements',
+        'action' => 'index',
+    ));
+
 //TRANSACTIONS
-Route::set('transactions','transactions((/<action>(/<id>)))',array('action'=>'index|save|list|edit|update'))
+Route::set('transactions','transactions((/<action>(/<id>)))',array('action'=>'index|save|list|edit|destroy'))
     ->defaults(array(
         'directory' => 'transactions',
         'controller' => 'transactions',
@@ -211,11 +225,29 @@ if (!Route::cache()) {
         ));
 }
 
-//API
+//APIs
 Route::set('api.dashboard', 'api.dashboard((/<action>(/<year>))(/<id>))',
-    array('action' => 'index|transaction_totals|transaction_totals_per_month'))
+    array('action' => 'index|transaction_totals|transaction_totals_per_month|transaction_totals_per_ministry'))
     ->defaults(array(
         'directory' => 'api',
         'controller' => 'dashboard',
+        'action' => 'index',
+    ));
+
+
+Route::set('api.timeline', 'api.timeline((/<action>(/<limit>))(/<offset>)(/<id>))',
+    array('action' => 'index|transaction_timeline'))
+    ->defaults(array(
+        'directory' => 'api',
+        'controller' => 'timeline',
+        'action' => 'index',
+    ));
+
+
+Route::set('print_report', 'print_report((/<action>))',
+    array('action' => 'index|transactions'))
+    ->defaults(array(
+        'directory' => 'Print',
+        'controller' => 'Report',
         'action' => 'index',
     ));

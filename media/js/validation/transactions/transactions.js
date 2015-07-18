@@ -30,7 +30,7 @@ $('#transactions_form').formValidation({
             }
         },
         ministry_id: {
-            row: '.ministry-type-error',
+            row: '.ministry-id-error',
             validators: {
                 notEmpty: {
                     message: 'Ministry is required.'
@@ -93,7 +93,7 @@ $('#transactions_form').formValidation({
                     message: 'Transaction date is required.'
                 },
                 date: {
-                    format: 'yy/mm/dd',
+                    format: 'MM/DD/YYYY g:ii a',
                     message: 'The value is not a valid date'
                 }
             }
@@ -118,10 +118,10 @@ $('#transactions_form').formValidation({
                 var insertNewTransactionItem = '<li class="list-group-item list-number-0"> <b>'+result.lastTransaction.charAt(0).toUpperCase()+result.lastTransaction.slice(1).toLowerCase()+'</b> <i class="pull-right"><small>'+result.lastLoggedDate+'</small></i> <p class="list-group-item-text">'+result.lastReason+'</p> </li>';
                 
                 if($('#saveType').val() == 'saveAndExit')
-                    window.location = "http://rogubukku.com/dashboard";
+                    window.location = "/dashboard";
 
                 if($('#saveType').val() == 'update')
-                    window.location = "http://rogubukku.com/transactions/list";
+                    window.location = "/transactions/list";
 
                 if($("#transaction_list li").eq(4).val() == 0)
                 {
@@ -129,9 +129,11 @@ $('#transactions_form').formValidation({
                     $(insertNewTransactionItem).insertBefore('#transaction_list li:eq(0)')
                 }
                 else
+                {
                     $( "#prepend_list" ).prepend( insertNewTransactionItem );
+                }
 
-                $("#no_transaction").fadeOut().
+                $("#no_transaction").fadeOut();
                 $("#trasaction_created").fadeIn().hide(2000);
             }
             else {

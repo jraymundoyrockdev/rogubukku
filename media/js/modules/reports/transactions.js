@@ -7,7 +7,7 @@ $(document).ready(function () {
             "orderable": false,
             "targets": 0
         }],
-        "order": [[7, "desc"]]
+        "order": [[6, "desc"]]
     });
 
     transactionTable.on('order.dt search.dt', function () {
@@ -52,4 +52,30 @@ $(document).ready(function () {
     });
 
 
+    $('#btnPrint').click(function (e) {
+        e.preventDefault();
+
+        var dateFrom = ($('#dateFrom').val() != '') ? convert12HourTo24Hours($('#dateFrom').val()) : get24HoursNow();
+        var dateTo = ($('#dateTo').val() != '') ? convert12HourTo24Hours($('#dateTo').val()) : get24HoursNow();
+
+        var url = '/print_report/transactions?transaction_type=' +
+            $('#transactionType').val() +
+            '&ministry=' + $('#ministry').val() +
+            '&user=' + $('#loggedBy').val() +
+            '&dateFrom=' + dateFrom +
+            '&dateTo=' + dateTo;
+
+        window.open(url, '_blank');
+    });
+
+    $('#dateFromDatepicker').datetimepicker({maxDate: moment()});
+    $('#dateToDatepicker').datetimepicker();
+
+    function convert12HourTo24Hours(dateTime) {
+        return $.formatDateTime('yy-mm-dd hh:ii:ss', new Date(dateTime));
+    }
+
+    function get24HoursNow() {
+        return $.formatDateTime('yy-mm-dd hh:ii:ss', new Date());
+    }
 });

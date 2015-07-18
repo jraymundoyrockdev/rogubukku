@@ -44,7 +44,7 @@ class Controller_Reports_Transactions extends Controller_Base
                 '=',
                 Auth::instance()->get_user()->id
             )->order_by(
-                'logged_date',
+                'transaction_date',
                 'desc'
             )->find_all();
         }
@@ -52,7 +52,7 @@ class Controller_Reports_Transactions extends Controller_Base
         if (Auth::instance()->logged_in("admin")) {
 
             $transactions = $this->_transactions->order_by(
-                'logged_date',
+                'transaction_date',
                 'desc'
             )->find_all();
         }

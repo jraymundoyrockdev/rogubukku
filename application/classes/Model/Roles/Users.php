@@ -14,7 +14,7 @@ class Model_Roles_Users extends Model_AbstractModel
         'role_id' => null,
     );
 
-    protected $_fillable = array('user_id','role_id');
+    protected $_fillable = array('user_id', 'role_id');
 
     protected $_table_name = 'roles_users';
 
@@ -25,6 +25,14 @@ class Model_Roles_Users extends Model_AbstractModel
         ),
     );
 
+    /**
+     * Derived from the AbstractModel
+     *
+     * Default mass assignment method for saving and updating tables.
+     * @param $fields array payload of data coming form post send
+     *
+     * @return object
+     */
     public function roguSave($fields)
     {
         return $this->_prepareSave($fields, $this->_fillable, $this->_primary_key);

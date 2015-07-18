@@ -1,6 +1,6 @@
-<div class="container the_login_page">
-    <div class="page-header" align="center">
-        <h1>test</h1>
+<div class="container" style="padding-top: 50px;">
+    <div align="center">
+        <h1>Rogubukku</h1>
     </div>
 
     <div class="row">
@@ -50,7 +50,7 @@
                     <div class="header-text">
                         <div class="panel">
                             <h3>
-                                <i class="fa fa-arrows-v"></i> Signup Form <i class="fa fa-arrows-v"></i>
+                                <i class="fa fa-arrows-v"></i> Sign Up Form <i class="fa fa-arrows-v"></i>
                             </h3>
 
                             <div class="panel-body">
@@ -125,8 +125,8 @@
             </div>
 
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger">Login Now</button>
-                <button type="button" class="btn btn-default signUpSuccessfullModalClose" data-dismiss="modal">Login
+                <a href="<?= URL::site('login'); ?>"role="button" class="btn btn-success">Login Now</a>
+                <button id="loginLater" type="button" class="btn btn-default signUpSuccessfullModalClose" data-dismiss="modal">Login
                     Later
                 </button>
             </div>

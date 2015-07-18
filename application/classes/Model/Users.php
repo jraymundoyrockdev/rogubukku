@@ -9,7 +9,9 @@ class Model_Users extends Model_User
 {
 
     protected $_primary_key = 'id';
+
     protected $_table_name = 'users';
+
     protected $_table_columns = array(
         'id' => null,
         'ministry_id' => null,
@@ -20,7 +22,7 @@ class Model_Users extends Model_User
         'last_login' => null,
         'created_date' => null,
         'active_flag' => null,
-        'profile_pic' => null
+        'avatar' => null
     );
 
     protected $_fillable = array(
@@ -31,8 +33,9 @@ class Model_Users extends Model_User
         'logins',
         'last_login',
         'created_date',
-        'active_flag',
-        'profile_pic'
+        'avatar',
+        'profile_pic',
+        'active_flag'
     );
 
     protected $_belongs_to = array(
@@ -51,6 +54,10 @@ class Model_Users extends Model_User
             'model' => 'Transactions',
             'foreign_key' => 'logged_by',
         ),
+        'announcements' => array(
+            'model' => 'Announcements',
+            'foreign_key' => 'announced_by',
+        )
     );
 
     public function rules()
@@ -74,7 +81,14 @@ class Model_Users extends Model_User
         );
     }
 
-
+    /**
+     * Derived from the AbstractModel
+     *
+     * Default mass assignment method for saving and updating tables.
+     * @param $fields array payload of data coming form post send
+     *
+     * @return object
+     */
     public function roguSave($fields)
     {
         return $this->_prepareSave($fields, $this->_fillable, $this->_primary_key);
@@ -92,8 +106,10 @@ class Model_Users extends Model_User
     {
         if (!Auth::instance()->logged_in()) {
             $is_exists = ORM::factory('Users', array('username' => $username))->loaded();
+
             return ($is_exists) ? false : true;
         }
+
         return true;
 
     }

@@ -11,7 +11,7 @@ return array
         //GLOBAL
         'global-styles' => [
             '//media/css/lib/bootstrap/bootstrap.css',
-            '//media/css/lib/fonts/css/font-awesome.min.css',
+            '//media/css/lib/fonts/css/font-awesome.css',
             '//media/css/main/main_style.css',
             '//media/css/lib/shieldui/shieldui-all.min.css',
             '//media/css/lib/shieldui/all.min.css',
@@ -23,9 +23,9 @@ return array
             '//media/js/lib/bootstrap/bootstrap.js',
             '//media/js/lib/shieldui/shieldui-all.min.js',
             '//media/js/lib/bootstrap/bootstrap_validator/dist/formValidation.js',
-            '//media/js/lib/bootstrap/bootstrap_validator/dist/bootstrap.js'
+            '//media/js/lib/bootstrap/bootstrap_validator/dist/bootstrap.js',
+            '//media/js/rogubukku.js'
         ],
-
         //MODULE-LOGIN
         'login-styles' => [
             '//media/css/modules/login/login.css',
@@ -39,8 +39,8 @@ return array
             '//media/js/modules/user/profile.js',
             '//media/js/validation/user/profile.js',
             '//media/js/lib/bootbox/bootbox.min.js',
-            '//media/js/lib/jquery/jquery.form.js',
-            
+            '//media/js/lib/jquery/jquery.form.js'
+
         ],
         //MODULE-CHANGE-PASSWORD
         'change-password-scripts' => [
@@ -59,33 +59,62 @@ return array
             '//media/js/lib/bootstrap/bootstrap-switch.js',
             '//media/js/modules/admin/users.js'
         ],
+        //MODULE-ANNOUNCEMENTS
+        'admin-announcements-styles' => [
+            '//media/css/lib/dataTables/dataTables.bootstrap.css',
+            '//media/css/lib/bootstrap/datepicker/bootstrap-datetimepicker.css'
+        ],
+        'admin-announcements-scripts' => [
+            '//media/js/lib/dataTables/jquery.dataTables.js',
+            '//media/js/lib/dataTables/dataTables.bootstrap.js',
+            '//media/js/lib/datepicker/moment.js',
+            '//media/js/lib/datepicker/bootstrap-datetimepicker.js',
+            '//media/js/lib/jquery/formatDateTime.js',
+            '//media/js/validation/admin/announcements.js',
+            '//media/js/modules/admin/announcements.js'
+        ],
         //MODULE-TRANSACTIONS
         'transactions-styles' => [
-            '//media/css/lib/bootstrap/datepicker/bootstrap-datetimepicker.css',
+            '//media/css/lib/dataTables/dataTables.bootstrap.css',
+            '//media/css/lib/bootstrap/datepicker/bootstrap-datetimepicker.css'
         ],
         'transactions-scripts' => [
+            '//media/js/lib/dataTables/jquery.dataTables.js',
+            '//media/js/lib/dataTables/dataTables.bootstrap.js',
             '//media/js/lib/datepicker/moment.js',
             '//media/js/lib/datepicker/bootstrap-datetimepicker.js',
             '//media/js/lib/jquery/formatDateTime.js',
             '//media/js/validation/transactions/transactions.js',
             '//media/js/modules/transactions/transactions.js',
+            '//media/js/lib/jquery-prevent-double-submit.js',
         ],
         //MODULE-REPORTS
         'reports-styles' => [
-            '//media/css/lib/dataTables/dataTables.bootstrap.css'
+            '//media/css/lib/dataTables/dataTables.bootstrap.css',
+            '//media/css/lib/bootstrap/datepicker/bootstrap-datetimepicker.css'
         ],
         'reports-scripts' => [
             '//media/js/lib/dataTables/jquery.dataTables.js',
             '//media/js/lib/dataTables/dataTables.bootstrap.js',
+            '//media/js/lib/datepicker/moment.js',
+            '//media/js/lib/datepicker/bootstrap-datetimepicker.js',
+            '//media/js/lib/jquery/formatDateTime.js',
             '//media/js/modules/reports/transactions.js'
         ],
-
         //MODULE-DASHBOARD CLIENT
         'dashboard-client-styles' => [
-
+            '//media/css/modules/dashboard/announcements.css'
         ],
         'dashboard-client-scripts' => [
-            '//media/js/modules/dashboard/client.js'
+            '//media/js/modules/dashboard/main.js'
+        ],
+        //MODULE-TIMELINE
+        'timeline-styles' => [
+            '//media/css/modules/timeline/transactions.css'
+        ],
+        'timeline-scripts' => [
+            '//media/js/modules/timeline/box-builder.js',
+            '//media/js/modules/timeline/transactions.js'
         ]
 
     ]

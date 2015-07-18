@@ -1,10 +1,17 @@
 <?php defined('SYSPATH') OR die('No Direct Script Access');
 
+/**
+ * Foundation Controller for all concrete and abstract class to extend.
+ * All default methods under this class is used globally
+ *
+ */
 Class Controller_Base extends Controller_Template
 {
+    /**
+     * Default template for all pages
+     *
+     */
     public $template = 'templates/main';
-
-    protected $uploadsDirectory;
 
     public function before()
     {
@@ -12,9 +19,8 @@ Class Controller_Base extends Controller_Template
 
         $this->isRequestAjax();
 
-        $this->template->title = 'DEV-practice';
+        $this->template->title = 'Rogubukku - GFCCM';
         $this->template->nav = View::factory('templates/nav')->set('routeName', Route::name($this->request->route()));
-        $this->template->footer = View::factory('templates/footer')->set('message', 'sampler');
 
         $this->template->resourceSource = Kohana::$config->load('styles-scripts-resource')->get('resource');
         $this->template->resourceModule = '';
@@ -24,6 +30,10 @@ Class Controller_Base extends Controller_Template
 
     }
 
+    /**
+     * If user is logged in.
+     * Redirect to login page if not logged-in
+     */
     protected function _is_logged_in()
     {
         if (!Auth::instance()->logged_in()) {
@@ -33,6 +43,10 @@ Class Controller_Base extends Controller_Template
         return true;
     }
 
+    /**
+     * Sniff if the method sent to http is an ajax.
+     *
+     */
     protected function isRequestAjax()
     {
         if ($this->request->is_ajax()) {
@@ -40,6 +54,10 @@ Class Controller_Base extends Controller_Template
         }
     }
 
+    /**
+     * Output result to json template.
+     *
+     */
     protected function responseAjaxResult(Array $message)
     {
         $this->response->headers('Content-type', 'application/json; charset=' . Kohana::$charset);
