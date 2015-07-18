@@ -1,19 +1,25 @@
-# Kohana PHP Framework
+# Rogubukku
 
-[Kohana](http://kohanaframework.org/) is an elegant, open source, and object oriented HMVC framework built using PHP5, by a team of volunteers. It aims to be swift, secure, and small.
+	## Documentation
+	A logbook system  project specifically for Golden Faith Center Chrisitian Ministries
+	This monitors all transactions of the user in the computer.
+	Removing manual logging to digital.
+	Each user has own access and monitoring to their transctions.
+	Can be used online or locally depends on how you setup
 
-Released under a [BSD license](http://kohanaframework.org/license), Kohana can be used legally for any open source, commercial, or personal project.
+	This is a prototype any church/organization(who use logbook) can use. 
+	Easy to extend and maintainable.
 
-## Documentation
-Kohana's documentation can be found at <http://kohanaframework.org/documentation> which also contains an API browser.
+	##Technical info
+	This is created mainly using:
+	1. KOHANA 3.3 php framework
+	2. JQUERY javascript framework
+	3. shield-ui interface
 
-The `userguide` module included in all Kohana releases also allows you to view the documentation locally. Once the `userguide` module is enabled in the bootstrap, it is accessible from your site via `/index.php/guide` (or just `/guide` if you are rewriting your URLs).
+	## How to use (use virtualhost config)
+	* Clone the repository
+	* Upload the DB located in root/sql/create/rogubukku_default.sql
+	* Set up .htaccess (Copy example.htaccess to .htaccess)
+	* Set up DB in application/config/database.php (copy example.database and set up the given connection)
 
-## Reporting bugs
-If you've stumbled across a bug, please help us out by [reporting the bug](http://dev.kohanaframework.org/projects/kohana3/) you have found. Simply log in or register and submit a new issue, leaving as much information about the bug as possible, e.g.
-
-* Steps to reproduce
-* Expected result
-* Actual result
-
-This will help us to fix the bug as quickly as possible, and if you'd like to fix it yourself feel free to [fork us on GitHub](https://github.com/kohana) and submit a pull request!
+	For inquries email me @jeremuelraymundo@gmail.com
